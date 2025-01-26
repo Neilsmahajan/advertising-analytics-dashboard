@@ -1,7 +1,6 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
 import { QuerySection } from "@/components/query-section"
+import { SignOutButton } from "@/components/sign-out-button"
+
 
 // This would come from your Firebase auth
 const mockUser = {
@@ -28,10 +27,6 @@ const services = [
 ]
 
 export default function AccountPage() {
-  const handleSignOut = () => {
-    // This would trigger your Firebase sign out
-    console.log("Sign out clicked")
-  }
 
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
@@ -54,13 +49,7 @@ export default function AccountPage() {
               <span>{mockUser.email}</span>
             </div>
             <div className="pt-4">
-              <Button
-                onClick={handleSignOut}
-                variant="secondary"
-                className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
-              >
-                SIGN OUT
-              </Button>
+              <SignOutButton />
             </div>
           </div>
         </section>
