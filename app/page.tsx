@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ScrollToSupportedPlatforms } from "@/components/scroll-to-supported-platforms"
 import { ScrollToVideoSection } from "@/components/scroll-to-video-section"
+import { SignUpButton } from "@/components/sign-up-button"
 
 const features = [
   {
@@ -55,9 +56,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             <ScrollToSupportedPlatforms />
             <ScrollToVideoSection />
-            <Button size="lg" variant="default" className="text-white bg-[#0077be] hover:bg-[#005f9e]">
-              SIGN UP FOR FREE
-            </Button>
+            <SignUpButton />
           </div>
         </div>
       </section>
@@ -126,9 +125,7 @@ export default function Home() {
           />
           <div className="flex justify-center gap-4">
             <ScrollToSupportedPlatforms />
-            <Button size="lg" variant="default" className="text-white bg-[#0077be] hover:bg-[#005f9e]">
-              SIGN UP FOR FREE
-            </Button>
+            <SignUpButton />
           </div>
         </div>
       </section>
