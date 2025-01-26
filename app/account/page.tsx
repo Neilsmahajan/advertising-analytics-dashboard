@@ -1,12 +1,6 @@
 import { QuerySection } from "@/components/query-section"
 import { SignOutButton } from "@/components/sign-out-button"
-
-
-// This would come from your Firebase auth
-const mockUser = {
-  name: "Neil Mahajan",
-  email: "Neilmahajan@gmail.com",
-}
+import { AccountInfo } from "@/components/account-info"
 
 // These would come from your Firebase Firestore
 const services = [
@@ -33,24 +27,15 @@ export default function AccountPage() {
       <div className="container mx-auto px-4 py-32">
         {/* Header Section */}
         <h1 className="text-4xl md:text-6xl font-bold mb-2">MY ACCOUNT</h1>
-        <p className="text-xl mb-12">Welcome, {mockUser.name}!</p>
+        <p className="text-xl mb-12">Welcome!</p>
         <p className="text-lg mb-12">MANAGE YOUR PROFILE AND SAVED QUERIES HERE.</p>
 
         {/* Profile Information Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Profile Information</h2>
-          <div className="space-y-4">
-            <div className="flex flex-col">
-              <span className="font-medium">Name:</span>
-              <span>{mockUser.name}</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-medium">Email Address:</span>
-              <span>{mockUser.email}</span>
-            </div>
-            <div className="pt-4">
-              <SignOutButton />
-            </div>
+          <AccountInfo />
+          <div className="pt-4">
+            <SignOutButton />
           </div>
         </section>
 
