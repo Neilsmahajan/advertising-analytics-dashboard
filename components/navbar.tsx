@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react"
 import { useEffect } from "react"
+import { GoogleAuthProvider, signInWithPopup} from "firebase/auth"
+import { useAuthState } from "react-firebase-hooks/auth"
+import {auth} from "@/lib/firebaseConfig"
 
 const services = [
   "Tracking Data",
@@ -27,6 +30,15 @@ const services = [
 const languages = ["English", "French"]
 
 export function Navbar() {
+  const [user] = useAuthState(auth)
+  const provider = new GoogleAuthProvider()
+
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider).catch((error) => {
+      console.error("Error signing in with Google: ", error)
+    })
+  }
+  
   useEffect(() => {
     document.body.classList.add("overflow-y-scroll")
     return () => {
@@ -73,7 +85,15 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Button variant="ghost">Sign In</Button>
+            {user ? (
+              <Link href="/account">
+                <Button variant="ghost">Account</Button>
+              </Link>
+            ) : (
+              <Button variant="ghost" onClick={handleSignIn}>
+                Sign In
+              </Button>
+            )}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
