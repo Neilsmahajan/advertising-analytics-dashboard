@@ -35,7 +35,7 @@ export function Footer() {
                     key={link}
                     href={
                       link === "Home"
-                        ? "/"
+                        ? "/public"
                         : link === "Facebook"
                           ? "https://www.facebook.com/advertisinganalyticsdashboard/"
                           : link === "Instagram"

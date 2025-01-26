@@ -1,9 +1,8 @@
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ScrollToSupportedPlatforms } from "@/components/scroll-to-supported-platforms"
-import { ScrollToVideoSection } from "@/components/scroll-to-video-section"
-import { SignUpButton } from "@/components/sign-up-button"
+import { ScrollToSupportedPlatforms } from "@/app/scroll-to-supported-platforms"
+import { ScrollToVideoSection } from "@/app/scroll-to-video-section"
+import { SignUpButton } from "@/app/sign-up-button"
 
 const features = [
   {

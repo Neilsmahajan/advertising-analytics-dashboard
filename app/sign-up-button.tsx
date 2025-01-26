@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { useRouter } from "next/navigation"
 import { auth } from "@/lib/firebaseConfig"
 
