@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 
-export function ScrollToSupportedPlatforms() {
+export default function ScrollToSupportedPlatforms() {
   const scrollToSupportedPlatforms = () => {
     const element = document.getElementById("supported-platforms")
     if (element) {

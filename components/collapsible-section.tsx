@@ -8,7 +8,7 @@ interface CollapsibleSectionProps {
   children: React.ReactNode
 }
 
-export function CollapsibleSection({ title, children }: CollapsibleSectionProps) {
+export default function CollapsibleSection({ title, children }: CollapsibleSectionProps) {
   return (
     <Collapsible className="w-full space-y-2">
       <CollapsibleTrigger className="flex w-full items-center justify-start py-2 text-left font-medium hover:underline group">

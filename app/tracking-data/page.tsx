@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { CollapsibleSection } from "@/components/collapsible-section"
+import CollapsibleSection from "@/components/collapsible-section"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function TrackingDataPage() {

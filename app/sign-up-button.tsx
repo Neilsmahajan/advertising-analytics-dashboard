@@ -6,7 +6,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { useRouter } from "next/navigation"
 import { auth } from "@/lib/firebaseConfig"
 
-export function SignUpButton() {
+export default function SignUpButton() {
   const [user] = useAuthState(auth)
   const provider = new GoogleAuthProvider()
   const router = useRouter()

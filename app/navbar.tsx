@@ -29,7 +29,7 @@ const services = [
 
 const languages = ["English", "French"]
 
-export function Navbar() {
+export default function Navbar() {
   const [user] = useAuthState(auth)
   const provider = new GoogleAuthProvider()
 

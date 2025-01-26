@@ -8,7 +8,7 @@ interface QuerySectionProps {
   children?: React.ReactNode
 }
 
-export function QuerySection({ title, children }: QuerySectionProps) {
+export default function QuerySection({ title, children }: QuerySectionProps) {
   return (
     <Collapsible className="w-full space-y-2">
       <CollapsibleTrigger className="flex w-full items-center justify-start py-2 text-left font-medium hover:underline group">

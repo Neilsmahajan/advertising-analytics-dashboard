@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 
-export function ScrollToVideoSection() {
+export default function ScrollToVideoSection() {
   const scrollToVideoSection = () => {
     const element = document.getElementById("video-section")
     if (element) {

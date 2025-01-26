@@ -1,5 +1,5 @@
-import {QuerySection} from "@/app/account/query-section"
-import {AccountInfo} from "@/app/account/account-info"
+import QuerySection from "@/app/account/query-section"
+import AccountInfo from "@/app/account/account-info"
 
 // These would come from your Firebase Firestore
 const services = [

@@ -5,7 +5,7 @@ import { signOut } from 'firebase/auth'
 import { Button } from '@/components/ui/button'
 import { auth } from '@/lib/firebaseConfig'
 
-export function SignOutButton() {
+export default function SignOutButton() {
   const router = useRouter()
 
   const handleSignOut = async () => {

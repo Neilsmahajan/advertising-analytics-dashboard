@@ -21,7 +21,7 @@ const footerLinks = {
   ],
 }
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="bg-[#00BFFF] text-white py-12">
       <div className="container mx-auto px-4">
