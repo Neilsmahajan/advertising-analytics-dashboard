@@ -1,21 +1,8 @@
-'use client';
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
-const scrollToSupportedPlatforms = () => {
-  const element = document.getElementById("supported-platforms")
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" })
-  }
-}
-
-const scrollToVideoSection = () => {
-  const element = document.getElementById("video-section")
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" })
-  }
-}
+import { ScrollToSupportedPlatforms } from "@/components/scroll-to-supported-platforms"
+import { ScrollToVideoSection } from "@/components/scroll-to-video-section"
 
 const features = [
   {
@@ -66,22 +53,8 @@ export default function Home() {
             Performance, And Optimize Results Effortlessly.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              size="lg"
-              variant="default"
-              className="text-white bg-[#0077be] hover:bg-[#005f9e]"
-              onClick={scrollToSupportedPlatforms}
-            >
-              EXPLORE SERVICES
-            </Button>
-            <Button
-              size="lg"
-              variant="default"
-              className="text-white bg-[#0077be] hover:bg-[#005f9e]"
-              onClick={scrollToVideoSection}
-            >
-              WATCH VIDEO
-            </Button>
+            <ScrollToSupportedPlatforms />
+            <ScrollToVideoSection />
             <Button size="lg" variant="default" className="text-white bg-[#0077be] hover:bg-[#005f9e]">
               SIGN UP FOR FREE
             </Button>
@@ -152,14 +125,7 @@ export default function Home() {
             allowFullScreen
           />
           <div className="flex justify-center gap-4">
-            <Button
-              size="lg"
-              variant="default"
-              className="text-white bg-[#0077be] hover:bg-[#005f9e]"
-              onClick={scrollToSupportedPlatforms}
-            >
-              EXPLORE SERVICES
-            </Button>
+            <ScrollToSupportedPlatforms />
             <Button size="lg" variant="default" className="text-white bg-[#0077be] hover:bg-[#005f9e]">
               SIGN UP FOR FREE
             </Button>
