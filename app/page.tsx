@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ScrollToSupportedPlatforms from "@/app/scroll-to-supported-platforms";
 import ScrollToVideoSection from "@/app/scroll-to-video-section";
 import SignUpButton from "@/app/sign-up-button";
+import React from "react";
 
 const features = [
   {

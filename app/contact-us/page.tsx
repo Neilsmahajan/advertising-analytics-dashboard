@@ -1,4 +1,5 @@
 import ContactForm from "@/app/contact-us/contact-form";
+import React from "react";
 
 export default function ContactPage() {
   return (

@@ -1,5 +1,6 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/tracking-data/query-form";
+import React from "react";
 
 export default function TrackingDataPage() {
   return (

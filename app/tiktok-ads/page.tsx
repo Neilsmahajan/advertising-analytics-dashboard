@@ -1,5 +1,6 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/tiktok-ads/query-form";
+import React from "react";
 
 export default function TikTokAdsPage() {
   return (

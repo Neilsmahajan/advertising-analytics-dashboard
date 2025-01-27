@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
+import React from "react";
 
 const services = [
   "Tracking Data",

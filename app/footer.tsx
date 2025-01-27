@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 
 const footerLinks = {
   company: ["Home", "About", "Contact Us", "Privacy Policy", "Account"],

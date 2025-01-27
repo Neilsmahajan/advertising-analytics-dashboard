@@ -3,6 +3,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import SignOutButton from "./sign-out-button";
+import React from "react";
 
 export default function AccountInfo() {
   const [user, loading, error] = useAuthState(auth);

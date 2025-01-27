@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import ResultsSection from "@/app/microsoft-ads/results-section";
+import React from "react";
 
 export default function QueryForm() {
   const [queryName, setQueryName] = useState("");

@@ -6,6 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import React from "react";
 
 interface QuerySectionProps {
   title: string;
