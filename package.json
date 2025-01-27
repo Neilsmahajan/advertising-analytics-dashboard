@@ -23,6 +23,7 @@
     "@eslint/js": "^9.19.0",
     "@hookform/resolvers": "^3.10.0",
     "@types/node": "^20",
+    "@types/prop-types": "^15.7.14",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "class-variance-authority": "^0.7.1",
