@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const footerLinks = {
   company: ["Home", "About", "Contact Us", "Privacy Policy", "Account"],
@@ -19,7 +19,7 @@ const footerLinks = {
     "Mailchimp",
     "Cyberimpact",
   ],
-}
+};
 
 export default function Footer() {
   return (
@@ -28,7 +28,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-8">
           {[...Array(6)].map((_, rowIndex) => (
             <div key={rowIndex} className="col-span-2 sm:col-span-1">
-              {[...footerLinks.company, ...footerLinks.socials, ...footerLinks.services]
+              {[
+                ...footerLinks.company,
+                ...footerLinks.socials,
+                ...footerLinks.services,
+              ]
                 .slice(rowIndex * 4, (rowIndex + 1) * 4)
                 .map((link) => (
                   <Link
@@ -39,13 +43,15 @@ export default function Footer() {
                         : link === "Facebook"
                           ? "https://www.facebook.com/advertisinganalyticsdashboard/"
                           : link === "Instagram"
-                          ? "https://www.instagram.com/advertisinganalyticsdashboard/"
-                          : link === "LinkedIn"
-                          ? "https://www.linkedin.com/company/advertisinganalyticsdashboard/"
-                          : `/${link.toLowerCase().replace(" ", "-")}`
+                            ? "https://www.instagram.com/advertisinganalyticsdashboard/"
+                            : link === "LinkedIn"
+                              ? "https://www.linkedin.com/company/advertisinganalyticsdashboard/"
+                              : `/${link.toLowerCase().replace(" ", "-")}`
                     }
                     className="block py-2 hover:underline"
-                    {...(link === "Facebook" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    {...(link === "Facebook"
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                   >
                     {link}
                   </Link>
@@ -55,6 +61,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

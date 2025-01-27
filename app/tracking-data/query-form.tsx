@@ -1,43 +1,51 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import ResultsSection from "@/app/tracking-data/results-section"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import ResultsSection from "@/app/tracking-data/results-section";
 
 export default function QueryForm() {
-  const [queryName, setQueryName] = useState("")
-  const [websiteUrl, setWebsiteUrl] = useState("")
-  const [, setSelectedQuery] = useState("")
-  const [showResults, setShowResults] = useState(false)
+  const [queryName, setQueryName] = useState("");
+  const [websiteUrl, setWebsiteUrl] = useState("");
+  const [, setSelectedQuery] = useState("");
+  const [showResults, setShowResults] = useState(false);
 
   const handleQuerySelect = (value: string) => {
-    setSelectedQuery(value)
+    setSelectedQuery(value);
     if (value === "new") {
-      setQueryName("")
-      setWebsiteUrl("")
+      setQueryName("");
+      setWebsiteUrl("");
     } else {
-      console.log("Fetching query:", value)
+      console.log("Fetching query:", value);
     }
-  }
+  };
 
   const handleAnalyze = () => {
     if (websiteUrl) {
-      setShowResults(true)
-      console.log("Analyzing website:", websiteUrl)
+      setShowResults(true);
+      console.log("Analyzing website:", websiteUrl);
     }
-  }
+  };
 
   const handleSaveQuery = () => {
-    console.log("Saving query:", { queryName, websiteUrl })
-  }
+    console.log("Saving query:", { queryName, websiteUrl });
+  };
 
   return (
     <section className="space-y-6 max-w-4xl">
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-2">Previous Queries</label>
+          <label className="block text-sm font-medium mb-2">
+            Previous Queries
+          </label>
           <Select onValueChange={handleQuerySelect}>
             <SelectTrigger className="bg-white/20 border-none text-white">
               <SelectValue placeholder="Select a previous query or create new" />
@@ -60,7 +68,10 @@ export default function QueryForm() {
               onChange={(e) => setQueryName(e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
             />
-            <Button onClick={handleSaveQuery} className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white">
+            <Button
+              onClick={handleSaveQuery}
+              className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+            >
               SAVE QUERY
             </Button>
           </div>
@@ -76,7 +87,10 @@ export default function QueryForm() {
               onChange={(e) => setWebsiteUrl(e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
             />
-            <Button onClick={handleAnalyze} className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white">
+            <Button
+              onClick={handleAnalyze}
+              className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+            >
               ANALYZE WEBSITE
             </Button>
           </div>
@@ -84,5 +98,5 @@ export default function QueryForm() {
       </div>
       {showResults && <ResultsSection />}
     </section>
-  )
+  );
 }

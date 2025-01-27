@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function ScrollToVideoSection() {
   const scrollToVideoSection = () => {
-    const element = document.getElementById("video-section")
+    const element = document.getElementById("video-section");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <Button
@@ -19,5 +19,5 @@ export default function ScrollToVideoSection() {
     >
       WATCH VIDEO
     </Button>
-  )
+  );
 }

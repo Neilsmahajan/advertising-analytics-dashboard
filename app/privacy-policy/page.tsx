@@ -7,8 +7,9 @@ export default function PrivacyPolicyPage() {
 
         {/* Introduction */}
         <p className="text-xl mb-16 max-w-4xl">
-          YOUR PRIVACY IS IMPORTANT TO US AT ADVERTISING ANALYTICS DASHBOARD. THIS PRIVACY POLICY OUTLINES THE TYPES OF
-          INFORMATION WE COLLECT, HOW WE USE IT, AND THE STEPS WE TAKE TO PROTECT YOUR DATA.
+          YOUR PRIVACY IS IMPORTANT TO US AT ADVERTISING ANALYTICS DASHBOARD.
+          THIS PRIVACY POLICY OUTLINES THE TYPES OF INFORMATION WE COLLECT, HOW
+          WE USE IT, AND THE STEPS WE TAKE TO PROTECT YOUR DATA.
         </p>
 
         {/* Information We Collect Section */}
@@ -19,24 +20,26 @@ export default function PrivacyPolicyPage() {
               <span className="mr-3">•</span>
               <div>
                 <span className="font-semibold">Personal Information: </span>
-                When you create an account, we collect details such as your name, email address, and any other data you
-                provide during registration.
+                When you create an account, we collect details such as your
+                name, email address, and any other data you provide during
+                registration.
               </div>
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
               <div>
                 <span className="font-semibold">Usage Data: </span>
-                We track how you interact with our website, including the services you use, the pages you visit, and
-                your preferences, to enhance your experience.
+                We track how you interact with our website, including the
+                services you use, the pages you visit, and your preferences, to
+                enhance your experience.
               </div>
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
               <div>
                 <span className="font-semibold">Ad Platform Data: </span>
-                If you connect your ad accounts, we access campaign performance metrics, but we never modify or interact
-                with your ad campaigns.
+                If you connect your ad accounts, we access campaign performance
+                metrics, but we never modify or interact with your ad campaigns.
               </div>
             </li>
           </ul>
@@ -44,7 +47,9 @@ export default function PrivacyPolicyPage() {
 
         {/* How We Use Your Information Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">How We Use Your Information</h2>
+          <h2 className="text-3xl font-bold mb-8">
+            How We Use Your Information
+          </h2>
           <p className="text-xl mb-6">We Use Your Information To:</p>
           <ul className="space-y-4">
             <li className="flex items-start">
@@ -57,7 +62,10 @@ export default function PrivacyPolicyPage() {
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
-              <div>Communicate updates, promotional offers, and support-related information.</div>
+              <div>
+                Communicate updates, promotional offers, and support-related
+                information.
+              </div>
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
@@ -70,9 +78,10 @@ export default function PrivacyPolicyPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Data Protection</h2>
           <p className="text-xl">
-            We implement industry-standard security measures to safeguard your personal information and ad platform
-            data. Your data is encrypted and stored securely, and we regularly update our systems to address emerging
-            security risks.
+            We implement industry-standard security measures to safeguard your
+            personal information and ad platform data. Your data is encrypted
+            and stored securely, and we regularly update our systems to address
+            emerging security risks.
           </p>
         </section>
 
@@ -80,9 +89,10 @@ export default function PrivacyPolicyPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Sharing Your Information</h2>
           <p className="text-xl">
-            We do not sell, trade, or rent your personal information to third parties. We may share your data with
-            trusted third-party services only when necessary for operation, and these parties are required to maintain
-            the confidentiality of your information.
+            We do not sell, trade, or rent your personal information to third
+            parties. We may share your data with trusted third-party services
+            only when necessary for operation, and these parties are required to
+            maintain the confidentiality of your information.
           </p>
         </section>
 
@@ -101,7 +111,10 @@ export default function PrivacyPolicyPage() {
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
-              <div>Opt-out of marketing communications by updating your preferences.</div>
+              <div>
+                Opt-out of marketing communications by updating your
+                preferences.
+              </div>
             </li>
           </ul>
         </section>
@@ -110,8 +123,8 @@ export default function PrivacyPolicyPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Changes To This Policy</h2>
           <p className="text-xl">
-            We may update this Privacy Policy periodically. Any changes will be posted on this page with an updated
-            revision date.
+            We may update this Privacy Policy periodically. Any changes will be
+            posted on this page with an updated revision date.
           </p>
         </section>
 
@@ -128,6 +141,5 @@ export default function PrivacyPolicyPage() {
         </section>
       </div>
     </div>
-  )
+  );
 }
-

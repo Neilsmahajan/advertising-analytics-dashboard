@@ -3,13 +3,17 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
         {/* Main Heading */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-12 max-w-4xl">ABOUT ADVERTISING ANALYTICS DASHBOARD</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-12 max-w-4xl">
+          ABOUT ADVERTISING ANALYTICS DASHBOARD
+        </h1>
 
         {/* Mission Statement */}
         <p className="text-xl mb-16 max-w-4xl">
-          AT ADVERTISING ANALYTICS DASHBOARD, OUR MISSION IS TO SIMPLIFY THE WAY BUSINESSES MANAGE AND OPTIMIZE THEIR
-          ADVERTISING CAMPAIGNS. WHETHER YOU&#39;RE A SMALL BUSINESS OWNER OR PART OF A LARGE ENTERPRISE, WE PROVIDE THE
-          TOOLS YOU NEED TO TRACK PERFORMANCE, GAIN INSIGHTS, AND MAXIMIZE THE IMPACT OF YOUR MARKETING STRATEGIES.
+          AT ADVERTISING ANALYTICS DASHBOARD, OUR MISSION IS TO SIMPLIFY THE WAY
+          BUSINESSES MANAGE AND OPTIMIZE THEIR ADVERTISING CAMPAIGNS. WHETHER
+          YOU&#39;RE A SMALL BUSINESS OWNER OR PART OF A LARGE ENTERPRISE, WE
+          PROVIDE THE TOOLS YOU NEED TO TRACK PERFORMANCE, GAIN INSIGHTS, AND
+          MAXIMIZE THE IMPACT OF YOUR MARKETING STRATEGIES.
         </p>
 
         {/* What We Do Section */}
@@ -34,7 +38,9 @@ export default function AboutPage() {
               <span className="mr-3">•</span>
               <div>
                 <span className="font-semibold">Scalable Solutions:</span>
-                {" Designed to grow with your business and adapt to your needs."}
+                {
+                  " Designed to grow with your business and adapt to your needs."
+                }
               </div>
             </li>
           </ul>
@@ -43,11 +49,16 @@ export default function AboutPage() {
         {/* Why Choose Us Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Why Choose Us?</h2>
-          <p className="text-xl mb-6">With Advertising Analytics Dashboard, You Can:</p>
+          <p className="text-xl mb-6">
+            With Advertising Analytics Dashboard, You Can:
+          </p>
           <ul className="space-y-6">
             <li className="flex items-start">
               <span className="mr-3">•</span>
-              <div>Save time by managing all your campaigns from a single interface.</div>
+              <div>
+                Save time by managing all your campaigns from a single
+                interface.
+              </div>
             </li>
             <li className="flex items-start">
               <span className="mr-3">•</span>
@@ -64,8 +75,9 @@ export default function AboutPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Our Vision</h2>
           <p className="text-xl max-w-4xl">
-            We Aim To Empower Businesses With Advanced Analytics And Intuitive Tools That Unlock The Full Potential Of
-            Their Advertising Efforts. By Bridging Technology And Marketing, We Help You Reach New Heights.
+            We Aim To Empower Businesses With Advanced Analytics And Intuitive
+            Tools That Unlock The Full Potential Of Their Advertising Efforts.
+            By Bridging Technology And Marketing, We Help You Reach New Heights.
           </p>
         </section>
 
@@ -85,6 +97,5 @@ export default function AboutPage() {
         </section>
       </div>
     </div>
-  )
+  );
 }
-

@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { signOut } from 'firebase/auth'
-import { Button } from '@/components/ui/button'
-import { auth } from '@/lib/firebaseConfig'
+import { useRouter } from "next/navigation";
+import { signOut } from "firebase/auth";
+import { Button } from "@/components/ui/button";
+import { auth } from "@/lib/firebaseConfig";
 
 export default function SignOutButton() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth)
-      router.push('/')
+      await signOut(auth);
+      router.push("/");
     } catch (error) {
-      console.error('Error signing out: ', error)
+      console.error("Error signing out: ", error);
     }
-  }
+  };
 
   return (
     <Button
@@ -25,5 +25,5 @@ export default function SignOutButton() {
     >
       SIGN OUT
     </Button>
-  )
+  );
 }

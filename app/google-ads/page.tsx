@@ -1,9 +1,7 @@
-import CollapsibleSection from "@/components/collapsible-section"
-import QueryForm from "@/app/google-analytics/query-form"
+import CollapsibleSection from "@/components/collapsible-section";
+import QueryForm from "@/app/google-analytics/query-form";
 
 export default function GoogleAdsPage() {
-
-
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
@@ -13,15 +11,21 @@ export default function GoogleAdsPage() {
         {/* Instructions Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-          <p className="text-lg mb-6">Follow These Steps To Use This Application With Your Google Ads Data:</p>
+          <p className="text-lg mb-6">
+            Follow These Steps To Use This Application With Your Google Ads
+            Data:
+          </p>
           <ol className="space-y-4 list-decimal pl-6">
             <li>Go to your Google Ads Dashboard</li>
             <li>Log in and select your Google Ads Account</li>
             <li>
-              Get your Customer ID from the top right (e.g., 683-961-6266) for the account that you would like to fetch
-              data from
+              Get your Customer ID from the top right (e.g., 683-961-6266) for
+              the account that you would like to fetch data from
             </li>
-            <li>Enter your customer ID below, along with the desired date range, and click Get Data.</li>
+            <li>
+              Enter your customer ID below, along with the desired date range,
+              and click Get Data.
+            </li>
           </ol>
 
           {/* Tutorial Section */}
@@ -44,6 +48,5 @@ export default function GoogleAdsPage() {
         <QueryForm />
       </div>
     </div>
-  )
+  );
 }
-

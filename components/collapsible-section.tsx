@@ -1,14 +1,21 @@
-"use client"
+"use client";
 
-import { ChevronDown } from "lucide-react"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { ChevronDown } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface CollapsibleSectionProps {
-  title: string
-  children: React.ReactNode
+  title: string;
+  children: React.ReactNode;
 }
 
-export default function CollapsibleSection({ title, children }: CollapsibleSectionProps) {
+export default function CollapsibleSection({
+  title,
+  children,
+}: CollapsibleSectionProps) {
   return (
     <Collapsible className="w-full space-y-2">
       <CollapsibleTrigger className="flex w-full items-center justify-start py-2 text-left font-medium hover:underline group">
@@ -19,6 +26,5 @@ export default function CollapsibleSection({ title, children }: CollapsibleSecti
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-2">{children}</CollapsibleContent>
     </Collapsible>
-  )
+  );
 }
-

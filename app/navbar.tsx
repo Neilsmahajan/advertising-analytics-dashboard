@@ -1,14 +1,19 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { ChevronDown } from "lucide-react"
-import { useEffect } from "react"
-import { GoogleAuthProvider, signInWithPopup} from "firebase/auth"
-import { useAuthState } from "react-firebase-hooks/auth"
-import {auth} from "@/lib/firebaseConfig"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
+import { useEffect } from "react";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebaseConfig";
 
 const services = [
   "Tracking Data",
@@ -25,26 +30,26 @@ const services = [
   "Spotify Ads",
   "Mailchimp",
   "Cyberimpact",
-]
+];
 
-const languages = ["English", "French"]
+const languages = ["English", "French"];
 
 export default function Navbar() {
-  const [user] = useAuthState(auth)
-  const provider = new GoogleAuthProvider()
+  const [user] = useAuthState(auth);
+  const provider = new GoogleAuthProvider();
 
   const handleSignIn = () => {
     signInWithPopup(auth, provider).catch((error) => {
-      console.error("Error signing in with Google: ", error)
-    })
-  }
-  
+      console.error("Error signing in with Google: ", error);
+    });
+  };
+
   useEffect(() => {
-    document.body.classList.add("overflow-y-scroll")
+    document.body.classList.add("overflow-y-scroll");
     return () => {
-      document.body.classList.remove("overflow-y-scroll")
-    }
-  }, [])
+      document.body.classList.remove("overflow-y-scroll");
+    };
+  }, []);
   return (
     <nav className="fixed top-0 w-full bg-white z-50 border-b">
       <div className="container mx-auto px-4">
@@ -104,7 +109,9 @@ export default function Navbar() {
               <DropdownMenuContent>
                 {services.map((service) => (
                   <DropdownMenuItem key={service} asChild>
-                    <Link href={`/${service.toLowerCase().replace(/ /g, "-")}`}>{service}</Link>
+                    <Link href={`/${service.toLowerCase().replace(/ /g, "-")}`}>
+                      {service}
+                    </Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -113,6 +120,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
-

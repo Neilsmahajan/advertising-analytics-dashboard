@@ -1,17 +1,19 @@
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import ScrollToSupportedPlatforms from "@/app/scroll-to-supported-platforms"
-import ScrollToVideoSection from "@/app/scroll-to-video-section"
-import SignUpButton from "@/app/sign-up-button"
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import ScrollToSupportedPlatforms from "@/app/scroll-to-supported-platforms";
+import ScrollToVideoSection from "@/app/scroll-to-video-section";
+import SignUpButton from "@/app/sign-up-button";
 
 const features = [
   {
     title: "Tracking Data",
-    description: "Find all analytics tags and tracking services on any website.",
+    description:
+      "Find all analytics tags and tracking services on any website.",
   },
   {
     title: "Unified Dashboard",
-    description: "Fetch data from Google, Meta, TikTok, and more in one interface.",
+    description:
+      "Fetch data from Google, Meta, TikTok, and more in one interface.",
   },
   {
     title: "Real-Time Data",
@@ -19,9 +21,10 @@ const features = [
   },
   {
     title: "Multiple Accounts",
-    description: "Save multiple ad accounts and switch between saved metrics seamlessly.",
+    description:
+      "Save multiple ad accounts and switch between saved metrics seamlessly.",
   },
-]
+];
 
 const steps = [
   {
@@ -39,7 +42,7 @@ const steps = [
     title: "Optimize And Scale",
     description: "Improve your campaigns and maximize your advertising ROI",
   },
-]
+];
 
 export default function Home() {
   return (
@@ -47,10 +50,13 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">ADVERTISING ANALYTICS DASHBOARD</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            ADVERTISING ANALYTICS DASHBOARD
+          </h1>
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
-            Manage And Analyze All Your Advertising Campaigns In One Unified Dashboard. Gain Insights, Track
-            Performance, And Optimize Results Effortlessly.
+            Manage And Analyze All Your Advertising Campaigns In One Unified
+            Dashboard. Gain Insights, Track Performance, And Optimize Results
+            Effortlessly.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <ScrollToSupportedPlatforms />
@@ -63,12 +69,16 @@ export default function Home() {
       {/* Key Features Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Key Features (Why Use This Tool?)</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Key Features (Why Use This Tool?)
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
               <Card key={feature.title} className="bg-white/10 border-none">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    {feature.title}
+                  </h3>
                   <p className="text-white/80">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -81,7 +91,9 @@ export default function Home() {
       <section id="supported-platforms" className="py-20 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">Supported Platforms</h2>
-          <p className="text-xl mb-12">Seamlessly Track Data And Integrate With:</p>
+          <p className="text-xl mb-12">
+            Seamlessly Track Data And Integrate With:
+          </p>
           <div className="flex justify-center">
             <Image
               src="/LogosButtonsList.png"
@@ -114,7 +126,9 @@ export default function Home() {
       {/* Video Section */}
       <section id="video-section" className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12">Ready To Transform Your Advertising Strategy?</h2>
+          <h2 className="text-3xl font-bold mb-12">
+            Ready To Transform Your Advertising Strategy?
+          </h2>
           <iframe
             src="https://www.youtube.com/embed/xh9EpVkA2QY"
             title="Advertising Analytics Dashboard Demo"
@@ -129,6 +143,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

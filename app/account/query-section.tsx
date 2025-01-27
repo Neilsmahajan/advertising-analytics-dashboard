@@ -1,11 +1,15 @@
-"use client"
+"use client";
 
-import { ChevronDown } from "lucide-react"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { ChevronDown } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface QuerySectionProps {
-  title: string
-  children?: React.ReactNode
+  title: string;
+  children?: React.ReactNode;
 }
 
 export default function QuerySection({ title, children }: QuerySectionProps) {
@@ -19,6 +23,5 @@ export default function QuerySection({ title, children }: QuerySectionProps) {
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-2">{children}</CollapsibleContent>
     </Collapsible>
-  )
+  );
 }
-

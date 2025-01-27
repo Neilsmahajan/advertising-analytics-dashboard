@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function ScrollToSupportedPlatforms() {
   const scrollToSupportedPlatforms = () => {
-    const element = document.getElementById("supported-platforms")
+    const element = document.getElementById("supported-platforms");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <Button
@@ -19,5 +19,5 @@ export default function ScrollToSupportedPlatforms() {
     >
       EXPLORE SERVICES
     </Button>
-  )
+  );
 }

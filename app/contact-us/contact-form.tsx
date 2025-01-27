@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -19,7 +26,7 @@ const formSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
-})
+});
 
 export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -30,16 +37,19 @@ export default function ContactForm() {
       phone: "",
       message: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     // In a real application, you would handle the form submission here
-    console.log(values)
+    console.log(values);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-2xl">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 max-w-2xl"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -116,11 +126,14 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg" className="text-white bg-[#0077be] hover:bg-[#005f9e]">
+        <Button
+          type="submit"
+          size="lg"
+          className="text-white bg-[#0077be] hover:bg-[#005f9e]"
+        >
           SEND
         </Button>
       </form>
     </Form>
-  )
+  );
 }
-

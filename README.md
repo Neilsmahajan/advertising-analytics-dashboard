@@ -1,6 +1,6 @@
 # Advertising Analytics Dashboard
 
-The Advertising Analytics Dashboard is a comprehensive solution for tracking and analyzing advertising data from multiple platforms. This project is designed to provide actionable insights into marketing performance, enabling businesses to optimize their ad spend and strategies. 
+The Advertising Analytics Dashboard is a comprehensive solution for tracking and analyzing advertising data from multiple platforms. This project is designed to provide actionable insights into marketing performance, enabling businesses to optimize their ad spend and strategies.
 
 ## Features
 
@@ -31,17 +31,20 @@ The Advertising Analytics Dashboard is a comprehensive solution for tracking and
 ## Technologies Used
 
 ### Frontend
+
 - **Framework**: [Next.js 15](https://nextjs.org/)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Linting**: ESLint
 
 ### Backend
+
 - **Framework**: Python Flask
 - **Database**: Firebase Firestore
 - **Authentication**: Firebase Authentication (Google Sign-In only)
 
 ### Deployment
+
 - **Hosting**: Vercel
 - **Domain**: [advertisinganalyticsdashboard.com](https://advertisinganalyticsdashboard.com)
 
@@ -62,24 +65,29 @@ The Advertising Analytics Dashboard is a comprehensive solution for tracking and
 ### Installation
 
 #### 1. Clone the Repository
+
 ```bash
 $ git clone https://github.com/Neilsmahajan/advertising-analytics-dashboard.git
 $ cd advertising-analytics-dashboard
 ```
 
 #### 2. Install Dependencies
+
 ```bash
 # Install frontend dependencies
 $ npm install
 ```
 
 #### 3. Set Up Firebase
+
 - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
 - Enable Firestore and Firebase Authentication (Google Sign-In).
 - Download the Firebase configuration JSON and place it in the `src/config` directory.
 
 #### 4. Set Up Environment Variables
+
 Create a `.env.local` file in the root directory and add the following:
+
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
@@ -91,9 +99,11 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
 
 #### 5. Start the Development Server
+
 ```bash
 $ npm run dev
 ```
+
 Navigate to `http://localhost:3000` in your browser.
 
 ---
@@ -101,6 +111,7 @@ Navigate to `http://localhost:3000` in your browser.
 ## Python Backend Setup
 
 #### 1. Create a Virtual Environment
+
 ```bash
 $ cd backend/
 $ python -m venv venv
@@ -108,12 +119,14 @@ $ source venv/bin/activate   # On Windows: venv\Scripts\activate
 ```
 
 #### 2. Install Dependencies
+
 ```bash
 $ cd backend/
 $ pip install -r requirements.txt
 ```
 
 #### 3. Run the Flask Server
+
 ```bash
 $ cd backend/
 $ python app.py

@@ -1,5 +1,5 @@
-import CollapsibleSection from "@/components/collapsible-section"
-import QueryForm from "@/app/meta-ads/query-form"
+import CollapsibleSection from "@/components/collapsible-section";
+import QueryForm from "@/app/meta-ads/query-form";
 
 export default function MetaAdsPage() {
   return (
@@ -11,22 +11,29 @@ export default function MetaAdsPage() {
         {/* Instructions Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-          <p className="text-lg mb-6">Follow These Steps To Use This Application With Your Meta Ads Data:</p>
+          <p className="text-lg mb-6">
+            Follow These Steps To Use This Application With Your Meta Ads Data:
+          </p>
           <ol className="space-y-4 list-decimal pl-6">
             <li>Go to your Meta Ads Dashboard</li>
             <li>Log in and navigate to Business Settings on the bottom left</li>
             <li>Note your Ad Account ID on the top left drop down</li>
-            <li>Under Accounts&gt;Apps&gt;Add and create an App if you have not created one already</li>
             <li>
-              Navigate to Users&gt;System Users&gt;Add and create an admin system user with access to your app and any
-              other assets if you have not created one
+              Under Accounts&gt;Apps&gt;Add and create an App if you have not
+              created one already
             </li>
             <li>
-              Retrieve your access token for the system user by clicking Generate Token with the maximum permissions
+              Navigate to Users&gt;System Users&gt;Add and create an admin
+              system user with access to your app and any other assets if you
+              have not created one
             </li>
             <li>
-              Enter your Ad Account ID and Access Token below, along with the desired date range, and click Get
-              Analytics
+              Retrieve your access token for the system user by clicking
+              Generate Token with the maximum permissions
+            </li>
+            <li>
+              Enter your Ad Account ID and Access Token below, along with the
+              desired date range, and click Get Analytics
             </li>
           </ol>
 
@@ -50,6 +57,5 @@ export default function MetaAdsPage() {
         <QueryForm />
       </div>
     </div>
-  )
+  );
 }
-
