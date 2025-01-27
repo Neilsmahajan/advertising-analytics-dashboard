@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     "Manage And Analyze All Your Advertising Campaigns In One Unified Dashboard",
 };
 
+/**
+ *
+ * @param children
+ * @constructor
+ */
 export default function RootLayout({
   children,
 }: {

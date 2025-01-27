@@ -35,6 +35,10 @@ const services = [
 
 const languages = ["English", "French"];
 
+/**
+ *
+ * @constructor
+ */
 export default function Navbar() {
   const [user] = useAuthState(auth);
   const provider = new GoogleAuthProvider();

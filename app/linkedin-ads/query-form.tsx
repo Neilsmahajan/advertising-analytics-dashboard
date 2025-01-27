@@ -13,6 +13,10 @@ import {
 } from "@/components/ui/select";
 import ResultsSection from "@/app/linkedin-ads/results-section";
 
+/**
+ *
+ * @constructor
+ */
 export default function QueryForm() {
   const [queryName, setQueryName] = useState("");
   const [accountId, setAccountId] = useState("");

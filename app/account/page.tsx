@@ -20,6 +20,10 @@ const services = [
   "Cyberimpact",
 ];
 
+/**
+ *
+ * @constructor
+ */
 export default function AccountPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

@@ -3,6 +3,10 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function ScrollToVideoSection() {
   const scrollToVideoSection = () => {
     const element = document.getElementById("video-section");

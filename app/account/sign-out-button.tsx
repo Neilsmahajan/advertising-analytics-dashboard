@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function SignOutButton() {
   const router = useRouter();
 

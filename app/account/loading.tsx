@@ -1,6 +1,10 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function Loading() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

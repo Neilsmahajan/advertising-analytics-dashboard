@@ -13,6 +13,10 @@ import {
 import ResultsSection from "@/app/snapchat-ads/results-section";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function QueryForm() {
   const [queryName, setQueryName] = useState("");
   const [accountId, setAccountId] = useState("");

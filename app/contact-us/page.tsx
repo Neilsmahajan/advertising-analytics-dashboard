@@ -1,6 +1,10 @@
 import ContactForm from "@/app/contact-us/contact-form";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

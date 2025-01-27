@@ -13,6 +13,12 @@ interface CollapsibleSectionProps {
   children: React.ReactNode;
 }
 
+/**
+ *
+ * @param title
+ * @param children
+ * @constructor
+ */
 export default function CollapsibleSection({
   title,
   children,

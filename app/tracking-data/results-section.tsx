@@ -3,6 +3,10 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function ResultsSection() {
   return (
     <div className="space-y-6">

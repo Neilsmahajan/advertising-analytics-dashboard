@@ -2,6 +2,10 @@ import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/pinterest-ads/query-form";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function PinterestAdsPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

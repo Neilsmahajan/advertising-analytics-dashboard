@@ -2,6 +2,10 @@ import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/meta-ads/query-form";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function MetaAdsPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

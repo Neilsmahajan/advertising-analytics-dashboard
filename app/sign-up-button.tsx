@@ -7,6 +7,10 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function SignUpButton() {
   const [user] = useAuthState(auth);
   const provider = new GoogleAuthProvider();

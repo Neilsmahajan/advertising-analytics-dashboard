@@ -2,6 +2,10 @@ import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/cyberimpact/query-form";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function CyberimpactAdsPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

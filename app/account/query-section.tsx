@@ -13,6 +13,12 @@ interface QuerySectionProps {
   children?: React.ReactNode;
 }
 
+/**
+ *
+ * @param title
+ * @param children
+ * @constructor
+ */
 export default function QuerySection({ title, children }: QuerySectionProps) {
   return (
     <Collapsible className="w-full space-y-2">

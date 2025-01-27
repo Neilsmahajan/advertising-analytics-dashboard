@@ -13,6 +13,10 @@ import {
 import ResultsSection from "@/app/google-ads/results-section";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function QueryForm() {
   const [queryName, setQueryName] = useState("");
   const [customerId, setCustomerId] = useState("");

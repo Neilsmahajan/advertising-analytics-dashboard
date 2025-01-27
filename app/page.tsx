@@ -45,6 +45,10 @@ const steps = [
   },
 ];
 
+/**
+ *
+ * @constructor
+ */
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">

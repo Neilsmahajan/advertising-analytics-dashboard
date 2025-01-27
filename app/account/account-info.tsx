@@ -5,6 +5,10 @@ import { auth } from "@/lib/firebaseConfig";
 import SignOutButton from "./sign-out-button";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function AccountInfo() {
   const [user, loading, error] = useAuthState(auth);
 

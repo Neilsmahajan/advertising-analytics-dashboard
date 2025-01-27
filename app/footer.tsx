@@ -22,6 +22,10 @@ const footerLinks = {
   ],
 };
 
+/**
+ *
+ * @constructor
+ */
 export default function Footer() {
   return (
     <footer className="bg-[#00BFFF] text-white py-12">

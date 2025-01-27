@@ -3,6 +3,10 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
+/**
+ *
+ * @constructor
+ */
 export default function ScrollToSupportedPlatforms() {
   const scrollToSupportedPlatforms = () => {
     const element = document.getElementById("supported-platforms");
