@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
 import {useState} from "react"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
-import ResultsSection from "@/app/google-ads/results-section"
+import ResultsSection from "@/app/cyberimpact/results-section"
 
 export default function QueryForm() {
     const [queryName, setQueryName] = useState("")
-    const [customerId, setCustomerId] = useState("")
+    const [accountId, setAccountId] = useState("")
+    const [accessToken, setAccessToken] = useState("")
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
     const [, setSelectedQuery] = useState("")
@@ -18,7 +19,8 @@ export default function QueryForm() {
         setSelectedQuery(value)
         if (value === "new") {
             setQueryName("")
-            setCustomerId("")
+            setAccountId("")
+            setAccessToken("")
             setStartDate("")
             setEndDate("")
         } else {
@@ -28,17 +30,18 @@ export default function QueryForm() {
     }
 
     const handleGetData = () => {
-        if (customerId && startDate && endDate) {
+        if (accountId && accessToken && startDate && endDate) {
             setShowResults(true)
             // This will be replaced with actual analysis logic
-            console.log("Fetching data:", {customerId, startDate, endDate})
+            console.log("Fetching data:", {accountId, accessToken, startDate, endDate})
         }
     }
 
     const handleSaveQuery = () => {
         // This will be replaced with actual Firebase save logic
-        console.log("Saving query:", {queryName, customerId, startDate, endDate})
+        console.log("Saving query:", {queryName, accountId, accessToken, startDate, endDate})
     }
+
     return (
         <section className="space-y-6 max-w-4xl">
             <div className="space-y-4">
@@ -74,12 +77,23 @@ export default function QueryForm() {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium mb-2">Customer ID</label>
+                    <label className="block text-sm font-medium mb-2">Account ID</label>
                     <Input
                         type="text"
-                        placeholder="Enter Customer ID"
-                        value={customerId}
-                        onChange={(e) => setCustomerId(e.target.value)}
+                        placeholder="Enter Ad Account ID"
+                        value={accountId}
+                        onChange={(e) => setAccountId(e.target.value)}
+                        className="bg-white/20 border-none text-white placeholder:text-white/60"
+                    />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium mb-2">Access Token</label>
+                    <Input
+                        type="password"
+                        placeholder="Enter Access Token"
+                        value={accessToken}
+                        onChange={(e) => setAccessToken(e.target.value)}
                         className="bg-white/20 border-none text-white placeholder:text-white/60"
                     />
                 </div>
@@ -113,7 +127,7 @@ export default function QueryForm() {
             </div>
 
             {/* Results Section */}
-            {showResults && <ResultsSection />}
+            {showResults && <ResultsSection/> }
         </section>
     )
 }

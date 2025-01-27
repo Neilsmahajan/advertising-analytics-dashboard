@@ -1,5 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section"
-import QueryForm from "./query-form";
+import QueryForm from "@/app/meta-ads/query-form"
 
 export default function MetaAdsPage() {
   return (

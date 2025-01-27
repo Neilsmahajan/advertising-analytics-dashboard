@@ -4,14 +4,14 @@ import {useState} from "react"
 import {Button} from "@/components/ui/button"
 import {Input} from "@/components/ui/input"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
-import ResultsSection from "./results-section"
+import ResultsSection from "@/app/google-analytics/results-section"
 
 export default function QueryForm() {
     const [queryName, setQueryName] = useState("")
     const [propertyId, setPropertyId] = useState("")
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
-    const [selectedQuery, setSelectedQuery] = useState("")
+    const [, setSelectedQuery] = useState("")
     const [showResults, setShowResults] = useState(false)
 
     const handleQuerySelect = (value: string) => {

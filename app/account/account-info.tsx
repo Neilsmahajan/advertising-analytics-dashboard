@@ -2,7 +2,7 @@
 
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {auth} from '@/lib/firebaseConfig';
-import {SignOutButton} from './sign-out-button';
+import SignOutButton from './sign-out-button';
 
 export default function AccountInfo() {
     const [user, loading, error] = useAuthState(auth);
