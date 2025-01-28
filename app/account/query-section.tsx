@@ -16,8 +16,6 @@ interface QuerySectionProps {
 }
 
 async function fetchUserQueries(uid: string, service: string) {
-  console.log("Fetching queries for user:", uid);
-  console.log("Service:", service);
   const q = query(
     collection(db, "queries"),
     where("uid", "==", uid),
@@ -28,7 +26,6 @@ async function fetchUserQueries(uid: string, service: string) {
     id: doc.id,
     queryName: doc.data().queryName,
   }));
-  console.log("Fetched queries:", fetchedQueries);
   return fetchedQueries;
 }
 
