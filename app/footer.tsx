@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebaseConfig";
 import React from "react";
 
 const footerLinks = {
@@ -27,6 +32,15 @@ const footerLinks = {
  * @constructor
  */
 export default function Footer() {
+  const [user] = useAuthState(auth);
+  const provider = new GoogleAuthProvider();
+
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider).catch((error) => {
+      console.error("Error signing in with Google: ", error);
+    });
+  };
+
   return (
     <footer className="bg-[#00BFFF] text-white py-12">
       <div className="container mx-auto px-4">
@@ -51,7 +65,12 @@ export default function Footer() {
                             ? "https://www.instagram.com/advertisinganalyticsdashboard/"
                             : link === "LinkedIn"
                               ? "https://www.linkedin.com/company/advertisinganalyticsdashboard/"
-                              : `/${link.toLowerCase().replace(" ", "-")}`
+                              : link === "Account" && !user
+                                ? "#"
+                                : `/${link.toLowerCase().replace(" ", "-")}`
+                    }
+                    onClick={
+                      link === "Account" && !user ? handleSignIn : undefined
                     }
                     className="block py-2 hover:underline"
                     {...(link === "Facebook"

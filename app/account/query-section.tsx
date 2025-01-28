@@ -31,8 +31,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-2">
         <div className="pl-4 opacity-50">
-          No saved queries yet. Queries will appear here once you save
-          them.
+          No saved queries yet. Queries will appear here once you save them.
         </div>
       </CollapsibleContent>
     </Collapsible>

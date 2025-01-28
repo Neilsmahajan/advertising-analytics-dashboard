@@ -20,9 +20,7 @@ export default function GoogleAnalyticsPage() {
             height={50}
             className="max-w-full mr-4"
           />
-          <h1 className="text-4xl md:text-6xl font-bold">
-            GOOGLE ANALYTICS
-          </h1>
+          <h1 className="text-4xl md:text-6xl font-bold">GOOGLE ANALYTICS</h1>
         </div>
 
         {/* Instructions Section */}
