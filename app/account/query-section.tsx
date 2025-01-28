@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { auth, db } from "@/lib/firebaseConfig";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
@@ -54,6 +54,14 @@ export default function QuerySection({ title }: QuerySectionProps) {
     }
     loadQueries();
   }, [title, user]);
+
+  const handleDelete = async (id: string) => {
+    if (user) {
+      await deleteDoc(doc(db, "queries", id));
+      setQueries((prevQueries) => prevQueries.filter((query) => query.id !== id));
+    }
+  };
+
   return (
     <Collapsible className="w-full space-y-2">
       <CollapsibleTrigger className="flex w-full items-center justify-start py-2 text-left font-medium hover:underline group">
@@ -92,6 +100,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
                 <Button
                   variant="secondary"
                   className="bg-red-500 hover:bg-red-600 text-white"
+                  onClick={() => handleDelete(query.id)}
                 >
                   Delete
                 </Button>
