@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,8 +9,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { auth, db } from "@/lib/firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 import ResultsSection from "@/app/tracking-data/results-section";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+interface Query {
+  id: string;
+  queryName: string;
+  websiteUrl: string;
+}
+
+async function fetchUserQueries(uid: string) {
+  const q = query(
+    collection(db, "queries"),
+    where("uid", "==", uid),
+    where("service", "==", "Tracking Data"),
+  );
+  const querySnapshot = await getDocs(q);
+  const fetchedQueries = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    queryName: doc.data().queryName,
+    websiteUrl: doc.data().queryData.websiteURL,
+  }));
+  return fetchedQueries;
+}
 
 /**
  *
@@ -22,6 +45,18 @@ export default function QueryForm() {
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [, setSelectedQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [queries, setQueries] = useState<Query[]>([]);
+  const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    async function loadQueries() {
+      if (user) {
+        const fetchedQueries = await fetchUserQueries(user.uid);
+        setQueries(fetchedQueries);
+      }
+    }
+    loadQueries();
+  }, [user]);
 
   const handleQuerySelect = (value: string) => {
     setSelectedQuery(value);
@@ -29,7 +64,11 @@ export default function QueryForm() {
       setQueryName("");
       setWebsiteUrl("");
     } else {
-      console.log("Fetching query:", value);
+      const selected = queries.find((query) => query.id === value);
+      if (selected) {
+        setQueryName(selected.queryName);
+        setWebsiteUrl(selected.websiteUrl);
+      }
     }
   };
 
@@ -57,8 +96,11 @@ export default function QueryForm() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="new">New Query</SelectItem>
-              <SelectItem value="example1">Example Query 1</SelectItem>
-              <SelectItem value="example2">Example Query 2</SelectItem>
+              {queries.map((query) => (
+                <SelectItem key={query.id} value={query.id}>
+                  {query.queryName}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
