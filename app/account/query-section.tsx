@@ -8,10 +8,18 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { auth, db } from "@/lib/firebaseConfig";
-import { collection, query, where, getDocs, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 interface QuerySectionProps {
   title: string;
@@ -42,6 +50,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
     { id: string; queryName: string; createdAt: Date | null }[]
   >([]);
   const [user] = useAuthState(auth);
+  const router = useRouter();
 
   useEffect(() => {
     async function loadQueries() {
@@ -58,8 +67,14 @@ export default function QuerySection({ title }: QuerySectionProps) {
   const handleDelete = async (id: string) => {
     if (user) {
       await deleteDoc(doc(db, "queries", id));
-      setQueries((prevQueries) => prevQueries.filter((query) => query.id !== id));
+      setQueries((prevQueries) =>
+        prevQueries.filter((query) => query.id !== id),
+      );
     }
+  };
+
+  const handleRun = (service: string) => {
+    router.push(`/${service.toLowerCase().replace(/\s+/g, "-")}`);
   };
 
   return (
@@ -94,6 +109,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
                 <Button
                   variant="secondary"
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+                  onClick={() => handleRun(title)}
                 >
                   Run
                 </Button>
