@@ -103,12 +103,26 @@ export default function QueryForm() {
       try {
         if (selectedQuery === "new") {
           // Create a new document with an auto-generated ID
-          await setDoc(doc(collection(db, "queries")), queryData);
+          const newDocRef = doc(collection(db, "queries"));
+          await setDoc(newDocRef, queryData);
+          setSelectedQuery(newDocRef.id);
         } else {
           // Overwrite the existing document
           await setDoc(doc(db, "queries", selectedQuery), queryData);
         }
         console.log("Query saved successfully");
+
+        // Re-fetch the queries and update the state
+        const fetchedQueries = await fetchUserQueries(user.uid);
+        setQueries(fetchedQueries);
+
+        // Update the selected query to reflect the newly saved query
+        const savedQuery = fetchedQueries.find(
+          (query) => query.queryName === queryName,
+        );
+        if (savedQuery) {
+          setSelectedQuery(savedQuery.id);
+        }
       } catch (error) {
         console.error("Error saving query:", error);
       }
@@ -122,7 +136,7 @@ export default function QueryForm() {
           <label className="block text-sm font-medium mb-2">
             Previous Queries
           </label>
-          <Select onValueChange={handleQuerySelect}>
+          <Select onValueChange={handleQuerySelect} value={selectedQuery}>
             <SelectTrigger className="bg-white/20 border-none text-white">
               <SelectValue placeholder="Select a previous query or create new" />
             </SelectTrigger>
