@@ -11,6 +11,7 @@ import { auth, db } from "@/lib/firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
 
 interface QuerySectionProps {
   title: string;
@@ -26,6 +27,7 @@ async function fetchUserQueries(uid: string, service: string) {
   const fetchedQueries = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     queryName: doc.data().queryName,
+    createdAt: doc.data().createdAt ? doc.data().createdAt.toDate() : null,
   }));
   return fetchedQueries;
 }
@@ -36,9 +38,9 @@ async function fetchUserQueries(uid: string, service: string) {
  * @constructor
  */
 export default function QuerySection({ title }: QuerySectionProps) {
-  const [queries, setQueries] = useState<{ id: string; queryName: string }[]>(
-    [],
-  );
+  const [queries, setQueries] = useState<
+    { id: string; queryName: string; createdAt: Date | null }[]
+  >([]);
   const [user] = useAuthState(auth);
 
   useEffect(() => {
@@ -69,11 +71,15 @@ export default function QuerySection({ title }: QuerySectionProps) {
           queries.map((query) => (
             <div
               key={query.id}
-              className="flex items-center justify-between px-4 py-2 bg-transparent rounded-md"
+              className="flex flex-col space-y-2 px-4 py-2 bg-transparent rounded-md"
             >
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-col space-y-1">
                 <span className="text-sm font-medium text-white">
-                  Query Name: {query.queryName}
+                  <strong>Query Name:</strong> {query.queryName}
+                </span>
+                <span className="text-sm font-medium text-white">
+                  <strong>Created At:</strong>{" "}
+                  {query.createdAt ? format(query.createdAt, "PPP") : "N/A"}
                 </span>
               </div>
               <div className="flex space-x-2">
