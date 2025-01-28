@@ -43,10 +43,11 @@ async function fetchUserQueries(uid: string) {
 export default function QueryForm() {
   const [queryName, setQueryName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
-  const [, setSelectedQuery] = useState("");
+  const [selectedQuery, setSelectedQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [queries, setQueries] = useState<Query[]>([]);
   const [user] = useAuthState(auth);
+  const [isQuerySelected, setIsQuerySelected] = useState(false);
 
   useEffect(() => {
     async function loadQueries() {
@@ -60,6 +61,7 @@ export default function QueryForm() {
 
   const handleQuerySelect = (value: string) => {
     setSelectedQuery(value);
+    setIsQuerySelected(true);
     if (value === "new") {
       setQueryName("");
       setWebsiteUrl("");
@@ -114,10 +116,12 @@ export default function QueryForm() {
               value={queryName}
               onChange={(e) => setQueryName(e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
+              disabled={!isQuerySelected}
             />
             <Button
               onClick={handleSaveQuery}
               className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+              disabled={!isQuerySelected}
             >
               SAVE QUERY
             </Button>
@@ -133,10 +137,12 @@ export default function QueryForm() {
               value={websiteUrl}
               onChange={(e) => setWebsiteUrl(e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
+              disabled={!isQuerySelected}
             />
             <Button
               onClick={handleAnalyze}
               className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+              disabled={!isQuerySelected}
             >
               ANALYZE WEBSITE
             </Button>
