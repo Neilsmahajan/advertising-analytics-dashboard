@@ -10,7 +10,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { auth, db } from "@/lib/firebaseConfig";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import ResultsSection from "@/app/tracking-data/results-section";
 import React, { useState, useEffect } from "react";
@@ -81,8 +88,31 @@ export default function QueryForm() {
     }
   };
 
-  const handleSaveQuery = () => {
-    console.log("Saving query:", { queryName, websiteUrl });
+  const handleSaveQuery = async () => {
+    if (user) {
+      const queryData = {
+        queryName,
+        queryData: {
+          websiteURL: websiteUrl,
+        },
+        service: "Tracking Data",
+        uid: user.uid,
+        createdAt: new Date(),
+      };
+
+      try {
+        if (selectedQuery === "new") {
+          // Create a new document with an auto-generated ID
+          await setDoc(doc(collection(db, "queries")), queryData);
+        } else {
+          // Overwrite the existing document
+          await setDoc(doc(db, "queries", selectedQuery), queryData);
+        }
+        console.log("Query saved successfully");
+      } catch (error) {
+        console.error("Error saving query:", error);
+      }
+    }
   };
 
   return (
