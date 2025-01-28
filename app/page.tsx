@@ -4,6 +4,7 @@ import ScrollToSupportedPlatforms from "@/app/scroll-to-supported-platforms";
 import ScrollToVideoSection from "@/app/scroll-to-video-section";
 import SignUpButton from "@/app/sign-up-button";
 import React from "react";
+import Link from "next/link";
 
 const features = [
   {
@@ -43,6 +44,23 @@ const steps = [
     title: "Optimize And Scale",
     description: "Improve your campaigns and maximize your advertising ROI",
   },
+];
+
+const logos = [
+  "tracking-data-logo.png",
+  "google-analytics-logo.png",
+  "google-ads-logo.png",
+  "meta-ads-logo.png",
+  "microsoft-ads-logo.png",
+  "tiktok-ads-logo.png",
+  "x-ads-logo.png",
+  "linkedin-ads-logo.png",
+  "pinterest-ads-logo.png",
+  "snapchat-ads-logo.png",
+  "amazon-ads-logo.png",
+  "spotify-ads-logo.png",
+  "mailchimp-logo.png",
+  "cyberimpact-logo.png",
 ];
 
 /**
@@ -99,14 +117,21 @@ export default function Home() {
           <p className="text-xl mb-12">
             Seamlessly Track Data And Integrate With:
           </p>
-          <div className="flex justify-center">
-            <Image
-              src="/LogosButtonsList.png"
-              alt="Supported Platforms"
-              width={800}
-              height={50}
-              className="max-w-full"
-            />
+          <div className="flex justify-center flex-wrap gap-4">
+            {logos.map((logo) => {
+              const pageLink = `/${logo.replace("-logo.png", "")}`;
+              return (
+                <Link key={logo} href={pageLink}>
+                  <Image
+                    src={`/${logo}`}
+                    alt={logo.replace("-logo.png", "")}
+                    width={50}
+                    height={50}
+                    className="max-w-full"
+                  />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
