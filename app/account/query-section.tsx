@@ -6,6 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
 import { auth, db } from "@/lib/firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -73,9 +74,10 @@ export default function QuerySection({ title }: QuerySectionProps) {
               <div className="flex items-center space-x-2">
                 <span className="text-sm font-medium">{query.queryName}</span>
               </div>
-              <button className="text-xs text-white bg-[#00BFFF] px-2 py-1 rounded-md">
+              <Button variant="secondary"
+                className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white">
                 Run
-              </button>
+              </Button>
             </div>
           ))
         )}
