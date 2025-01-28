@@ -6,9 +6,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log("FIREBASE_API_KEY:", process.env.FIREBASE_API_KEY);
-console.log("FIREBASE_PROJECT_ID:", process.env.FIREBASE_PROJECT_ID);
-
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
