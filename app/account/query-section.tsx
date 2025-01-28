@@ -6,11 +6,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+// import { auth, db } from "@/lib/firebaseConfig";
+// import { collection, query, where, getDocs } from "firebase/firestore";
 import React from "react";
 
 interface QuerySectionProps {
   title: string;
-  children?: React.ReactNode;
 }
 
 /**
@@ -19,7 +20,7 @@ interface QuerySectionProps {
  * @param children
  * @constructor
  */
-export default function QuerySection({ title, children }: QuerySectionProps) {
+export default function QuerySection({ title }: QuerySectionProps) {
   return (
     <Collapsible className="w-full space-y-2">
       <CollapsibleTrigger className="flex w-full items-center justify-start py-2 text-left font-medium hover:underline group">
@@ -28,7 +29,12 @@ export default function QuerySection({ title, children }: QuerySectionProps) {
           {title}
         </span>
       </CollapsibleTrigger>
-      <CollapsibleContent className="space-y-2">{children}</CollapsibleContent>
+      <CollapsibleContent className="space-y-2">
+        <div className="pl-4 opacity-50">
+          No saved queries yet. Queries will appear here once you save
+          them.
+        </div>
+      </CollapsibleContent>
     </Collapsible>
   );
 }
