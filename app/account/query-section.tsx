@@ -69,15 +69,27 @@ export default function QuerySection({ title }: QuerySectionProps) {
           queries.map((query) => (
             <div
               key={query.id}
-              className="flex items-center justify-between px-4 py-2 bg-white rounded-md shadow-sm"
+              className="flex items-center justify-between px-4 py-2 bg-transparent rounded-md"
             >
               <div className="flex items-center space-x-2">
-                <span className="text-sm font-medium">{query.queryName}</span>
+                <span className="text-sm font-medium text-white">
+                  Query Name: {query.queryName}
+                </span>
               </div>
-              <Button variant="secondary"
-                className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white">
-                Run
-              </Button>
+              <div className="flex space-x-2">
+                <Button
+                  variant="secondary"
+                  className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+                >
+                  Run
+                </Button>
+                <Button
+                  variant="secondary"
+                  className="bg-red-500 hover:bg-red-600 text-white"
+                >
+                  Delete
+                </Button>
+              </div>
             </div>
           ))
         )}
