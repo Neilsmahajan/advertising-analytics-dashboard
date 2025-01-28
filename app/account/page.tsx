@@ -34,7 +34,7 @@ export default function AccountPage() {
           <h2 className="text-2xl font-bold mb-6">Saved Queries</h2>
           <div className="space-y-4">
             {services.map((service) => (
-              <QuerySection key={service} title={`${service} Queries`} />
+              <QuerySection key={service} title={service} />
             ))}
           </div>
         </section>
