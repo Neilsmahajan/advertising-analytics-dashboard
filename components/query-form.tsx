@@ -59,7 +59,9 @@ export default function QueryForm({
   ResultsComponent,
 }: QueryFormProps) {
   const [queryName, setQueryName] = useState("");
-  const [queryData, setQueryData] = useState<{ [key: string]: string | number | Date }>({});
+  const [queryData, setQueryData] = useState<{
+    [key: string]: string | number | Date;
+  }>({});
   const [selectedQuery, setSelectedQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [queries, setQueries] = useState<Query[]>([]);
@@ -190,7 +192,11 @@ export default function QueryForm({
             <Input
               type={field.includes("Date") ? "date" : "text"}
               placeholder={`Enter ${queryFields[field]}`}
-              value={queryData[field] instanceof Date ? queryData[field].toISOString().split('T')[0] : queryData[field] || ""}
+              value={
+                queryData[field] instanceof Date
+                  ? queryData[field].toISOString().split("T")[0]
+                  : queryData[field] || ""
+              }
               onChange={(e) => handleInputChange(field, e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
               disabled={!isQuerySelected}
