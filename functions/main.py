@@ -5,9 +5,13 @@
 from firebase_functions import https_fn
 from firebase_admin import initialize_app
 
+# Initialize Firebase Admin SDK
 initialize_app()
 
+# Import service functions
+from tracking_data.tracking_data import scrape_tracking_data
 
+# Define HTTP functions
 @https_fn.on_request()
-def on_request_example(req: https_fn.Request) -> https_fn.Response:
-    return https_fn.Response("Hello world!")
+def scrape_tracking_data_function(req: https_fn.Request) -> https_fn.Response:
+    return scrape_tracking_data(req)
