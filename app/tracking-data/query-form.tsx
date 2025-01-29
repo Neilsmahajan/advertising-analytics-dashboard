@@ -1,5 +1,3 @@
-"use client";
-
 import QueryForm from "@/components/query-form";
 import ResultsSection from "@/app/tracking-data/results-section";
 import React from "react";

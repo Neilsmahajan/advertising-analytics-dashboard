@@ -1,5 +1,3 @@
-"use client";
-
 import QueryForm from "@/components/query-form";
 import ResultsSection from "@/app/google-analytics/results-section";
 import React from "react";
