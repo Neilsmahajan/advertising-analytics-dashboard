@@ -108,31 +108,7 @@ Navigate to `http://localhost:3000` in your browser.
 
 ---
 
-## Python Backend Setup
-
-#### 1. Create a Virtual Environment
-
-```bash
-$ cd backend/
-$ python -m venv venv
-$ source venv/bin/activate   # On Windows: venv\Scripts\activate
-```
-
-#### 2. Install Dependencies
-
-```bash
-$ cd backend/
-$ pip install -r requirements.txt
-```
-
-#### 3. Run the Flask Server
-
-```bash
-$ cd backend/
-$ python app.py
-```
-
----
+## Firebase Functions Python Backend Setup
 
 ## Contributing
 
