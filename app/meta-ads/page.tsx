@@ -1,5 +1,6 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/meta-ads/query-form";
+import Image from "next/image";
 import React from "react";
 
 /**
@@ -11,8 +12,16 @@ export default function MetaAdsPage() {
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
         {/* Header Section */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">META ADS</h1>
-
+        <div className="flex items-center justify-start mb-6">
+          <Image
+            src="/meta-ads-logo.png"
+            alt="Meta Ads Logo"
+            width={50}
+            height={50}
+            className="max-w-full mr-4"
+          />
+          <h1 className="text-4xl md:text-6xl font-bold">META ADS</h1>
+        </div>
         {/* Instructions Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>

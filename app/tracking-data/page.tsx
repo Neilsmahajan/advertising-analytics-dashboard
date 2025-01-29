@@ -1,5 +1,6 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/tracking-data/query-form";
+import Image from "next/image";
 import React from "react";
 
 /**
@@ -10,9 +11,18 @@ export default function TrackingDataPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          FIND ANALYTICS AND TRACKING DATA
-        </h1>
+        <div className="flex items-center justify-start mb-6">
+          <Image
+            src="/tracking-data-logo.png"
+            alt="Tracking Data Logo"
+            width={50}
+            height={50}
+            className="max-w-full mr-4"
+          />
+          <h1 className="text-4xl md:text-6xl font-bold">
+            FIND ANALYTICS AND TRACKING DATA
+          </h1>
+        </div>
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>
           <p className="text-lg mb-6">

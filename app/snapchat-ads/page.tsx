@@ -1,5 +1,6 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/snapchat-ads/query-form";
+import Image from "next/image";
 import React from "react";
 
 /**
@@ -11,7 +12,16 @@ export default function SnapchatAdsPage() {
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
         {/* Header Section */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">SNAPCHAT ADS</h1>
+        <div className="flex items-center justify-start mb-6">
+          <Image
+            src="/snapchat-ads-logo.png"
+            alt="Snapchat Ads Logo"
+            width={50}
+            height={50}
+            className="max-w-full mr-4"
+          />
+          <h1 className="text-4xl md:text-6xl font-bold">SNAPCHAT ADS</h1>
+        </div>
 
         {/* Instructions Section */}
         <section className="mb-12">
