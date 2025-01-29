@@ -12,7 +12,7 @@ export default function GoogleAnalyticsPage() {
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
         {/* Header Section */}
-        <div className="flex items-center justify-center mb-6">
+        <div className="flex items-center justify-start mb-6">
           <Image
             src="/google-analytics-logo.png"
             alt="Google Analytics Logo"
