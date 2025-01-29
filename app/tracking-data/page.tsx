@@ -1,5 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import QueryForm from "@/app/tracking-data/query-form";
+import TrackingDataQueryForm from "@/app/tracking-data/tracking-data-query-form";
 import Image from "next/image";
 import React from "react";
 
@@ -41,7 +41,7 @@ export default function TrackingDataPage() {
             </div>
           </CollapsibleSection>
         </section>
-        <QueryForm />
+        <TrackingDataQueryForm />
       </div>
     </div>
   );
