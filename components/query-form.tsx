@@ -30,7 +30,10 @@ interface Query {
 interface QueryFormProps {
   service: string;
   queryFields: { [key: string]: string };
-  ResultsComponent: React.ComponentType;
+  ResultsComponent: React.ComponentType<{ results: any }>;
+  onAnalyze: (queryData: { [key: string]: string | number | Date }) => void;
+  results: any;
+  showResults: boolean;
 }
 
 async function fetchUserQueries(uid: string, service: string) {
@@ -57,13 +60,15 @@ export default function QueryForm({
   service,
   queryFields,
   ResultsComponent,
+  onAnalyze,
+  results,
+  showResults,
 }: QueryFormProps) {
   const [queryName, setQueryName] = useState("");
   const [queryData, setQueryData] = useState<{
     [key: string]: string | number | Date;
   }>({});
   const [selectedQuery, setSelectedQuery] = useState("");
-  const [showResults, setShowResults] = useState(false);
   const [queries, setQueries] = useState<Query[]>([]);
   const [user] = useAuthState(auth);
   const [isQuerySelected, setIsQuerySelected] = useState(false);
@@ -137,8 +142,7 @@ export default function QueryForm({
   };
 
   const handleAnalyze = () => {
-    setShowResults(true);
-    console.log("Analyzing query data:", queryData);
+    onAnalyze(queryData);
   };
 
   return (
@@ -214,7 +218,7 @@ export default function QueryForm({
           </Button>
         </div>
       </div>
-      {showResults && <ResultsComponent />}
+      {showResults && <ResultsComponent results={results} />}
     </section>
   );
 }
