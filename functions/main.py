@@ -9,9 +9,9 @@ from firebase_admin import initialize_app
 initialize_app()
 
 # Import service functions
-from tracking_data.tracking_data import scrape_tracking_data
+from tracking_data.analyze_tracking_data import analyze_tracking_data
 
 # Define HTTP functions
 @https_fn.on_request()
-def scrape_tracking_data_function(req: https_fn.Request) -> https_fn.Response:
-    return scrape_tracking_data(req)
+def analyze_tracking_data_function(req: https_fn.Request) -> https_fn.Response:
+    return analyze_tracking_data(req)

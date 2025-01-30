@@ -2,18 +2,15 @@ from flask import jsonify
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_tracking_data(req):
+def analyze_tracking_data(req):
+    """
+    Scrape the given URL for analytics and tracking tags in the HTML source and provide user-friendly descriptions.
+    """
     data = req.get_json()
     url = data.get('url')
     if not url:
         return jsonify({"error": "URL is required"}), 400
-    result = scrape_analytics_tags(url)
-    return jsonify(result)
 
-def scrape_analytics_tags(url):
-    """
-    Scrape the given URL for analytics and tracking tags in the HTML source and provide user-friendly descriptions.
-    """
     try:
         # Fetch the webpage content
         headers = {
@@ -73,11 +70,11 @@ def scrape_analytics_tags(url):
 
         # Return the analytics tags or a message if none found
         if analytics_tags:
-            return {"analytics_tags": analytics_tags}
+            return jsonify({"analytics_tags": analytics_tags})
         else:
-            return {"message": "No analytics or tracking tags found."}
+            return jsonify({"message": "No analytics or tracking tags found."})
 
     except requests.exceptions.RequestException as e:
-        return {"error": f"Request failed: {e}"}
+        return jsonify({"error": f"Request failed: {e}"})
     except Exception as e:
-        return {"error": f"An error occurred: {e}"}
+        return jsonify({"error": f"An error occurred: {e}"})
