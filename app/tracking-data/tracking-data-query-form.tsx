@@ -1,5 +1,5 @@
 import QueryForm from "@/components/query-form";
-import ResultsSection from "@/app/tracking-data/results-section";
+import TrackingDataResultsSection from "@/app/tracking-data/tracking-data-results-section";
 import React from "react";
 
 /**
@@ -15,7 +15,7 @@ export default function TrackingDataQueryForm() {
     <QueryForm
       service="Tracking Data"
       queryFields={queryFields}
-      ResultsComponent={ResultsSection}
+      ResultsComponent={TrackingDataResultsSection}
     />
   );
 }

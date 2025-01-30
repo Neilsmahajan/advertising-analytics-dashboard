@@ -7,7 +7,7 @@ import React from "react";
  *
  * @constructor
  */
-export default function ResultsSection() {
+export default function TrackingDataResultsSection() {
   return (
     <div className="space-y-6">
       <div className="flex gap-4">
