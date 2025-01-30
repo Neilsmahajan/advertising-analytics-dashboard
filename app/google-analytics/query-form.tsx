@@ -18,6 +18,9 @@ export default function GoogleAnalyticsQueryForm() {
       service="Google Analytics"
       queryFields={queryFields}
       ResultsComponent={ResultsSection}
+      onAnalyze={() => {}}
+      results={{}}
+      showResults={false}
     />
   );
 }

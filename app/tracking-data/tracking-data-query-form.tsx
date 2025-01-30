@@ -14,10 +14,12 @@ export default function TrackingDataQueryForm() {
     websiteURL: "Website URL",
   };
 
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<Record<string, unknown>>({});
   const [showResults, setShowResults] = useState(false);
 
-  const handleAnalyze = async (queryData: { [key: string]: string | number | Date }) => {
+  const handleAnalyze = async (queryData: {
+    [key: string]: string | number | Date;
+  }) => {
     if (queryData.websiteURL) {
       try {
         const response = await axios.post(

@@ -30,9 +30,9 @@ interface Query {
 interface QueryFormProps {
   service: string;
   queryFields: { [key: string]: string };
-  ResultsComponent: React.ComponentType<{ results: any }>;
+  ResultsComponent: React.ComponentType<{ results: Record<string, unknown> }>;
   onAnalyze: (queryData: { [key: string]: string | number | Date }) => void;
-  results: any;
+  results: Record<string, unknown>;
   showResults: boolean;
 }
 

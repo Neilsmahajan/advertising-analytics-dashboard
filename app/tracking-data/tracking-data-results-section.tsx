@@ -4,14 +4,19 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 
 interface TrackingDataResultsSectionProps {
-  results: any;
+  results: {
+    analytics_tags?: string[];
+    message?: string;
+  };
 }
 
 /**
  *
  * @constructor
  */
-export default function TrackingDataResultsSection({ results }: TrackingDataResultsSectionProps) {
+export default function TrackingDataResultsSection({
+  results,
+}: TrackingDataResultsSectionProps) {
   return (
     <div className="space-y-6">
       <div className="flex gap-4">
