@@ -84,3 +84,7 @@ __pycache__/
 # Virtual environment
 venv/
 backend/venv/
+
+# Credentials
+credentials/
+advertisinganalytics-dashboard-credentials.json

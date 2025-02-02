@@ -43,6 +43,7 @@ pyasn1_modules==0.4.1
 pycparser==2.22
 PyJWT==2.10.1
 pyparsing==3.2.1
+python-dotenv==1.0.1
 PyYAML==6.0.2
 requests==2.32.3
 rsa==4.9

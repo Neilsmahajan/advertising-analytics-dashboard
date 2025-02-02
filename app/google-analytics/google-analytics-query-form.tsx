@@ -20,7 +20,7 @@ export default function GoogleAnalyticsQueryForm() {
       service="Google Analytics"
       queryFields={queryFields}
       ResultsComponent={GoogleAnalyticsResultsSection}
-      onAnalyze={() => { }}
+      onAnalyze={() => {}}
       results={{}}
       showResults={false}
     />

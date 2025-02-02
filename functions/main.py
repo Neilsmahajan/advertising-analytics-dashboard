@@ -5,7 +5,12 @@
 from firebase_functions import https_fn
 from firebase_admin import initialize_app
 from flask_cors import CORS
-from flask import Flask, request
+from flask import Flask, request, make_response
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize Firebase Admin SDK
 initialize_app()
@@ -16,13 +21,14 @@ CORS(app)  # Enable CORS for the Flask app
 
 # Import service functions
 from tracking_data.analyze_tracking_data import analyze_tracking_data
+from google_analytics.analyze_google_analytics import analyze_google_analytics
 
 # Define HTTP functions
 @https_fn.on_request()
 def analyze_tracking_data_function(req: https_fn.Request) -> https_fn.Response:
     # Handle preflight requests
     if request.method == 'OPTIONS':
-        response = https_fn.Response()
+        response = make_response()
         response.headers['Access-Control-Allow-Origin'] = '*'
         response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
@@ -30,5 +36,20 @@ def analyze_tracking_data_function(req: https_fn.Request) -> https_fn.Response:
 
     # Handle actual request
     response = analyze_tracking_data(req)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@https_fn.on_request()
+def analyze_google_analytics_function(req: https_fn.Request) -> https_fn.Response:
+    # Handle preflight requests
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+
+    # Handle actual request
+    response = analyze_google_analytics(req)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
