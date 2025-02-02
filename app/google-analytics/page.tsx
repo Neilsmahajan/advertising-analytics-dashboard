@@ -37,7 +37,7 @@ export default function GoogleAnalyticsPage() {
               <ul className="list-disc pl-6 mt-2 space-y-2">
                 <li>
                   Add the following email:
-                  google-analytics@advertising-analytics-444021.iam.serviceaccount.com
+                  google-analytics@advertisinganalytics-dashboard.iam.gserviceaccount.com
                 </li>
                 <li>Grant Viewer role access.</li>
               </ul>
