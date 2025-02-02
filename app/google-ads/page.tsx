@@ -1,5 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import QueryForm from "@/app/google-analytics/query-form";
+import QueryForm from "@/app/google-analytics/google-analytics-query-form";
 import Image from "next/image";
 import React from "react";
 

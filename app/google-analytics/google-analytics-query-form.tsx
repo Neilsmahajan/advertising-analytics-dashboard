@@ -1,5 +1,7 @@
+"use client";
+
 import QueryForm from "@/components/query-form";
-import ResultsSection from "@/app/google-analytics/results-section";
+import GoogleAnalyticsResultsSection from "@/app/google-analytics/google-analytics-results-section";
 import React from "react";
 
 /**
@@ -17,8 +19,8 @@ export default function GoogleAnalyticsQueryForm() {
     <QueryForm
       service="Google Analytics"
       queryFields={queryFields}
-      ResultsComponent={ResultsSection}
-      onAnalyze={() => {}}
+      ResultsComponent={GoogleAnalyticsResultsSection}
+      onAnalyze={() => { }}
       results={{}}
       showResults={false}
     />
