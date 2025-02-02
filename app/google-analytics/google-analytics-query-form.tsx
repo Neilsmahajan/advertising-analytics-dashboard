@@ -45,7 +45,13 @@ export default function GoogleAnalyticsQueryForm() {
     <QueryForm
       service="Google Analytics"
       queryFields={queryFields}
-      ResultsComponent={GoogleAnalyticsResultsSection}
+      ResultsComponent={(props) => (
+        <GoogleAnalyticsResultsSection
+          {...props}
+          userInfo={{ name: "User Name", email: "user@example.com" }}
+          queryInfo={{ service: "Google Analytics", queryName: "Query Name", queryData: {} }}
+        />
+      )}
       onAnalyze={handleAnalyze}
       results={results}
       showResults={showResults}
