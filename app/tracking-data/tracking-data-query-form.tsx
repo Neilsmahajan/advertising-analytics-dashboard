@@ -4,6 +4,8 @@ import QueryForm from "@/components/query-form";
 import TrackingDataResultsSection from "@/app/tracking-data/tracking-data-results-section";
 import React, { useState } from "react";
 import axios from "axios";
+import { auth } from "@/lib/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 /**
  *
@@ -16,6 +18,10 @@ export default function TrackingDataQueryForm() {
 
   const [results, setResults] = useState<Record<string, unknown>>({});
   const [showResults, setShowResults] = useState(false);
+  const [queryName] = useState("Query Name");
+  const [queryData, setQueryData] = useState<Record<string, unknown>>({});
+
+  const [user] = useAuthState(auth);
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
@@ -31,6 +37,7 @@ export default function TrackingDataQueryForm() {
         console.log("Analysis result:", response.data);
         setShowResults(true);
         setResults(response.data);
+        setQueryData(queryData);
       } catch (error) {
         console.error("Error analyzing website:", error);
       }
@@ -41,7 +48,17 @@ export default function TrackingDataQueryForm() {
     <QueryForm
       service="Tracking Data"
       queryFields={queryFields}
-      ResultsComponent={TrackingDataResultsSection}
+      ResultsComponent={(props) => (
+        <TrackingDataResultsSection
+          {...props}
+          userInfo={{ name: user?.displayName || "User Name", email: user?.email || "user@example.com" }}
+          queryInfo={{
+            service: "Tracking Data",
+            queryName: queryName,
+            queryData: queryData,
+          }}
+        />
+      )}
       onAnalyze={handleAnalyze}
       results={results}
       showResults={showResults}

@@ -11,12 +11,38 @@ def generate_report(req):
     user_info = data.get('userInfo')
     query_info = data.get('queryInfo')
     results = data.get('results')
+    service = data.get('service')
 
-    if not user_info or not query_info or not results:
-        return make_response(jsonify({"error": "userInfo, queryInfo, and results are required"}), 400)
+    if not user_info or not query_info or not results or not service:
+        return make_response(jsonify({"error": "userInfo, queryInfo, results, and service are required"}), 400)
 
     # Generate HTML content for the PDF
     query_data_html = ''.join(f"<p><strong>{key}:</strong> {value}</p>" for key, value in query_info.get('queryData').items())
+
+    if service == "Google Analytics":
+        results_html = f"""
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Sessions</th>
+                    <th>Bounce Rate</th>
+                    <th>Key Events</th>
+                </tr>
+            </thead>
+            <tbody>
+                {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+            </tbody>
+        </table>
+        """
+    elif service == "Tracking Data":
+        results_html = f"""
+        <ul>
+            {''.join(f"<li>{tag}</li>" for tag in results['analytics_tags'])}
+        </ul>
+        """
+    else:
+        results_html = "<p>Unsupported service</p>"
 
     html_content = f"""
     <html>
@@ -46,19 +72,7 @@ def generate_report(req):
         </div>
         <div class="section">
             <h2>Results</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Sessions</th>
-                        <th>Bounce Rate</th>
-                        <th>Key Events</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
-                </tbody>
-            </table>
+            {results_html}
         </div>
     </body>
     </html>
