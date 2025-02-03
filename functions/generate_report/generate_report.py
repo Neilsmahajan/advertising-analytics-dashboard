@@ -16,6 +16,8 @@ def generate_report(req):
         return make_response(jsonify({"error": "userInfo, queryInfo, and results are required"}), 400)
 
     # Generate HTML content for the PDF
+    query_data_html = ''.join(f"<p><strong>{key}:</strong> {value}</p>" for key, value in query_info.get('queryData').items())
+
     html_content = f"""
     <html>
     <head>
@@ -40,8 +42,7 @@ def generate_report(req):
             <h2>Query Information</h2>
             <p><strong>Service:</strong> {query_info.get('service')}</p>
             <p><strong>Query Name:</strong> {query_info.get('queryName')}</p>
-            <p><strong>Query Data:</strong></p>
-            <pre>{query_info.get('queryData')}</pre>
+            <div>{query_data_html}</div>
         </div>
         <div class="section">
             <h2>Results</h2>
