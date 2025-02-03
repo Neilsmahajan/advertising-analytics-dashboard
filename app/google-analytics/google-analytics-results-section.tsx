@@ -33,6 +33,10 @@ export default function GoogleAnalyticsResultsSection({
   queryInfo,
 }: GoogleAnalyticsResultsSectionProps) {
   return (
-    <ResultsSection results={results} userInfo={userInfo} queryInfo={queryInfo} />
+    <ResultsSection
+      results={results}
+      userInfo={userInfo}
+      queryInfo={queryInfo}
+    />
   );
 }

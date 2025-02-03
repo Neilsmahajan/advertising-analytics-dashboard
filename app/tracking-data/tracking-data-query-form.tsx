@@ -51,7 +51,10 @@ export default function TrackingDataQueryForm() {
       ResultsComponent={(props) => (
         <TrackingDataResultsSection
           {...props}
-          userInfo={{ name: user?.displayName || "User Name", email: user?.email || "user@example.com" }}
+          userInfo={{
+            name: user?.displayName || "User Name",
+            email: user?.email || "user@example.com",
+          }}
           queryInfo={{
             service: "Tracking Data",
             queryName: queryName,

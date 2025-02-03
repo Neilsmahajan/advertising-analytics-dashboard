@@ -29,6 +29,10 @@ export default function TrackingDataResultsSection({
   queryInfo,
 }: TrackingDataResultsSectionProps) {
   return (
-    <ResultsSection results={results} userInfo={userInfo} queryInfo={queryInfo} />
+    <ResultsSection
+      results={results}
+      userInfo={userInfo}
+      queryInfo={queryInfo}
+    />
   );
 }

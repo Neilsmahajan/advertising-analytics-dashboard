@@ -59,9 +59,6 @@ export default function ResultsSection({
         >
           DOWNLOAD REPORT
         </Button>
-        <Button className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white">
-          EMAIL REPORT
-        </Button>
       </div>
       <div>
         <h3 className="text-xl font-bold mb-4">Results:</h3>
@@ -101,7 +98,8 @@ export default function ResultsSection({
                 ))}
               </tbody>
             </table>
-          ) : queryInfo.service === "Tracking Data" && results.analytics_tags ? (
+          ) : queryInfo.service === "Tracking Data" &&
+            results.analytics_tags ? (
             <ul className="list-disc list-inside text-white/60">
               {results.analytics_tags.map((tag: string, index: number) => (
                 <li key={index}>{tag}</li>
