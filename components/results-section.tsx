@@ -5,7 +5,10 @@ import React from "react";
 import axios from "axios";
 
 interface ResultsSectionProps {
-  results: Record<string, unknown>;
+  results: {
+    rows?: { date: string; sessions: number; bounceRate: number; keyEvents: string }[];
+    analytics_tags?: string[];
+  };
   userInfo: {
     name: string;
     email: string;

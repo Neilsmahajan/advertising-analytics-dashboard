@@ -32,9 +32,18 @@ export default function GoogleAnalyticsResultsSection({
   userInfo,
   queryInfo,
 }: GoogleAnalyticsResultsSectionProps) {
+  const convertedResults = {
+    ...results,
+    rows: results.rows?.map(row => ({
+      ...row,
+      sessions: parseFloat(row.sessions),
+      bounceRate: parseFloat(row.bounceRate),
+    })),
+  };
+
   return (
     <ResultsSection
-      results={results}
+      results={convertedResults}
       userInfo={userInfo}
       queryInfo={queryInfo}
     />
