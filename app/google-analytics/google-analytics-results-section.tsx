@@ -34,7 +34,7 @@ export default function GoogleAnalyticsResultsSection({
 }: GoogleAnalyticsResultsSectionProps) {
   const convertedResults = {
     ...results,
-    rows: results.rows?.map(row => ({
+    rows: results.rows?.map((row) => ({
       ...row,
       sessions: parseFloat(row.sessions),
       bounceRate: parseFloat(row.bounceRate),

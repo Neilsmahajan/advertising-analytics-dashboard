@@ -6,7 +6,12 @@ import axios from "axios";
 
 interface ResultsSectionProps {
   results: {
-    rows?: { date: string; sessions: number; bounceRate: number; keyEvents: string }[];
+    rows?: {
+      date: string;
+      sessions: number;
+      bounceRate: number;
+      keyEvents: string;
+    }[];
     analytics_tags?: string[];
   };
   userInfo: {

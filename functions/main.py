@@ -23,6 +23,7 @@ CORS(app)  # Enable CORS for the Flask app
 from tracking_data.analyze_tracking_data import analyze_tracking_data
 from google_analytics.analyze_google_analytics import analyze_google_analytics
 from generate_report.generate_report import generate_report
+from meta_ads.analyze_meta_ads import analyze_meta_ads
 
 # Define HTTP functions
 @https_fn.on_request()
@@ -67,5 +68,20 @@ def generate_report_function(req: https_fn.Request) -> https_fn.Response:
 
     # Handle actual request
     response = generate_report(req)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@https_fn.on_request()
+def analyze_meta_ads_function(req: https_fn.Request) -> https_fn.Response:
+    # Handle preflight requests
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+
+    # Handle actual request
+    response = analyze_meta_ads(req)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
