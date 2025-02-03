@@ -20,7 +20,7 @@ export default function GoogleAnalyticsQueryForm() {
 
   const [results, setResults] = useState<Record<string, unknown>>({});
   const [showResults, setShowResults] = useState(false);
-  const [queryName, setQueryName] = useState("Query Name");
+  const [queryName] = useState("Query Name");
   const [queryData, setQueryData] = useState<Record<string, unknown>>({});
 
   const [user] = useAuthState(auth);

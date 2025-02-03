@@ -42,7 +42,7 @@ export default function GoogleAnalyticsResultsSection({
           queryInfo,
           results,
         },
-        { responseType: "blob" }
+        { responseType: "blob" },
       );
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
@@ -77,18 +77,32 @@ export default function GoogleAnalyticsResultsSection({
               <thead>
                 <tr>
                   <th className="py-2 px-4 border-b border-gray-200">Date</th>
-                  <th className="py-2 px-4 border-b border-gray-200">Sessions</th>
-                  <th className="py-2 px-4 border-b border-gray-200">Bounce Rate</th>
-                  <th className="py-2 px-4 border-b border-gray-200">Key Events</th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Sessions
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Bounce Rate
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Key Events
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {results.rows.map((row, index) => (
                   <tr key={index}>
-                    <td className="py-2 px-4 border-b border-gray-200">{row.date}</td>
-                    <td className="py-2 px-4 border-b border-gray-200">{row.sessions}</td>
-                    <td className="py-2 px-4 border-b border-gray-200">{row.bounceRate}</td>
-                    <td className="py-2 px-4 border-b border-gray-200">{row.keyEvents}</td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.date}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.sessions}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.bounceRate}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.keyEvents}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -103,10 +117,18 @@ export default function GoogleAnalyticsResultsSection({
       <div>
         <h3 className="text-xl font-bold mb-4">Query Information:</h3>
         <div className="bg-white/10 rounded-lg p-6">
-          <p><strong>Service:</strong> {queryInfo.service}</p>
-          <p><strong>Query Name:</strong> {queryInfo.queryName}</p>
-          <p><strong>Query Data:</strong></p>
-          <pre className="text-white/60">{JSON.stringify(queryInfo.queryData, null, 2)}</pre>
+          <p>
+            <strong>Service:</strong> {queryInfo.service}
+          </p>
+          <p>
+            <strong>Query Name:</strong> {queryInfo.queryName}
+          </p>
+          <p>
+            <strong>Query Data:</strong>
+          </p>
+          <pre className="text-white/60">
+            {JSON.stringify(queryInfo.queryData, null, 2)}
+          </pre>
         </div>
       </div>
     </div>
