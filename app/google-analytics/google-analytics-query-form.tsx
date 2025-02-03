@@ -20,6 +20,8 @@ export default function GoogleAnalyticsQueryForm() {
 
   const [results, setResults] = useState<Record<string, unknown>>({});
   const [showResults, setShowResults] = useState(false);
+  const [queryName, setQueryName] = useState("Query Name");
+  const [queryData, setQueryData] = useState<Record<string, unknown>>({});
 
   const [user] = useAuthState(auth);
 
@@ -39,6 +41,7 @@ export default function GoogleAnalyticsQueryForm() {
         console.log("Analysis result:", response.data);
         setShowResults(true);
         setResults(response.data);
+        setQueryData(queryData);
       } catch (error) {
         console.error("Error analyzing Google Analytics data:", error);
       }
@@ -53,7 +56,7 @@ export default function GoogleAnalyticsQueryForm() {
         <GoogleAnalyticsResultsSection
           {...props}
           userInfo={{ name: user?.displayName || "", email: user?.email || "" }}
-          queryInfo={{ service: "Google Analytics", queryName: "Query Name", queryData: {} }}
+          queryInfo={{ service: "Google Analytics", queryName, queryData }}
         />
       )}
       onAnalyze={handleAnalyze}

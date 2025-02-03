@@ -73,18 +73,40 @@ export default function GoogleAnalyticsResultsSection({
         <h3 className="text-xl font-bold mb-4">Google Analytics Results:</h3>
         <div className="bg-white/10 rounded-lg p-6">
           {results && results.rows ? (
-            <ul className="list-disc list-inside text-white/60">
-              {results.rows.map((row, index) => (
-                <li key={index}>
-                  Date: {row.date}, Sessions: {row.sessions}, Bounce Rate: {row.bounceRate}, Key Events: {row.keyEvents}
-                </li>
-              ))}
-            </ul>
+            <table className="min-w-full bg-white/10 text-white/60">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 border-b border-gray-200">Date</th>
+                  <th className="py-2 px-4 border-b border-gray-200">Sessions</th>
+                  <th className="py-2 px-4 border-b border-gray-200">Bounce Rate</th>
+                  <th className="py-2 px-4 border-b border-gray-200">Key Events</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.rows.map((row, index) => (
+                  <tr key={index}>
+                    <td className="py-2 px-4 border-b border-gray-200">{row.date}</td>
+                    <td className="py-2 px-4 border-b border-gray-200">{row.sessions}</td>
+                    <td className="py-2 px-4 border-b border-gray-200">{row.bounceRate}</td>
+                    <td className="py-2 px-4 border-b border-gray-200">{row.keyEvents}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
             <p className="text-white/60">
               Results will appear here after analysis
             </p>
           )}
+        </div>
+      </div>
+      <div>
+        <h3 className="text-xl font-bold mb-4">Query Information:</h3>
+        <div className="bg-white/10 rounded-lg p-6">
+          <p><strong>Service:</strong> {queryInfo.service}</p>
+          <p><strong>Query Name:</strong> {queryInfo.queryName}</p>
+          <p><strong>Query Data:</strong></p>
+          <pre className="text-white/60">{JSON.stringify(queryInfo.queryData, null, 2)}</pre>
         </div>
       </div>
     </div>
