@@ -24,6 +24,9 @@ def generate_report(req):
             h1 {{ color: #00BFFF; }}
             .section {{ margin-bottom: 20px; }}
             .section h2 {{ color: #47adbf; }}
+            table {{ width: 100%; border-collapse: collapse; }}
+            th, td {{ padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }}
+            th {{ background-color: #47adbf; color: white; }}
         </style>
     </head>
     <body>
@@ -35,13 +38,26 @@ def generate_report(req):
         </div>
         <div class="section">
             <h2>Query Information</h2>
-            <p>Service: {query_info.get('service')}</p>
-            <p>Query Name: {query_info.get('queryName')}</p>
-            <p>Query Data: {query_info.get('queryData')}</p>
+            <p><strong>Service:</strong> {query_info.get('service')}</p>
+            <p><strong>Query Name:</strong> {query_info.get('queryName')}</p>
+            <p><strong>Query Data:</strong></p>
+            <pre>{query_info.get('queryData')}</pre>
         </div>
         <div class="section">
             <h2>Results</h2>
-            <pre>{results}</pre>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sessions</th>
+                        <th>Bounce Rate</th>
+                        <th>Key Events</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+                </tbody>
+            </table>
         </div>
     </body>
     </html>
