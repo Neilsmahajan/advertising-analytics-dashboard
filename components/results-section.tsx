@@ -13,6 +13,16 @@ interface ResultsSectionProps {
       keyEvents: string;
     }[];
     analytics_tags?: string[];
+    data?: {
+      date_start: string;
+      date_stop: string;
+      impressions: number;
+      clicks: number;
+      spend: number;
+      unique_clicks: number;
+      cpm: number;
+      reach: number;
+    }[];
   };
   userInfo: {
     name: string;
@@ -113,6 +123,59 @@ export default function ResultsSection({
                 <li key={index}>{tag}</li>
               ))}
             </ul>
+          ) : queryInfo.service === "Meta Ads" && results.data ? (
+            <table className="min-w-full bg-white/10 text-white/60">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Date Start
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Date Stop
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Impressions
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">Clicks</th>
+                  <th className="py-2 px-4 border-b border-gray-200">Spend</th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    Unique Clicks
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">CPM</th>
+                  <th className="py-2 px-4 border-b border-gray-200">Reach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.data.map((row, index) => (
+                  <tr key={index}>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.date_start}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.date_stop}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.impressions}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.clicks}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.spend}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.unique_clicks}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.cpm}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.reach}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
             <p className="text-white/60">
               Results will appear here after analysis

@@ -41,6 +41,26 @@ def generate_report(req):
             {''.join(f"<li>{tag}</li>" for tag in results['analytics_tags'])}
         </ul>
         """
+    elif service == "Meta Ads":
+        results_html = f"""
+        <table>
+            <thead>
+                <tr>
+                    <th>Date Start</th>
+                    <th>Date Stop</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>Spend</th>
+                    <th>Unique Clicks</th>
+                    <th>CPM</th>
+                    <th>Reach</th>
+                </tr>
+            </thead>
+            <tbody>
+                {''.join(f"<tr><td>{row['date_start']}</td><td>{row['date_stop']}</td><td>{row['impressions']}</td><td>{row['clicks']}</td><td>{row['spend']}</td><td>{row['unique_clicks']}</td><td>{row['cpm']}</td><td>{row['reach']}</td></tr>" for row in results['data'])}
+            </tbody>
+        </table>
+        """
     else:
         results_html = "<p>Unsupported service</p>"
 

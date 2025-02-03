@@ -1,5 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import QueryForm from "@/app/meta-ads/query-form";
+import MetaAdsQueryForm from "@/app/meta-ads/meta-ads-query-form";
 import Image from "next/image";
 import React from "react";
 
@@ -68,7 +68,7 @@ export default function MetaAdsPage() {
         </section>
 
         {/* Query Form Section */}
-        <QueryForm />
+        <MetaAdsQueryForm />
       </div>
     </div>
   );
