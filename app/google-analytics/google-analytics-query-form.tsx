@@ -4,6 +4,8 @@ import QueryForm from "@/components/query-form";
 import GoogleAnalyticsResultsSection from "@/app/google-analytics/google-analytics-results-section";
 import React, { useState } from "react";
 import axios from "axios";
+import { auth } from "@/lib/firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 /**
  *
@@ -18,6 +20,8 @@ export default function GoogleAnalyticsQueryForm() {
 
   const [results, setResults] = useState<Record<string, unknown>>({});
   const [showResults, setShowResults] = useState(false);
+
+  const [user] = useAuthState(auth);
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
@@ -48,7 +52,7 @@ export default function GoogleAnalyticsQueryForm() {
       ResultsComponent={(props) => (
         <GoogleAnalyticsResultsSection
           {...props}
-          userInfo={{ name: "User Name", email: "user@example.com" }}
+          userInfo={{ name: user?.displayName || "", email: user?.email || "" }}
           queryInfo={{ service: "Google Analytics", queryName: "Query Name", queryData: {} }}
         />
       )}
