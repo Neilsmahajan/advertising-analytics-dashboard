@@ -1,5 +1,4 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import QueryForm from "@/app/pinterest-ads/query-form";
 import Image from "next/image";
 import React from "react";
 
@@ -31,7 +30,7 @@ export default function PinterestAdsPage() {
             Data:
           </p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>...</li>
+            <li>In development...</li>
           </ol>
 
           {/* Tutorial Section */}
@@ -49,9 +48,6 @@ export default function PinterestAdsPage() {
             </CollapsibleSection>
           </div>
         </section>
-
-        {/* Query Form Section */}
-        <QueryForm />
       </div>
     </div>
   );
