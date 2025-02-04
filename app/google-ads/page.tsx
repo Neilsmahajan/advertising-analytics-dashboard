@@ -1,5 +1,4 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import QueryForm from "@/app/google-analytics/google-analytics-query-form";
 import Image from "next/image";
 import React from "react";
 
@@ -57,9 +56,6 @@ export default function GoogleAdsPage() {
             </CollapsibleSection>
           </div>
         </section>
-
-        {/* Query Form Section */}
-        <QueryForm />
       </div>
     </div>
   );
