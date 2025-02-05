@@ -1,4 +1,4 @@
-from flask import jsonify, request, make_response
+from flask import jsonify, make_response
 from weasyprint import HTML
 import os
 from dotenv import load_dotenv
@@ -16,7 +16,6 @@ def generate_report(req):
     if not user_info or not query_info or not results or not service:
         return make_response(jsonify({"error": "userInfo, queryInfo, results, and service are required"}), 400)
 
-    # Generate HTML content for the PDF
     query_data_html = ''.join(f"<p><strong>{key}:</strong> {value}</p>" for key, value in query_info.get('queryData').items())
 
     if service == "Google Analytics":
@@ -98,7 +97,6 @@ def generate_report(req):
     </html>
     """
 
-    # Generate PDF from HTML content
     pdf = HTML(string=html_content).write_pdf()
 
     response = make_response(pdf)

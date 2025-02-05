@@ -4,7 +4,6 @@ from google.analytics.data_v1beta.types import DateRange, Metric, Dimension, Run
 from google.oauth2 import service_account
 import os
 from dotenv import load_dotenv
-import logging
 
 # Load environment variables from .env file
 load_dotenv()
@@ -23,7 +22,6 @@ def analyze_google_analytics(req):
         return response
 
     try:
-        # Load credentials from the environment variable
         credentials = service_account.Credentials.from_service_account_file(
             os.getenv("GOOGLE_SERVICE_ACCOUNT_CREDENTIALS"),
             scopes=SCOPES
@@ -61,7 +59,6 @@ def analyze_google_analytics(req):
         return return_response
 
     except Exception as e:
-        logging.error(f"An error occurred: {e}", exc_info=True)
         response = make_response(jsonify({"error": f"An error occurred: {e}"}), 500)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response

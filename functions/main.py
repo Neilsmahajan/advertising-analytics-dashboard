@@ -5,12 +5,7 @@
 from firebase_functions import https_fn
 from firebase_admin import initialize_app
 from flask_cors import CORS
-from flask import Flask, request, make_response, jsonify
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+from flask import Flask, request, make_response
 
 # Initialize Firebase Admin SDK
 initialize_app()
@@ -52,10 +47,7 @@ def analyze_google_analytics_function(req: https_fn.Request) -> https_fn.Respons
         return response
 
     # Handle actual request
-    try:
-        response = analyze_google_analytics(req)
-    except Exception as e:
-        response = make_response(jsonify({'error': str(e)}), 500)
+    response = analyze_google_analytics(req)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 

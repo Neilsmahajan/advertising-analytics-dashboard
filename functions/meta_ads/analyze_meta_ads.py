@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 import requests
-import json
 
 meta_ads_bp = Blueprint('meta_ads', __name__)
 
@@ -20,7 +19,7 @@ def fetch_meta_ads_data(ad_account_id, access_token, start_date, end_date):
         return {"error": str(e)}
 
 def analyze_meta_ads(req):
-    data = req.json
+    data = req.get_json()
     ad_account_id = data.get('adAccountId')
     access_token = data.get('accessToken')
     start_date = data.get('startDate')
