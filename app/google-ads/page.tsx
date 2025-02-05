@@ -1,5 +1,4 @@
 import CollapsibleSection from "@/components/collapsible-section";
-import GoogleAdsQueryForm from "@/app/google-ads/google-ads-query-form";
 import Image from "next/image";
 import React from "react";
 
@@ -30,7 +29,8 @@ export default function GoogleAdsPage() {
             Data:
           </p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>Go to your Google Ads Dashboard</li>
+            <li>In development...</li>
+            {/* <li>Go to your Google Ads Dashboard</li>
             <li>Log in and select your Google Ads Account</li>
             <li>
               Get your Customer ID from the top right (e.g., 683-961-6266) for
@@ -39,7 +39,7 @@ export default function GoogleAdsPage() {
             <li>
               Enter your customer ID below, along with the desired date range,
               and click Get Data.
-            </li>
+            </li> */}
           </ol>
 
           {/* Tutorial Section */}
@@ -57,9 +57,6 @@ export default function GoogleAdsPage() {
             </CollapsibleSection>
           </div>
         </section>
-
-        {/* Query Form Section */}
-        <GoogleAdsQueryForm />
       </div>
     </div>
   );

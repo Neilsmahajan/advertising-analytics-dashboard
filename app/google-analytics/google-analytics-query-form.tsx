@@ -31,7 +31,7 @@ export default function GoogleAnalyticsQueryForm() {
     if (queryData.propertyID && queryData.startDate && queryData.endDate) {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
+          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
           {
             propertyId: queryData.propertyID,
             startDate: queryData.startDate,

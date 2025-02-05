@@ -29,7 +29,7 @@ export default function TrackingDataQueryForm() {
     if (queryData.websiteURL) {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_tracking_data_function",
+          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_tracking_data_function",
           {
             url: queryData.websiteURL,
           },

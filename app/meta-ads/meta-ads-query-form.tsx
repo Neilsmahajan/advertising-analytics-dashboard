@@ -37,7 +37,7 @@ export default function MetaAdsQueryForm() {
     ) {
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_meta_ads_function",
+          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_meta_ads_function",
           {
             adAccountId: queryData.adAccountId,
             accessToken: queryData.accessToken,
