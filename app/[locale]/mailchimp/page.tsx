@@ -6,7 +6,7 @@ import React from "react";
  *
  * @returns
  */
-export default function MailchimpAdsPage() {
+export default function MailchimpPage() {
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
@@ -19,14 +19,13 @@ export default function MailchimpAdsPage() {
             height={50}
             className="max-w-full mr-4"
           />
-          <h1 className="text-4xl md:text-6xl font-bold">MAILCHIMP ADS</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">MAILCHIMP</h1>
         </div>
         {/* Instructions Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>
           <p className="text-lg mb-6">
-            Follow These Steps To Use This Application With Your Mailchimp Ads
-            Data:
+            Follow These Steps To Use This Application With Your Mailchimp Data:
           </p>
           <ol className="space-y-4 list-decimal pl-6">
             <li>In development...</li>
