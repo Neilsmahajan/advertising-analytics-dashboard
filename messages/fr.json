@@ -49,7 +49,7 @@
     "services": "Services",
     "language": "Français",
     "servicesList": {
-      "trackingData": "Suivi des Données",
+      "trackingData": "Tracking Data",
       "googleAnalytics": "Google Analytics",
       "googleAds": "Google Ads",
       "metaAds": "Meta Ads",
@@ -79,7 +79,7 @@
     "facebook": "Facebook",
     "linkedin": "LinkedIn",
     "servicesList": {
-      "trackingData": "Suivi des Données",
+      "trackingData": "Tracking Data",
       "googleAnalytics": "Google Analytics",
       "googleAds": "Google Ads",
       "metaAds": "Meta Ads",
@@ -114,7 +114,7 @@
   "Account": {
     "title": "MON COMPTE",
     "servicesList": {
-      "trackingData": "Suivi des Données",
+      "trackingData": "Tracking Data",
       "googleAnalytics": "Google Analytics",
       "googleAds": "Google Ads",
       "metaAds": "Meta Ads",
@@ -131,6 +131,17 @@
     },
     "loading": "Chargement...",
     "error": "Erreur:",
-    "welcome": "Bienvenue,"
+    "welcome": "Bienvenue,",
+    "manageProfile": "GÉREZ VOTRE PROFIL ET VOS REQUÊTES SAUVEGARDÉES ICI.",
+    "profileInfo": "Informations sur le Profil",
+    "name": "Nom",
+    "emailAddress": "Courriel",
+    "noUserSignedIn": "Aucun utilisateur n'est connecté.",
+    "noSavedQueries": "Aucune requête sauvegardée pour le moment. Les requêtes apparaîtront ici une fois que vous les aurez sauvegardées.",
+    "queryName": "Nom de la Requête",
+    "createdAt": "Créé le",
+    "run": "Exécuter",
+    "delete": "Supprimer",
+    "signOut": "SE DÉCONNECTER"
   }
 }

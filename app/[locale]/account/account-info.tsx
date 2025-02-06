@@ -29,19 +29,19 @@ export default function AccountInfo() {
         <h1 className="text-4xl md:text-6xl font-bold mb-2">{t("title")}</h1>
         <p className="text-xl mb-12">{t("welcome")} {user.displayName}!</p>
         <p className="text-lg mb-12">
-          MANAGE YOUR PROFILE AND SAVED QUERIES HERE.
+          {t("manageProfile")}
         </p>
 
         {/* Profile Information Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Profile Information</h2>
+          <h2 className="text-2xl font-bold mb-6">{t("profileInfo")}</h2>
           <div className="space-y-4">
             <div className="flex flex-col">
-              <span className="font-medium">Name:</span>
+              <span className="font-medium">{t("name")}:</span>
               <span>{user.displayName}</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-medium">Email Address:</span>
+              <span className="font-medium">{t("emailAddress")}:</span>
               <span>{user.email}</span>
             </div>
           </div>
@@ -53,5 +53,5 @@ export default function AccountInfo() {
     );
   }
 
-  return <p>No user is signed in.</p>;
+  return <p>{t("noUserSignedIn")}</p>;
 }

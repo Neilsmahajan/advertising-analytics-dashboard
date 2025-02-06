@@ -131,6 +131,17 @@
     },
     "loading": "Loading...",
     "error": "Error:",
-    "welcome": "Welcome,"
+    "welcome": "Welcome,",
+    "manageProfile": "MANAGE YOUR PROFILE AND SAVED QUERIES HERE.",
+    "profileInfo": "Profile Information",
+    "name": "Name",
+    "emailAddress": "Email",
+    "noUserSignedIn": "No user is signed in.",
+    "noSavedQueries": "No saved queries yet. Queries will appear here once you save them.",
+    "queryName": "Query Name",
+    "createdAt": "Created At",
+    "run": "Run",
+    "delete": "Delete",
+    "signOut": "SIGN OUT"
   }
 }

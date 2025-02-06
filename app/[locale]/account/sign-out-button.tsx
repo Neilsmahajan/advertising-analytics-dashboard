@@ -30,7 +30,7 @@ export default function SignOutButton() {
       className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
       onClick={handleSignOut}
     >
-      SIGN OUT
+      {t("signOut")}
     </Button>
   );
 }

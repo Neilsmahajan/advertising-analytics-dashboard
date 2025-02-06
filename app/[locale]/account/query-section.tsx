@@ -33,7 +33,6 @@ interface QuerySectionProps {
  * @returns
  */
 async function fetchUserQueries(uid: string, service: string) {
-  const t = useTranslations("Account");
   const q = query(
     collection(db, "queries"),
     where("uid", "==", uid),
@@ -54,6 +53,7 @@ async function fetchUserQueries(uid: string, service: string) {
  * @returns
  */
 export default function QuerySection({ title }: QuerySectionProps) {
+  const t = useTranslations("Account");
   const [queries, setQueries] = useState<
     { id: string; queryName: string; createdAt: Date | null }[]
   >([]);
@@ -96,7 +96,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
       <CollapsibleContent className="space-y-2">
         {queries.length === 0 ? (
           <div className="pl-4 opacity-50">
-            No saved queries yet. Queries will appear here once you save them.
+            {t("noSavedQueries")}
           </div>
         ) : (
           queries.map((query) => (
@@ -106,10 +106,10 @@ export default function QuerySection({ title }: QuerySectionProps) {
             >
               <div className="flex flex-col space-y-1">
                 <span className="text-sm font-medium text-white">
-                  <strong>Query Name:</strong> {query.queryName}
+                  <strong>{t("queryName")}:</strong> {query.queryName}
                 </span>
                 <span className="text-sm font-medium text-white">
-                  <strong>Created At:</strong>{" "}
+                  <strong>{t("createdAt")}:</strong>{" "}
                   {query.createdAt ? format(query.createdAt, "PPP") : "N/A"}
                 </span>
               </div>
@@ -119,14 +119,14 @@ export default function QuerySection({ title }: QuerySectionProps) {
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
                   onClick={() => handleRun(title)}
                 >
-                  Run
+                  {t("run")}
                 </Button>
                 <Button
                   variant="secondary"
                   className="bg-red-500 hover:bg-red-600 text-white"
                   onClick={() => handleDelete(query.id)}
                 >
-                  Delete
+                  {t("delete")}
                 </Button>
               </div>
             </div>
