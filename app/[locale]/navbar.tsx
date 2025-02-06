@@ -15,7 +15,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 /**
  *
@@ -23,7 +23,6 @@ import { useTranslations, useLocale } from "next-intl";
  */
 export default function Navbar() {
   const t = useTranslations("Navbar");
-  // const locale = useLocale();
   const [user] = useAuthState(auth);
   const provider = new GoogleAuthProvider();
 
