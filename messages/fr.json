@@ -1,7 +1,7 @@
 {
   "Home": {
     "title": "TABLEAU DE BORD D'ANALYSE PUBLICITAIRE",
-    "description": "Gérer et analyser toutes vos campagnes publicitaires dans un tableau de bord unifié. Obtenez des informations, suivez les performances et optimisez les résultats sans effort.",
+    "description": "Gérez et analysez toutes vos campagnes publicitaires dans un tableau de bord unifié. Obtenez des insights, suivez les performances et optimisez les résultats sans effort.",
     "keyFeaturesTitle": "Caractéristiques Clés (Pourquoi Utiliser Cet Outil?)",
     "supportedPlatformsTitle": "Plateformes Supportées",
     "supportedPlatformsDescription": "Suivez les données et intégrez-vous sans effort avec :",
@@ -18,7 +18,7 @@
       },
       "realTimeData": {
         "title": "Données en Temps Réel",
-        "description": "Suivi multi-plateforme avec des informations en temps réel."
+        "description": "Suivi multi-plateforme avec des insights en temps réel."
       },
       "multipleAccounts": {
         "title": "Comptes Multiples",
@@ -32,7 +32,7 @@
       },
       "analyzeTrackData": {
         "title": "Analysez et Suivez les Données",
-        "description": "Obtenez des informations précieuses avec des métriques de performance en temps réel"
+        "description": "Obtenez des insights précieux avec des métriques de performance en temps réel"
       },
       "optimizeScale": {
         "title": "Optimisez et Évoluez",

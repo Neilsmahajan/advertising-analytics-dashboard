@@ -5,49 +5,48 @@ import ScrollToVideoSection from "@/app/[locale]/scroll-to-video-section";
 import SignUpButton from "@/app/[locale]/sign-up-button";
 import React from "react";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function Home() {
+  const t = useTranslations("Home");
   const features = [
     {
-      title: "Tracking Data",
-      description:
-        "Find all analytics tags and tracking services on any website.",
+      title: t("features.trackingData.title"),
+      description: t("features.trackingData.description"),
     },
     {
-      title: "Unified Dashboard",
-      description:
-        "Fetch data from Google, Meta, TikTok, and more in one interface.",
+      title: t("features.unifiedDashboard.title"),
+      description: t("features.unifiedDashboard.description"),
     },
     {
-      title: "Real-Time Data",
-      description: "Multi-platform tracking with real-time insights.",
+      title: t("features.realTimeData.title"),
+      description: t("features.realTimeData.description"),
     },
     {
-      title: "Multiple Accounts",
-      description:
-        "Save multiple ad accounts and switch between saved metrics seamlessly.",
+      title: t("features.multipleAccounts.title"),
+      description: t("features.multipleAccounts.description"),
     },
   ];
 
   const steps = [
     {
       number: 1,
-      title: "Connect Your Accounts",
-      description: "Securely sync your ad platforms in just a few clicks",
+      title: t("steps.connectAccounts.title"),
+      description: t("steps.connectAccounts.description"),
     },
     {
       number: 2,
-      title: "Analyze And Track Data",
-      description: "Gain valuable insights with real-time performance metrics",
+      title: t("steps.analyzeTrackData.title"),
+      description: t("steps.analyzeTrackData.description"),
     },
     {
       number: 3,
-      title: "Optimize And Scale",
-      description: "Improve your campaigns and maximize your advertising ROI",
+      title: t("steps.optimizeScale.title"),
+      description: t("steps.optimizeScale.description"),
     },
   ];
 
@@ -74,12 +73,10 @@ export default function Home() {
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            ADVERTISING ANALYTICS DASHBOARD
+            {t("title")}
           </h1>
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
-            Manage And Analyze All Your Advertising Campaigns In One Unified
-            Dashboard. Gain Insights, Track Performance, And Optimize Results
-            Effortlessly.
+            {t("description")}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <ScrollToSupportedPlatforms />
@@ -93,7 +90,7 @@ export default function Home() {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Key Features (Why Use This Tool?)
+            {t("keyFeaturesTitle")}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
@@ -113,9 +110,9 @@ export default function Home() {
       {/* Supported Platforms Section */}
       <section id="supported-platforms" className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Supported Platforms</h2>
+          <h2 className="text-3xl font-bold mb-8">{t("supportedPlatformsTitle")}</h2>
           <p className="text-xl mb-12">
-            Seamlessly Track Data And Integrate With:
+            {t("supportedPlatformsDescription")}
           </p>
           <div className="flex justify-center flex-wrap gap-4">
             {logos.map((logo) => {
@@ -139,7 +136,7 @@ export default function Home() {
       {/* How It Works Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t("howItWorksTitle")}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
               <div key={step.number} className="text-center">
@@ -157,7 +154,7 @@ export default function Home() {
       <section id="video-section" className="py-20 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12">
-            Ready To Transform Your Advertising Strategy?
+            {t("readyToTransformTitle")}
           </h2>
           <iframe
             src="https://www.youtube.com/embed/xh9EpVkA2QY"
