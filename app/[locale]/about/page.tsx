@@ -1,16 +1,18 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function AboutPage() {
+  const t = useTranslations("About");
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
         {/* Main Heading */}
         <h1 className="text-4xl md:text-6xl font-bold mb-12 max-w-4xl">
-          ABOUT ADVERTISING ANALYTICS DASHBOARD
+          {t("title")}
         </h1>
 
         {/* Mission Statement */}

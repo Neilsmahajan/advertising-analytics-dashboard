@@ -94,5 +94,8 @@
       "mailchimp": "Mailchimp",
       "cyberimpact": "Cyberimpact"
     }
+  },
+  "About": {
+    "title": "ABOUT ADVERTISING ANALYTICS DASHBOARD"
   }
 }

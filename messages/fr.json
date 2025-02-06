@@ -94,5 +94,8 @@
       "mailchimp": "Mailchimp",
       "cyberimpact": "Cyberimpact"
     }
+  },
+  "About": {
+    "title": "À PROPOS DU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE"
   }
 }
