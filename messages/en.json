@@ -96,6 +96,19 @@
     }
   },
   "About": {
-    "title": "ABOUT ADVERTISING ANALYTICS DASHBOARD"
+    "title": "ABOUT ADVERTISING ANALYTICS DASHBOARD",
+    "missionStatement": "AT ADVERTISING ANALYTICS DASHBOARD, OUR MISSION IS TO SIMPLIFY THE WAY BUSINESSES MANAGE AND OPTIMIZE THEIR ADVERTISING CAMPAIGNS. WHETHER YOU'RE A SMALL BUSINESS OWNER OR PART OF A LARGE ENTERPRISE, WE PROVIDE THE TOOLS YOU NEED TO TRACK PERFORMANCE, GAIN INSIGHTS, AND MAXIMIZE THE IMPACT OF YOUR MARKETING STRATEGIES.",
+    "whatWeDo": "What We Do:",
+    "unifiedAnalytics": "Unified Analytics: Consolidate data from multiple ad platforms in one place.",
+    "realTimeInsights": "Real-Time Insights: Access up-to-date metrics to make informed decisions.",
+    "scalableSolutions": "Scalable Solutions: Designed to grow with your business and adapt to your needs.",
+    "whyChooseUs": "Why Choose Us?",
+    "whyChooseUsDescription": "With Advertising Analytics Dashboard, You Can:",
+    "saveTime": "Save time by managing all your campaigns from a single interface.",
+    "competitiveEdge": "Gain a competitive edge with actionable insights.",
+    "focusOnGrowth": "Focus on growth while we handle the data.",
+    "ourVision": "Our Vision",
+    "ourVisionDescription": "We Aim To Empower Businesses With Advanced Analytics And Intuitive Tools That Unlock The Full Potential Of Their Advertising Efforts. By Bridging Technology And Marketing, We Help You Reach New Heights.",
+    "callToAction": "Have questions? Interested in learning more? Contact Us or explore our Services to see how we can help your business thrive."
   }
 }

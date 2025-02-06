@@ -96,6 +96,19 @@
     }
   },
   "About": {
-    "title": "À PROPOS DU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE"
+    "title": "À PROPOS DU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE",
+    "missionStatement": "AU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE, NOTRE MISSION EST DE SIMPLIFIER LA GESTION ET L'OPTIMISATION DES CAMPAGNES PUBLICITAIRES POUR LES ENTREPRISES. QUE VOUS SOYEZ PROPRIÉTAIRE D'UNE PETITE ENTREPRISE OU FAISIEZ PARTIE D'UNE GRANDE ENTREPRISE, NOUS FOURNISSONS LES OUTILS NÉCESSAIRES POUR SUIVRE LES PERFORMANCES, OBTENIR DES INSIGHTS ET MAXIMISER L'IMPACT DE VOS STRATÉGIES MARKETING.",
+    "whatWeDo": "Ce Que Nous Faisons:",
+    "unifiedAnalytics": "Analytique Unifiée: Consolidez les données de plusieurs plateformes publicitaires en un seul endroit.",
+    "realTimeInsights": "Insights en Temps Réel: Accédez à des métriques à jour pour prendre des décisions éclairées.",
+    "scalableSolutions": "Solutions Évolutives: Conçues pour évoluer avec votre entreprise et s'adapter à vos besoins.",
+    "whyChooseUs": "Pourquoi Nous Choisir?",
+    "whyChooseUsDescription": "Avec le Tableau de Bord d'Analyse Publicitaire, Vous Pouvez:",
+    "saveTime": "Gagnez du temps en gérant toutes vos campagnes depuis une seule interface.",
+    "competitiveEdge": "Obtenez un avantage concurrentiel avec des insights exploitables.",
+    "focusOnGrowth": "Concentrez-vous sur la croissance pendant que nous gérons les données.",
+    "ourVision": "Notre Vision",
+    "ourVisionDescription": "Nous Visons à Autonomiser les Entreprises avec des Outils Avancés d'Analyse et Intuitifs qui Déverrouillent le Plein Potentiel de Leurs Efforts Publicitaires. En Alliant Technologie et Marketing, Nous Vous Aidons à Atteindre de Nouveaux Sommets.",
+    "callToAction": "Vous avez des questions? Intéressé à en savoir plus? Contactez-nous ou explorez nos Services pour voir comment nous pouvons aider votre entreprise à prospérer."
   }
 }
