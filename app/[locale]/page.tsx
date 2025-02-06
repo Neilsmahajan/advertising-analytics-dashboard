@@ -72,9 +72,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {t("title")}
-          </h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">{t("title")}</h1>
           <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
             {t("description")}
           </p>
@@ -110,10 +108,10 @@ export default function Home() {
       {/* Supported Platforms Section */}
       <section id="supported-platforms" className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">{t("supportedPlatformsTitle")}</h2>
-          <p className="text-xl mb-12">
-            {t("supportedPlatformsDescription")}
-          </p>
+          <h2 className="text-3xl font-bold mb-8">
+            {t("supportedPlatformsTitle")}
+          </h2>
+          <p className="text-xl mb-12">{t("supportedPlatformsDescription")}</p>
           <div className="flex justify-center flex-wrap gap-4">
             {logos.map((logo) => {
               const pageLink = `/${logo.replace("-logo.png", "")}`;
@@ -136,7 +134,9 @@ export default function Home() {
       {/* How It Works Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">{t("howItWorksTitle")}</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            {t("howItWorksTitle")}
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
               <div key={step.number} className="text-center">
