@@ -138,6 +138,8 @@ export default function QueryForm({
       } catch (error) {
         console.error("Error saving query:", error);
       }
+    } else {
+      alert("Please sign in to save your query.");
     }
   };
 
