@@ -4,28 +4,30 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import SignOutButton from "./sign-out-button";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function AccountInfo() {
+  const t = useTranslations("Account");
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>{t("loading")}</p>;
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p>{t("error")} {error.message}</p>;
   }
 
   if (user) {
     return (
       <>
         {/* Header Section */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-2">MY ACCOUNT</h1>
-        <p className="text-xl mb-12">Welcome {user.displayName}!</p>
+        <h1 className="text-4xl md:text-6xl font-bold mb-2">{t("title")}</h1>
+        <p className="text-xl mb-12">{t("welcome")} {user.displayName}!</p>
         <p className="text-lg mb-12">
           MANAGE YOUR PROFILE AND SAVED QUERIES HERE.
         </p>

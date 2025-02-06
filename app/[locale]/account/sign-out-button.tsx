@@ -4,6 +4,7 @@ import { useRouter } from "@/i18n/routing";
 import { signOut } from "firebase/auth";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/firebaseConfig";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 /**
@@ -11,6 +12,7 @@ import React from "react";
  * @returns
  */
 export default function SignOutButton() {
+  const t = useTranslations("Account");
   const router = useRouter();
 
   const handleSignOut = async () => {

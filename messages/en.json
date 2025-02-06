@@ -110,5 +110,27 @@
     "ourVision": "Our Vision",
     "ourVisionDescription": "We Aim To Empower Businesses With Advanced Analytics And Intuitive Tools That Unlock The Full Potential Of Their Advertising Efforts. By Bridging Technology And Marketing, We Help You Reach New Heights.",
     "callToAction": "Have questions? Interested in learning more? Contact Us or explore our Services to see how we can help your business thrive."
+  },
+  "Account": {
+    "title": "MY ACCOUNT",
+    "servicesList": {
+      "trackingData": "Tracking Data",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    },
+    "loading": "Loading...",
+    "error": "Error:",
+    "welcome": "Welcome,"
   }
 }

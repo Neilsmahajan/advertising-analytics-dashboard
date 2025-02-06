@@ -110,5 +110,27 @@
     "ourVision": "Notre Vision",
     "ourVisionDescription": "Nous Visons à Autonomiser les Entreprises avec des Outils Avancés d'Analyse et Intuitifs qui Déverrouillent le Plein Potentiel de Leurs Efforts Publicitaires. En Alliant Technologie et Marketing, Nous Vous Aidons à Atteindre de Nouveaux Sommets.",
     "callToAction": "Vous avez des questions? Intéressé à en savoir plus? Contactez-nous ou explorez nos Services pour voir comment nous pouvons aider votre entreprise à prospérer."
+  },
+  "Account": {
+    "title": "MON COMPTE",
+    "servicesList": {
+      "trackingData": "Suivi des Données",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    },
+    "loading": "Chargement...",
+    "error": "Erreur:",
+    "welcome": "Bienvenue,"
   }
 }

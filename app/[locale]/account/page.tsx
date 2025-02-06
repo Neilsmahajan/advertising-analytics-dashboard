@@ -1,27 +1,29 @@
 import QuerySection from "@/app/[locale]/account/query-section";
 import AccountInfo from "@/app/[locale]/account/account-info";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function AccountPage() {
+  const t = useTranslations("Account");
   const services = [
-    "Tracking Data",
-    "Google Analytics",
-    "Google Ads",
-    "Meta Ads",
-    "Microsoft Ads",
-    "TikTok Ads",
-    "X Ads",
-    "LinkedIn Ads",
-    "Pinterest Ads",
-    "Snapchat Ads",
-    "Amazon Ads",
-    "Spotify Ads",
-    "Mailchimp",
-    "Cyberimpact",
+    t("servicesList.trackingData"),
+    t("servicesList.googleAnalytics"),
+    t("servicesList.googleAds"),
+    t("servicesList.metaAds"),
+    t("servicesList.microsoftAds"),
+    t("servicesList.xAds"),
+    t("servicesList.tiktokAds"),
+    t("servicesList.linkedinAds"),
+    t("servicesList.pinterestAds"),
+    t("servicesList.snapchatAds"),
+    t("servicesList.amazonAds"),
+    t("servicesList.spotifyAds"),
+    t("servicesList.mailchimp"),
+    t("servicesList.cyberimpact"),
   ];
 
   return (

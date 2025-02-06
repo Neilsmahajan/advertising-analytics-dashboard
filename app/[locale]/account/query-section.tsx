@@ -20,6 +20,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface QuerySectionProps {
   title: string;
@@ -32,6 +33,7 @@ interface QuerySectionProps {
  * @returns
  */
 async function fetchUserQueries(uid: string, service: string) {
+  const t = useTranslations("Account");
   const q = query(
     collection(db, "queries"),
     where("uid", "==", uid),
