@@ -5,12 +5,14 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @constructor
  */
 export default function Footer() {
+  const t = useTranslations("Footer");
   const [user] = useAuthState(auth);
   const provider = new GoogleAuthProvider();
 
@@ -21,23 +23,23 @@ export default function Footer() {
   };
 
   const footerLinks = {
-    company: ["Home", "About", "Contact Us", "Privacy Policy", "Account"],
-    socials: ["Instagram", "Facebook", "LinkedIn"],
+    company: [t("home"), t("about"), t("contactUs"), t("privacyPolicy"), t("account")],
+    socials: [t("instagram"), t("facebook"), t("linkedin")],
     services: [
-      "Tracking Data",
-      "Google Analytics",
-      "Google Ads",
-      "Meta Ads",
-      "Microsoft Ads",
-      "X Ads",
-      "TikTok Ads",
-      "LinkedIn Ads",
-      "Pinterest Ads",
-      "Snapchat Ads",
-      "Amazon Ads",
-      "Spotify Ads",
-      "Mailchimp",
-      "Cyberimpact",
+      t("servicesList.trackingData"),
+      t("servicesList.googleAnalytics"),
+      t("servicesList.googleAds"),
+      t("servicesList.metaAds"),
+      t("servicesList.microsoftAds"),
+      t("servicesList.xAds"),
+      t("servicesList.tiktokAds"),
+      t("servicesList.linkedinAds"),
+      t("servicesList.pinterestAds"),
+      t("servicesList.snapchatAds"),
+      t("servicesList.amazonAds"),
+      t("servicesList.spotifyAds"),
+      t("servicesList.mailchimp"),
+      t("servicesList.cyberimpact"),
     ],
   };
 
@@ -57,23 +59,23 @@ export default function Footer() {
                   <Link
                     key={link}
                     href={
-                      link === "Home"
+                      link === t("home")
                         ? "/public"
-                        : link === "Facebook"
+                        : link === t("facebook")
                           ? "https://www.facebook.com/advertisinganalyticsdashboard/"
-                          : link === "Instagram"
+                          : link === t("instagram")
                             ? "https://www.instagram.com/advertisinganalyticsdashboard/"
-                            : link === "LinkedIn"
+                            : link === t("linkedin")
                               ? "https://www.linkedin.com/company/advertisinganalyticsdashboard/"
-                              : link === "Account" && !user
+                              : link === t("account") && !user
                                 ? "#"
                                 : `/${link.toLowerCase().replace(" ", "-")}`
                     }
                     onClick={
-                      link === "Account" && !user ? handleSignIn : undefined
+                      link === t("account") && !user ? handleSignIn : undefined
                     }
                     className="block py-2 hover:underline"
-                    {...(link === "Facebook"
+                    {...(link === t("facebook")
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
                   >

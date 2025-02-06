@@ -70,9 +70,9 @@
     }
   },
   "Footer": {
-    "company": "Company",
-    "socials": "Socials",
-    "services": "Services",
+    "home": "Home",
+    "about": "About",
+    "contactUs": "Contact Us",
     "privacyPolicy": "Privacy Policy",
     "account": "Account",
     "instagram": "Instagram",

@@ -70,9 +70,9 @@
     }
   },
   "Footer": {
-    "company": "Entreprise",
-    "socials": "Réseaux sociaux",
-    "services": "Services",
+    "home": "Accueil",
+    "about": "À propos",
+    "contactUs": "Contactez-nous",
     "privacyPolicy": "Politique de confidentialité",
     "account": "Compte",
     "instagram": "Instagram",
