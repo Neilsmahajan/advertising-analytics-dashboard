@@ -4,15 +4,13 @@ import ScrollToSupportedPlatforms from "@/app/[locale]/scroll-to-supported-platf
 import ScrollToVideoSection from "@/app/[locale]/scroll-to-video-section";
 import SignUpButton from "@/app/[locale]/sign-up-button";
 import React from "react";
-import {Link} from "@/i18n/routing";
-
+import { Link } from "@/i18n/routing";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function Home() {
-
   const features = [
     {
       title: "Tracking Data",

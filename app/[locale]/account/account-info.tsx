@@ -6,8 +6,8 @@ import SignOutButton from "./sign-out-button";
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function AccountInfo() {
   const [user, loading, error] = useAuthState(auth);

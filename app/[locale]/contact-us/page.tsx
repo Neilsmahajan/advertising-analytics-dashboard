@@ -2,8 +2,8 @@ import ContactForm from "@/app/[locale]/contact-us/contact-form";
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function ContactPage() {
   return (

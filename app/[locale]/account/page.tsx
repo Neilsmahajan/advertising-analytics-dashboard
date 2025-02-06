@@ -3,8 +3,8 @@ import AccountInfo from "@/app/[locale]/account/account-info";
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function AccountPage() {
   const services = [

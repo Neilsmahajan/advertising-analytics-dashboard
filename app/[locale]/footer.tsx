@@ -19,7 +19,7 @@ export default function Footer() {
       console.error("Error signing in with Google: ", error);
     });
   };
-  
+
   const footerLinks = {
     company: ["Home", "About", "Contact Us", "Privacy Policy", "Account"],
     socials: ["Instagram", "Facebook", "LinkedIn"],

@@ -7,8 +7,8 @@ import { auth } from "@/lib/firebaseConfig";
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function SignOutButton() {
   const router = useRouter();

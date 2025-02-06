@@ -26,10 +26,10 @@ interface QuerySectionProps {
 }
 
 /**
- * 
- * @param uid 
- * @param service 
- * @returns 
+ *
+ * @param uid
+ * @param service
+ * @returns
  */
 async function fetchUserQueries(uid: string, service: string) {
   const q = query(
@@ -47,9 +47,9 @@ async function fetchUserQueries(uid: string, service: string) {
 }
 
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 export default function QuerySection({ title }: QuerySectionProps) {
   const [queries, setQueries] = useState<

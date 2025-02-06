@@ -8,8 +8,8 @@ import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function MetaAdsQueryForm() {
   const queryFields = {

@@ -1,8 +1,8 @@
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function PrivacyPolicyPage() {
   return (

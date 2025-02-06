@@ -24,9 +24,9 @@ interface GoogleAnalyticsResultsSectionProps {
 }
 
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 export default function GoogleAnalyticsResultsSection({
   results,

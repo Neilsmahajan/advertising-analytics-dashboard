@@ -20,9 +20,9 @@ interface TrackingDataResultsSectionProps {
 }
 
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ * @param param0
+ * @returns
  */
 export default function TrackingDataResultsSection({
   results,

@@ -2,8 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 export default function Loading() {
   return (
