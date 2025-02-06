@@ -143,5 +143,23 @@
     "run": "Exécuter",
     "delete": "Supprimer",
     "signOut": "SE DÉCONNECTER"
+  },
+  "ContactUs": {
+    "title": "CONTACTEZ-NOUS",
+    "subheading": "Vous avez des questions? Contactez-nous pour voir comment nous pouvons aider votre entreprise à prospérer",
+    "form": {
+      "name": "Nom",
+      "email": "Courriel",
+      "phone": "Téléphone",
+      "message": "Message",
+      "namePlaceholder": "Entrez le nom",
+      "emailPlaceholder": "Entrez le courriel",
+      "phonePlaceholder": "Entrez le téléphone",
+      "messagePlaceholder": "Entrez le message",
+      "sendButton": "ENVOYER",
+      "nameError": "Le nom doit comporter au moins 2 caractères.",
+      "emailError": "Veuillez entrer une adresse courriel valide.",
+      "messageError": "Le message doit comporter au moins 10 caractères."
+    }
   }
 }

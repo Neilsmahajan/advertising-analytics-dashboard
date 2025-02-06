@@ -15,22 +15,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function ContactForm() {
+  const t = useTranslations("ContactUs");
   const formSchema = z.object({
     name: z.string().min(2, {
-      message: "Name must be at least 2 characters.",
+      message: t("form.nameError"),
     }),
     email: z.string().email({
-      message: "Please enter a valid email address.",
+      message: t("form.emailError"),
     }),
     phone: z.string().optional(),
     message: z.string().min(10, {
-      message: "Message must be at least 10 characters.",
+      message: t("form.messageError"),
     }),
   });
 
@@ -61,11 +63,11 @@ export default function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-white">
-                Name <span className="text-red-400">*</span>
+                {t("form.name")} <span className="text-red-400">*</span>
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter name"
+                  placeholder={t("form.namePlaceholder")}
                   className="bg-white/20 border-none text-white placeholder:text-white/60"
                   {...field}
                 />
@@ -80,11 +82,11 @@ export default function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-white">
-                Email <span className="text-red-400">*</span>
+                {t("form.email")} <span className="text-red-400">*</span>
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter email"
+                  placeholder={t("form.emailPlaceholder")}
                   type="email"
                   className="bg-white/20 border-none text-white placeholder:text-white/60"
                   {...field}
@@ -99,10 +101,10 @@ export default function ContactForm() {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-white">Phone</FormLabel>
+              <FormLabel className="text-white">{t("form.phone")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Enter phone"
+                  placeholder={t("form.phonePlaceholder")}
                   type="tel"
                   className="bg-white/20 border-none text-white placeholder:text-white/60"
                   {...field}
@@ -118,11 +120,11 @@ export default function ContactForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-white">
-                Message <span className="text-red-400">*</span>
+                {t("form.message")} <span className="text-red-400">*</span>
               </FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Enter message"
+                  placeholder={t("form.messagePlaceholder")}
                   className="bg-white/20 border-none text-white placeholder:text-white/60 min-h-[150px]"
                   {...field}
                 />
@@ -136,7 +138,7 @@ export default function ContactForm() {
           size="lg"
           className="text-white bg-[#0077be] hover:bg-[#005f9e]"
         >
-          SEND
+          {t("form.sendButton")}
         </Button>
       </form>
     </Form>

@@ -143,5 +143,23 @@
     "run": "Run",
     "delete": "Delete",
     "signOut": "SIGN OUT"
+  },
+  "ContactUs": {
+    "title": "CONTACT US",
+    "subheading": "Have Questions? Contact Us To See How We Can Help Your Business Thrive",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "namePlaceholder": "Enter name",
+      "emailPlaceholder": "Enter email",
+      "phonePlaceholder": "Enter phone",
+      "messagePlaceholder": "Enter message",
+      "sendButton": "SEND",
+      "nameError": "Name must be at least 2 characters.",
+      "emailError": "Please enter a valid email address.",
+      "messageError": "Message must be at least 10 characters."
+    }
   }
 }
