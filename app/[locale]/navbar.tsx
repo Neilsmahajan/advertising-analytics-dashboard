@@ -95,8 +95,10 @@ export default function Navbar() {
                   <DropdownMenuItem
                     key={lang}
                     onClick={() => {
+                      const pathWithoutLocale =
+                        window.location.pathname.replace(/^\/[a-z]{2}/, "");
                       const newLocale = index === 0 ? "en" : "fr";
-                      window.location.href = `/${newLocale}`;
+                      window.location.href = `/${newLocale}${pathWithoutLocale}`;
                     }}
                   >
                     {lang}
