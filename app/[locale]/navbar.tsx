@@ -15,31 +15,14 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
-
-const services = [
-  "Tracking Data",
-  "Google Analytics",
-  "Google Ads",
-  "Meta Ads",
-  "Microsoft Ads",
-  "TikTok Ads",
-  "X Ads",
-  "LinkedIn Ads",
-  "Pinterest Ads",
-  "Snapchat Ads",
-  "Amazon Ads",
-  "Spotify Ads",
-  "Mailchimp",
-  "Cyberimpact",
-];
-
-const languages = ["English", "French"];
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @constructor
  */
 export default function Navbar() {
+  const t = useTranslations("Navbar");
   const [user] = useAuthState(auth);
   const provider = new GoogleAuthProvider();
 
@@ -48,6 +31,25 @@ export default function Navbar() {
       console.error("Error signing in with Google: ", error);
     });
   };
+
+  const services = [
+    t("servicesList.trackingData"),
+    t("servicesList.googleAnalytics"),
+    t("servicesList.googleAds"),
+    t("servicesList.metaAds"),
+    t("servicesList.microsoftAds"),
+    t("servicesList.tiktokAds"),
+    t("servicesList.xAds"),
+    t("servicesList.linkedinAds"),
+    t("servicesList.pinterestAds"),
+    t("servicesList.snapchatAds"),
+    t("servicesList.amazonAds"),
+    t("servicesList.spotifyAds"),
+    t("servicesList.mailchimp"),
+    t("servicesList.cyberimpact"),
+  ];
+
+  const languages = [t("languages.english"), t("languages.french")];
 
   useEffect(() => {
     document.body.classList.add("overflow-y-scroll");
@@ -70,13 +72,13 @@ export default function Navbar() {
             </Link>
             <div className="hidden md:flex items-center gap-6">
               <Link href="/" className="text-sm font-medium">
-                Home
+                {t("home")}
               </Link>
               <Link href="/about" className="text-sm font-medium">
-                About
+                {t("about")}
               </Link>
               <Link href="/contact-us" className="text-sm font-medium">
-                Contact Us
+                {t("contactUs")}
               </Link>
             </div>
           </div>
@@ -85,7 +87,7 @@ export default function Navbar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center gap-1">
-                  English <ChevronDown className="h-4 w-4" />
+                  {t("language")} <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -97,18 +99,18 @@ export default function Navbar() {
 
             {user ? (
               <Link href="/account">
-                <Button variant="ghost">Account</Button>
+                <Button variant="ghost">{t("account")}</Button>
               </Link>
             ) : (
               <Button variant="ghost" onClick={handleSignIn}>
-                Sign In
+                {t("signIn")}
               </Button>
             )}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center gap-1">
-                  Services <ChevronDown className="h-4 w-4" />
+                  {t("services")} <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
