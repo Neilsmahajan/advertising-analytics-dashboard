@@ -161,5 +161,32 @@
       "emailError": "Please enter a valid email address.",
       "messageError": "Message must be at least 10 characters."
     }
+  },
+  "PrivacyPolicy": {
+    "title": "PRIVACY POLICY",
+    "introduction": "YOUR PRIVACY IS IMPORTANT TO US AT ADVERTISING ANALYTICS DASHBOARD. THIS PRIVACY POLICY OUTLINES THE TYPES OF INFORMATION WE COLLECT, HOW WE USE IT, AND THE STEPS WE TAKE TO PROTECT YOUR DATA.",
+    "informationWeCollect": "Information We Collect",
+    "personalInformation": "Personal Information: When you create an account, we collect details such as your name, email address, and any other data you provide during registration.",
+    "usageData": "Usage Data: We track how you interact with our website, including the services you use, the pages you visit, and your preferences, to enhance your experience.",
+    "adPlatformData": "Ad Platform Data: If you connect your ad accounts, we access campaign performance metrics, but we never modify or interact with your ad campaigns.",
+    "howWeUseYourInformation": "How We Use Your Information",
+    "howWeUseYourInformationDescription": "We Use Your Information To:",
+    "provideAccess": "Provide access to our platform and its features.",
+    "improveExperience": "Improve and personalize your experience.",
+    "communicateUpdates": "Communicate updates, promotional offers, and support-related information.",
+    "maintainSecurity": "Maintain the security and integrity of your data.",
+    "dataProtection": "Data Protection",
+    "dataProtectionDescription": "We implement industry-standard security measures to safeguard your personal information and ad platform data. Your data is encrypted and stored securely, and we regularly update our systems to address emerging security risks.",
+    "sharingYourInformation": "Sharing Your Information",
+    "sharingYourInformationDescription": "We do not sell, trade, or rent your personal information to third parties. We may share your data with trusted third-party services only when necessary for operation, and these parties are required to maintain the confidentiality of your information.",
+    "yourRights": "Your Rights",
+    "yourRightsDescription": "Your Have The Right To:",
+    "accessUpdate": "Access and update your personal information.",
+    "deleteAccount": "Delete your account and associated data.",
+    "optOut": "Opt-out of marketing communications by updating your preferences.",
+    "changesToPolicy": "Changes To This Policy",
+    "changesToPolicyDescription": "We may update this Privacy Policy periodically. Any changes will be posted on this page with an updated revision date.",
+    "contactUs": "Contact Us",
+    "contactUsDescription": "If you have any questions about this Privacy Policy, please contact us."
   }
 }

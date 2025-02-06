@@ -161,5 +161,32 @@
       "emailError": "Veuillez entrer une adresse courriel valide.",
       "messageError": "Le message doit comporter au moins 10 caractères."
     }
+  },
+  "PrivacyPolicy": {
+    "title": "POLITIQUE DE CONFIDENTIALITÉ",
+    "introduction": "VOTRE CONFIDENTIALITÉ EST IMPORTANTE POUR NOUS AU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE. CETTE POLITIQUE DE CONFIDENTIALITÉ DÉCRIT LES TYPES D'INFORMATIONS QUE NOUS COLLECTONS, COMMENT NOUS LES UTILISONS ET LES MESURES QUE NOUS PRENONS POUR PROTÉGER VOS DONNÉES.",
+    "informationWeCollect": "Informations Que Nous Collectons",
+    "personalInformation": "Informations Personnelles: Lorsque vous créez un compte, nous collectons des détails tels que votre nom, adresse courriel et toutes autres données que vous fournissez lors de l'inscription.",
+    "usageData": "Données d'Utilisation: Nous suivons comment vous interagissez avec notre site web, y compris les services que vous utilisez, les pages que vous visitez et vos préférences, pour améliorer votre expérience.",
+    "adPlatformData": "Données de Plateforme Publicitaire: Si vous connectez vos comptes publicitaires, nous accédons aux métriques de performance des campagnes, mais nous ne modifions ni n'interagissons jamais avec vos campagnes publicitaires.",
+    "howWeUseYourInformation": "Comment Nous Utilisons Vos Informations",
+    "howWeUseYourInformationDescription": "Nous Utilisons Vos Informations Pour:",
+    "provideAccess": "Fournir l'accès à notre plateforme et à ses fonctionnalités.",
+    "improveExperience": "Améliorer et personnaliser votre expérience.",
+    "communicateUpdates": "Communiquer des mises à jour, des offres promotionnelles et des informations liées au support.",
+    "maintainSecurity": "Maintenir la sécurité et l'intégrité de vos données.",
+    "dataProtection": "Protection des Données",
+    "dataProtectionDescription": "Nous mettons en œuvre des mesures de sécurité conformes aux normes de l'industrie pour protéger vos informations personnelles et les données de la plateforme publicitaire. Vos données sont cryptées et stockées en toute sécurité, et nous mettons régulièrement à jour nos systèmes pour faire face aux risques de sécurité émergents.",
+    "sharingYourInformation": "Partage de Vos Informations",
+    "sharingYourInformationDescription": "Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers. Nous pouvons partager vos données avec des services tiers de confiance uniquement lorsque cela est nécessaire pour le fonctionnement, et ces parties sont tenues de maintenir la confidentialité de vos informations.",
+    "yourRights": "Vos Droits",
+    "yourRightsDescription": "Vous Avez Le Droit De:",
+    "accessUpdate": "Accéder et mettre à jour vos informations personnelles.",
+    "deleteAccount": "Supprimer votre compte et les données associées.",
+    "optOut": "Vous désinscrire des communications marketing en mettant à jour vos préférences.",
+    "changesToPolicy": "Modifications de Cette Politique",
+    "changesToPolicyDescription": "Nous pouvons mettre à jour cette politique de confidentialité périodiquement. Toute modification sera publiée sur cette page avec une date de révision mise à jour.",
+    "contactUs": "Contactez-Nous",
+    "contactUsDescription": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter."
   }
 }
