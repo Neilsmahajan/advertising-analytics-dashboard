@@ -1,0 +1,98 @@
+{
+  "Home": {
+    "title": "ADVERTISING ANALYTICS DASHBOARD",
+    "description": "Manage And Analyze All Your Advertising Campaigns In One Unified Dashboard. Gain Insights, Track Performance, And Optimize Results Effortlessly.",
+    "keyFeaturesTitle": "Key Features (Why Use This Tool?)",
+    "supportedPlatformsTitle": "Supported Platforms",
+    "supportedPlatformsDescription": "Seamlessly Track Data And Integrate With:",
+    "howItWorksTitle": "How It Works",
+    "readyToTransformTitle": "Ready To Transform Your Advertising Strategy?",
+    "features": {
+      "trackingData": {
+        "title": "Tracking Data",
+        "description": "Find all analytics tags and tracking services on any website."
+      },
+      "unifiedDashboard": {
+        "title": "Unified Dashboard",
+        "description": "Fetch data from Google, Meta, TikTok, and more in one interface."
+      },
+      "realTimeData": {
+        "title": "Real-Time Data",
+        "description": "Multi-platform tracking with real-time insights."
+      },
+      "multipleAccounts": {
+        "title": "Multiple Accounts",
+        "description": "Save multiple ad accounts and switch between saved metrics seamlessly."
+      }
+    },
+    "steps": {
+      "connectAccounts": {
+        "title": "Connect Your Accounts",
+        "description": "Securely sync your ad platforms in just a few clicks"
+      },
+      "analyzeTrackData": {
+        "title": "Analyze And Track Data",
+        "description": "Gain valuable insights with real-time performance metrics"
+      },
+      "optimizeScale": {
+        "title": "Optimize And Scale",
+        "description": "Improve your campaigns and maximize your advertising ROI"
+      }
+    }
+  },
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "contactUs": "Contact Us",
+    "account": "Account",
+    "signIn": "Sign In",
+    "services": "Services",
+    "language": "English",
+    "servicesList": {
+      "trackingData": "Tracking Data",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    },
+    "languages": {
+      "english": "English",
+      "french": "French"
+    }
+  },
+  "Footer": {
+    "company": "Company",
+    "socials": "Socials",
+    "services": "Services",
+    "privacyPolicy": "Privacy Policy",
+    "account": "Account",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "servicesList": {
+      "trackingData": "Tracking Data",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    }
+  }
+}

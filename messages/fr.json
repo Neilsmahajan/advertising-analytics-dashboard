@@ -1,0 +1,98 @@
+{
+  "Home": {
+    "title": "TABLEAU DE BORD D'ANALYSE PUBLICITAIRE",
+    "description": "Gérer et analyser toutes vos campagnes publicitaires dans un tableau de bord unifié. Obtenez des informations, suivez les performances et optimisez les résultats sans effort.",
+    "keyFeaturesTitle": "Caractéristiques Clés (Pourquoi Utiliser Cet Outil?)",
+    "supportedPlatformsTitle": "Plateformes Supportées",
+    "supportedPlatformsDescription": "Suivez les données et intégrez-vous sans effort avec :",
+    "howItWorksTitle": "Comment Ça Marche",
+    "readyToTransformTitle": "Prêt à Transformer Votre Stratégie Publicitaire?",
+    "features": {
+      "trackingData": {
+        "title": "Suivi des Données",
+        "description": "Trouvez toutes les balises d'analyse et les services de suivi sur n'importe quel site web."
+      },
+      "unifiedDashboard": {
+        "title": "Tableau de Bord Unifié",
+        "description": "Récupérez des données de Google, Meta, TikTok et plus encore dans une seule interface."
+      },
+      "realTimeData": {
+        "title": "Données en Temps Réel",
+        "description": "Suivi multi-plateforme avec des informations en temps réel."
+      },
+      "multipleAccounts": {
+        "title": "Comptes Multiples",
+        "description": "Enregistrez plusieurs comptes publicitaires et passez d'un ensemble de métriques sauvegardées à un autre sans effort."
+      }
+    },
+    "steps": {
+      "connectAccounts": {
+        "title": "Connectez Vos Comptes",
+        "description": "Synchronisez en toute sécurité vos plateformes publicitaires en quelques clics"
+      },
+      "analyzeTrackData": {
+        "title": "Analysez et Suivez les Données",
+        "description": "Obtenez des informations précieuses avec des métriques de performance en temps réel"
+      },
+      "optimizeScale": {
+        "title": "Optimisez et Évoluez",
+        "description": "Améliorez vos campagnes et maximisez votre retour sur investissement publicitaire"
+      }
+    }
+  },
+  "Navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contactUs": "Contactez-nous",
+    "account": "Compte",
+    "signIn": "Se connecter",
+    "services": "Services",
+    "language": "Français",
+    "servicesList": {
+      "trackingData": "Suivi des Données",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    },
+    "languages": {
+      "english": "Anglais",
+      "french": "Français"
+    }
+  },
+  "Footer": {
+    "company": "Entreprise",
+    "socials": "Réseaux sociaux",
+    "services": "Services",
+    "privacyPolicy": "Politique de confidentialité",
+    "account": "Compte",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "servicesList": {
+      "trackingData": "Suivi des Données",
+      "googleAnalytics": "Google Analytics",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "microsoftAds": "Microsoft Ads",
+      "tiktokAds": "TikTok Ads",
+      "xAds": "X Ads",
+      "linkedinAds": "LinkedIn Ads",
+      "pinterestAds": "Pinterest Ads",
+      "snapchatAds": "Snapchat Ads",
+      "amazonAds": "Amazon Ads",
+      "spotifyAds": "Spotify Ads",
+      "mailchimp": "Mailchimp",
+      "cyberimpact": "Cyberimpact"
+    }
+  }
+}
