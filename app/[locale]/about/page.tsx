@@ -16,9 +16,7 @@ export default function AboutPage() {
         </h1>
 
         {/* Mission Statement */}
-        <p className="text-xl mb-16 max-w-4xl">
-          {t("missionStatement")}
-        </p>
+        <p className="text-xl mb-16 max-w-4xl">{t("missionStatement")}</p>
 
         {/* What We Do Section */}
         <section className="mb-16">
@@ -48,9 +46,7 @@ export default function AboutPage() {
         {/* Why Choose Us Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">{t("whyChooseUs")}</h2>
-          <p className="text-xl mb-6">
-            {t("whyChooseUsDescription")}
-          </p>
+          <p className="text-xl mb-6">{t("whyChooseUsDescription")}</p>
           <ul className="space-y-6">
             <li className="flex items-start">
               <span className="mr-3">•</span>
@@ -70,16 +66,12 @@ export default function AboutPage() {
         {/* Our Vision Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">{t("ourVision")}</h2>
-          <p className="text-xl max-w-4xl">
-            {t("ourVisionDescription")}
-          </p>
+          <p className="text-xl max-w-4xl">{t("ourVisionDescription")}</p>
         </section>
 
         {/* Call to Action */}
         <section className="text-xl">
-          <p>
-            {t("callToAction")}
-          </p>
+          <p>{t("callToAction")}</p>
         </section>
       </div>
     </div>

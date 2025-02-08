@@ -14,18 +14,20 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-4xl md:text-6xl font-bold mb-8">{t("title")}</h1>
 
         {/* Introduction */}
-        <p className="text-xl mb-16 max-w-4xl">
-          {t("introduction")}
-        </p>
+        <p className="text-xl mb-16 max-w-4xl">{t("introduction")}</p>
 
         {/* Information We Collect Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">{t("informationWeCollect")}</h2>
+          <h2 className="text-3xl font-bold mb-8">
+            {t("informationWeCollect")}
+          </h2>
           <ul className="space-y-6">
             <li className="flex items-start">
               <span className="mr-3">•</span>
               <div>
-                <span className="font-semibold">{t("personalInformation")}</span>
+                <span className="font-semibold">
+                  {t("personalInformation")}
+                </span>
               </div>
             </li>
             <li className="flex items-start">
@@ -45,8 +47,12 @@ export default function PrivacyPolicyPage() {
 
         {/* How We Use Your Information Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">{t("howWeUseYourInformation")}</h2>
-          <p className="text-xl mb-6">{t("howWeUseYourInformationDescription")}</p>
+          <h2 className="text-3xl font-bold mb-8">
+            {t("howWeUseYourInformation")}
+          </h2>
+          <p className="text-xl mb-6">
+            {t("howWeUseYourInformationDescription")}
+          </p>
           <ul className="space-y-4">
             <li className="flex items-start">
               <span className="mr-3">•</span>
@@ -70,17 +76,15 @@ export default function PrivacyPolicyPage() {
         {/* Data Protection Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">{t("dataProtection")}</h2>
-          <p className="text-xl">
-            {t("dataProtectionDescription")}
-          </p>
+          <p className="text-xl">{t("dataProtectionDescription")}</p>
         </section>
 
         {/* Sharing Your Information Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">{t("sharingYourInformation")}</h2>
-          <p className="text-xl">
-            {t("sharingYourInformationDescription")}
-          </p>
+          <h2 className="text-3xl font-bold mb-8">
+            {t("sharingYourInformation")}
+          </h2>
+          <p className="text-xl">{t("sharingYourInformationDescription")}</p>
         </section>
 
         {/* Your Rights Section */}
@@ -106,9 +110,7 @@ export default function PrivacyPolicyPage() {
         {/* Changes To This Policy Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">{t("changesToPolicy")}</h2>
-          <p className="text-xl">
-            {t("changesToPolicyDescription")}
-          </p>
+          <p className="text-xl">{t("changesToPolicyDescription")}</p>
         </section>
 
         {/* Contact Us Section */}

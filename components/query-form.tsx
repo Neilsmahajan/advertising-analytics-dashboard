@@ -172,7 +172,9 @@ export default function QueryForm({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">{t("queryName")}</label>
+          <label className="block text-sm font-medium mb-2">
+            {t("queryName")}
+          </label>
           <div className="flex gap-4">
             <Input
               type="text"

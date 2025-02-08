@@ -15,9 +15,7 @@ export default function ContactPage() {
         <h1 className="text-4xl md:text-6xl font-bold mb-6">{t("title")}</h1>
 
         {/* Subheading */}
-        <p className="text-xl md:text-2xl mb-12 max-w-3xl">
-          {t("subheading")}
-        </p>
+        <p className="text-xl md:text-2xl mb-12 max-w-3xl">{t("subheading")}</p>
 
         {/* Contact Form */}
         <ContactForm />

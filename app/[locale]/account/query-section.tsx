@@ -95,9 +95,7 @@ export default function QuerySection({ title }: QuerySectionProps) {
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-2">
         {queries.length === 0 ? (
-          <div className="pl-4 opacity-50">
-            {t("noSavedQueries")}
-          </div>
+          <div className="pl-4 opacity-50">{t("noSavedQueries")}</div>
         ) : (
           queries.map((query) => (
             <div

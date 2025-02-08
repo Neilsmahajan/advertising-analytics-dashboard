@@ -19,7 +19,11 @@ export default function AccountInfo() {
   }
 
   if (error) {
-    return <p>{t("error")} {error.message}</p>;
+    return (
+      <p>
+        {t("error")} {error.message}
+      </p>
+    );
   }
 
   if (user) {
@@ -27,10 +31,10 @@ export default function AccountInfo() {
       <>
         {/* Header Section */}
         <h1 className="text-4xl md:text-6xl font-bold mb-2">{t("title")}</h1>
-        <p className="text-xl mb-12">{t("welcome")} {user.displayName}!</p>
-        <p className="text-lg mb-12">
-          {t("manageProfile")}
+        <p className="text-xl mb-12">
+          {t("welcome")} {user.displayName}!
         </p>
+        <p className="text-lg mb-12">{t("manageProfile")}</p>
 
         {/* Profile Information Section */}
         <section className="mb-12">
