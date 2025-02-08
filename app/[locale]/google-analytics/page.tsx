@@ -2,12 +2,14 @@ import CollapsibleSection from "@/components/collapsible-section";
 import QueryForm from "@/app/[locale]/google-analytics/google-analytics-query-form";
 import Image from "next/image";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function GoogleAnalyticsPage() {
+  const t = useTranslations("GoogleAnalyticsPage");
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
@@ -20,41 +22,29 @@ export default function GoogleAnalyticsPage() {
             height={50}
             className="max-w-full mr-4"
           />
-          <h1 className="text-4xl md:text-6xl font-bold">GOOGLE ANALYTICS</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">{t("title")}</h1>
         </div>
 
         {/* Instructions Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-          <p className="text-lg mb-6">
-            Follow These Steps To Use This Application With Your Google
-            Analytics Data:
-          </p>
+          <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
+          <p className="text-lg mb-6">{t("followTheseSteps")}</p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>Go to your Google Analytics Dashboard.</li>
+            <li>{t("goToGoogleAnalyticsDashboard")}</li>
             <li>
-              Navigate to Admin &gt; Account &gt; Account access management
+              {t("navigateToAdmin")}
               <ul className="list-disc pl-6 mt-2 space-y-2">
-                <li>
-                  Add the following email:
-                  google-analytics@advertisinganalytics-dashboard.iam.gserviceaccount.com
-                </li>
-                <li>Grant Viewer role access.</li>
+                <li>{t("addTheFollowing")}</li>
+                <li>{t("grantViewerRoll")}</li>
               </ul>
             </li>
-            <li>
-              Get your Google Analytics Property ID (e.g., 469573948) from Admin
-              &gt; Property &gt; Property details.
-            </li>
-            <li>
-              Enter the Property ID below, along with the desired date range,
-              and click Get Analytics.
-            </li>
+            <li>{t("getYourGoogle")}</li>
+            <li>{t("enterTheProperty")}</li>
           </ol>
 
           {/* Tutorial Section */}
           <div className="mt-8">
-            <CollapsibleSection title="VIEW TUTORIAL">
+            <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.youtube.com/embed/xh9EpVkA2QY"
