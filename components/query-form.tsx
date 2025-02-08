@@ -201,7 +201,7 @@ export default function QueryForm({
             </label>
             <Input
               type={field.includes("Date") ? "date" : "text"}
-              placeholder={`t("enter") ${queryFields[field]}`}
+              placeholder={t("enter") + " " + queryFields[field]}
               value={
                 queryData[field] instanceof Date
                   ? queryData[field].toISOString().split("T")[0]
