@@ -245,5 +245,18 @@
     "propertyId": "Identifiant de la Propriété",
     "startDate": "Date de Début",
     "endDate": "Date de Fin"
+  },
+  "MetaAdsPage": {
+    "title": "META ADS",
+    "instructions": "Instructions",
+    "followTheseSteps": "Suivez ces étapes pour utiliser cette application avec vos données Meta Ads:",
+    "goToMetaAdsDashboard": "Allez sur votre tableau de bord Meta Ads.",
+    "logInAndNavigate": "Connectez-vous et naviguez vers Paramètres de l'entreprise en bas à gauche.",
+    "noteAdAccountId": "Notez votre identifiant de compte publicitaire dans le menu déroulant en haut à gauche.",
+    "underAccountsApps": "Sous Comptes > Applications > Ajouter et créer une application si vous n'en avez pas déjà créé une.",
+    "navigateToUsers": "Naviguez vers Utilisateurs > Utilisateurs système > Ajouter et créer un utilisateur système administrateur avec accès à votre application et à tout autre actif si vous n'en avez pas créé un.",
+    "retrieveAccessToken": "Récupérez votre jeton d'accès pour l'utilisateur système en cliquant sur Générer un jeton avec les autorisations maximales.",
+    "enterAdAccountId": "Entrez votre identifiant de compte publicitaire et votre jeton d'accès ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
+    "viewTutorial": "VOIR LE TUTORIEL"
   }
 }

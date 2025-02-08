@@ -245,5 +245,18 @@
     "propertyId": "Property ID",
     "startDate": "Start Date",
     "endDate": "End Date"
+  },
+  "MetaAdsPage": {
+    "title": "META ADS",
+    "instructions": "Instructions",
+    "followTheseSteps": "Follow These Steps To Use This Application With Your Meta Ads Data:",
+    "goToMetaAdsDashboard": "Go to your Meta Ads Dashboard.",
+    "logInAndNavigate": "Log in and navigate to Business Settings on the bottom left.",
+    "noteAdAccountId": "Note your Ad Account ID on the top left drop down.",
+    "underAccountsApps": "Under Accounts > Apps > Add and create an App if you have not created one already.",
+    "navigateToUsers": "Navigate to Users > System Users > Add and create an admin system user with access to your app and any other assets if you have not created one.",
+    "retrieveAccessToken": "Retrieve your access token for the system user by clicking Generate Token with the maximum permissions.",
+    "enterAdAccountId": "Enter your Ad Account ID and Access Token below, along with the desired date range, and click Get Analytics.",
+    "viewTutorial": "VIEW TUTORIAL"
   }
 }

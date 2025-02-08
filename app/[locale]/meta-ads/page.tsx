@@ -2,12 +2,14 @@ import CollapsibleSection from "@/components/collapsible-section";
 import MetaAdsQueryForm from "@/app/[locale]/meta-ads/meta-ads-query-form";
 import Image from "next/image";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function MetaAdsPage() {
+  const t = useTranslations("MetaAdsPage");
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
@@ -20,40 +22,25 @@ export default function MetaAdsPage() {
             height={50}
             className="max-w-full mr-4"
           />
-          <h1 className="text-4xl md:text-6xl font-bold">META ADS</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">{t("title")}</h1>
         </div>
         {/* Instructions Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-          <p className="text-lg mb-6">
-            Follow These Steps To Use This Application With Your Meta Ads Data:
-          </p>
+          <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
+          <p className="text-lg mb-6">{t("followTheseSteps")}</p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>Go to your Meta Ads Dashboard</li>
-            <li>Log in and navigate to Business Settings on the bottom left</li>
-            <li>Note your Ad Account ID on the top left drop down</li>
-            <li>
-              Under Accounts&gt;Apps&gt;Add and create an App if you have not
-              created one already
-            </li>
-            <li>
-              Navigate to Users&gt;System Users&gt;Add and create an admin
-              system user with access to your app and any other assets if you
-              have not created one
-            </li>
-            <li>
-              Retrieve your access token for the system user by clicking
-              Generate Token with the maximum permissions
-            </li>
-            <li>
-              Enter your Ad Account ID and Access Token below, along with the
-              desired date range, and click Get Analytics
-            </li>
+            <li>{t("goToMetaAdsDashboard")}</li>
+            <li>{t("logInAndNavigate")}</li>
+            <li>{t("noteAdAccountId")}</li>
+            <li>{t("underAccountsApps")}</li>
+            <li>{t("navigateToUsers")}</li>
+            <li>{t("retrieveAccessToken")}</li>
+            <li>{t("enterAdAccountId")}</li>
           </ol>
 
           {/* Tutorial Section */}
           <div className="mt-8">
-            <CollapsibleSection title="VIEW TUTORIAL">
+            <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.youtube.com/embed/xh9EpVkA2QY"
