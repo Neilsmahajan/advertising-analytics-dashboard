@@ -198,5 +198,26 @@
     "saveQuery": "ENREGISTRER LA REQUÊTE",
     "enter": "Entrez",
     "analyze": "Analyser"
+  },
+  "ResultsSection": {
+    "downloadReport": "TÉLÉCHARGER LE RAPPORT",
+    "results": "Résultats:",
+    "date": "Date",
+    "sessions": "Sessions",
+    "bouceRate": "Taux de Rebond",
+    "keyEvents": "Événements Clés",
+    "dateStart": "Date de Début",
+    "dateStop": "Date de Fin",
+    "impressions": "Impressions",
+    "clicks": "Clics",
+    "spend": "Dépenses",
+    "uniqueClicks": "Clics Uniques",
+    "cpm": "CPM",
+    "reach": "Portée",
+    "resultsWillAppear": "Les résultats apparaîtront ici après l'analyse",
+    "queryInformation": "Informations sur la Requête:",
+    "service": "Service:",
+    "queryName": "Nom de la Requête:",
+    "queryData": "Données de la Requête:"
   }
 }

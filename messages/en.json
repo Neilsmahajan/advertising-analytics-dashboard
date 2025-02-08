@@ -198,5 +198,26 @@
     "saveQuery": "SAVE QUERY",
     "enter": "Enter",
     "analyze": "Analyze"
+  },
+  "ResultsSection": {
+    "downloadReport": "DOWNLOAD REPORT",
+    "results": "Results:",
+    "date": "Date",
+    "sessions": "Sessions",
+    "bouceRate": "Bounce Rate",
+    "keyEvents": "Key Events",
+    "dateStart": "Date Start",
+    "dateStop": "Date Stop",
+    "impressions": "Impressions",
+    "clicks": "Clicks",
+    "spend": "Spend",
+    "uniqueClicks": "Unique Clicks",
+    "cpm": "CPM",
+    "reach": "Reach",
+    "resultsWillAppear": "Results will appear here after analysis",
+    "queryInformation": "Query Information:",
+    "service": "Service:",
+    "queryName": "Query Name:",
+    "queryData": "Query Data:"
   }
 }
