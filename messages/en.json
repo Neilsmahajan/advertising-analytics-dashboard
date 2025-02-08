@@ -240,5 +240,10 @@
     "getYourGoogle": "Get your Google Analytics Property ID (e.g., 469573948) from Admin &gt; Property &gt; Property details.",
     "enterTheProperty": "Enter the Property ID below, along with the desired date range, and click Get Analytics.",
     "viewTutorial": "VIEW TUTORIAL"
+  },
+  "GoogleAnalyticsQueryForm": {
+    "propertyId": "Property ID",
+    "startDate": "Start Date",
+    "endDate": "End Date"
   }
 }

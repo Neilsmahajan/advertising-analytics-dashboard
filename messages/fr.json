@@ -240,5 +240,10 @@
     "getYourGoogle": "Obtenez votre identifiant de propriété Google Analytics (par exemple, 469573948) depuis Admin &gt; Propriété &gt; Détails de la propriété.",
     "enterTheProperty": "Entrez l'identifiant de la propriété ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
     "viewTutorial": "VOIR LE TUTORIEL"
+  },
+  "GoogleAnalyticsQueryForm": {
+    "propertyId": "Identifiant de la Propriété",
+    "startDate": "Date de Début",
+    "endDate": "Date de Fin"
   }
 }

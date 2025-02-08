@@ -6,16 +6,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function GoogleAnalyticsQueryForm() {
+  const t = useTranslations("GoogleAnalyticsQueryForm");
   const queryFields = {
-    propertyID: "Property ID",
-    startDate: "Start Date",
-    endDate: "End Date",
+    propertyID: t("propertyId"),
+    startDate: t("startDate"),
+    endDate: t("endDate"),
   };
 
   const [results, setResults] = useState<Record<string, unknown>>({});
