@@ -226,6 +226,9 @@
     "enterUrl": "Enter your website URL to find all of the Analytics and Tracking tags on your website.",
     "viewTutorial": "VIEW TUTORIAL"
   },
+  "TrackingDataQueryForm": {
+    "websiteUrl": "Website URL"
+  },
   "GoogleAnalyticsPage": {
     "title": "GOOGLE ANALYTICS",
     "instructions": "Instructions",

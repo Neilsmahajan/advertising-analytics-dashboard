@@ -226,6 +226,9 @@
     "enterUrl": "Entrez l'URL de votre site web pour trouver toutes les balises d'analyse et de suivi sur votre site.",
     "viewTutorial": "VOIR LE TUTORIEL"
   },
+  "TrackingDataQueryForm": {
+    "websiteUrl": "URL du Site Web"
+  },
   "GoogleAnalyticsPage": {
     "title": "GOOGLE ANALYTICS",
     "instructions": "Instructions",

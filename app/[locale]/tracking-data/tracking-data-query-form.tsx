@@ -6,14 +6,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function TrackingDataQueryForm() {
+  const t = useTranslations("TrackingDataQueryForm");
   const queryFields = {
-    websiteURL: "Website URL",
+    websiteURL: t("websiteUrl"),
   };
 
   const [results, setResults] = useState<Record<string, unknown>>({});
