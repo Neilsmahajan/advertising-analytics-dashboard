@@ -219,5 +219,11 @@
     "service": "Service:",
     "queryName": "Nom de la Requête:",
     "queryData": "Données de la Requête:"
+  },
+  "TrackingDataPage": {
+    "title": "TROUVER LES DONNÉES D'ANALYSE ET DE SUIVI",
+    "instructions": "Instructions",
+    "enterUrl": "Entrez l'URL de votre site web pour trouver toutes les balises d'analyse et de suivi sur votre site.",
+    "viewTutorial": "VOIR LE TUTORIEL"
   }
 }

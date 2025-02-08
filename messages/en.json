@@ -219,5 +219,11 @@
     "service": "Service:",
     "queryName": "Query Name:",
     "queryData": "Query Data:"
+  },
+  "TrackingDataPage": {
+    "title": "FIND ANALYTICS AND TRACKING DATA",
+    "instructions": "Instructions",
+    "enterUrl": "Enter your website URL to find all of the Analytics and Tracking tags on your website.",
+    "viewTutorial": "VIEW TUTORIAL"
   }
 }
