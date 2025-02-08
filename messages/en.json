@@ -188,5 +188,15 @@
     "changesToPolicyDescription": "We may update this Privacy Policy periodically. Any changes will be posted on this page with an updated revision date.",
     "contactUs": "Contact Us",
     "contactUsDescription": "If you have any questions about this Privacy Policy, please contact us."
+  },
+  "QueryForm": {
+    "previousQueries": "Previous Queries",
+    "newQuery": "New Query",
+    "selectQuery": "Select a previous query or create new",
+    "queryName": "Query Name",
+    "enterQueryName": "Enter query name",
+    "saveQuery": "SAVE QUERY",
+    "enter": "Enter",
+    "analyze": "Analyze"
   }
 }

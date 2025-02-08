@@ -20,6 +20,7 @@ import {
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 interface Query {
   id: string;
@@ -64,6 +65,7 @@ export default function QueryForm({
   results,
   showResults,
 }: QueryFormProps) {
+  const t = useTranslations("QueryForm");
   const [queryName, setQueryName] = useState("");
   const [queryData, setQueryData] = useState<{
     [key: string]: string | number | Date;
@@ -152,14 +154,14 @@ export default function QueryForm({
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-2">
-            Previous Queries
+            {t("previousQueries")}
           </label>
           <Select onValueChange={handleQuerySelect} value={selectedQuery}>
             <SelectTrigger className="bg-white/20 border-none text-white">
-              <SelectValue placeholder="Select a previous query or create new" />
+              <SelectValue placeholder={t("selectQuery")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="new">New Query</SelectItem>
+              <SelectItem value="new">{t("newQuery")}</SelectItem>
               {queries.map((query) => (
                 <SelectItem key={query.id} value={query.id}>
                   {query.queryName}
@@ -170,11 +172,11 @@ export default function QueryForm({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Query Name</label>
+          <label className="block text-sm font-medium mb-2">{t("queryName")}</label>
           <div className="flex gap-4">
             <Input
               type="text"
-              placeholder="Enter query name"
+              placeholder={t("enterQueryName")}
               value={queryName}
               onChange={(e) => setQueryName(e.target.value)}
               className="bg-white/20 border-none text-white placeholder:text-white/60"
@@ -185,7 +187,7 @@ export default function QueryForm({
               className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
               disabled={!isQuerySelected}
             >
-              SAVE QUERY
+              {t("saveQuery")}
             </Button>
           </div>
         </div>
@@ -197,7 +199,7 @@ export default function QueryForm({
             </label>
             <Input
               type={field.includes("Date") ? "date" : "text"}
-              placeholder={`Enter ${queryFields[field]}`}
+              placeholder={`t("enter") ${queryFields[field]}`}
               value={
                 queryData[field] instanceof Date
                   ? queryData[field].toISOString().split("T")[0]
@@ -216,7 +218,7 @@ export default function QueryForm({
             className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
             disabled={!isQuerySelected}
           >
-            ANALYZE
+            {t("analyze")}
           </Button>
         </div>
       </div>

@@ -188,5 +188,15 @@
     "changesToPolicyDescription": "Nous pouvons mettre à jour cette politique de confidentialité périodiquement. Toute modification sera publiée sur cette page avec une date de révision mise à jour.",
     "contactUs": "Contactez-Nous",
     "contactUsDescription": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter."
+  },
+  "QueryForm": {
+    "previousQueries": "Requêtes Précédentes",
+    "newQuery": "Nouvelle Requête",
+    "selectQuery": "Sélectionnez une requête précédente ou créez-en une nouvelle",
+    "queryName": "Nom de la Requête",
+    "enterQueryName": "Entrez le nom de la requête",
+    "saveQuery": "ENREGISTRER LA REQUÊTE",
+    "enter": "Entrez",
+    "analyze": "Analyser"
   }
 }
