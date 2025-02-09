@@ -6,17 +6,19 @@ import React, { useState } from "react";
 import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function MetaAdsQueryForm() {
+  const t = useTranslations("MetaAdsQueryForm");
   const queryFields = {
-    adAccountId: "Ad Account ID",
-    accessToken: "Access Token",
-    startDate: "Start Date",
-    endDate: "End Date",
+    adAccountId: t("adAccountId"),
+    accessToken: t("accessToken"),
+    startDate: t("startDate"),
+    endDate: t("endDate"),
   };
 
   const [results, setResults] = useState<Record<string, unknown>>({});

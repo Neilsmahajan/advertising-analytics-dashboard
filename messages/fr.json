@@ -258,5 +258,11 @@
     "retrieveAccessToken": "Récupérez votre jeton d'accès pour l'utilisateur système en cliquant sur Générer un jeton avec les autorisations maximales.",
     "enterAdAccountId": "Entrez votre identifiant de compte publicitaire et votre jeton d'accès ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
     "viewTutorial": "VOIR LE TUTORIEL"
+  },
+  "MetaAdsQueryForm": {
+    "adAccountId": "Identifiant du Compte Publicitaire",
+    "accessToken": "Jeton d'Accès",
+    "startDate": "Date de Début",
+    "endDate": "Date de Fin"
   }
 }

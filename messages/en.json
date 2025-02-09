@@ -258,5 +258,11 @@
     "retrieveAccessToken": "Retrieve your access token for the system user by clicking Generate Token with the maximum permissions.",
     "enterAdAccountId": "Enter your Ad Account ID and Access Token below, along with the desired date range, and click Get Analytics.",
     "viewTutorial": "VIEW TUTORIAL"
+  },
+  "MetaAdsQueryForm": {
+    "adAccountId": "Ad Account ID",
+    "accessToken": "Access Token",
+    "startDate": "Start Date",
+    "endDate": "End Date"
   }
 }
