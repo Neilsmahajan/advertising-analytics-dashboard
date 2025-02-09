@@ -63,6 +63,7 @@ export default function ContactForm() {
 
       if (data.status === "success") {
         alert("Message sent successfully!");
+        form.reset(); // Reset the form after successful submission
       } else {
         alert("Failed to send message.");
       }
