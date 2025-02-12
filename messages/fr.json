@@ -42,7 +42,8 @@
     "buttons": {
       "watchVideo": "Regarder la Vidéo",
       "viewYourQueries": "Voir Vos Requêtes",
-      "signUpForFree": "Inscrivez-vous Gratuitement"
+      "signUpForFree": "Inscrivez-vous Gratuitement",
+      "exploreServices": "Explorer les Services"
     }
   },
   "Navbar": {

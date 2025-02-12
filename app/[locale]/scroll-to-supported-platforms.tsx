@@ -2,12 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @constructor
  */
 export default function ScrollToSupportedPlatforms() {
+  const t = useTranslations("Home.buttons");
   const scrollToSupportedPlatforms = () => {
     const element = document.getElementById("supported-platforms");
     if (element) {
@@ -22,7 +24,7 @@ export default function ScrollToSupportedPlatforms() {
       className="text-white bg-[#0077be] hover:bg-[#005f9e]"
       onClick={scrollToSupportedPlatforms}
     >
-      EXPLORE SERVICES
+      {t("exploreServices")}
     </Button>
   );
 }
