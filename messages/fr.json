@@ -38,6 +38,9 @@
         "title": "Optimisez et Évoluez",
         "description": "Améliorez vos campagnes et maximisez votre retour sur investissement publicitaire"
       }
+    },
+    "buttons": {
+      "watchVideo": "Regarder la Vidéo"
     }
   },
   "Navbar": {

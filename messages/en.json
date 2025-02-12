@@ -38,6 +38,9 @@
         "title": "Optimize And Scale",
         "description": "Improve your campaigns and maximize your advertising ROI"
       }
+    },
+    "buttons": {
+      "watchVideo": "Watch Video"
     }
   },
   "Navbar": {
