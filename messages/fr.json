@@ -40,7 +40,9 @@
       }
     },
     "buttons": {
-      "watchVideo": "Regarder la Vidéo"
+      "watchVideo": "Regarder la Vidéo",
+      "viewYourQueries": "Voir Vos Requêtes",
+      "signUpForFree": "Inscrivez-vous Gratuitement"
     }
   },
   "Navbar": {
