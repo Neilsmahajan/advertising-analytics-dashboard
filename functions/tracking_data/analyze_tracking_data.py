@@ -2,9 +2,10 @@ from flask import jsonify
 import requests
 from bs4 import BeautifulSoup
 
+
 def analyze_tracking_data(req):
     data = req.get_json()
-    url = data.get('url')
+    url = data.get("url")
     if not url:
         return jsonify({"error": "URL is required"}), 400
 
@@ -17,7 +18,7 @@ def analyze_tracking_data(req):
         html = response.text
 
         soup = BeautifulSoup(html, "html.parser")
-        
+
         tracking_keywords = {
             "googletagmanager.com": "Google Tag Manager",
             "google-analytics.com": "Google Analytics",
@@ -41,7 +42,7 @@ def analyze_tracking_data(req):
             for keyword, description in tracking_keywords.items():
                 if keyword in src:
                     analytics_tags.append(description)
-        
+
         for script in soup.find_all("script"):
             if script.string:
                 content = script.string

@@ -1,6 +1,11 @@
 from flask import jsonify, make_response
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange, Metric, Dimension, RunReportRequest
+from google.analytics.data_v1beta.types import (
+    DateRange,
+    Metric,
+    Dimension,
+    RunReportRequest,
+)
 from google.oauth2 import service_account
 import os
 from dotenv import load_dotenv
@@ -8,23 +13,25 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
+SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
+
 
 def analyze_google_analytics(req):
     data = req.get_json()
-    property_id = data.get('propertyId')
-    start_date = data.get('startDate')
-    end_date = data.get('endDate')
+    property_id = data.get("propertyId")
+    start_date = data.get("startDate")
+    end_date = data.get("endDate")
 
     if not property_id or not start_date or not end_date:
-        response = make_response(jsonify({"error": "propertyID, startDate, and endDate are required"}), 400)
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        response = make_response(
+            jsonify({"error": "propertyID, startDate, and endDate are required"}), 400
+        )
+        response.headers["Access-Control-Allow-Origin"] = "*"
         return response
 
     try:
         credentials = service_account.Credentials.from_service_account_file(
-            os.getenv("GOOGLE_SERVICE_ACCOUNT_CREDENTIALS"),
-            scopes=SCOPES
+            os.getenv("GOOGLE_SERVICE_ACCOUNT_CREDENTIALS"), scopes=SCOPES
         )
 
         client = BetaAnalyticsDataClient(credentials=credentials)
@@ -37,7 +44,7 @@ def analyze_google_analytics(req):
                 Metric(name="sessions"),
                 Metric(name="bounceRate"),
                 Metric(name="keyEvents"),
-            ]
+            ],
         )
 
         response = client.run_report(request)
@@ -55,10 +62,10 @@ def analyze_google_analytics(req):
         }
 
         return_response = make_response(jsonify(result), 200)
-        return_response.headers['Access-Control-Allow-Origin'] = '*'
+        return_response.headers["Access-Control-Allow-Origin"] = "*"
         return return_response
 
     except Exception as e:
         response = make_response(jsonify({"error": f"An error occurred: {e}"}), 500)
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers["Access-Control-Allow-Origin"] = "*"
         return response

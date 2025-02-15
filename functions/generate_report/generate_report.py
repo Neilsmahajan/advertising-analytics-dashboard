@@ -6,17 +6,26 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+
 def generate_report(req):
     data = req.get_json()
-    user_info = data.get('userInfo')
-    query_info = data.get('queryInfo')
-    results = data.get('results')
-    service = data.get('service')
+    user_info = data.get("userInfo")
+    query_info = data.get("queryInfo")
+    results = data.get("results")
+    service = data.get("service")
 
     if not user_info or not query_info or not results or not service:
-        return make_response(jsonify({"error": "userInfo, queryInfo, results, and service are required"}), 400)
+        return make_response(
+            jsonify(
+                {"error": "userInfo, queryInfo, results, and service are required"}
+            ),
+            400,
+        )
 
-    query_data_html = ''.join(f"<p><strong>{key}:</strong> {value}</p>" for key, value in query_info.get('queryData').items())
+    query_data_html = "".join(
+        f"<p><strong>{key}:</strong> {value}</p>"
+        for key, value in query_info.get("queryData").items()
+    )
 
     if service == "Google Analytics":
         results_html = f"""
@@ -100,6 +109,6 @@ def generate_report(req):
     pdf = HTML(string=html_content).write_pdf()
 
     response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachment; filename=report.pdf'
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "attachment; filename=report.pdf"
     return response
