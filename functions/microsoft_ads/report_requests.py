@@ -7,7 +7,7 @@ from bingads.v13.reporting import *
 REPORT_FILE_FORMAT = "Csv"
 
 # The directory for the report files.
-FILE_DIRECTORY = "/Users/neils/Library/CloudStorage/OneDrive-Personal/Developer/advertising-analytics-dashboard/functions/microsoft_ads/results"
+FILE_DIRECTORY = "./results"
 
 # The name of the report download file.
 RESULT_FILE_NAME = "result." + REPORT_FILE_FORMAT.lower()

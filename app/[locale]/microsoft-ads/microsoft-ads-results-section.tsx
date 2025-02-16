@@ -39,7 +39,8 @@ export default function MicrosoftAdsResultsSection({
   const handleDownloadReport = async () => {
     try {
       const response = await axios.post(
-        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
         {
           userInfo,
           queryInfo,
@@ -73,40 +74,19 @@ export default function MicrosoftAdsResultsSection({
       <div>
         <h3 className="text-xl font-bold mb-4"></h3>
         <div className="bg-white/10 rounded-lg p-6">
-          {results.data ? (
-            <table className="min-w-full bg-white/10 text-white/60">
-              <thead>
-                <tr>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("impressions")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("clicks")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("spend")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.data.map((row, index) => (
-                  <tr key={index}>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.impressions}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.clicks}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.spend}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p className="text-white/60">{t("resultsWillAppear")}</p>
-          )}
+          <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
+          <div className="bg-white/10 rounded-lg p-6">
+            <p>
+              <strong>{t("clicks")}</strong> {results.data?.[0]?.clicks ?? 0}
+            </p>
+            <p>
+              <strong>{t("impressions")}</strong>{" "}
+              {results.data?.[0]?.impressions ?? 0}
+            </p>
+            <p>
+              <strong>{t("spend")}</strong> {results.data?.[0]?.spend ?? 0}
+            </p>
+          </div>
         </div>
       </div>
       <div>
