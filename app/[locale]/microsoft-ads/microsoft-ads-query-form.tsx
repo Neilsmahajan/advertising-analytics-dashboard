@@ -29,10 +29,7 @@ export default function MicrosoftAdsQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (
-      queryData.accountId &&
-      queryData.clientId
-    ) {
+    if (queryData.accountId && queryData.clientId) {
       try {
         const response = await axios.post(
           "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
