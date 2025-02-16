@@ -1,12 +1,14 @@
 import CollapsibleSection from "@/components/collapsible-section";
 import Image from "next/image";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 /**
  *
  * @returns
  */
 export default function MicrosoftAdsPage() {
+  const t = useTranslations("MicrosoftAdsPage");
   return (
     <div className="min-h-screen bg-[#00BFFF] text-white">
       <div className="container mx-auto px-4 py-32">
@@ -19,11 +21,11 @@ export default function MicrosoftAdsPage() {
             height={50}
             className="max-w-full mr-4"
           />
-          <h1 className="text-4xl md:text-6xl font-bold">MICROSOFT ADS</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">{t("title")}</h1>
         </div>
         {/* Instructions Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
           <p className="text-lg mb-6">
             Follow These Steps To Use This Application With Your Microsoft Ads
             Data:

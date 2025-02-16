@@ -270,5 +270,9 @@
     "accessToken": "Jeton d'Accès",
     "startDate": "Date de Début",
     "endDate": "Date de Fin"
+  },
+  "MicrosoftAdsPage": {
+    "title": "MICROSOFT ADS",
+    "instructions": "Instructions"
   }
 }
