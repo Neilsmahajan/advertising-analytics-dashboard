@@ -277,6 +277,6 @@
   },
   "MicrosoftAdsQueryForm": {
     "accountId": "Account ID",
-    "clientId": "Client ID"
+    "customerId": "Customer ID"
   }
 }

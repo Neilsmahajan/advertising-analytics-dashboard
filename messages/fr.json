@@ -277,6 +277,6 @@
   },
   "MicrosoftAdsQueryForm": {
     "accountId": "Identifiant du Compte",
-    "clientId": "ID Client"
+    "customerId": "Identifiant du Client"
   }
 }

@@ -16,7 +16,7 @@ export default function MicrosoftAdsQueryForm() {
   const t = useTranslations("MicrosoftAdsQueryForm");
   const queryFields = {
     accountId: t("accountId"),
-    clientId: t("clientId"),
+    customerId: t("customerId"),
   };
 
   const [results, setResults] = useState<Record<string, unknown>>({});
@@ -29,13 +29,13 @@ export default function MicrosoftAdsQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (queryData.accountId && queryData.clientId) {
+    if (queryData.accountId && queryData.customerId) {
       try {
         const response = await axios.post(
           "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
           {
             accountId: queryData.accountId,
-            clientId: queryData.clientId,
+            customerId: queryData.customerId,
           },
         );
         console.log("Analysis result:", response.data);
