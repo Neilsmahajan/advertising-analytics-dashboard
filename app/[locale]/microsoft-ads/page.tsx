@@ -1,4 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section";
+import MicrosoftAdsQueryForm from "./microsoft-ads-query-form";
 import Image from "next/image";
 import React from "react";
 import { useTranslations } from "next-intl";
@@ -49,6 +50,9 @@ export default function MicrosoftAdsPage() {
             </CollapsibleSection>
           </div>
         </section>
+
+        {/* Query Form Section */}
+        <MicrosoftAdsQueryForm />
       </div>
     </div>
   );
