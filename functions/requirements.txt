@@ -61,6 +61,7 @@ requests==2.32.3
 requests-oauthlib==2.0.0
 rsa==4.9
 sendgrid==6.11.0
+setuptools==75.8.0
 soupsieve==2.6
 starkbank-ecdsa==2.2.0
 suds-community==1.2.0

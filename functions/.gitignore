@@ -1,2 +1,4 @@
 *.local
 .env
+microsoft_ads/results/*
+microsoft_ads/refresh.txt
