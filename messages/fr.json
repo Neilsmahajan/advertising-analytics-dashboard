@@ -274,5 +274,9 @@
   "MicrosoftAdsPage": {
     "title": "MICROSOFT ADS",
     "instructions": "Instructions"
+  },
+  "MicrosoftAdsQueryForm": {
+    "accountId": "Identifiant du Compte",
+    "clientId": "ID Client"
   }
 }
