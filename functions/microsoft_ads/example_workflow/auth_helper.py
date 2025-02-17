@@ -118,19 +118,12 @@ def request_user_consent(authorization_data):
     webbrowser.open(
         authorization_data.authentication.get_authorization_endpoint(), new=1
     )
-    # For Python 3.x use 'input' instead of 'raw_input'
-    if sys.version_info.major >= 3:
-        response_uri = input(
-            "You need to provide consent for the application to access your Bing Ads accounts. "
-            "After you have granted consent in the web browser for the application to access your Bing Ads accounts, "
-            "please enter the response URI that includes the authorization 'code' parameter: \n"
-        )
-    else:
-        response_uri = raw_input(
-            "You need to provide consent for the application to access your Bing Ads accounts. "
-            "After you have granted consent in the web browser for the application to access your Bing Ads accounts, "
-            "please enter the response URI that includes the authorization 'code' parameter: \n"
-        )
+
+    response_uri = input(
+        "You need to provide consent for the application to access your Bing Ads accounts. "
+        "After you have granted consent in the web browser for the application to access your Bing Ads accounts, "
+        "please enter the response URI that includes the authorization 'code' parameter: \n"
+    )
 
     if authorization_data.authentication.state != CLIENT_STATE:
         raise Exception(
