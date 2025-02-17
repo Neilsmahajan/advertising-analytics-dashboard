@@ -44,8 +44,8 @@ def fetch_microsoft_ads_data(account_id, customer_id):
         return {"error": str(e)}
 
     authorization_data = AuthorizationData(
-        account_id=account_id,
-        customer_id=customer_id,
+        account_id=None,
+        customer_id=None,
         developer_token=DEVELOPER_TOKEN,
         authentication=None,
     )
