@@ -1,15 +1,24 @@
-from dotenv import load_dotenv
-import os
-
 from flask import jsonify
+import os, sys
+from example_workflow.auth_helper import (
+    authenticate,
+    DEVELOPER_TOKEN,
+    ENVIRONMENT,
+    output_status_message,
+    output_webfault_errors,
+    WebFault,
+)
+from bingads.v13.reporting import (
+    ReportingDownloadParameters,
+    ReportingDownloadOperation,
+    ReportingServiceManager,
+)
+from bingads.authorization import AuthorizationData
+from bingads.service_client import ServiceClient
 
-load_dotenv()
 
-DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer token
-CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
-CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
-ENVIRONMENT = "production"  # Change to 'production' for live data
-REDIRECTION_URI = "http://localhost:3000"  # Update to the new redirect URI
+
+
 
 
 def fetch_microsoft_ads_data(account_id, customer_id):

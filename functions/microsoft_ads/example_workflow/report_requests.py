@@ -5,15 +5,15 @@ from auth_helper import (
     ENVIRONMENT,
     output_status_message,
     output_webfault_errors,
-    ServiceClient,
     WebFault,
-    AuthorizationData,
 )
 from bingads.v13.reporting import (
     ReportingDownloadParameters,
     ReportingDownloadOperation,
     ReportingServiceManager,
 )
+from bingads.authorization import AuthorizationData
+from bingads.service_client import ServiceClient
 
 # You must provide credentials in auth_helper.py.
 
@@ -33,11 +33,11 @@ TIMEOUT_IN_MILLISECONDS = 3600000
 def main(authorization_data):
     try:
         # Set the correct account and customer IDs
-        authorization_data.account_id = "138753866"
-        authorization_data.customer_id = "253842102"
+        # authorization_data.account_id = "138753866"
+        # authorization_data.customer_id = "253842102"
 
         # Create results directory of FILE_DIRECTORY/{account_id}/
-        results_directory = os.path.join(FILE_DIRECTORY, authorization_data.account_id)
+        results_directory = os.path.join(FILE_DIRECTORY, str(authorization_data.account_id))
         if not os.path.exists(results_directory):
             os.makedirs(results_directory)
 
@@ -540,8 +540,8 @@ if __name__ == "__main__":
     print("Loading the web service client proxies...")
 
     authorization_data = AuthorizationData(
-        account_id=None,
-        customer_id=None,
+        account_id="138753866",
+        customer_id="253842102",
         developer_token=DEVELOPER_TOKEN,
         authentication=None,
     )
