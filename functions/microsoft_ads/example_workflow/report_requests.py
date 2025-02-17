@@ -37,9 +37,15 @@ def main(authorization_data):
         # authorization_data.customer_id = "253842102"
 
         # Create results directory of FILE_DIRECTORY/{account_id}/
-        results_directory = os.path.join(FILE_DIRECTORY, str(authorization_data.account_id))
+        results_directory = os.path.join(
+            FILE_DIRECTORY, str(authorization_data.account_id)
+        )
         if not os.path.exists(results_directory):
             os.makedirs(results_directory)
+
+        # Set the correct account and customer IDs
+        authorization_data.account_id = "138753866"
+        authorization_data.customer_id = "253842102"
 
         # You can submit one of the example reports, or build your own.
 
@@ -540,8 +546,8 @@ if __name__ == "__main__":
     print("Loading the web service client proxies...")
 
     authorization_data = AuthorizationData(
-        account_id="138753866",
-        customer_id="253842102",
+        account_id=None,
+        customer_id=None,
         developer_token=DEVELOPER_TOKEN,
         authentication=None,
     )

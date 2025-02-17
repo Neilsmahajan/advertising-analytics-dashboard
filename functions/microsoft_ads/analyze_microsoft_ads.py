@@ -72,6 +72,10 @@ def fetch_microsoft_ads_data(account_id, customer_id):
         if not os.path.exists(results_directory):
             os.makedirs(results_directory)
 
+        # Set the correct account and customer IDs
+        authorization_data.account_id = account_id
+        authorization_data.customer_id = customer_id
+
         report_request = get_report_request(
             reporting_service, authorization_data.account_id
         )
