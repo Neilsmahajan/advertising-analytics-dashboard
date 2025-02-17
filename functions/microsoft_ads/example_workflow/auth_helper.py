@@ -1,4 +1,5 @@
-import sys
+import sys, os
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 import webbrowser
 from time import gmtime, strftime
 from suds import WebFault
@@ -12,7 +13,6 @@ from output_helper import (
     output_webfault_errors,
     output_status_message,
 )
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
