@@ -1,5 +1,19 @@
-from auth_helper import *
-from bingads.v13.reporting import *
+import os, sys
+from auth_helper import (
+    authenticate,
+    DEVELOPER_TOKEN,
+    ENVIRONMENT,
+    output_status_message,
+    output_webfault_errors,
+    ServiceClient,
+    WebFault,
+    AuthorizationData,
+)
+from bingads.v13.reporting import (
+    ReportingDownloadParameters,
+    ReportingDownloadOperation,
+    ReportingServiceManager,
+)
 
 # You must provide credentials in auth_helper.py.
 
@@ -33,7 +47,7 @@ def main(authorization_data):
 
         reporting_download_parameters = ReportingDownloadParameters(
             report_request=report_request,
-            result_file_directory=FILE_DIRECTORY,
+            result_file_directory=results_directory,
             result_file_name=RESULT_FILE_NAME,
             overwrite_result_file=True,  # Set this value true if you want to overwrite the same file.
             timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,  # You may optionally cancel the download after a specified time interval.
@@ -44,8 +58,8 @@ def main(authorization_data):
         # return results. The ReportingServiceManager abstracts the details of checking for result file
         # completion, and you don't have to write any code for results polling.
 
-        # output_status_message("-----\nAwaiting Background Completion...")
-        # background_completion(reporting_download_parameters)
+        output_status_message("-----\nAwaiting Background Completion...")
+        background_completion(reporting_download_parameters)
 
         # Option B - Submit and Download with ReportingServiceManager
         # Submit the download request and then use the ReportingDownloadOperation result to
@@ -71,8 +85,8 @@ def main(authorization_data):
 
         # Option D - Download the report in memory with ReportingServiceManager.download_report
         # The download_report helper function downloads the report and summarizes results.
-        output_status_message("-----\nAwaiting download_report...")
-        download_report(reporting_download_parameters)
+        # output_status_message("-----\nAwaiting download_report...")
+        # download_report(reporting_download_parameters)
 
     except WebFault as ex:
         output_webfault_errors(ex)

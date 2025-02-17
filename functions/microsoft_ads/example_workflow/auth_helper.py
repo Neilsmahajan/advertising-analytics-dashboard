@@ -24,7 +24,9 @@ ENVIRONMENT = "production"  # Change to 'production' for live data
 # The CLIENT_ID, CLIENT_SECRET, and REDIRECTION_URI are required.
 CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
 CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
-REDIRECTION_URI = "http://localhost:8000"  # Update to the new redirect URI
+REDIRECTION_URI = (
+    "http://localhost:3000/en/microsoft-ads"  # Update to the new redirect URI
+)
 CLIENT_STATE = "ClientStateGoesHere"
 REFRESH_TOKEN = "refresh.txt"
 
