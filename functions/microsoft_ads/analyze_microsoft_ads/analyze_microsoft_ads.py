@@ -10,7 +10,7 @@ from bingads.authorization import AuthorizationData
 from bingads.service_client import ServiceClient
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-from example_workflow.auth_helper import (
+from auth_helper import (
     authenticate,
     DEVELOPER_TOKEN,
     ENVIRONMENT,
@@ -20,7 +20,7 @@ from example_workflow.auth_helper import (
 )
 
 REPORT_FILE_FORMAT = "Csv"
-FILE_DIRECTORY = "./example_workflow/results"
+FILE_DIRECTORY = "./results"
 RESULT_FILE_NAME = "result." + REPORT_FILE_FORMAT.lower()
 TIMEOUT_IN_MILLISECONDS = 3600000
 
