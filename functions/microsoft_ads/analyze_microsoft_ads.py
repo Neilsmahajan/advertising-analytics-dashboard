@@ -11,6 +11,7 @@ CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
 ENVIRONMENT = "production"  # Change to 'production' for live data
 REDIRECTION_URI = "http://localhost:3000"  # Update to the new redirect URI
 
+
 def fetch_microsoft_ads_data(account_id, customer_id):
     """Fetch Microsoft Ads data from the Microsoft Ads API."""
     try:
