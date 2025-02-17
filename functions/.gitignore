@@ -2,3 +2,5 @@
 .env
 microsoft_ads/results/*
 microsoft_ads/refresh.txt
+microsoft_ads/example_workflow/results/*
+microsoft_ads/example_workflow/refresh.txt

@@ -22,6 +22,11 @@ def main(authorization_data):
         authorization_data.account_id = "138753866"
         authorization_data.customer_id = "253842102"
 
+        # Create results directory of FILE_DIRECTORY/{account_id}/
+        results_directory = os.path.join(FILE_DIRECTORY, authorization_data.account_id)
+        if not os.path.exists(results_directory):
+            os.makedirs(results_directory)
+
         # You can submit one of the example reports, or build your own.
 
         report_request = get_report_request(authorization_data.account_id)
