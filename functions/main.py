@@ -23,6 +23,9 @@ from send_email.send_email import send_email
 from microsoft_ads.authenticate_microsoft_ads.authenticate_microsoft_ads import (
     authenticate_microsoft_ads,
 )
+from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import (
+    analyze_microsoft_ads,
+)
 
 
 # Define HTTP functions
@@ -126,5 +129,21 @@ def authenticate_microsoft_ads_function(req: https_fn.Request) -> https_fn.Respo
 
     # Handle actual request
     response = authenticate_microsoft_ads(req)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
+@https_fn.on_request()
+def analyze_microsoft_ads_function(req: https_fn.Request) -> https_fn.Response:
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        return response
+
+    # Handle actual request
+    response = analyze_microsoft_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
