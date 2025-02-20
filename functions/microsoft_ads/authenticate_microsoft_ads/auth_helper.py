@@ -54,10 +54,10 @@ ALL_AD_TYPES = {
 
 def authenticate(authorization_data):
 
-    # import logging
-    # logging.basicConfig(level=logging.INFO)
-    # logging.getLogger('suds.client').setLevel(logging.DEBUG)
-    # logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger('suds.client').setLevel(logging.DEBUG)
+    logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
 
     customer_service = ServiceClient(
         service="CustomerManagementService",
@@ -71,12 +71,12 @@ def authenticate(authorization_data):
 
     # Set to an empty user identifier to get the current authenticated Bing Ads user,
     # and then search for all accounts the user can access.
-    user = get_user_response = customer_service.GetUser(UserId=None).User
-    accounts = search_accounts_by_user_id(customer_service, user.Id)
+    # user = get_user_response = customer_service.GetUser(UserId=None).User
+    # accounts = search_accounts_by_user_id(customer_service, user.Id)
 
     # For this example we'll use the first account.
-    authorization_data.account_id = accounts["AdvertiserAccount"][0].Id
-    authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
+    # authorization_data.account_id = accounts["AdvertiserAccount"][0].Id
+    # authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
 
 
 def authenticate_with_oauth(authorization_data):
@@ -120,11 +120,11 @@ def request_user_consent(authorization_data):
         authorization_data.authentication.get_authorization_endpoint(), new=1
     )
 
-    response_uri = input(
-        "You need to provide consent for the application to access your Bing Ads accounts. "
-        "After you have granted consent in the web browser for the application to access your Bing Ads accounts, "
-        "please enter the response URI that includes the authorization 'code' parameter: \n"
-    )
+    # response_uri = input(
+    #     "You need to provide consent for the application to access your Bing Ads accounts. "
+    #     "After you have granted consent in the web browser for the application to access your Bing Ads accounts, "
+    #     "please enter the response URI that includes the authorization 'code' parameter: \n"
+    # )
 
     if authorization_data.authentication.state != CLIENT_STATE:
         raise Exception(
@@ -132,9 +132,9 @@ def request_user_consent(authorization_data):
         )
 
     # Request access and refresh tokens using the URI that you provided manually during program execution.
-    authorization_data.authentication.request_oauth_tokens_by_response_uri(
-        response_uri=response_uri
-    )
+    # authorization_data.authentication.request_oauth_tokens_by_response_uri(
+    #     response_uri=response_uri
+    # )
 
 
 def get_refresh_token():
