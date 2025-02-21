@@ -48,7 +48,12 @@ export default function MicrosoftAdsQueryForm() {
       }
     }
   };
-
+  const handleAuthenticate = async () => {
+    await axios.post(
+      "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
+      {},
+    );
+  };
   return (
     <QueryForm
       service="Microsoft Ads"
