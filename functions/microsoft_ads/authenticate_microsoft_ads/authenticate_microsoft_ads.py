@@ -9,8 +9,8 @@ DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer t
 ENVIRONMENT = "production"  # Change to 'production' for live data
 CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
 CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
-# REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
-REDIRECTION_URI = "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
+REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
+# REDIRECTION_URI = "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
 CLIENT_STATE = "ClientStateGoesHere"
 
 
@@ -30,8 +30,6 @@ def authenticate_microsoft_ads(req):
     )
     authentication.state = CLIENT_STATE
     authorization_data.authentication = authentication
-    webbrowser.open(
-        authorization_data.authentication.get_authorization_endpoint(), new=1
-    )
+    authentication_url = authorization_data.authentication.get_authorization_endpoint()
 
-    return jsonify({"status": "success", "message": "Authentication initiated"})
+    return jsonify({"url": authentication_url}), 200

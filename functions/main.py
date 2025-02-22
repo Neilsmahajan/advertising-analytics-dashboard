@@ -144,6 +144,6 @@ def authenticate_microsoft_ads_function(req: https_fn.Request) -> https_fn.Respo
         return response
 
     # Handle actual request
-    response = authenticate_microsoft_ads(req)
+    response, status_code = authenticate_microsoft_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
-    return response
+    return make_response(response, status_code)
