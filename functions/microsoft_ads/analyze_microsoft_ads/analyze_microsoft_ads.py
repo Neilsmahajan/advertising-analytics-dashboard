@@ -29,6 +29,7 @@ def analyze_microsoft_ads(req):
     data = req.get_json()
     account_id = data.get("accountId")
     customer_id = data.get("customerId")
+    current_url = data.get("currentUrl")
 
     result = fetch_microsoft_ads_data(account_id, customer_id)
     return jsonify(result)

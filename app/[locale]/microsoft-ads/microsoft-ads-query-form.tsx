@@ -7,6 +7,7 @@ import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 
 /**
  *
@@ -23,8 +24,9 @@ export default function MicrosoftAdsQueryForm() {
   const [showResults, setShowResults] = useState(false);
   const [queryName] = useState("Query Name");
   const [queryData, setQueryData] = useState<Record<string, unknown>>({});
-
   const [user] = useAuthState(auth);
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
@@ -32,11 +34,11 @@ export default function MicrosoftAdsQueryForm() {
     if (queryData.accountId && queryData.customerId) {
       try {
         const response = await axios.post(
-          // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
           "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
           {
             accountId: queryData.accountId,
             customerId: queryData.customerId,
+            currentUrl: window.location.href,
           },
         );
         console.log("Analysis result:", response.data);
@@ -48,26 +50,37 @@ export default function MicrosoftAdsQueryForm() {
       }
     }
   };
+
   const handleAuthenticate = async () => {
     await axios.post(
       "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
       {},
     );
   };
+
   return (
-    <QueryForm
-      service="Microsoft Ads"
-      queryFields={queryFields}
-      ResultsComponent={(props) => (
-        <MicrosoftAdsResultsSection
-          {...props}
-          userInfo={{ name: user?.displayName || "", email: user?.email || "" }}
-          queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
+    <div>
+      {!code ? (
+        <button onClick={handleAuthenticate}>Connect with Microsoft Ads</button>
+      ) : (
+        <QueryForm
+          service="Microsoft Ads"
+          queryFields={queryFields}
+          ResultsComponent={(props) => (
+            <MicrosoftAdsResultsSection
+              {...props}
+              userInfo={{
+                name: user?.displayName || "",
+                email: user?.email || "",
+              }}
+              queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
+            />
+          )}
+          onAnalyze={handleAnalyze}
+          results={results}
+          showResults={showResults}
         />
       )}
-      onAnalyze={handleAnalyze}
-      results={results}
-      showResults={showResults}
-    />
+    </div>
   );
 }
