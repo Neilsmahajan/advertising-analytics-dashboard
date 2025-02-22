@@ -1,23 +1,10 @@
 import os, sys
-import logging
 from flask import jsonify
-from bingads.v13.reporting import (
-    ReportingDownloadParameters,
-    ReportingDownloadOperation,
-    ReportingServiceManager,
-)
+from bingads.v13.reporting import ReportingDownloadParameters, ReportingServiceManager
 from bingads.authorization import AuthorizationData, OAuthWebAuthCodeGrant
 from bingads.service_client import ServiceClient
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-# from auth_helper import (
-#     authenticate,
-#     DEVELOPER_TOKEN,
-#     ENVIRONMENT,
-#     output_status_message,
-#     output_webfault_errors,
-#     WebFault,
-# )
 
 DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer token
 ENVIRONMENT = "production"  # Change to 'production' for live data
@@ -26,7 +13,7 @@ CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
 REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
 CLIENT_STATE = "ClientStateGoesHere"
 REPORT_FILE_FORMAT = "Csv"
-FILE_DIRECTORY = "./results"
+FILE_DIRECTORY = "./microsoft_ads/results"
 RESULT_FILE_NAME = "result." + REPORT_FILE_FORMAT.lower()
 TIMEOUT_IN_MILLISECONDS = 3600000
 
@@ -92,8 +79,8 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     authorization_data.account_id = accounts["AdvertiserAccount"][0].Id
     authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
 
-    # Create results directory of FILE_DIRECTORY/{account_id}/
-    results_directory = os.path.join(FILE_DIRECTORY, str(authorization_data.account_id))
+    # Create results directory of {current_file_directory}/FILE_DIRECTORY/{account_id}/
+    results_directory = os.path.join(FILE_DIRECTORY, str(account_id))
     if not os.path.exists(results_directory):
         os.makedirs(results_directory)
 
@@ -103,7 +90,9 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
 
     # You can submit one of the example reports, or build your own.
 
-    report_request = get_report_request(authorization_data.account_id, reporting_service=reporting_service)
+    report_request = get_report_request(
+        authorization_data.account_id, reporting_service=reporting_service
+    )
 
     reporting_download_parameters = ReportingDownloadParameters(
         report_request=report_request,
