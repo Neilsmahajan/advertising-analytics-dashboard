@@ -6,19 +6,25 @@ from bingads.v13.reporting import (
     ReportingDownloadOperation,
     ReportingServiceManager,
 )
-from bingads.authorization import AuthorizationData
+from bingads.authorization import AuthorizationData, OAuthWebAuthCodeGrant
 from bingads.service_client import ServiceClient
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-from auth_helper import (
-    authenticate,
-    DEVELOPER_TOKEN,
-    ENVIRONMENT,
-    output_status_message,
-    output_webfault_errors,
-    WebFault,
-)
+# from auth_helper import (
+#     authenticate,
+#     DEVELOPER_TOKEN,
+#     ENVIRONMENT,
+#     output_status_message,
+#     output_webfault_errors,
+#     WebFault,
+# )
 
+DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer token
+ENVIRONMENT = "production"  # Change to 'production' for live data
+CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
+CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
+REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
+CLIENT_STATE = "ClientStateGoesHere"
 REPORT_FILE_FORMAT = "Csv"
 FILE_DIRECTORY = "./results"
 RESULT_FILE_NAME = "result." + REPORT_FILE_FORMAT.lower()
@@ -31,14 +37,14 @@ def analyze_microsoft_ads(req):
     customer_id = data.get("customerId")
     current_url = data.get("currentUrl")
 
-    result = fetch_microsoft_ads_data(account_id, customer_id)
+    result = fetch_microsoft_ads_data(account_id, customer_id, current_url)
     return jsonify(result)
 
 
-def fetch_microsoft_ads_data(account_id, customer_id):
+def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     """Fetch Microsoft Ads data from the Microsoft Ads API."""
     try:
-        if not account_id or not customer_id:
+        if not account_id or not customer_id or not response_uri:
             return {"error": "Both Account ID and Customer ID are required."}, 400
 
     except Exception as e:
@@ -50,7 +56,6 @@ def fetch_microsoft_ads_data(account_id, customer_id):
         developer_token=DEVELOPER_TOKEN,
         authentication=None,
     )
-
     reporting_service_manager = ReportingServiceManager(
         authorization_data=authorization_data,
         poll_interval_in_milliseconds=5000,
@@ -64,55 +69,113 @@ def fetch_microsoft_ads_data(account_id, customer_id):
         environment=ENVIRONMENT,
     )
 
-    authenticate(authorization_data)
-
-    try:
-        results_directory = os.path.join(
-            FILE_DIRECTORY, str(authorization_data.account_id)
-        )
-        if not os.path.exists(results_directory):
-            os.makedirs(results_directory)
-
-        # Set the correct account and customer IDs
-        authorization_data.account_id = account_id
-        authorization_data.customer_id = customer_id
-
-        report_request = get_report_request(
-            reporting_service, authorization_data.account_id
-        )
-
-        reporting_download_parameters = ReportingDownloadParameters(
-            report_request=report_request,
-            result_file_directory=results_directory,
-            result_file_name=RESULT_FILE_NAME,
-            overwrite_result_file=True,  # Set this value true if you want to overwrite the same file.
-            timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,  # You may optionally cancel the download after a specified time interval.
-        )
-
-        output_status_message("-----\nAwaiting Background Completion...")
-        background_completion(reporting_service_manager, reporting_download_parameters)
-
-    except WebFault as ex:
-        output_webfault_errors(ex)
-    except Exception as ex:
-        output_status_message(ex)
-
-    # Example return of impressions, clicks, and spend
-    return {"data": [{"impressions": 1000, "clicks": 100, "spend": 1000}]}
-
-
-def background_completion(reporting_service_manager, reporting_download_parameters):
-    """You can submit a download request and the ReportingServiceManager will automatically
-    return results. The ReportingServiceManager abstracts the details of checking for result file
-    completion, and you don't have to write any code for results polling."""
-
-    result_file_path = reporting_service_manager.download_file(
-        reporting_download_parameters
+    authentication = OAuthWebAuthCodeGrant(
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,  # Add client secret here
+        redirection_uri=REDIRECTION_URI,  # Add redirection URI here
+        env=ENVIRONMENT,
     )
-    output_status_message("Download result file: {0}".format(result_file_path))
+    authentication.state = CLIENT_STATE
+    authorization_data.authentication = authentication
+
+    authorization_data.authentication.request_oauth_tokens_by_response_uri(
+        response_uri=response_uri
+    )
+    customer_service = ServiceClient(
+        service="CustomerManagementService",
+        version=13,
+        authorization_data=authorization_data,
+        environment=ENVIRONMENT,
+    )
+    user = get_user_response = customer_service.GetUser(UserId=None).User
+    accounts = search_accounts_by_user_id(customer_service, user.Id)
+    authorization_data.account_id = accounts["AdvertiserAccount"][0].Id
+    authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
+
+    # Create results directory of FILE_DIRECTORY/{account_id}/
+    results_directory = os.path.join(FILE_DIRECTORY, str(authorization_data.account_id))
+    if not os.path.exists(results_directory):
+        os.makedirs(results_directory)
+
+    # Set the correct account and customer IDs
+    authorization_data.account_id = account_id
+    authorization_data.customer_id = customer_id
+
+    # You can submit one of the example reports, or build your own.
+
+    report_request = get_report_request(authorization_data.account_id, reporting_service=reporting_service)
+
+    reporting_download_parameters = ReportingDownloadParameters(
+        report_request=report_request,
+        result_file_directory=results_directory,
+        result_file_name=RESULT_FILE_NAME,
+        overwrite_result_file=True,  # Set this value true if you want to overwrite the same file.
+        timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,  # You may optionally cancel the download after a specified time interval.
+    )
+    background_completion(reporting_download_parameters, reporting_service_manager)
 
 
-def get_report_request(reporting_service, account_id):
+def search_accounts_by_user_id(customer_service, user_id):
+    """
+    Search for account details by UserId.
+
+    :param user_id: The Bing Ads user identifier.
+    :type user_id: long
+    :return: List of accounts that the user can manage.
+    :rtype: Dictionary of AdvertiserAccount
+    """
+
+    predicates = {
+        "Predicate": [
+            {
+                "Field": "UserId",
+                "Operator": "Equals",
+                "Value": user_id,
+            },
+        ]
+    }
+
+    accounts = []
+
+    page_index = 0
+    PAGE_SIZE = 100
+    found_last_page = False
+
+    while not found_last_page:
+        paging = set_elements_to_none(customer_service.factory.create("ns5:Paging"))
+        paging.Index = page_index
+        paging.Size = PAGE_SIZE
+        search_accounts_response = customer_service.SearchAccounts(
+            PageInfo=paging, Predicates=predicates
+        )
+
+        if search_accounts_response is not None and hasattr(
+            search_accounts_response, "AdvertiserAccount"
+        ):
+            accounts.extend(search_accounts_response["AdvertiserAccount"])
+            found_last_page = PAGE_SIZE > len(
+                search_accounts_response["AdvertiserAccount"]
+            )
+            page_index += 1
+        else:
+            found_last_page = True
+
+    return {"AdvertiserAccount": accounts}
+
+
+def set_elements_to_none(suds_object):
+    # Bing Ads Campaign Management service operations require that if you specify a non-primitive,
+    # it must be one of the values defined by the service i.e. it cannot be a nil element.
+    # Since SUDS requires non-primitives and Bing Ads won't accept nil elements in place of an enum value,
+    # you must either set the non-primitives or they must be set to None. Also in case new properties are added
+    # in a future service release, it is a good practice to set each element of the SUDS object to None as a baseline.
+
+    for element in suds_object:
+        suds_object.__setitem__(element[0], None)
+    return suds_object
+
+
+def get_report_request(account_id, reporting_service):
     """
     Use a sample report request or build your own.
     """
@@ -129,8 +192,18 @@ def get_report_request(reporting_service, account_id):
     time.CustomDateRangeEnd = None
     return_only_complete_data = False
 
+    # BudgetSummaryReportRequest does not contain a definition for Aggregation.
+    # budget_summary_report_request = get_budget_summary_report_request(
+    #     account_id=account_id,
+    #     exclude_column_headers=exclude_column_headers,
+    #     exclude_report_footer=exclude_report_footer,
+    #     exclude_report_header=exclude_report_header,
+    #     report_file_format=REPORT_FILE_FORMAT,
+    #     return_only_complete_data=return_only_complete_data,
+    #     time=time,
+    # )
+
     campaign_performance_report_request = get_campaign_performance_report_request(
-        reporting_service=reporting_service,
         account_id=account_id,
         aggregation=aggregation,
         exclude_column_headers=exclude_column_headers,
@@ -139,13 +212,37 @@ def get_report_request(reporting_service, account_id):
         report_file_format=REPORT_FILE_FORMAT,
         return_only_complete_data=return_only_complete_data,
         time=time,
+        reporting_service=reporting_service,
     )
+
+    # keyword_performance_report_request = get_keyword_performance_report_request(
+    #     account_id=account_id,
+    #     aggregation=aggregation,
+    #     exclude_column_headers=exclude_column_headers,
+    #     exclude_report_footer=exclude_report_footer,
+    #     exclude_report_header=exclude_report_header,
+    #     report_file_format=REPORT_FILE_FORMAT,
+    #     return_only_complete_data=return_only_complete_data,
+    #     time=time,
+    # )
+
+    # user_location_performance_report_request = (
+    #     get_user_location_performance_report_request(
+    #         account_id=account_id,
+    #         aggregation=aggregation,
+    #         exclude_column_headers=exclude_column_headers,
+    #         exclude_report_footer=exclude_report_footer,
+    #         exclude_report_header=exclude_report_header,
+    #         report_file_format=REPORT_FILE_FORMAT,
+    #         return_only_complete_data=return_only_complete_data,
+    #         time=time,
+    #     )
+    # )
 
     return campaign_performance_report_request
 
 
 def get_campaign_performance_report_request(
-    reporting_service,
     account_id,
     aggregation,
     exclude_column_headers,
@@ -154,6 +251,7 @@ def get_campaign_performance_report_request(
     report_file_format,
     return_only_complete_data,
     time,
+    reporting_service,
 ):
 
     report_request = reporting_service.factory.create(
@@ -190,3 +288,14 @@ def get_campaign_performance_report_request(
     report_request.Columns = report_columns
 
     return report_request
+
+
+def background_completion(reporting_download_parameters, reporting_service_manager):
+    """You can submit a download request and the ReportingServiceManager will automatically
+    return results. The ReportingServiceManager abstracts the details of checking for result file
+    completion, and you don't have to write any code for results polling."""
+
+    result_file_path = reporting_service_manager.download_file(
+        reporting_download_parameters
+    )
+    print("Download result file: {0}".format(result_file_path))
