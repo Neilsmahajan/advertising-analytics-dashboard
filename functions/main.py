@@ -20,8 +20,12 @@ from google_analytics.analyze_google_analytics import analyze_google_analytics
 from generate_report.generate_report import generate_report
 from meta_ads.analyze_meta_ads import analyze_meta_ads
 from send_email.send_email import send_email
-from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import analyze_microsoft_ads
-from microsoft_ads.authenticate_microsoft_ads.authenticate_microsoft_ads import authenticate_microsoft_ads
+from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import (
+    analyze_microsoft_ads,
+)
+from microsoft_ads.authenticate_microsoft_ads.authenticate_microsoft_ads import (
+    authenticate_microsoft_ads,
+)
 
 
 # Define HTTP functions
@@ -124,9 +128,9 @@ def analyze_microsoft_ads_function(req: https_fn.Request) -> https_fn.Response:
         return response
 
     # Handle actual request
-    response = analyze_microsoft_ads(req)
+    response, status_code = analyze_microsoft_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
-    return response
+    return make_response(response, status_code)
 
 
 @https_fn.on_request()
