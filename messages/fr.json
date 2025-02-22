@@ -224,7 +224,10 @@
     "queryInformation": "Informations sur la Requête:",
     "service": "Service:",
     "queryName": "Nom de la Requête:",
-    "queryData": "Données de la Requête:"
+    "queryData": "Données de la Requête:",
+    "totalImpressions": "Impressions Totales",
+    "totalClicks": "Clics Totaux",
+    "totalSpend": "Dépenses Totales"
   },
   "TrackingDataPage": {
     "title": "TROUVER LES DONNÉES D'ANALYSE ET DE SUIVI",

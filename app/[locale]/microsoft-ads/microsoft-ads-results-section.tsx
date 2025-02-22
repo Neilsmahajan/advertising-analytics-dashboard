@@ -7,13 +7,10 @@ import { useTranslations } from "next-intl";
 
 interface MicrosoftAdsResultsSectionProps {
   results: {
-    data?: {
-      impressions: number;
-      clicks: number;
-      spend: number;
-    }[];
-  };
-  userInfo: {
+    total_impressions: number;
+    total_clicks: number;
+    total_spend: number;
+  };  userInfo: {
     name: string;
     email: string;
   };
@@ -77,14 +74,13 @@ export default function MicrosoftAdsResultsSection({
           <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
           <div className="bg-white/10 rounded-lg p-6">
             <p>
-              <strong>{t("clicks")}</strong> {results.data?.[0]?.clicks ?? 0}
+              <strong>{t("totalImpressions")}</strong> {results?.total_impressions ?? 0}
             </p>
             <p>
-              <strong>{t("impressions")}</strong>{" "}
-              {results.data?.[0]?.impressions ?? 0}
+              <strong>{t("totalClicks")}</strong> {results?.total_clicks ?? 0}
             </p>
             <p>
-              <strong>{t("spend")}</strong> {results.data?.[0]?.spend ?? 0}
+              <strong>{t("totalSpend")}</strong> {results?.total_spend ?? 0.0}
             </p>
           </div>
         </div>

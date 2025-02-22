@@ -1,4 +1,5 @@
 import os, sys
+import csv
 from flask import jsonify
 from bingads.v13.reporting import ReportingDownloadParameters, ReportingServiceManager
 from bingads.authorization import AuthorizationData, OAuthWebAuthCodeGrant
@@ -25,14 +26,18 @@ def analyze_microsoft_ads(req):
     current_url = data.get("currentUrl")
 
     result = fetch_microsoft_ads_data(account_id, customer_id, current_url)
-    return jsonify(result)
+    if "error" in result:
+        return jsonify(result), 400
+
+    metrics = extract_metrics_from_csv(os.path.join(FILE_DIRECTORY, RESULT_FILE_NAME))
+    return jsonify(metrics)
 
 
 def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     """Fetch Microsoft Ads data from the Microsoft Ads API."""
     try:
         if not account_id or not customer_id or not response_uri:
-            return {"error": "Both Account ID and Customer ID are required."}, 400
+            return {"error": "Both Account ID and Customer ID are required."}
 
     except Exception as e:
         return {"error": str(e)}
@@ -102,6 +107,25 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
         timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,  # You may optionally cancel the download after a specified time interval.
     )
     background_completion(reporting_download_parameters, reporting_service_manager)
+    return {"status": "success"}
+
+
+def extract_metrics_from_csv(file_path):
+    """Extract relevant metrics from the CSV file."""
+    metrics = {
+        "total_impressions": 0,
+        "total_clicks": 0,
+        "total_spend": 0.0,
+    }
+
+    with open(file_path, mode="r") as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            metrics["total_impressions"] += int(row["Impressions"])
+            metrics["total_clicks"] += int(row["Clicks"])
+            metrics["total_spend"] += float(row["Spend"])
+
+    return metrics
 
 
 def search_accounts_by_user_id(customer_service, user_id):

@@ -21,7 +21,11 @@ export default function MicrosoftAdsQueryForm() {
     customerId: t("customerId"),
   };
 
-  const [results, setResults] = useState<Record<string, unknown>>({});
+  const [results, setResults] = useState<{ total_impressions: number; total_clicks: number; total_spend: number }>({
+    total_impressions: 0,
+    total_clicks: 0,
+    total_spend: 0,
+  });
   const [showResults, setShowResults] = useState(false);
   const [queryName] = useState("Query Name");
   const [queryData, setQueryData] = useState<Record<string, unknown>>({});
@@ -80,6 +84,7 @@ export default function MicrosoftAdsQueryForm() {
                 email: user?.email || "",
               }}
               queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
+              results={results}
             />
           )}
           onAnalyze={handleAnalyze}

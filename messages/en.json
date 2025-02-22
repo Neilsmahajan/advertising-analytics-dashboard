@@ -224,7 +224,10 @@
     "queryInformation": "Query Information:",
     "service": "Service:",
     "queryName": "Query Name:",
-    "queryData": "Query Data:"
+    "queryData": "Query Data:",
+    "totalImpressions": "Total Impressions:",
+    "totalClicks": "Total Clicks:",
+    "totalSpend": "Total Spend:"
   },
   "TrackingDataPage": {
     "title": "FIND ANALYTICS AND TRACKING DATA",
