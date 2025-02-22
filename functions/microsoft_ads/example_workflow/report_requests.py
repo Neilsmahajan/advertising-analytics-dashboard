@@ -36,10 +36,7 @@ def main(authorization_data):
         # authorization_data.account_id = "138753866"
         # authorization_data.customer_id = "253842102"
 
-        # Create results directory of FILE_DIRECTORY/{account_id}/
-        results_directory = os.path.join(
-            FILE_DIRECTORY, str(authorization_data.account_id)
-        )
+        results_directory = FILE_DIRECTORY
         if not os.path.exists(results_directory):
             os.makedirs(results_directory)
 
@@ -64,8 +61,8 @@ def main(authorization_data):
         # return results. The ReportingServiceManager abstracts the details of checking for result file
         # completion, and you don't have to write any code for results polling.
 
-        output_status_message("-----\nAwaiting Background Completion...")
-        background_completion(reporting_download_parameters)
+        # output_status_message("-----\nAwaiting Background Completion...")
+        # background_completion(reporting_download_parameters)
 
         # Option B - Submit and Download with ReportingServiceManager
         # Submit the download request and then use the ReportingDownloadOperation result to
@@ -91,8 +88,8 @@ def main(authorization_data):
 
         # Option D - Download the report in memory with ReportingServiceManager.download_report
         # The download_report helper function downloads the report and summarizes results.
-        # output_status_message("-----\nAwaiting download_report...")
-        # download_report(reporting_download_parameters)
+        output_status_message("-----\nAwaiting download_report...")
+        download_report(reporting_download_parameters)
 
     except WebFault as ex:
         output_webfault_errors(ex)
