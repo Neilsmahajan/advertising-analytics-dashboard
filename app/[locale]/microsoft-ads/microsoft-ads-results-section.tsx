@@ -10,7 +10,8 @@ interface MicrosoftAdsResultsSectionProps {
     total_impressions: number;
     total_clicks: number;
     total_spend: number;
-  };  userInfo: {
+  };
+  userInfo: {
     name: string;
     email: string;
   };
@@ -74,7 +75,8 @@ export default function MicrosoftAdsResultsSection({
           <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
           <div className="bg-white/10 rounded-lg p-6">
             <p>
-              <strong>{t("totalImpressions")}</strong> {results?.total_impressions ?? 0}
+              <strong>{t("totalImpressions")}</strong>{" "}
+              {results?.total_impressions ?? 0}
             </p>
             <p>
               <strong>{t("totalClicks")}</strong> {results?.total_clicks ?? 0}

@@ -69,6 +69,25 @@ def generate_report(req):
             </tbody>
         </table>
         """
+    elif service == "Microsoft Ads":
+        results_html = f"""
+        <table>
+            <thead>
+                <tr>
+                    <th>Total Impressions</th>
+                    <th>Total Clicks</th>
+                    <th>Total Spend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{results['total_impressions']}</td>
+                    <td>{results['total_clicks']}</td>
+                    <td>{results['total_spend']}</td>
+                </tr>
+            </tbody>
+        </table>
+        """
     else:
         results_html = "<p>Unsupported service</p>"
 
