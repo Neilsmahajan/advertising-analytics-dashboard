@@ -80,7 +80,7 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
 
     # Create results directory of {current_file_directory}/FILE_DIRECTORY/{account_id}/
-    results_directory = os.path.join(FILE_DIRECTORY, str(account_id))
+    results_directory = FILE_DIRECTORY
     if not os.path.exists(results_directory):
         os.makedirs(results_directory)
 
