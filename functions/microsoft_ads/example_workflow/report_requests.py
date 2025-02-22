@@ -230,6 +230,10 @@ def download_report(reporting_download_parameters):
 
     # Analyze and output performance statistics
 
+    total_impressions = 0
+    total_clicks = 0
+    total_spend = 0
+
     if (
         "Impressions" in report_container.report_columns
         and "Clicks" in report_container.report_columns
@@ -239,23 +243,27 @@ def download_report(reporting_download_parameters):
 
         report_record_iterable = report_container.report_records
 
-        total_impressions = 0
-        total_clicks = 0
+        
         distinct_devices = set()
         distinct_networks = set()
         for record in report_record_iterable:
             total_impressions += record.int_value("Impressions")
             total_clicks += record.int_value("Clicks")
+            total_spend += record.int_value("Spend")
             distinct_devices.add(record.value("DeviceType"))
             distinct_networks.add(record.value("Network"))
 
         output_status_message("Total Impressions: {0}".format(total_impressions))
         output_status_message("Total Clicks: {0}".format(total_clicks))
+        output_status_message("Total Spend: {0}".format(total_spend))
         output_status_message(
             "Average Impressions: {0}".format(total_impressions * 1.0 / record_count)
         )
         output_status_message(
             "Average Clicks: {0}".format(total_clicks * 1.0 / record_count)
+        )
+        output_status_message(
+            "Average Spend: {0}".format(total_spend * 1.0 / record_count)
         )
         output_status_message(
             "Distinct Devices: {0}".format(

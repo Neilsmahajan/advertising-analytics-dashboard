@@ -29,8 +29,7 @@ def analyze_microsoft_ads(req):
     if "error" in result:
         return jsonify(result), 400
 
-    metrics = extract_metrics_from_csv(os.path.join(FILE_DIRECTORY, RESULT_FILE_NAME))
-    return jsonify(metrics)
+    return jsonify(result), 200
 
 
 def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
@@ -108,24 +107,6 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     )
     background_completion(reporting_download_parameters, reporting_service_manager)
     return {"status": "success"}
-
-
-def extract_metrics_from_csv(file_path):
-    """Extract relevant metrics from the CSV file."""
-    metrics = {
-        "total_impressions": 0,
-        "total_clicks": 0,
-        "total_spend": 0.0,
-    }
-
-    with open(file_path, mode="r") as file:
-        csv_reader = csv.DictReader(file)
-        for row in csv_reader:
-            metrics["total_impressions"] += int(row["Impressions"])
-            metrics["total_clicks"] += int(row["Clicks"])
-            metrics["total_spend"] += float(row["Spend"])
-
-    return metrics
 
 
 def search_accounts_by_user_id(customer_service, user_id):
