@@ -8,6 +8,7 @@ import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 /**
  *
@@ -61,7 +62,12 @@ export default function MicrosoftAdsQueryForm() {
   return (
     <div>
       {!code ? (
-        <button onClick={handleAuthenticate}>Connect with Microsoft Ads</button>
+        <Button
+          onClick={handleAuthenticate}
+          className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+        >
+          Connect with Microsoft Ads
+        </Button>
       ) : (
         <QueryForm
           service="Microsoft Ads"
