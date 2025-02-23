@@ -24,6 +24,7 @@ def analyze_tracking_data(req):
             "google-analytics.com": "Google Analytics",
             "g.doubleclick.net": "Google Ads DoubleClick",
             "fbq(": "Facebook Pixel",
+            "facebook_pixel": "Facebook Pixel",
             "connect.facebook.net": "Facebook SDK",
             "bat.bing.com": "Bing UET",
             "static.hotjar.com": "Hotjar",
