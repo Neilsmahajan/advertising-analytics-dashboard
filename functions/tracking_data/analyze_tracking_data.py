@@ -20,25 +20,26 @@ def analyze_tracking_data(req):
         soup = BeautifulSoup(html, "html.parser")
 
         tracking_keywords = {
-            "googletagmanager.com": "Google Tag Manager",
+            "googletagmanager.com": "Google Site Tag",
             "google-analytics.com": "Google Analytics",
             "merchantGoogleAnalytics": "Google Analytics",
             "g.doubleclick.net": "Google Ads DoubleClick",
             "fbq(": "Facebook Pixel",
             "facebook_pixel": "Facebook Pixel",
             "connect.facebook.net": "Facebook SDK",
-            "bat.bing.com": "Bing UET",
+            "bat.bing.com": "Bing Universal Event Tracking",
             "static.hotjar.com": "Hotjar",
             "cdn.amplitude.com": "Amplitude",
             "analytics.twitter.com": "Twitter Analytics",
             "snap.licdn.com": "LinkedIn Insight Tag",
             "quantserve.com": "Quantcast",
             "adroll.com": "AdRoll",
-            "gtag('config'": "Google Global Site Tag",
+            "gtag('config'": "Google Site Tag",
             "myshopify.com": "Shopify",
             "chimpstatic.com": "Mailchimp",
             "boldapps.net": "Bold Apps",
             "Google Ads Enhanced Conversion": "Google Ads Conversion Tracking",
+            "automizely-analytics.com": "Automizely",
         }
 
         analytics_tags = []
