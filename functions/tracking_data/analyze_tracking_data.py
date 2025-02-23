@@ -22,6 +22,7 @@ def analyze_tracking_data(req):
         tracking_keywords = {
             "googletagmanager.com": "Google Tag Manager",
             "google-analytics.com": "Google Analytics",
+            "merchantGoogleAnalytics": "Google Analytics",
             "g.doubleclick.net": "Google Ads DoubleClick",
             "fbq(": "Facebook Pixel",
             "facebook_pixel": "Facebook Pixel",
