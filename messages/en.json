@@ -227,7 +227,26 @@
     "queryData": "Query Data:",
     "totalImpressions": "Total Impressions:",
     "totalClicks": "Total Clicks:",
-    "totalSpend": "Total Spend:"
+    "totalSpend": "Total Spend:",
+    "tagDescriptions": {
+      "Google Site Tag": "Google Site Tag is used for tracking and analytics on websites.",
+      "Google Analytics": "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.",
+      "Google Ads DoubleClick": "Google Ads DoubleClick is a platform for managing digital advertising campaigns.",
+      "Facebook Pixel": "Facebook Pixel is Facebook's conversion tracking system for ads on Facebook to websites.",
+      "Facebook SDK": "Facebook SDK is a set of tools for integrating Facebook services into your app.",
+      "Bing Universal Event Tracking": "Bing Universal Event Tracking is a tracking tool for Bing Ads.",
+      "Hotjar": "Hotjar is a tool that reveals the online behavior and voice of your users.",
+      "Amplitude": "Amplitude is a product analytics service that helps you understand user behavior.",
+      "Twitter Analytics": "Twitter Analytics provides insights into your Twitter activity.",
+      "LinkedIn Insight Tag": "LinkedIn Insight Tag is a lightweight JavaScript tag for LinkedIn conversion tracking.",
+      "Quantcast": "Quantcast is a digital advertising company specialized in audience measurement.",
+      "AdRoll": "AdRoll is a marketing platform that helps businesses grow through retargeting.",
+      "Shopify": "Shopify is an e-commerce platform for online stores and retail point-of-sale systems.",
+      "Mailchimp": "Mailchimp is a marketing automation platform and email marketing service.",
+      "Bold Apps": "Bold Apps provides e-commerce solutions for Shopify stores.",
+      "Google Ads Conversion Tracking": "Google Ads Conversion Tracking helps you track the actions people take after viewing or interacting with your ads.",
+      "Automizely": "Automizely is a marketing automation platform for e-commerce businesses."
+    }
   },
   "TrackingDataPage": {
     "title": "FIND ANALYTICS AND TRACKING DATA",

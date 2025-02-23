@@ -227,7 +227,26 @@
     "queryData": "Données de la Requête:",
     "totalImpressions": "Impressions Totales",
     "totalClicks": "Clics Totaux",
-    "totalSpend": "Dépenses Totales"
+    "totalSpend": "Dépenses Totales",
+    "tagDescriptions": {
+      "Google Site Tag": "Google Site Tag est utilisé pour le suivi et l'analyse sur les sites web.",
+      "Google Analytics": "Google Analytics est un service d'analyse web proposé par Google qui suit et rapporte le trafic du site web.",
+      "Google Ads DoubleClick": "Google Ads DoubleClick est une plateforme de gestion des campagnes publicitaires numériques.",
+      "Facebook Pixel": "Facebook Pixel est le système de suivi des conversions de Facebook pour les publicités sur Facebook vers les sites web.",
+      "Facebook SDK": "Facebook SDK est un ensemble d'outils pour intégrer les services Facebook dans votre application.",
+      "Bing Universal Event Tracking": "Bing Universal Event Tracking est un outil de suivi pour Bing Ads.",
+      "Hotjar": "Hotjar est un outil qui révèle le comportement en ligne et la voix de vos utilisateurs.",
+      "Amplitude": "Amplitude est un service d'analyse de produit qui vous aide à comprendre le comportement des utilisateurs.",
+      "Twitter Analytics": "Twitter Analytics fournit des informations sur votre activité Twitter.",
+      "LinkedIn Insight Tag": "LinkedIn Insight Tag est une balise JavaScript légère pour le suivi des conversions LinkedIn.",
+      "Quantcast": "Quantcast est une entreprise de publicité numérique spécialisée dans la mesure d'audience.",
+      "AdRoll": "AdRoll est une plateforme de marketing qui aide les entreprises à se développer grâce au reciblage.",
+      "Shopify": "Shopify est une plateforme de commerce électronique pour les magasins en ligne et les systèmes de point de vente de détail.",
+      "Mailchimp": "Mailchimp est une plateforme d'automatisation du marketing et un service de marketing par courriel.",
+      "Bold Apps": "Bold Apps fournit des solutions de commerce électronique pour les magasins Shopify.",
+      "Google Ads Conversion Tracking": "Google Ads Conversion Tracking vous aide à suivre les actions que les gens entreprennent après avoir vu ou interagi avec vos annonces.",
+      "Automizely": "Automizely est une plateforme d'automatisation du marketing pour les entreprises de commerce électronique."
+    }
   },
   "TrackingDataPage": {
     "title": "TROUVER LES DONNÉES D'ANALYSE ET DE SUIVI",

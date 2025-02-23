@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 interface TrackingDataResultsSectionProps {
   results: {
     analytics_tags?: string[];
+    tag_descriptions?: Record<string, string>;
     message?: string;
   };
   userInfo: {
@@ -73,7 +74,12 @@ export default function TrackingDataResultsSection({
           {results.analytics_tags ? (
             <ul className="list-disc list-inside text-white/60">
               {results.analytics_tags.map((tag: string, index: number) => (
-                <li key={index}>{tag}</li>
+                <li key={index}>
+                  {tag}
+                  <p className="text-sm text-white/50">
+                    {t(`tagDescriptions.${tag}`)}
+                  </p>
+                </li>
               ))}
             </ul>
           ) : (
