@@ -35,6 +35,10 @@ def analyze_tracking_data(req):
             "quantserve.com": "Quantcast",
             "adroll.com": "AdRoll",
             "gtag('config'": "Google Global Site Tag",
+            "myshopify.com": "Shopify",
+            "chimpstatic.com": "Mailchimp",
+            "boldapps.net": "Bold Apps",
+            "Google Ads Enhanced Conversion": "Google Ads Conversion Tracking",
         }
 
         analytics_tags = []
