@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 interface TrackingDataResultsSectionProps {
@@ -21,6 +22,26 @@ interface TrackingDataResultsSectionProps {
     queryData: Record<string, unknown>;
   };
 }
+
+const tagImages: Record<string, string> = {
+  "Google Site Tag": "google-tag-manager-logo.png",
+  "Google Analytics": "google-analytics-logo.png",
+  "Google Ads DoubleClick": "google-ads-logo.png",
+  "Facebook Pixel": "meta-ads-logo.png",
+  "Facebook SDK": "meta-ads-logo.png",
+  "Bing Universal Event Tracking": "bing-logo.png",
+  "Hotjar": "hotjar-logo.png",
+  "Amplitude": "amplitude-logo.png",
+  "Twitter Analytics": "x-ads-logo.png",
+  "LinkedIn Insight Tag": "linkedin-ads-logo.png",
+  "Quantcast": "quantcast-logo.png",
+  "AdRoll": "adroll-logo.jpg",
+  "Shopify": "shopify-logo.png",
+  "Mailchimp": "mailchimp-logo.png",
+  "Bold Commerce": "bold-commerce-logo.png",
+  "Google Ads Conversion Tracking": "google-ads-logo.png",
+  "Automizely": "automizely-logo.png",
+};
 
 /**
  *
@@ -74,11 +95,22 @@ export default function TrackingDataResultsSection({
           {results.analytics_tags ? (
             <ul className="list-disc list-inside text-white/60">
               {results.analytics_tags.map((tag: string, index: number) => (
-                <li key={index}>
-                  {tag}
-                  <p className="text-sm text-white/50">
-                    {t(`tagDescriptions.${tag}`)}
-                  </p>
+                <li key={index} className="flex items-center gap-2">
+                  {tagImages[tag] && (
+                    <Image
+                      src={`/${tagImages[tag]}`}
+                      alt={tag}
+                      width={24}
+                      height={24}
+                      className="inline-block"
+                    />
+                  )}
+                  <div>
+                    {tag}
+                    <p className="text-sm text-white/50">
+                      {t(`tagDescriptions.${tag}`)}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

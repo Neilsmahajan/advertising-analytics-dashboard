@@ -37,7 +37,7 @@ def analyze_tracking_data(req):
             "gtag('config'": "Google Site Tag",
             "myshopify.com": "Shopify",
             "chimpstatic.com": "Mailchimp",
-            "boldapps.net": "Bold Apps",
+            "boldapps.net": "Bold Commerce",
             "Google Ads Enhanced Conversion": "Google Ads Conversion Tracking",
             "automizely-analytics.com": "Automizely",
         }
