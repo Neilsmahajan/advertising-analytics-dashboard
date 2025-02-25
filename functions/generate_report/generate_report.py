@@ -46,7 +46,7 @@ def generate_report(req):
     elif service == "Tracking Data":
         results_html = f"""
         <ul>
-            {''.join(f"<li>{tag}</li>" for tag in results['analytics_tags'])}
+            {''.join(f"<li>{tag}: {results['tag_descriptions'].get(tag, '')}</li>" for tag in results['analytics_tags'])}
         </ul>
         """
     elif service == "Meta Ads":

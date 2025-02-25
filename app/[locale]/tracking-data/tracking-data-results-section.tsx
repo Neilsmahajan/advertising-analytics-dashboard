@@ -30,17 +30,17 @@ const tagImages: Record<string, string> = {
   "Facebook Pixel": "meta-ads-logo.png",
   "Facebook SDK": "meta-ads-logo.png",
   "Bing Universal Event Tracking": "bing-logo.png",
-  "Hotjar": "hotjar-logo.png",
-  "Amplitude": "amplitude-logo.png",
+  Hotjar: "hotjar-logo.png",
+  Amplitude: "amplitude-logo.png",
   "Twitter Analytics": "x-ads-logo.png",
   "LinkedIn Insight Tag": "linkedin-ads-logo.png",
-  "Quantcast": "quantcast-logo.png",
-  "AdRoll": "adroll-logo.jpg",
-  "Shopify": "shopify-logo.png",
-  "Mailchimp": "mailchimp-logo.png",
+  Quantcast: "quantcast-logo.png",
+  AdRoll: "adroll-logo.jpg",
+  Shopify: "shopify-logo.png",
+  Mailchimp: "mailchimp-logo.png",
   "Bold Commerce": "bold-commerce-logo.png",
   "Google Ads Conversion Tracking": "google-ads-logo.png",
-  "Automizely": "automizely-logo.png",
+  Automizely: "automizely-logo.png",
 };
 
 /**
@@ -59,10 +59,20 @@ export default function TrackingDataResultsSection({
     try {
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
         {
           userInfo,
           queryInfo,
-          results,
+          results: {
+            ...results,
+            tag_descriptions: results.analytics_tags?.reduce(
+              (acc, tag) => ({
+                ...acc,
+                [tag]: t(`tagDescriptions.${tag}`),
+              }),
+              {},
+            ),
+          },
           service: queryInfo.service,
         },
         { responseType: "blob" },
