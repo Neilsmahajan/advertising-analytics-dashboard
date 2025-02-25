@@ -103,7 +103,7 @@
   },
   "About": {
     "title": "ABOUT ADVERTISING ANALYTICS DASHBOARD",
-    "missionStatement": "AT ADVERTISING ANALYTICS DASHBOARD, OUR MISSION IS TO SIMPLIFY THE WAY BUSINESSES MANAGE AND OPTIMIZE THEIR ADVERTISING CAMPAIGNS. WHETHER YOU'RE A SMALL BUSINESS OWNER OR PART OF A LARGE ENTERPRISE, WE PROVIDE THE TOOLS YOU NEED TO TRACK PERFORMANCE, GAIN INSIGHTS, AND MAXIMIZE THE IMPACT OF YOUR MARKETING STRATEGIES.",
+    "missionStatement": "At Advertising Analytics Dashboard, our mission is to simplify the way businesses manage and optimize their advertising campaigns. Whether you're a small business owner or part of a large enterprise, we provide the tools you need to track performance, gain insights, and maximize the impact of your marketing strategies.",
     "whatWeDo": "What We Do:",
     "unifiedAnalytics": "Unified Analytics: Consolidate data from multiple ad platforms in one place.",
     "realTimeInsights": "Real-Time Insights: Access up-to-date metrics to make informed decisions.",
@@ -138,7 +138,7 @@
     "loading": "Loading...",
     "error": "Error:",
     "welcome": "Welcome,",
-    "manageProfile": "MANAGE YOUR PROFILE AND SAVED QUERIES HERE.",
+    "manageProfile": "Manage your profile information and saved queries here.",
     "profileInfo": "Profile Information",
     "name": "Name",
     "emailAddress": "Email",
@@ -148,7 +148,7 @@
     "createdAt": "Created At",
     "run": "Run",
     "delete": "Delete",
-    "signOut": "SIGN OUT"
+    "signOut": "Sign Out"
   },
   "ContactUs": {
     "title": "CONTACT US",
@@ -162,7 +162,7 @@
       "emailPlaceholder": "Enter email",
       "phonePlaceholder": "Enter phone",
       "messagePlaceholder": "Enter message",
-      "sendButton": "SEND",
+      "sendButton": "Send",
       "nameError": "Name must be at least 2 characters.",
       "emailError": "Please enter a valid email address.",
       "messageError": "Message must be at least 10 characters."
@@ -170,7 +170,7 @@
   },
   "PrivacyPolicy": {
     "title": "PRIVACY POLICY",
-    "introduction": "YOUR PRIVACY IS IMPORTANT TO US AT ADVERTISING ANALYTICS DASHBOARD. THIS PRIVACY POLICY OUTLINES THE TYPES OF INFORMATION WE COLLECT, HOW WE USE IT, AND THE STEPS WE TAKE TO PROTECT YOUR DATA.",
+    "introduction": "Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services.",
     "informationWeCollect": "Information We Collect",
     "personalInformation": "Personal Information: When you create an account, we collect details such as your name, email address, and any other data you provide during registration.",
     "usageData": "Usage Data: We track how you interact with our website, including the services you use, the pages you visit, and your preferences, to enhance your experience.",
@@ -201,12 +201,12 @@
     "selectQuery": "Select a previous query or create new",
     "queryName": "Query Name",
     "enterQueryName": "Enter query name",
-    "saveQuery": "SAVE QUERY",
+    "saveQuery": "Save Query",
     "enter": "Enter",
     "analyze": "Analyze"
   },
   "ResultsSection": {
-    "downloadReport": "DOWNLOAD REPORT",
+    "downloadReport": "Download Report",
     "results": "Results:",
     "date": "Date",
     "sessions": "Sessions",
@@ -252,7 +252,7 @@
     "title": "FIND ANALYTICS AND TRACKING DATA",
     "instructions": "Instructions",
     "enterUrl": "Enter your website URL to find all of the Analytics and Tracking tags on your website.",
-    "viewTutorial": "VIEW TUTORIAL"
+    "viewTutorial": "View Tutorial"
   },
   "TrackingDataQueryForm": {
     "websiteUrl": "Website URL"
@@ -267,7 +267,7 @@
     "grantViewerRoll": "Grant Viewer role access.",
     "getYourGoogle": "Get your Google Analytics Property ID (e.g., 469573948) from Admin &gt; Property &gt; Property details.",
     "enterTheProperty": "Enter the Property ID below, along with the desired date range, and click Get Analytics.",
-    "viewTutorial": "VIEW TUTORIAL"
+    "viewTutorial": "View Tutorial"
   },
   "GoogleAnalyticsQueryForm": {
     "propertyId": "Property ID",
@@ -285,7 +285,7 @@
     "navigateToUsers": "Navigate to Users > System Users > Add and create an admin system user with access to your app and any other assets if you have not created one.",
     "retrieveAccessToken": "Retrieve your access token for the system user by clicking Generate Token with the maximum permissions.",
     "enterAdAccountId": "Enter your Ad Account ID and Access Token below, along with the desired date range, and click Get Analytics.",
-    "viewTutorial": "VIEW TUTORIAL"
+    "viewTutorial": "View Tutorial"
   },
   "MetaAdsQueryForm": {
     "adAccountId": "Ad Account ID",

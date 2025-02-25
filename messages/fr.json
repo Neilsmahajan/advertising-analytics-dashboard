@@ -103,7 +103,7 @@
   },
   "About": {
     "title": "À PROPOS DU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE",
-    "missionStatement": "AU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE, NOTRE MISSION EST DE SIMPLIFIER LA GESTION ET L'OPTIMISATION DES CAMPAGNES PUBLICITAIRES POUR LES ENTREPRISES. QUE VOUS SOYEZ PROPRIÉTAIRE D'UNE PETITE ENTREPRISE OU FAISIEZ PARTIE D'UNE GRANDE ENTREPRISE, NOUS FOURNISSONS LES OUTILS NÉCESSAIRES POUR SUIVRE LES PERFORMANCES, OBTENIR DES INSIGHTS ET MAXIMISER L'IMPACT DE VOS STRATÉGIES MARKETING.",
+    "missionStatement": "Chez Advertising Analytics Dashboard, notre mission est de simplifier la façon dont les entreprises gèrent et optimisent leurs campagnes publicitaires. Que vous soyez propriétaire d'une petite entreprise ou membre d'une grande entreprise, nous vous fournissons les outils dont vous avez besoin pour suivre les performances, obtenir des informations et maximiser l'impact de vos stratégies marketing.",
     "whatWeDo": "Ce Que Nous Faisons:",
     "unifiedAnalytics": "Analytique Unifiée: Consolidez les données de plusieurs plateformes publicitaires en un seul endroit.",
     "realTimeInsights": "Insights en Temps Réel: Accédez à des métriques à jour pour prendre des décisions éclairées.",
@@ -138,7 +138,7 @@
     "loading": "Chargement...",
     "error": "Erreur:",
     "welcome": "Bienvenue,",
-    "manageProfile": "GÉREZ VOTRE PROFIL ET VOS REQUÊTES SAUVEGARDÉES ICI.",
+    "manageProfile": "Gérez ici les informations de votre profil et les requêtes enregistrées.",
     "profileInfo": "Informations sur le Profil",
     "name": "Nom",
     "emailAddress": "Courriel",
@@ -148,7 +148,7 @@
     "createdAt": "Créé le",
     "run": "Exécuter",
     "delete": "Supprimer",
-    "signOut": "SE DÉCONNECTER"
+    "signOut": "Se Déconnecter"
   },
   "ContactUs": {
     "title": "CONTACTEZ-NOUS",
@@ -162,7 +162,7 @@
       "emailPlaceholder": "Entrez le courriel",
       "phonePlaceholder": "Entrez le téléphone",
       "messagePlaceholder": "Entrez le message",
-      "sendButton": "ENVOYER",
+      "sendButton": "Envoyer",
       "nameError": "Le nom doit comporter au moins 2 caractères.",
       "emailError": "Veuillez entrer une adresse courriel valide.",
       "messageError": "Le message doit comporter au moins 10 caractères."
@@ -170,7 +170,7 @@
   },
   "PrivacyPolicy": {
     "title": "POLITIQUE DE CONFIDENTIALITÉ",
-    "introduction": "VOTRE CONFIDENTIALITÉ EST IMPORTANTE POUR NOUS AU TABLEAU DE BORD D'ANALYSE PUBLICITAIRE. CETTE POLITIQUE DE CONFIDENTIALITÉ DÉCRIT LES TYPES D'INFORMATIONS QUE NOUS COLLECTONS, COMMENT NOUS LES UTILISONS ET LES MESURES QUE NOUS PRENONS POUR PROTÉGER VOS DONNÉES.",
+    "introduction": "Votre vie privée est importante pour nous. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez nos services.",
     "informationWeCollect": "Informations Que Nous Collectons",
     "personalInformation": "Informations Personnelles: Lorsque vous créez un compte, nous collectons des détails tels que votre nom, adresse courriel et toutes autres données que vous fournissez lors de l'inscription.",
     "usageData": "Données d'Utilisation: Nous suivons comment vous interagissez avec notre site web, y compris les services que vous utilisez, les pages que vous visitez et vos préférences, pour améliorer votre expérience.",
@@ -201,12 +201,12 @@
     "selectQuery": "Sélectionnez une requête précédente ou créez-en une nouvelle",
     "queryName": "Nom de la Requête",
     "enterQueryName": "Entrez le nom de la requête",
-    "saveQuery": "ENREGISTRER LA REQUÊTE",
+    "saveQuery": "Sauvegarder la Requête",
     "enter": "Entrez",
     "analyze": "Analyser"
   },
   "ResultsSection": {
-    "downloadReport": "TÉLÉCHARGER LE RAPPORT",
+    "downloadReport": "Télécharger le Rapport",
     "results": "Résultats:",
     "date": "Date",
     "sessions": "Sessions",
@@ -252,7 +252,7 @@
     "title": "TROUVER LES DONNÉES D'ANALYSE ET DE SUIVI",
     "instructions": "Instructions",
     "enterUrl": "Entrez l'URL de votre site web pour trouver toutes les balises d'analyse et de suivi sur votre site.",
-    "viewTutorial": "VOIR LE TUTORIEL"
+    "viewTutorial": "Voir le Tutoriel"
   },
   "TrackingDataQueryForm": {
     "websiteUrl": "URL du Site Web"
@@ -267,7 +267,7 @@
     "grantViewerRoll": "Accordez le rôle de visualiseur.",
     "getYourGoogle": "Obtenez votre identifiant de propriété Google Analytics (par exemple, 469573948) depuis Admin &gt; Propriété &gt; Détails de la propriété.",
     "enterTheProperty": "Entrez l'identifiant de la propriété ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
-    "viewTutorial": "VOIR LE TUTORIEL"
+    "viewTutorial": "Voir le Tutoriel"
   },
   "GoogleAnalyticsQueryForm": {
     "propertyId": "Identifiant de la Propriété",
@@ -285,7 +285,7 @@
     "navigateToUsers": "Naviguez vers Utilisateurs > Utilisateurs système > Ajouter et créer un utilisateur système administrateur avec accès à votre application et à tout autre actif si vous n'en avez pas créé un.",
     "retrieveAccessToken": "Récupérez votre jeton d'accès pour l'utilisateur système en cliquant sur Générer un jeton avec les autorisations maximales.",
     "enterAdAccountId": "Entrez votre identifiant de compte publicitaire et votre jeton d'accès ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
-    "viewTutorial": "VOIR LE TUTORIEL"
+    "viewTutorial": "Voir le Tutoriel"
   },
   "MetaAdsQueryForm": {
     "adAccountId": "Identifiant du Compte Publicitaire",
