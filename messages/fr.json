@@ -300,5 +300,9 @@
   "MicrosoftAdsQueryForm": {
     "accountId": "Identifiant du Compte",
     "customerId": "Identifiant du Client"
+  },
+  "GoogleAdsPage": {
+    "title": "GOOGLE ADS",
+    "instructions": "Instructions"
   }
 }
