@@ -85,7 +85,7 @@ export default function MicrosoftAdsQueryForm() {
           onClick={handleAuthenticate}
           className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
         >
-          Connect with Microsoft Ads
+          {t("connectWithMicrosoftAds")}
         </Button>
       ) : (
         <QueryForm

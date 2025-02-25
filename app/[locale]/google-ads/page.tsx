@@ -1,4 +1,5 @@
 import CollapsibleSection from "@/components/collapsible-section";
+import GoogleAdsQueryForm from "./google-ads-query-form";
 import Image from "next/image";
 import React from "react";
 import { useTranslations } from "next-intl";
@@ -25,7 +26,7 @@ export default function GoogleAdsPage() {
         </div>
         {/* Instructions Section */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{t("instrucitons")}</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
           <p className="text-lg mb-6">
             Follow These Steps To Use This Application With Your Google Ads
             Data:
@@ -59,6 +60,9 @@ export default function GoogleAdsPage() {
             </CollapsibleSection>
           </div>
         </section>
+
+        {/* Query Form Section */}
+        <GoogleAdsQueryForm />
       </div>
     </div>
   );

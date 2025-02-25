@@ -299,10 +299,15 @@
   },
   "MicrosoftAdsQueryForm": {
     "accountId": "Identifiant du Compte",
-    "customerId": "Identifiant du Client"
+    "customerId": "Identifiant du Client",
+    "connectWithMicrosoftAds": "Connectez-vous avec Microsoft Ads"
   },
   "GoogleAdsPage": {
     "title": "GOOGLE ADS",
     "instructions": "Instructions"
+  },
+  "GoogleAdsQueryForm": {
+    "customerId": "Customer ID",
+    "connectWithGoogleAds": "Connectez-vous avec Google Ads"
   }
 }
