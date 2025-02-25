@@ -26,6 +26,9 @@ from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import (
 from microsoft_ads.authenticate_microsoft_ads.authenticate_microsoft_ads import (
     authenticate_microsoft_ads,
 )
+from google_ads.authenticate_google_ads.authenticate_google_ads import (
+    authenticate_google_ads,
+)
 
 
 # Define HTTP functions
@@ -147,3 +150,19 @@ def authenticate_microsoft_ads_function(req: https_fn.Request) -> https_fn.Respo
     response, status_code = authenticate_microsoft_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return make_response(response, status_code)
+
+
+@https_fn.on_request()
+def authenticate_google_ads_function(req: https_fn.Request) -> https_fn.Response:
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        return response
+
+    # Handle actual request
+    response, status_code = authenticate_google_ads(req)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response

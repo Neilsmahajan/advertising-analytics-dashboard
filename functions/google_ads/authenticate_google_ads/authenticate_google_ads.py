@@ -5,6 +5,7 @@ import re
 import socket
 import sys
 from urllib.parse import unquote
+from flask import jsonify
 from google_auth_oauthlib.flow import Flow
 
 _SCOPE = "https://www.googleapis.com/auth/adwords"
@@ -14,10 +15,14 @@ _SERVER = "localhost"
 _PORT = 3000
 _REDIRECT_URI = f"http://{_SERVER}:{_PORT}/en/google-ads"
 
-def authenticate_google_ads():
-    # oauth 2 google ads credentials file path: functions/credentials/oauth_2_google_ads_client_id_and_secret.json and current file: functions/google_ads/authenticate_google_ads/authenticate_google_ads.py
+
+def authenticate_google_ads(req):
     client_secrets_path = os.path.join(
-        os.path.dirname(__file__), "..", "..", "credentials", "oauth_2_google_ads_client_id_and_secret.json"
+        os.path.dirname(__file__),
+        "..",
+        "..",
+        "credentials",
+        "oauth_2_google_ads_client_id_and_secret.json",
     )
     scopes = [_SCOPE]
     flow = Flow.from_client_secrets_file(client_secrets_path, scopes=scopes)
@@ -30,9 +35,8 @@ def authenticate_google_ads():
         prompt="consent",
         include_granted_scopes="true",
     )
-    print("Paste this URL into your browser: ")
-    print(authorization_url)
-    print(f"\nWaiting for authorization and callback to: {_REDIRECT_URI}")
+    print("Authorization url: \n" + authorization_url)
+    return jsonify({"url": authorization_url}), 200
 
 
 if __name__ == "__main__":
