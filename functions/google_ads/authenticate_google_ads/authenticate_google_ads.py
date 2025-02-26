@@ -36,7 +36,8 @@ def authenticate_google_ads(req):
         include_granted_scopes="true",
     )
     print("Authorization url: \n" + authorization_url)
-    return jsonify({"url": authorization_url}), 200
+    response = {"url": authorization_url, "passthroughVal": passthrough_val}
+    return jsonify(response), 200
 
 
 if __name__ == "__main__":

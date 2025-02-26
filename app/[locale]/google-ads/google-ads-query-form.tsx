@@ -22,6 +22,7 @@ export default function GoogleAdsQueryForm() {
 
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  // let passthrough_val;
 
   const handleAuthenticate = async () => {
     try {
@@ -34,6 +35,7 @@ export default function GoogleAdsQueryForm() {
         "Redirecting to Google Ads authentication page:",
         response.data.url,
       );
+      // passthrough_val = response.data.passthroughVal;
       window.open(response.data.url, "_blank");
     } catch (error) {
       console.error("Error during Google Ads authentication:", error);
