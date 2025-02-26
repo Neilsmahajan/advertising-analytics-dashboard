@@ -228,6 +228,11 @@
     "totalImpressions": "Total Impressions:",
     "totalClicks": "Total Clicks:",
     "totalSpend": "Total Spend:",
+    "averageCost": "Average Cost:",
+    "averageCpc": "Average CPC:",
+    "averageCpm": "Average CPM:",
+    "conversions": "Conversions:",
+    "engagements": "Engagements:",
     "tagDescriptions": {
       "Google Site Tag": "Google Site Tag is used for tracking and analytics on websites.",
       "Google Analytics": "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.",

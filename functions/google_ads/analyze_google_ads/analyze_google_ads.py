@@ -16,7 +16,10 @@ def analyze_google_ads(req):
 def fetch_google_ads_data(customer_id, current_url, passthrough_val):
     # Placeholder for fetching Google Ads data
     return {
-        "customerId": customer_id,
-        "currentUrl": current_url,
-        "passthroughVal": passthrough_val,
+        "average_cost": 1,
+        "average_cpc": 1,
+        "average_cpm": 1,
+        "clicks": 1,
+        "conversions": 1,
+        "engagements": 1,
     }
