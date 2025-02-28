@@ -43,6 +43,31 @@ def generate_report(req):
             </tbody>
         </table>
         """
+    elif service == "Google Ads":
+        results_html = f"""
+        <table>
+            <thead>
+                <tr>
+                    <th>Average Cost</th>
+                    <th>Average CPC</th>
+                    <th>Average CPM</th>
+                    <th>Clicks</th>
+                    <th>Conversions</th>
+                    <th>Engagements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{results.get('average_cost', 0)}</td>
+                    <td>{results.get('average_cpc', 0)}</td>
+                    <td>{results.get('average_cpm', 0)}</td>
+                    <td>{results.get('clicks', 0)}</td>
+                    <td>{results.get('conversions', 0)}</td>
+                    <td>{results.get('engagements', 0)}</td>
+                </tr>
+            </tbody>
+        </table>
+        """
     elif service == "Tracking Data":
         results_html = f"""
         <ul>
