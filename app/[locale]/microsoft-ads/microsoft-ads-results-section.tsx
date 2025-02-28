@@ -97,24 +97,44 @@ export default function MicrosoftAdsResultsSection({
         <div>
           <h3 className="text-xl font-bold mb-4">Campaign Details</h3>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white">
-              <thead>
+            <table className="min-w-full divide-y divide-blue-200">
+              <thead className="bg-[#47adbf]">
                 <tr>
-                  <th className="px-4 py-2 border">Campaign ID</th>
-                  <th className="px-4 py-2 border">Campaign Name</th>
-                  <th className="px-4 py-2 border">Impressions</th>
-                  <th className="px-4 py-2 border">Clicks</th>
-                  <th className="px-4 py-2 border">Spend</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Campaign ID
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Campaign Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Impressions
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Clicks
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    Spend
+                  </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-blue-50 divide-y divide-blue-200">
                 {results.campaigns.map((c: Campaign, index: number) => (
                   <tr key={index}>
-                    <td className="px-4 py-2 border">{c.CampaignId}</td>
-                    <td className="px-4 py-2 border">{c.CampaignName}</td>
-                    <td className="px-4 py-2 border">{c.Impressions}</td>
-                    <td className="px-4 py-2 border">{c.Clicks}</td>
-                    <td className="px-4 py-2 border">{c.Spend}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {c.CampaignId}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {c.CampaignName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {c.Impressions}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {c.Clicks}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {c.Spend}
+                    </td>
                   </tr>
                 ))}
               </tbody>
