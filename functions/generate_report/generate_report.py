@@ -45,36 +45,42 @@ def generate_report(req):
         """
     elif service == "Google Ads":
         campaigns = results.get("campaigns", [])
-        table_rows = ""
         if campaigns:
-            table_rows = "".join(
-                f"<tr><td>{campaign['id']}</td><td>{campaign['name']}</td>"
-                f"<td>{float(campaign['average_cost']):.2f}</td><td>{float(campaign['average_cpc']):.2f}</td>"
-                f"<td>{float(campaign['average_cpm']):.2f}</td><td>{float(campaign['clicks']):.2f}</td>"
-                f"<td>{float(campaign['conversions']):.2f}</td><td>{float(campaign['engagements']):.2f}</td></tr>"
-                for campaign in campaigns
-            )
+            google_ads_html = f"""
+            <h3 style="color:#47adbf; margin-bottom:10px;">Campaign Details</h3>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign ID</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign Name</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average Cost</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average CPC</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average CPM</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Clicks</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Conversions</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Engagements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(
+                        f"<tr>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('id')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('name')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cost', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cpc', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cpm', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('clicks', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('conversions', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('engagements', 0)):.2f}</td>"
+                        f"</tr>" for c in campaigns
+                    )}
+                </tbody>
+            </table>
+            """
         else:
-            table_rows = "<tr><td colspan='8'>No data available</td></tr>"
-        results_html = f"""
-        <table>
-            <thead>
-                <tr>
-                    <th>Campaign ID</th>
-                    <th>Campaign Name</th>
-                    <th>Average Cost</th>
-                    <th>Average CPC</th>
-                    <th>Average CPM</th>
-                    <th>Clicks</th>
-                    <th>Conversions</th>
-                    <th>Engagements</th>
-                </tr>
-            </thead>
-            <tbody>
-                {table_rows}
-            </tbody>
-        </table>
-        """
+            google_ads_html = "<p>No campaign data available.</p>"
+
+        results_html = google_ads_html
     elif service == "Tracking Data":
         results_html = f"""
         <ul>
