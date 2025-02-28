@@ -73,38 +73,43 @@ def fetch_google_ads_data(customer_id, response_uri):
     }
 
     googleads_client = GoogleAdsClient.load_from_dict(credentials)
-    print("Campaigns: ", get_campaigns(googleads_client, customer_id))
+    campaigns = get_campaigns(googleads_client, customer_id)
 
-    # Placeholder for fetching Google Ads data
-    return {
-        "average_cost": 1,
-        "average_cpc": 1,
-        "average_cpm": 1,
-        "clicks": 1,
-        "conversions": 1,
-        "engagements": 1,
-    }
+    # Return campaigns with metrics for each campaign.
+    return {"campaigns": campaigns}
 
 
 def get_campaigns(client, customer_id):
-    ga_service = client.get_service("GoogleAdsService")
-
+    # Update query to include required metrics.
     query = """
         SELECT
           campaign.id,
-          campaign.name
+          campaign.name,
+          metrics.average_cost,
+          metrics.average_cpc,
+          metrics.average_cpm,
+          metrics.clicks,
+          metrics.conversions,
+          metrics.engagements
         FROM campaign
-        ORDER BY campaign.id"""
-
-    # Issues a search request using streaming.
-    stream = ga_service.search_stream(customer_id=customer_id, query=query)
+        ORDER BY campaign.id
+    """
+    stream = client.get_service("GoogleAdsService").search_stream(
+        customer_id=customer_id, query=query
+    )
     campaigns = []
     for batch in stream:
         for row in batch.results:
-            print(
-                f"Campaign with ID {row.campaign.id} and name "
-                f'"{row.campaign.name}" was found.'
+            campaigns.append(
+                {
+                    "id": row.campaign.id,
+                    "name": row.campaign.name,
+                    "average_cost": row.metrics.average_cost,
+                    "average_cpc": row.metrics.average_cpc,
+                    "average_cpm": row.metrics.average_cpm,
+                    "clicks": row.metrics.clicks,
+                    "conversions": row.metrics.conversions,
+                    "engagements": row.metrics.engagements,
+                }
             )
-            campaigns.append({"id": row.campaign.id, "name": row.campaign.name})
-            # [END get_campaigns]
     return campaigns

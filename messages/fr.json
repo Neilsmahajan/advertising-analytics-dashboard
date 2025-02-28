@@ -233,6 +233,8 @@
     "averageCpm": "CPM Moyen:",
     "conversions": "Conversions:",
     "engagements": "Engagements:",
+    "campaignId": "ID de Campagne:",
+    "campaignName": "Nom de Campagne:",
     "tagDescriptions": {
       "Google Site Tag": "Google Site Tag est utilisé pour le suivi et l'analyse sur les sites web.",
       "Google Analytics": "Google Analytics est un service d'analyse web proposé par Google qui suit et rapporte le trafic du site web.",

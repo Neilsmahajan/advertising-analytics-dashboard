@@ -5,15 +5,19 @@ import React from "react";
 import axios from "axios";
 import { useTranslations } from "next-intl";
 
+interface Campaign {
+  id: string | number;
+  name: string;
+  average_cost: number;
+  average_cpc: number;
+  average_cpm: number;
+  clicks: number;
+  conversions: number;
+  engagements: number;
+}
+
 interface GoogleAdsResultsSectionProps {
-  results: {
-    average_cost: number;
-    average_cpc: number;
-    average_cpm: number;
-    clicks: number;
-    conversions: number;
-    engagements: number;
-  };
+  results: { campaigns: Campaign[] };
   userInfo: {
     name: string;
     email: string;
@@ -73,29 +77,40 @@ export default function GoogleAdsResultsSection({
         </Button>
       </div>
       <div>
-        <h3 className="text-xl font-bold mb-4"></h3>
+        <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
         <div className="bg-white/10 rounded-lg p-6">
-          <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
-          <div className="bg-white/10 rounded-lg p-6">
-            <p>
-              <strong>{t("averageCost")}</strong> {results?.average_cost ?? 0}
-            </p>
-            <p>
-              <strong>{t("averageCpc")}</strong> {results?.average_cpc ?? 0}
-            </p>
-            <p>
-              <strong>{t("averageCpm")}</strong> {results?.average_cpm ?? 0.0}
-            </p>
-            <p>
-              <strong>{t("clicks")}</strong> {results?.clicks ?? 0.0}
-            </p>
-            <p>
-              <strong>{t("conversions")}</strong> {results?.conversions ?? 0.0}
-            </p>
-            <p>
-              <strong>{t("engagements")}</strong> {results?.engagements ?? 0.0}
-            </p>
-          </div>
+          {results.campaigns && results.campaigns.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>{t("campaignId")}</th>
+                  <th>{t("campaignName")}</th>
+                  <th>{t("averageCost")}</th>
+                  <th>{t("averageCpc")}</th>
+                  <th>{t("averageCpm")}</th>
+                  <th>{t("clicks")}</th>
+                  <th>{t("conversions")}</th>
+                  <th>{t("engagements")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.campaigns.map((campaign) => (
+                  <tr key={campaign.id}>
+                    <td>{campaign.id}</td>
+                    <td>{campaign.name}</td>
+                    <td>{campaign.average_cost}</td>
+                    <td>{campaign.average_cpc}</td>
+                    <td>{campaign.average_cpm}</td>
+                    <td>{campaign.clicks}</td>
+                    <td>{campaign.conversions}</td>
+                    <td>{campaign.engagements}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>{t("noResultsFound")}</p>
+          )}
         </div>
       </div>
       <div>

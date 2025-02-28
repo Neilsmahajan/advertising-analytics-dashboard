@@ -20,19 +20,18 @@ export default function GoogleAdsQueryForm() {
     customerId: t("customerId"),
   };
   const [results, setResults] = useState<{
-    average_cost: number;
-    average_cpc: number;
-    average_cpm: number;
-    clicks: number;
-    conversions: number;
-    engagements: number;
+    campaigns: {
+      id: string | number;
+      name: string;
+      average_cost: number;
+      average_cpc: number;
+      average_cpm: number;
+      clicks: number;
+      conversions: number;
+      engagements: number;
+    }[];
   }>({
-    average_cost: 0,
-    average_cpc: 0,
-    average_cpm: 0,
-    clicks: 0,
-    conversions: 0,
-    engagements: 0,
+    campaigns: [],
   });
   const [showResults, setShowResults] = useState(false);
   const [queryName] = useState("Query Name");
@@ -55,9 +54,12 @@ export default function GoogleAdsQueryForm() {
           },
         );
         console.log("Analysis result:", response.data);
-        setShowResults(true);
-        setResults(response.data);
+        setResults({
+          ...response.data,
+          campaigns: response.data.campaigns || [],
+        });
         setQueryData(queryData);
+        setShowResults(true);
       } catch (error) {
         console.error("Error analyzing Google Ads data:", error);
       }
