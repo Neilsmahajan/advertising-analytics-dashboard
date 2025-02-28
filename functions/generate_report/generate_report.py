@@ -102,24 +102,56 @@ def generate_report(req):
         </table>
         """
     elif service == "Microsoft Ads":
-        results_html = f"""
-        <table>
+        # Build totals table
+        totals_html = f"""
+        <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
             <thead>
                 <tr>
-                    <th>Total Impressions</th>
-                    <th>Total Clicks</th>
-                    <th>Total Spend</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Impressions</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Clicks</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Spend</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{results['total_impressions']}</td>
-                    <td>{results['total_clicks']}</td>
-                    <td>{results['total_spend']}</td>
+                    <td style="padding:8px; border:1px solid #ddd;">{results.get('total_impressions', 0)}</td>
+                    <td style="padding:8px; border:1px solid #ddd;">{results.get('total_clicks', 0)}</td>
+                    <td style="padding:8px; border:1px solid #ddd;">{results.get('total_spend', 0.0)}</td>
                 </tr>
             </tbody>
         </table>
         """
+        # Build campaigns table
+        campaigns = results.get("campaigns", [])
+        if campaigns:
+            campaigns_html = f"""
+            <h3 style="color:#47adbf; margin-bottom:10px;">Campaign Details</h3>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign ID</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign Name</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Impressions</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Clicks</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Spend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(
+                        f"<tr>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('CampaignId')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('CampaignName')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('Impressions')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('Clicks')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('Spend')}</td>"
+                        f"</tr>" for c in campaigns
+                    )}
+                </tbody>
+            </table>
+            """
+        else:
+            campaigns_html = "<p>No campaign data available.</p>"
+        results_html = totals_html + campaigns_html
     else:
         results_html = "<p>Unsupported service</p>"
 
@@ -132,7 +164,7 @@ def generate_report(req):
             .section {{ margin-bottom: 20px; }}
             .section h2 {{ color: #47adbf; }}
             table {{ width: 100%; border-collapse: collapse; }}
-            th, td {{ padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }}
+            th, td {{ padding: 8px; text-align: left; border: 1px solid #ddd; }}
             th {{ background-color: #47adbf; color: white; }}
         </style>
     </head>
