@@ -10,6 +10,21 @@ import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
+interface Campaign {
+  CampaignId: string | number;
+  CampaignName: string;
+  Impressions: number;
+  Clicks: number;
+  Spend: number;
+}
+
+interface MicrosoftAdsResults extends Record<string, unknown> {
+  total_impressions: number;
+  total_clicks: number;
+  total_spend: number;
+  campaigns?: Campaign[];
+}
+
 /**
  *
  * @returns
@@ -21,11 +36,7 @@ export default function MicrosoftAdsQueryForm() {
     customerId: t("customerId"),
   };
 
-  const [results, setResults] = useState<{
-    total_impressions: number;
-    total_clicks: number;
-    total_spend: number;
-  }>({
+  const [results, setResults] = useState<MicrosoftAdsResults>({
     total_impressions: 0,
     total_clicks: 0,
     total_spend: 0,

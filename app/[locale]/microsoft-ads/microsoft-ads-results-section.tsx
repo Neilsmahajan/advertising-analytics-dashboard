@@ -5,11 +5,20 @@ import React from "react";
 import axios from "axios";
 import { useTranslations } from "next-intl";
 
+interface Campaign {
+  CampaignId: string | number;
+  CampaignName: string;
+  Impressions: number;
+  Clicks: number;
+  Spend: number;
+}
+
 interface MicrosoftAdsResultsSectionProps {
   results: {
     total_impressions: number;
     total_clicks: number;
     total_spend: number;
+    campaigns?: Campaign[];
   };
   userInfo: {
     name: string;
@@ -37,8 +46,8 @@ export default function MicrosoftAdsResultsSection({
   const handleDownloadReport = async () => {
     try {
       const response = await axios.post(
-        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
-        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
         {
           userInfo,
           queryInfo,
@@ -70,23 +79,49 @@ export default function MicrosoftAdsResultsSection({
         </Button>
       </div>
       <div>
-        <h3 className="text-xl font-bold mb-4"></h3>
+        <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
         <div className="bg-white/10 rounded-lg p-6">
-          <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
-          <div className="bg-white/10 rounded-lg p-6">
-            <p>
-              <strong>{t("totalImpressions")}</strong>{" "}
-              {results?.total_impressions ?? 0}
-            </p>
-            <p>
-              <strong>{t("totalClicks")}</strong> {results?.total_clicks ?? 0}
-            </p>
-            <p>
-              <strong>{t("totalSpend")}</strong> {results?.total_spend ?? 0.0}
-            </p>
-          </div>
+          <p>
+            <strong>{t("totalImpressions")}</strong>{" "}
+            {results?.total_impressions ?? 0}
+          </p>
+          <p>
+            <strong>{t("totalClicks")}</strong> {results?.total_clicks ?? 0}
+          </p>
+          <p>
+            <strong>{t("totalSpend")}</strong> {results?.total_spend ?? 0.0}
+          </p>
         </div>
       </div>
+      {results.campaigns && results.campaigns.length > 0 && (
+        <div>
+          <h3 className="text-xl font-bold mb-4">Campaign Details</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 border">Campaign ID</th>
+                  <th className="px-4 py-2 border">Campaign Name</th>
+                  <th className="px-4 py-2 border">Impressions</th>
+                  <th className="px-4 py-2 border">Clicks</th>
+                  <th className="px-4 py-2 border">Spend</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.campaigns.map((c: Campaign, index: number) => (
+                  <tr key={index}>
+                    <td className="px-4 py-2 border">{c.CampaignId}</td>
+                    <td className="px-4 py-2 border">{c.CampaignName}</td>
+                    <td className="px-4 py-2 border">{c.Impressions}</td>
+                    <td className="px-4 py-2 border">{c.Clicks}</td>
+                    <td className="px-4 py-2 border">{c.Spend}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
       <div>
         <h3 className="text-xl font-bold mb-4">{t("queryInformation")}</h3>
         <div className="bg-white/10 rounded-lg p-6">

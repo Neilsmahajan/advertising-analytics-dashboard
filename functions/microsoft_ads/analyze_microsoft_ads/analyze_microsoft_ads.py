@@ -302,92 +302,49 @@ def download_report(reporting_download_parameters, reporting_service_manager):
     Although in this case you will not work directly with the file, under the covers a request is
     submitted to the Reporting service and the report file is downloaded to a local directory.
     """
-
     report_container = reporting_service_manager.download_report(
         reporting_download_parameters
     )
 
-    # Otherwise if you already have a report file that was downloaded via the API,
-    # you can get a Report object via the ReportFileReader.
-
-    # report_file_reader = ReportFileReader(
-    #     file_path = reporting_download_parameters.result_file_directory + reporting_download_parameters.result_file_name,
-    #     format = reporting_download_parameters.report_request.Format)
-    # report_container = report_file_reader.get_report()
-
-    if report_container == None:
+    if report_container is None:
         print("There is no report data for the submitted report request parameters.")
         sys.exit(0)
 
-    # Once you have a Report object via either workflow above, you can access the metadata and report records.
-
-    # Output the report metadata
-
-    record_count = report_container.record_count
-    print("ReportName: {0}".format(report_container.report_name))
-    print("ReportTimeStart: {0}".format(report_container.report_time_start))
-    print("ReportTimeEnd: {0}".format(report_container.report_time_end))
-    print(
-        "LastCompletedAvailableDate: {0}".format(
-            report_container.last_completed_available_date
-        )
-    )
-    print("ReportAggregation: {0}".format(report_container.report_aggregation))
-    print(
-        "ReportColumns: {0}".format(
-            "; ".join(str(column) for column in report_container.report_columns)
-        )
-    )
-    print("ReportRecordCount: {0}".format(record_count))
-
-    # Analyze and output performance statistics
-
+    # Initialize overall totals and campaign details list
     total_impressions = 0
     total_clicks = 0
     total_spend = 0
+    campaigns = []
 
-    if (
-        "Impressions" in report_container.report_columns
-        and "Clicks" in report_container.report_columns
-        and "DeviceType" in report_container.report_columns
-        and "Network" in report_container.report_columns
-    ):
+    for record in report_container.report_records:
+        impression = record.int_value("Impressions")
+        click = record.int_value("Clicks")
+        spend = record.int_value("Spend")
+        camp_id = record.value("CampaignId")
+        camp_name = record.value("CampaignName")
 
-        report_record_iterable = report_container.report_records
-
-        distinct_devices = set()
-        distinct_networks = set()
-        for record in report_record_iterable:
-            total_impressions += record.int_value("Impressions")
-            total_clicks += record.int_value("Clicks")
-            total_spend += record.int_value("Spend")
-            distinct_devices.add(record.value("DeviceType"))
-            distinct_networks.add(record.value("Network"))
-
-        print("Total Impressions: {0}".format(total_impressions))
-        print("Total Clicks: {0}".format(total_clicks))
-        print("Total Spend: {0}".format(total_spend))
-        print("Average Impressions: {0}".format(total_impressions * 1.0 / record_count))
-        print("Average Clicks: {0}".format(total_clicks * 1.0 / record_count))
-        print("Average Spend: {0}".format(total_spend * 1.0 / record_count))
-        print(
-            "Distinct Devices: {0}".format(
-                "; ".join(str(device) for device in distinct_devices)
-            )
-        )
-        print(
-            "Distinct Networks: {0}".format(
-                "; ".join(str(network) for network in distinct_networks)
-            )
+        total_impressions += impression
+        total_clicks += click
+        total_spend += spend
+        campaigns.append(
+            {
+                "CampaignId": camp_id,
+                "CampaignName": camp_name,
+                "Impressions": impression,
+                "Clicks": click,
+                "Spend": spend,
+            }
         )
 
-    # Be sure to close the report.
+    print("Total Impressions: {0}".format(total_impressions))
+    print("Total Clicks: {0}".format(total_clicks))
+    print("Total Spend: {0}".format(total_spend))
 
     report_container.close()
 
-    # return total_impressions, total_clicks, total_spend
     return {
         "total_impressions": total_impressions,
         "total_clicks": total_clicks,
         "total_spend": total_spend,
+        "campaigns": campaigns,
     }
