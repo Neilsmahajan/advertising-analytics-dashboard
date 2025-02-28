@@ -8,7 +8,12 @@ from urllib.parse import unquote
 from flask import jsonify
 from google_auth_oauthlib.flow import Flow
 
-_SCOPE = "https://www.googleapis.com/auth/adwords"
+_SCOPE = [
+    "https://www.googleapis.com/auth/adwords",
+    "openid",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+]
 # _SERVER = "127.0.0.1"
 _SERVER = "localhost"
 # _PORT = 8080
@@ -24,7 +29,7 @@ def authenticate_google_ads(req):
         "credentials",
         "oauth_2_google_ads_client_id_and_secret.json",
     )
-    scopes = [_SCOPE]
+    scopes = _SCOPE
     flow = Flow.from_client_secrets_file(client_secrets_path, scopes=scopes)
     flow.redirect_uri = _REDIRECT_URI
     passthrough_val = hashlib.sha256(os.urandom(1024)).hexdigest()
