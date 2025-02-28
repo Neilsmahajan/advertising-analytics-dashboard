@@ -95,25 +95,25 @@ export default function MicrosoftAdsResultsSection({
       </div>
       {results.campaigns && results.campaigns.length > 0 && (
         <div>
-          <h3 className="text-xl font-bold mb-4">Campaign Details</h3>
+          <h3 className="text-xl font-bold mb-4">{t("campaignDetails")}</h3>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-blue-200">
               <thead className="bg-[#47adbf]">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Campaign ID
+                    {t("campaignId")}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Campaign Name
+                    {t("campaignName")}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Impressions
+                    {t("impressions")}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Clicks
+                    {t("clicks")}
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                    Spend
+                    {t("spend")}
                   </th>
                 </tr>
               </thead>

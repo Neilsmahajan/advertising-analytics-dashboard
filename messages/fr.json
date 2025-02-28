@@ -233,6 +233,7 @@
     "averageCpm": "CPM Moyen:",
     "conversions": "Conversions:",
     "engagements": "Engagements:",
+    "campaignDetails": "Détails de la Campagne:",
     "campaignId": "ID de Campagne:",
     "campaignName": "Nom de Campagne:",
     "tagDescriptions": {
