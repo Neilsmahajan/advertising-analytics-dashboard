@@ -1,4 +1,5 @@
 from flask import jsonify
+from urllib.parse import urlparse, parse_qs
 
 
 def analyze_google_ads(req):
@@ -12,7 +13,19 @@ def analyze_google_ads(req):
     return jsonify(result), 200
 
 
-def fetch_google_ads_data(customer_id, current_url):
+def fetch_google_ads_data(customer_id, response_uri):
+    """Fetch Google Ads data."""
+    try:
+        if not customer_id or not response_uri:
+            return {"error": "Both Account ID and Customer ID are required."}
+    except Exception as e:
+        return {"error": str(e)}
+    
+    # Get code from response_uri
+    parsed_url = urlparse(response_uri)
+    query_params = parse_qs(parsed_url.query)
+    code = query_params.get('code', [None])[0]
+    print(f"Code: {code}")
     # Placeholder for fetching Google Ads data
     return {
         "average_cost": 1,

@@ -325,18 +325,14 @@ def download_report(reporting_download_parameters, reporting_service_manager):
 
     record_count = report_container.record_count
     print("ReportName: {0}".format(report_container.report_name))
-    print(
-        "ReportTimeStart: {0}".format(report_container.report_time_start)
-    )
+    print("ReportTimeStart: {0}".format(report_container.report_time_start))
     print("ReportTimeEnd: {0}".format(report_container.report_time_end))
     print(
         "LastCompletedAvailableDate: {0}".format(
             report_container.last_completed_available_date
         )
     )
-    print(
-        "ReportAggregation: {0}".format(report_container.report_aggregation)
-    )
+    print("ReportAggregation: {0}".format(report_container.report_aggregation))
     print(
         "ReportColumns: {0}".format(
             "; ".join(str(column) for column in report_container.report_columns)
@@ -371,15 +367,9 @@ def download_report(reporting_download_parameters, reporting_service_manager):
         print("Total Impressions: {0}".format(total_impressions))
         print("Total Clicks: {0}".format(total_clicks))
         print("Total Spend: {0}".format(total_spend))
-        print(
-            "Average Impressions: {0}".format(total_impressions * 1.0 / record_count)
-        )
-        print(
-            "Average Clicks: {0}".format(total_clicks * 1.0 / record_count)
-        )
-        print(
-            "Average Spend: {0}".format(total_spend * 1.0 / record_count)
-        )
+        print("Average Impressions: {0}".format(total_impressions * 1.0 / record_count))
+        print("Average Clicks: {0}".format(total_clicks * 1.0 / record_count))
+        print("Average Spend: {0}".format(total_spend * 1.0 / record_count))
         print(
             "Distinct Devices: {0}".format(
                 "; ".join(str(device) for device in distinct_devices)
@@ -394,6 +384,10 @@ def download_report(reporting_download_parameters, reporting_service_manager):
     # Be sure to close the report.
 
     report_container.close()
-    
+
     # return total_impressions, total_clicks, total_spend
-    return {"total_impressions": total_impressions, "total_clicks": total_clicks, "total_spend": total_spend}
+    return {
+        "total_impressions": total_impressions,
+        "total_clicks": total_clicks,
+        "total_spend": total_spend,
+    }
