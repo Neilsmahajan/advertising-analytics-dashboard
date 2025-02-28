@@ -98,12 +98,12 @@ export default function GoogleAdsResultsSection({
                   <tr key={campaign.id}>
                     <td>{campaign.id}</td>
                     <td>{campaign.name}</td>
-                    <td>{campaign.average_cost}</td>
-                    <td>{campaign.average_cpc}</td>
-                    <td>{campaign.average_cpm}</td>
-                    <td>{campaign.clicks}</td>
-                    <td>{campaign.conversions}</td>
-                    <td>{campaign.engagements}</td>
+                    <td>{Number(campaign.average_cost).toFixed(2)}</td>
+                    <td>{Number(campaign.average_cpc).toFixed(2)}</td>
+                    <td>{Number(campaign.average_cpm).toFixed(2)}</td>
+                    <td>{Number(campaign.clicks).toFixed(2)}</td>
+                    <td>{Number(campaign.conversions).toFixed(2)}</td>
+                    <td>{Number(campaign.engagements).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>

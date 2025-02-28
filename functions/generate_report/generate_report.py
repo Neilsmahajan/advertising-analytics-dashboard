@@ -44,10 +44,24 @@ def generate_report(req):
         </table>
         """
     elif service == "Google Ads":
+        campaigns = results.get("campaigns", [])
+        table_rows = ""
+        if campaigns:
+            table_rows = "".join(
+                f"<tr><td>{campaign['id']}</td><td>{campaign['name']}</td>"
+                f"<td>{float(campaign['average_cost']):.2f}</td><td>{float(campaign['average_cpc']):.2f}</td>"
+                f"<td>{float(campaign['average_cpm']):.2f}</td><td>{float(campaign['clicks']):.2f}</td>"
+                f"<td>{float(campaign['conversions']):.2f}</td><td>{float(campaign['engagements']):.2f}</td></tr>"
+                for campaign in campaigns
+            )
+        else:
+            table_rows = "<tr><td colspan='8'>No data available</td></tr>"
         results_html = f"""
         <table>
             <thead>
                 <tr>
+                    <th>Campaign ID</th>
+                    <th>Campaign Name</th>
                     <th>Average Cost</th>
                     <th>Average CPC</th>
                     <th>Average CPM</th>
@@ -57,14 +71,7 @@ def generate_report(req):
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{results.get('average_cost', 0)}</td>
-                    <td>{results.get('average_cpc', 0)}</td>
-                    <td>{results.get('average_cpm', 0)}</td>
-                    <td>{results.get('clicks', 0)}</td>
-                    <td>{results.get('conversions', 0)}</td>
-                    <td>{results.get('engagements', 0)}</td>
-                </tr>
+                {table_rows}
             </tbody>
         </table>
         """
