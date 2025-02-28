@@ -14,11 +14,8 @@ _SCOPE = [
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/userinfo.email",
 ]
-# _SERVER = "127.0.0.1"
-_SERVER = "localhost"
-# _PORT = 8080
-_PORT = 3000
-_REDIRECT_URI = f"http://{_SERVER}:{_PORT}/en/google-ads"
+_REDIRECT_URI = "https://advertisinganalyticsdashboard.com/en/google-ads"
+# _REDIRECT_URI = f"http://localhost:3000/en/google-ads"
 
 
 def authenticate_google_ads(req):

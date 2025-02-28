@@ -80,30 +80,62 @@ export default function GoogleAdsResultsSection({
         <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
         <div className="bg-white/10 rounded-lg p-6">
           {results.campaigns && results.campaigns.length > 0 ? (
-            <table>
-              <thead>
+            <table className="min-w-full divide-y divide-blue-200">
+              <thead className="bg-[#47adbf]">
                 <tr>
-                  <th>{t("campaignId")}</th>
-                  <th>{t("campaignName")}</th>
-                  <th>{t("averageCost")}</th>
-                  <th>{t("averageCpc")}</th>
-                  <th>{t("averageCpm")}</th>
-                  <th>{t("clicks")}</th>
-                  <th>{t("conversions")}</th>
-                  <th>{t("engagements")}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("campaignId")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("campaignName")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("averageCost")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("averageCpc")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("averageCpm")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("clicks")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("conversions")}
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                    {t("engagements")}
+                  </th>
                 </tr>
               </thead>
-              <tbody>
-                {results.campaigns.map((campaign) => (
+              <tbody className="bg-blue-50 divide-y divide-blue-200">
+                {results.campaigns.map((campaign: Campaign) => (
                   <tr key={campaign.id}>
-                    <td>{campaign.id}</td>
-                    <td>{campaign.name}</td>
-                    <td>{Number(campaign.average_cost).toFixed(2)}</td>
-                    <td>{Number(campaign.average_cpc).toFixed(2)}</td>
-                    <td>{Number(campaign.average_cpm).toFixed(2)}</td>
-                    <td>{Number(campaign.clicks).toFixed(2)}</td>
-                    <td>{Number(campaign.conversions).toFixed(2)}</td>
-                    <td>{Number(campaign.engagements).toFixed(2)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {campaign.id}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {campaign.name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.average_cost).toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.average_cpc).toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.average_cpm).toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.clicks).toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.conversions).toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                      {Number(campaign.engagements).toFixed(2)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
