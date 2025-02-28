@@ -40,7 +40,6 @@ export default function GoogleAdsQueryForm() {
   const [user] = useAuthState(auth);
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
-  let passthrough_val = "";
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
@@ -53,7 +52,6 @@ export default function GoogleAdsQueryForm() {
           {
             customerId: queryData.customerId,
             currentUrl: window.location.href,
-            passthrough_val: passthrough_val,
           },
         );
         console.log("Analysis result:", response.data);
@@ -77,7 +75,6 @@ export default function GoogleAdsQueryForm() {
         "Redirecting to Google Ads authentication page:",
         response.data.url,
       );
-      passthrough_val = response.data.passthroughVal;
       window.open(response.data.url, "_blank");
     } catch (error) {
       console.error("Error during Google Ads authentication:", error);
