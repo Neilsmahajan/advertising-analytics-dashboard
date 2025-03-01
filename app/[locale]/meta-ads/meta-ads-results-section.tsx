@@ -8,6 +8,8 @@ import { useTranslations } from "next-intl";
 interface MetaAdsResultsSectionProps {
   results: {
     data?: {
+      campaign_id: string;
+      campaign_name: string;
       date_start: string;
       date_stop: string;
       impressions: number;
@@ -45,6 +47,7 @@ export default function MetaAdsResultsSection({
     try {
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
         {
           userInfo,
           queryInfo,
@@ -83,6 +86,12 @@ export default function MetaAdsResultsSection({
               <thead>
                 <tr>
                   <th className="py-2 px-4 border-b border-gray-200">
+                    {t("campaignId") || "Campaign ID"}
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    {t("campaignName") || "Campaign Name"}
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
                     {t("dateStart")}
                   </th>
                   <th className="py-2 px-4 border-b border-gray-200">
@@ -111,6 +120,12 @@ export default function MetaAdsResultsSection({
               <tbody>
                 {results.data.map((row, index) => (
                   <tr key={index}>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.campaign_id}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.campaign_name}
+                    </td>
                     <td className="py-2 px-4 border-b border-gray-200">
                       {row.date_start}
                     </td>

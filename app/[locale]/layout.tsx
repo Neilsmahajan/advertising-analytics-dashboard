@@ -55,5 +55,9 @@ export default async function RootLayout({
 
 // Create a minimal LoadingFallback component or import one if available.
 function LoadingFallback() {
-  return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      Loading...
+    </div>
+  );
 }
