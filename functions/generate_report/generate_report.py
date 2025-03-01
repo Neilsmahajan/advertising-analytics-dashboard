@@ -92,6 +92,8 @@ def generate_report(req):
         <table>
             <thead>
                 <tr>
+                    <th>Campaign ID</th>
+                    <th>Campaign Name</th>
                     <th>Date Start</th>
                     <th>Date Stop</th>
                     <th>Impressions</th>
@@ -103,7 +105,20 @@ def generate_report(req):
                 </tr>
             </thead>
             <tbody>
-                {''.join(f"<tr><td>{row['date_start']}</td><td>{row['date_stop']}</td><td>{row['impressions']}</td><td>{row['clicks']}</td><td>{row['spend']}</td><td>{row['unique_clicks']}</td><td>{row['cpm']}</td><td>{row['reach']}</td></tr>" for row in results['data'])}
+                {''.join(
+                    f"<tr>"
+                    f"<td>{row.get('campaign_id')}</td>"
+                    f"<td>{row.get('campaign_name')}</td>"
+                    f"<td>{row.get('date_start')}</td>"
+                    f"<td>{row.get('date_stop')}</td>"
+                    f"<td>{row.get('impressions')}</td>"
+                    f"<td>{row.get('clicks')}</td>"
+                    f"<td>{row.get('spend')}</td>"
+                    f"<td>{row.get('unique_clicks')}</td>"
+                    f"<td>{row.get('cpm')}</td>"
+                    f"<td>{row.get('reach')}</td>"
+                    f"</tr>" for row in results['data']
+                )}
             </tbody>
         </table>
         """
