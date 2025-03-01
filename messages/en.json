@@ -301,7 +301,8 @@
     "adAccountId": "Ad Account ID",
     "accessToken": "Access Token",
     "startDate": "Start Date",
-    "endDate": "End Date"
+    "endDate": "End Date",
+    "loading": "Loading..."
   },
   "MicrosoftAdsPage": {
     "title": "MICROSOFT ADS",

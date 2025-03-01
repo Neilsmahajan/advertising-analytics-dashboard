@@ -301,7 +301,8 @@
     "adAccountId": "Identifiant du Compte Publicitaire",
     "accessToken": "Jeton d'Accès",
     "startDate": "Date de Début",
-    "endDate": "Date de Fin"
+    "endDate": "Date de Fin",
+    "loading": "Chargement..."
   },
   "MicrosoftAdsPage": {
     "title": "MICROSOFT ADS",
