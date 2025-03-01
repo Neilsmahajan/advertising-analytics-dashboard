@@ -55,6 +55,10 @@ export default function TrackingDataResultsSection({
 }: TrackingDataResultsSectionProps) {
   const t = useTranslations("ResultsSection");
 
+  // extract and normalize the website URL from queryInfo
+  const websiteUrlRaw = (queryInfo.queryData.websiteURL as string) || "";
+  const websiteDomain = websiteUrlRaw.replace(/(^\w+:|^)\/\//, "");
+
   const handleDownloadReport = async () => {
     try {
       const response = await axios.post(
@@ -116,10 +120,22 @@ export default function TrackingDataResultsSection({
                     />
                   )}
                   <div>
-                    {tag}
+                    <span>{tag}</span>
                     <p className="text-sm text-white/50">
                       {t(`tagDescriptions.${tag}`)}
                     </p>
+                    {(tag === "Google Ads DoubleClick" ||
+                      tag === "Google Ads Conversion Tracking") &&
+                      websiteDomain && (
+                        <a
+                          href={`https://adstransparency.google.com/?region=anywhere&domain=${websiteDomain}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 underline"
+                        >
+                          {t("viewActiveGoogleAds")}
+                        </a>
+                      )}
                   </div>
                 </li>
               ))}
