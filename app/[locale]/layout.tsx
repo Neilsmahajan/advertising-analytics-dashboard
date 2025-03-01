@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/[locale]/navbar";
 import Footer from "@/app/[locale]/footer";
-import React from "react";
+import React, { Suspense } from "react";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, Locale } from "@/i18n/routing";
@@ -43,10 +43,17 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main>{children}</main>
+          <Suspense fallback={<LoadingFallback />}>
+            <main>{children}</main>
+          </Suspense>
           <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
   );
+}
+
+// Create a minimal LoadingFallback component or import one if available.
+function LoadingFallback() {
+  return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 }
