@@ -265,7 +265,8 @@
     "viewTutorial": "View Tutorial"
   },
   "TrackingDataQueryForm": {
-    "websiteUrl": "Website URL"
+    "websiteUrl": "Website URL",
+    "loading": "Loading..."
   },
   "GoogleAnalyticsPage": {
     "title": "GOOGLE ANALYTICS",
@@ -282,7 +283,8 @@
   "GoogleAnalyticsQueryForm": {
     "propertyId": "Property ID",
     "startDate": "Start Date",
-    "endDate": "End Date"
+    "endDate": "End Date",
+    "loading": "Loading..."
   },
   "MetaAdsPage": {
     "title": "META ADS",
@@ -311,7 +313,8 @@
   "MicrosoftAdsQueryForm": {
     "accountId": "Account ID",
     "customerId": "Customer ID",
-    "connectWithMicrosoftAds": "Connect with Microsoft Ads"
+    "connectWithMicrosoftAds": "Connect with Microsoft Ads",
+    "loading": "Loading..."
   },
   "GoogleAdsPage": {
     "title": "GOOGLE ADS",
@@ -319,6 +322,7 @@
   },
   "GoogleAdsQueryForm": {
     "customerId": "Customer ID",
-    "connectWithGoogleAds": "Connect with Google Ads"
+    "connectWithGoogleAds": "Connect with Google Ads",
+    "loading": "Loading..."
   }
 }

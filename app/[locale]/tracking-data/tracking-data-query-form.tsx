@@ -22,6 +22,7 @@ export default function TrackingDataQueryForm() {
   const [showResults, setShowResults] = useState(false);
   const [queryName] = useState("Query Name");
   const [queryData, setQueryData] = useState<Record<string, unknown>>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const [user] = useAuthState(auth);
 
@@ -30,9 +31,10 @@ export default function TrackingDataQueryForm() {
   }) => {
     if (queryData.websiteURL) {
       try {
+        setIsLoading(true);
         const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_tracking_data_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_tracking_data_function",
+          // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_tracking_data_function",
+          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_tracking_data_function",
           {
             url: queryData.websiteURL,
           },
@@ -43,31 +45,36 @@ export default function TrackingDataQueryForm() {
         setQueryData(queryData);
       } catch (error) {
         console.error("Error analyzing website:", error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
 
   return (
-    <QueryForm
-      service="Tracking Data"
-      queryFields={queryFields}
-      ResultsComponent={(props) => (
-        <TrackingDataResultsSection
-          {...props}
-          userInfo={{
-            name: user?.displayName || "User Name",
-            email: user?.email || "user@example.com",
-          }}
-          queryInfo={{
-            service: "Tracking Data",
-            queryName: queryName,
-            queryData: queryData,
-          }}
-        />
-      )}
-      onAnalyze={handleAnalyze}
-      results={results}
-      showResults={showResults}
-    />
+    <>
+      <QueryForm
+        service="Tracking Data"
+        queryFields={queryFields}
+        ResultsComponent={(props) => (
+          <TrackingDataResultsSection
+            {...props}
+            userInfo={{
+              name: user?.displayName || "User Name",
+              email: user?.email || "user@example.com",
+            }}
+            queryInfo={{
+              service: "Tracking Data",
+              queryName: queryName,
+              queryData: queryData,
+            }}
+          />
+        )}
+        onAnalyze={handleAnalyze}
+        results={results}
+        showResults={showResults}
+      />
+      {isLoading && <p>{t("loading") || "Loading..."}</p>}
+    </>
   );
 }

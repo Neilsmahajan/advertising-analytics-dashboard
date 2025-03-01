@@ -39,12 +39,14 @@ export default function GoogleAdsQueryForm() {
   const [user] = useAuthState(auth);
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
     if (queryData.customerId) {
       try {
+        setIsLoading(true);
         const response = await axios.post(
           "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_ads_function",
           // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_ads_function",
@@ -62,6 +64,8 @@ export default function GoogleAdsQueryForm() {
         setShowResults(true);
       } catch (error) {
         console.error("Error analyzing Google Ads data:", error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -93,24 +97,27 @@ export default function GoogleAdsQueryForm() {
           {t("connectWithGoogleAds")}
         </Button>
       ) : (
-        <QueryForm
-          service="Google Ads"
-          queryFields={queryFields}
-          ResultsComponent={(props) => (
-            <GoogleAdsResultsSection
-              {...props}
-              userInfo={{
-                name: user?.displayName || "",
-                email: user?.email || "",
-              }}
-              queryInfo={{ service: "Google Ads", queryName, queryData }}
-              results={results}
-            />
-          )}
-          onAnalyze={handleAnalyze}
-          results={results}
-          showResults={showResults}
-        />
+        <>
+          <QueryForm
+            service="Google Ads"
+            queryFields={queryFields}
+            ResultsComponent={(props) => (
+              <GoogleAdsResultsSection
+                {...props}
+                userInfo={{
+                  name: user?.displayName || "",
+                  email: user?.email || "",
+                }}
+                queryInfo={{ service: "Google Ads", queryName, queryData }}
+                results={results}
+              />
+            )}
+            onAnalyze={handleAnalyze}
+            results={results}
+            showResults={showResults}
+          />
+          {isLoading && <p>{t("loading") || "Loading..."}</p>}
+        </>
       )}
     </div>
   );

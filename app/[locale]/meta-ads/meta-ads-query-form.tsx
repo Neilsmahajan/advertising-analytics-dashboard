@@ -69,7 +69,10 @@ export default function MetaAdsQueryForm() {
         ResultsComponent={(props) => (
           <MetaAdsResultsSection
             {...props}
-            userInfo={{ name: user?.displayName || "", email: user?.email || "" }}
+            userInfo={{
+              name: user?.displayName || "",
+              email: user?.email || "",
+            }}
             queryInfo={{ service: "Meta Ads", queryName, queryData }}
           />
         )}

@@ -24,6 +24,7 @@ export default function GoogleAnalyticsQueryForm() {
   const [showResults, setShowResults] = useState(false);
   const [queryName] = useState("Query Name");
   const [queryData, setQueryData] = useState<Record<string, unknown>>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const [user] = useAuthState(auth);
 
@@ -32,8 +33,10 @@ export default function GoogleAnalyticsQueryForm() {
   }) => {
     if (queryData.propertyID && queryData.startDate && queryData.endDate) {
       try {
+        setIsLoading(true);
         const response = await axios.post(
           "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
+          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
           {
             propertyId: queryData.propertyID,
             startDate: queryData.startDate,
@@ -46,24 +49,32 @@ export default function GoogleAnalyticsQueryForm() {
         setQueryData(queryData);
       } catch (error) {
         console.error("Error analyzing Google Analytics data:", error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
 
   return (
-    <QueryForm
-      service="Google Analytics"
-      queryFields={queryFields}
-      ResultsComponent={(props) => (
-        <GoogleAnalyticsResultsSection
-          {...props}
-          userInfo={{ name: user?.displayName || "", email: user?.email || "" }}
-          queryInfo={{ service: "Google Analytics", queryName, queryData }}
-        />
-      )}
-      onAnalyze={handleAnalyze}
-      results={results}
-      showResults={showResults}
-    />
+    <>
+      <QueryForm
+        service="Google Analytics"
+        queryFields={queryFields}
+        ResultsComponent={(props) => (
+          <GoogleAnalyticsResultsSection
+            {...props}
+            userInfo={{
+              name: user?.displayName || "",
+              email: user?.email || "",
+            }}
+            queryInfo={{ service: "Google Analytics", queryName, queryData }}
+          />
+        )}
+        onAnalyze={handleAnalyze}
+        results={results}
+        showResults={showResults}
+      />
+      {isLoading && <p>{t("loading") || "Loading..."}</p>}
+    </>
   );
 }

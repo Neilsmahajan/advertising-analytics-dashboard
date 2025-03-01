@@ -47,15 +47,17 @@ export default function MicrosoftAdsQueryForm() {
   const [user] = useAuthState(auth);
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
     if (queryData.accountId && queryData.customerId) {
       try {
+        setIsLoading(true);
         const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
+          // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
+          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
           {
             accountId: queryData.accountId,
             customerId: queryData.customerId,
@@ -68,6 +70,8 @@ export default function MicrosoftAdsQueryForm() {
         setQueryData(queryData);
       } catch (error) {
         console.error("Error analyzing Microsoft Ads data:", error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -75,8 +79,8 @@ export default function MicrosoftAdsQueryForm() {
   const handleAuthenticate = async () => {
     try {
       const response = await axios.post(
-        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
-        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
+        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
+        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
         {},
       );
       console.log(
@@ -99,24 +103,27 @@ export default function MicrosoftAdsQueryForm() {
           {t("connectWithMicrosoftAds")}
         </Button>
       ) : (
-        <QueryForm
-          service="Microsoft Ads"
-          queryFields={queryFields}
-          ResultsComponent={(props) => (
-            <MicrosoftAdsResultsSection
-              {...props}
-              userInfo={{
-                name: user?.displayName || "",
-                email: user?.email || "",
-              }}
-              queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
-              results={results}
-            />
-          )}
-          onAnalyze={handleAnalyze}
-          results={results}
-          showResults={showResults}
-        />
+        <>
+          <QueryForm
+            service="Microsoft Ads"
+            queryFields={queryFields}
+            ResultsComponent={(props) => (
+              <MicrosoftAdsResultsSection
+                {...props}
+                userInfo={{
+                  name: user?.displayName || "",
+                  email: user?.email || "",
+                }}
+                queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
+                results={results}
+              />
+            )}
+            onAnalyze={handleAnalyze}
+            results={results}
+            showResults={showResults}
+          />
+          {isLoading && <p>{t("loading") || "Loading..."}</p>}
+        </>
       )}
     </div>
   );
