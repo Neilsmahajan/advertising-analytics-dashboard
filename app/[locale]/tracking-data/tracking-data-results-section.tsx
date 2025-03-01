@@ -136,6 +136,18 @@ export default function TrackingDataResultsSection({
                           {t("viewActiveGoogleAds")}
                         </a>
                       )}
+                    {(tag === "Facebook Pixel" ||
+                      tag === "Facebook SDK") &&
+                      websiteDomain && (
+                        <a
+                          href={`https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=${websiteDomain}&search_type=keyword_unordered`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 underline"
+                        >
+                          {t("viewActiveMetaAds")}
+                        </a>
+                      )}
                   </div>
                 </li>
               ))}

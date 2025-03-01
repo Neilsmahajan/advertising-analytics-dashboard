@@ -237,6 +237,7 @@
     "campaignId": "Campaign ID:",
     "campaignName": "Campaign Name:",
     "viewActiveGoogleAds": "View Active Google Ads",
+    "viewActiveMetaAds": "View Active Meta Ads",
     "tagDescriptions": {
       "Google Site Tag": "Google Site Tag is used for tracking and analytics on websites.",
       "Google Analytics": "Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.",
