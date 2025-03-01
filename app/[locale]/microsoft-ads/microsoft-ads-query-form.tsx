@@ -56,8 +56,8 @@ export default function MicrosoftAdsQueryForm() {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
-          "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
+          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
+          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
           {
             accountId: queryData.accountId,
             customerId: queryData.customerId,
@@ -79,8 +79,8 @@ export default function MicrosoftAdsQueryForm() {
   const handleAuthenticate = async () => {
     try {
       const response = await axios.post(
-        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
-        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
         {},
       );
       console.log(

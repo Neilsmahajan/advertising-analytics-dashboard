@@ -56,7 +56,7 @@ def generate_report(req):
                         <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average Cost</th>
                         <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average CPC</th>
                         <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Average CPM</th>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Clicks</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Clicks</th>
                         <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Conversions</th>
                         <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Engagements</th>
                     </tr>
@@ -180,13 +180,46 @@ def generate_report(req):
     <html>
     <head>
         <style>
-            body {{ font-family: Arial, sans-serif; }}
-            h1 {{ color: #00BFFF; }}
-            .section {{ margin-bottom: 20px; }}
-            .section h2 {{ color: #47adbf; }}
-            table {{ width: 100%; border-collapse: collapse; }}
-            th, td {{ padding: 8px; text-align: left; border: 1px solid #ddd; }}
-            th {{ background-color: #47adbf; color: white; }}
+            @page {{
+                size: A4 landscape;
+                margin: 10mm;
+            }}
+            body {{ 
+                font-family: Arial, sans-serif; 
+                font-size: 10px;
+            }}
+            h1 {{ 
+                color: #00BFFF; 
+                font-size: 14px;
+            }}
+            .section {{ 
+                margin-bottom: 20px; 
+            }}
+            .section h2 {{ 
+                color: #47adbf; 
+                font-size: 12px;
+            }}
+            table {{
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+                word-wrap: break-word;
+                font-size: 10px;
+            }}
+            th, td {{ 
+                padding: 4px; 
+                text-align: left; 
+                border: 1px solid #ddd; 
+            }}
+            th {{ 
+                background-color: #47adbf; 
+                color: white; 
+            }}
+            pre {{ 
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+                font-size: 10px;
+            }}
         </style>
     </head>
     <body>

@@ -41,6 +41,7 @@ export default function GoogleAnalyticsResultsSection({
     try {
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/generate_report_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/generate_report_function",
         {
           userInfo,
           queryInfo,
