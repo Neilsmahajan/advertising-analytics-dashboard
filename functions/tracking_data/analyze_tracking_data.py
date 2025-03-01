@@ -9,6 +9,10 @@ def analyze_tracking_data(req):
     if not url:
         return jsonify({"error": "URL is required"}), 400
 
+    # Auto prepend "https://" if the scheme is missing
+    if not url.startswith("http://") and not url.startswith("https://"):
+        url = "https://" + url
+
     try:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
