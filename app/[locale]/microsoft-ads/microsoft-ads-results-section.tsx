@@ -53,6 +53,21 @@ export default function MicrosoftAdsResultsSection({
           queryInfo,
           results,
           service: queryInfo.service,
+          // Added translated headers for Microsoft Ads
+          translatedHeaders: {
+            totals: {
+              totalImpressions: t("totalImpressions"),
+              totalClicks: t("totalClicks"),
+              totalSpend: t("totalSpend"),
+            },
+            campaigns: {
+              campaignId: t("campaignId"),
+              campaignName: t("campaignName"),
+              impressions: t("impressions"),
+              clicks: t("clicks"),
+              spend: t("spend"),
+            },
+          },
         },
         { responseType: "blob" },
       );

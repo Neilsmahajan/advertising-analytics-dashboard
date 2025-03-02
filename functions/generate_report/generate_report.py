@@ -141,14 +141,18 @@ def generate_report(req):
         </table>
         """
     elif service == "Microsoft Ads":
-        # Build totals table
+        # Retrieve translated headers for totals and campaigns
+        headers = data.get("translatedHeaders", {})
+        totals_headers = headers.get("totals", {})
+        campaigns_headers = headers.get("campaigns", {})
+
         totals_html = f"""
         <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
             <thead>
                 <tr>
-                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Impressions</th>
-                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Clicks</th>
-                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Total Spend</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{totals_headers.get("totalImpressions", "Total Impressions")}</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{totals_headers.get("totalClicks", "Total Clicks")}</th>
+                    <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{totals_headers.get("totalSpend", "Total Spend")}</th>
                 </tr>
             </thead>
             <tbody>
@@ -160,19 +164,18 @@ def generate_report(req):
             </tbody>
         </table>
         """
-        # Build campaigns table
         campaigns = results.get("campaigns", [])
         if campaigns:
             campaigns_html = f"""
-            <h3 style="color:#47adbf; margin-bottom:10px;">Campaign Details</h3>
+            <h3 style="color:#47adbf; margin-bottom:10px;">{campaigns_headers.get("campaignDetails", "Campaign Details")}</h3>
             <table style="width:100%; border-collapse:collapse;">
                 <thead>
                     <tr>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign ID</th>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Campaign Name</th>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Impressions</th>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Clicks</th>
-                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">Spend</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{campaigns_headers.get("campaignId", "Campaign ID")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{campaigns_headers.get("campaignName", "Campaign Name")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{campaigns_headers.get("impressions", "Impressions")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{campaigns_headers.get("clicks", "Clicks")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{campaigns_headers.get("spend", "Spend")}</th>
                     </tr>
                 </thead>
                 <tbody>
