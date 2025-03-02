@@ -28,8 +28,7 @@ def analyze_microsoft_ads(req):
         "https://advertisinganalyticsdashboard.com/fr/microsoft-ads"
         # "http://localhost:3000/fr/microsoft-ads"
         if lang == "fr"
-        else 
-        "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
+        else "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
         # "http://localhost:3000/en/microsoft-ads"
     )
 

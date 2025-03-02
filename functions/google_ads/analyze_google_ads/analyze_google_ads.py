@@ -11,8 +11,6 @@ _SCOPE = [
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/userinfo.email",
 ]
-_REDIRECT_URI = "https://advertisinganalyticsdashboard.com/en/google-ads"
-# _REDIRECT_URI = "http://localhost:3000/en/google-ads"
 DEVELOPER_TOKEN = os.getenv("GOOGLE_ADS_DEVELOPER_TOKEN")  # Your developer token
 
 
@@ -20,14 +18,22 @@ def analyze_google_ads(req):
     data = req.get_json()
     customer_id = data.get("customerId")
     current_url = data.get("currentUrl")
-    result = fetch_google_ads_data(customer_id, current_url)
+    lang = data.get("lang", "en")
+    redirection_uri = (
+        "https://advertisinganalyticsdashboard.com/fr/google-ads"
+        # "http://localhost:3000/fr/google-ads"
+        if lang == "fr"
+        else "https://advertisinganalyticsdashboard.com/fr/google-ads"
+        # "http://localhost:3000/en/google-ads"
+    )
+    result = fetch_google_ads_data(customer_id, current_url, redirection_uri)
     if "error" in result:
         return jsonify(result), 400
 
     return jsonify(result), 200
 
 
-def fetch_google_ads_data(customer_id, response_uri):
+def fetch_google_ads_data(customer_id, response_uri, redirection_uri):
     """Fetch Google Ads data."""
     try:
         if not customer_id or not response_uri:
@@ -50,7 +56,7 @@ def fetch_google_ads_data(customer_id, response_uri):
     )
     scopes = _SCOPE
     flow = Flow.from_client_secrets_file(client_secrets_path, scopes=scopes)
-    flow.redirect_uri = _REDIRECT_URI
+    flow.redirect_uri = redirection_uri
 
     # Pass the code back into the OAuth module to get a refresh token.
     flow.fetch_token(code=code, include_client_id=True)

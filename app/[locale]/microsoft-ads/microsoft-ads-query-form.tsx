@@ -118,7 +118,7 @@ export default function MicrosoftAdsQueryForm() {
                   name: user?.displayName || "",
                   email: user?.email || "",
                 }}
-                queryInfo={{ service: "Microsoft Ads", queryName, queryData}}
+                queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
                 results={results}
               />
             )}

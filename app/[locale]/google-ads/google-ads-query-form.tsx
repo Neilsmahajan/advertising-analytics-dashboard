@@ -7,7 +7,7 @@ import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
  */
 export default function GoogleAdsQueryForm() {
   const t = useTranslations("GoogleAdsQueryForm");
+  const { locale } = useParams(); // <-- get the current locale
   const queryFields = {
     customerId: t("customerId"),
   };
@@ -53,6 +54,7 @@ export default function GoogleAdsQueryForm() {
           {
             customerId: queryData.customerId,
             currentUrl: window.location.href,
+            lang: locale, // <-- add language parameter
           },
         );
         console.log("Analysis result:", response.data);
@@ -75,7 +77,9 @@ export default function GoogleAdsQueryForm() {
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_google_ads_function",
         // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_google_ads_function",
-        {},
+        {
+          lang: locale, // <-- add language parameter
+        },
       );
       console.log(
         "Redirecting to Google Ads authentication page:",
