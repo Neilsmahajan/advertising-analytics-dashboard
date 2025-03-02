@@ -61,8 +61,40 @@ def generate_report(req):
             </table>
             """
     elif service == "Google Ads":
-        campaigns = results.get("campaigns", [])
-        if campaigns:
+        headers = data.get("translatedHeaders")
+        if headers:
+            google_ads_html = f"""
+            <h3 style="color:#47adbf; margin-bottom:10px;">{headers.get("campaignDetails", "Campaign Details")}</h3>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("campaignId", "Campaign ID")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("campaignName", "Campaign Name")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("averageCost", "Average Cost")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("averageCpc", "Average CPC")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("averageCpm", "Average CPM")}</th>
+                        <th style="padding:8px; border:1px solid #ddd;">{headers.get("clicks", "Clicks")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("conversions", "Conversions")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("engagements", "Engagements")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(
+                        f"<tr>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('id')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{c.get('name')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cost', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cpc', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('average_cpm', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('clicks', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('conversions', 0)):.2f}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('engagements', 0)):.2f}</td>"
+                        f"</tr>" for c in results.get("campaigns", [])
+                    )}
+                </tbody>
+            </table>
+            """
+        else:
             google_ads_html = f"""
             <h3 style="color:#47adbf; margin-bottom:10px;">Campaign Details</h3>
             <table style="width:100%; border-collapse:collapse;">
@@ -89,14 +121,11 @@ def generate_report(req):
                         f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('clicks', 0)):.2f}</td>"
                         f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('conversions', 0)):.2f}</td>"
                         f"<td style='padding:8px; border:1px solid #ddd;'>{float(c.get('engagements', 0)):.2f}</td>"
-                        f"</tr>" for c in campaigns
+                        f"</tr>" for c in results.get("campaigns", [])
                     )}
                 </tbody>
             </table>
             """
-        else:
-            google_ads_html = "<p>No campaign data available.</p>"
-
         results_html = google_ads_html
     elif service == "Tracking Data":
         results_html = f"""

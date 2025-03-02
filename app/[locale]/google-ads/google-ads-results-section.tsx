@@ -51,6 +51,17 @@ export default function GoogleAdsResultsSection({
           queryInfo,
           results,
           service: queryInfo.service,
+          // Added translated headers for Google Ads
+          translatedHeaders: {
+            campaignId: t("campaignId"),
+            campaignName: t("campaignName"),
+            averageCost: t("averageCost"),
+            averageCpc: t("averageCpc"),
+            averageCpm: t("averageCpm"),
+            clicks: t("clicks"),
+            conversions: t("conversions"),
+            engagements: t("engagements"),
+          },
         },
         { responseType: "blob" },
       );
