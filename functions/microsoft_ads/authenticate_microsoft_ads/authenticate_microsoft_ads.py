@@ -1,7 +1,7 @@
 import os, sys
 from bingads.authorization import AuthorizationData, OAuthWebAuthCodeGrant
 import webbrowser
-from flask import jsonify
+from flask import jsonify, request
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
@@ -9,12 +9,21 @@ DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer t
 ENVIRONMENT = "production"  # Change to 'production' for live data
 CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
 CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
-REDIRECTION_URI = "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
-# REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
 CLIENT_STATE = "ClientStateGoesHere"
 
 
 def authenticate_microsoft_ads(req):
+    data = req.get_json() or {}
+    lang = data.get("lang", "en")
+    redirection_uri = (
+        "https://advertisinganalyticsdashboard.com/fr/microsoft-ads"
+        # "http://localhost:3000/fr/microsoft-ads"
+        if lang == "fr"
+        else 
+        "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
+        # "http://localhost:3000/en/microsoft-ads"
+    )
+
     authorization_data = AuthorizationData(
         account_id=None,
         customer_id=None,
@@ -24,8 +33,8 @@ def authenticate_microsoft_ads(req):
 
     authentication = OAuthWebAuthCodeGrant(
         client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,  # Add client secret here
-        redirection_uri=REDIRECTION_URI,  # Add redirection URI here
+        client_secret=CLIENT_SECRET,
+        redirection_uri=redirection_uri,
         env=ENVIRONMENT,
     )
     authentication.state = CLIENT_STATE

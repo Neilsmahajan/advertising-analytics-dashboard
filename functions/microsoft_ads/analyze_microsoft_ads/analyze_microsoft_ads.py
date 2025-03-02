@@ -1,6 +1,6 @@
 import os, sys
 import csv
-from flask import jsonify
+from flask import jsonify, request
 from bingads.v13.reporting import ReportingDownloadParameters, ReportingServiceManager
 from bingads.authorization import AuthorizationData, OAuthWebAuthCodeGrant
 from bingads.service_client import ServiceClient
@@ -11,8 +11,6 @@ DEVELOPER_TOKEN = os.getenv("MICROSOFT_ADS_DEVELOPER_TOKEN")  # Your developer t
 ENVIRONMENT = "production"  # Change to 'production' for live data
 CLIENT_ID = os.getenv("MICROSOFT_ADS_CLIENT_ID")  # Your new client ID
 CLIENT_SECRET = os.getenv("MICROSOFT_ADS_CLIENT_SECRET")  # Your client secret
-REDIRECTION_URI = "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
-# REDIRECTION_URI = "http://localhost:3000/en/microsoft-ads"
 CLIENT_STATE = "ClientStateGoesHere"
 REPORT_FILE_FORMAT = "Csv"
 FILE_DIRECTORY = "./microsoft_ads/results"
@@ -21,24 +19,34 @@ TIMEOUT_IN_MILLISECONDS = 3600000
 
 
 def analyze_microsoft_ads(req):
-    data = req.get_json()
+    data = req.get_json() or {}
     account_id = data.get("accountId")
     customer_id = data.get("customerId")
     current_url = data.get("currentUrl")
+    lang = data.get("lang", "en")
+    redirection_uri = (
+        "https://advertisinganalyticsdashboard.com/fr/microsoft-ads"
+        # "http://localhost:3000/fr/microsoft-ads"
+        if lang == "fr"
+        else 
+        "https://advertisinganalyticsdashboard.com/en/microsoft-ads"
+        # "http://localhost:3000/en/microsoft-ads"
+    )
 
-    result = fetch_microsoft_ads_data(account_id, customer_id, current_url)
+    result = fetch_microsoft_ads_data(
+        account_id, customer_id, current_url, redirection_uri
+    )
     if "error" in result:
         return jsonify(result), 400
 
     return jsonify(result), 200
 
 
-def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
+def fetch_microsoft_ads_data(account_id, customer_id, response_uri, redirection_uri):
     """Fetch Microsoft Ads data from the Microsoft Ads API."""
     try:
         if not account_id or not customer_id or not response_uri:
             return {"error": "Both Account ID and Customer ID are required."}
-
     except Exception as e:
         return {"error": str(e)}
 
@@ -63,8 +71,8 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
 
     authentication = OAuthWebAuthCodeGrant(
         client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,  # Add client secret here
-        redirection_uri=REDIRECTION_URI,  # Add redirection URI here
+        client_secret=CLIENT_SECRET,
+        redirection_uri=redirection_uri,
         env=ENVIRONMENT,
     )
     authentication.state = CLIENT_STATE
@@ -84,16 +92,12 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
     authorization_data.account_id = accounts["AdvertiserAccount"][0].Id
     authorization_data.customer_id = accounts["AdvertiserAccount"][0].ParentCustomerId
 
-    # Create results directory of {current_file_directory}/FILE_DIRECTORY/{account_id}/
     results_directory = FILE_DIRECTORY
     if not os.path.exists(results_directory):
         os.makedirs(results_directory)
 
-    # Set the correct account and customer IDs
     authorization_data.account_id = account_id
     authorization_data.customer_id = customer_id
-
-    # You can submit one of the example reports, or build your own.
 
     report_request = get_report_request(
         authorization_data.account_id, reporting_service=reporting_service
@@ -103,10 +107,9 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri):
         report_request=report_request,
         result_file_directory=results_directory,
         result_file_name=RESULT_FILE_NAME,
-        overwrite_result_file=True,  # Set this value true if you want to overwrite the same file.
-        timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,  # You may optionally cancel the download after a specified time interval.
+        overwrite_result_file=True,
+        timeout_in_milliseconds=TIMEOUT_IN_MILLISECONDS,
     )
-    # background_completion(reporting_download_parameters, reporting_service_manager)
     results = download_report(reporting_download_parameters, reporting_service_manager)
     return results
 

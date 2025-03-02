@@ -7,7 +7,7 @@ import axios from "axios";
 import { auth } from "@/lib/firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 interface Campaign {
@@ -31,6 +31,7 @@ interface MicrosoftAdsResults extends Record<string, unknown> {
  */
 export default function MicrosoftAdsQueryForm() {
   const t = useTranslations("MicrosoftAdsQueryForm");
+  const { locale } = useParams();
   const queryFields = {
     accountId: t("accountId"),
     customerId: t("customerId"),
@@ -62,6 +63,7 @@ export default function MicrosoftAdsQueryForm() {
             accountId: queryData.accountId,
             customerId: queryData.customerId,
             currentUrl: window.location.href,
+            lang: locale,
           },
         );
         console.log("Analysis result:", response.data);
@@ -81,7 +83,9 @@ export default function MicrosoftAdsQueryForm() {
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
         // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
-        {},
+        {
+          lang: locale,
+        },
       );
       console.log(
         "Redirecting to Microsoft Ads authentication page:",
@@ -114,7 +118,7 @@ export default function MicrosoftAdsQueryForm() {
                   name: user?.displayName || "",
                   email: user?.email || "",
                 }}
-                queryInfo={{ service: "Microsoft Ads", queryName, queryData }}
+                queryInfo={{ service: "Microsoft Ads", queryName, queryData}}
                 results={results}
               />
             )}
