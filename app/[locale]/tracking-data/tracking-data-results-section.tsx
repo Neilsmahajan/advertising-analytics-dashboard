@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface TrackingDataResultsSectionProps {
   results: {
@@ -54,6 +54,7 @@ export default function TrackingDataResultsSection({
   queryInfo,
 }: TrackingDataResultsSectionProps) {
   const t = useTranslations("ResultsSection");
+  const locale = useLocale(); // new
 
   // extract and normalize the website URL from queryInfo
   const websiteUrlRaw = (queryInfo.queryData.websiteURL as string) || "";
@@ -78,6 +79,7 @@ export default function TrackingDataResultsSection({
             ),
           },
           service: queryInfo.service,
+          locale, // pass current locale
         },
         { responseType: "blob" },
       );

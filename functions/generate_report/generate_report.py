@@ -12,7 +12,7 @@ def generate_report(req):
     query_info = data.get("queryInfo")
     results = data.get("results")
     service = data.get("service")
-    locale = data.get("locale", "en")  # new field from frontend
+    locale = (data.get("locale") or "en").lower()  # normalize locale
 
     # Define copy based on locale
     if locale == "fr":
@@ -25,7 +25,7 @@ def generate_report(req):
         queryNameLabel = "Nom de la requête"
         queryDataLabel = "Données de la requête"
         resultsLabel = "Résultats:"
-    else:  # default English
+    else:
         reportTitle = "Report"
         userInfoLabel = "User Information"
         nameLabel = "Name"
@@ -153,7 +153,7 @@ def generate_report(req):
     elif service == "Tracking Data":
         results_html = f"""
         <ul>
-            {''.join(f"<li>{tag}: {results['tag_descriptions'].get(tag, '')}</li>" for tag in results['analytics_tags'])}
+            {''.join(f"<li>{tag}: {results['tag_descriptions'].get(tag, '')}</li>" for tag in results.get('analytics_tags', []))}
         </ul>
         """
     elif service == "Meta Ads":
