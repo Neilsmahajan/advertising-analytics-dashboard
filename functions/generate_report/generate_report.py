@@ -28,21 +28,39 @@ def generate_report(req):
     )
 
     if service == "Google Analytics":
-        results_html = f"""
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Sessions</th>
-                    <th>Bounce Rate</th>
-                    <th>Key Events</th>
-                </tr>
-            </thead>
-            <tbody>
-                {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
-            </tbody>
-        </table>
-        """
+        headers = data.get("translatedHeaders")
+        if headers:
+            results_html = f"""
+            <table>
+                <thead>
+                    <tr>
+                        <th>{headers.get("date", "Date")}</th>
+                        <th>{headers.get("sessions", "Sessions")}</th>
+                        <th>{headers.get("bounceRate", "Bounce Rate")}</th>
+                        <th>{headers.get("keyEvents", "Key Events")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+                </tbody>
+            </table>
+            """
+        else:
+            results_html = f"""
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sessions</th>
+                        <th>Bounce Rate</th>
+                        <th>Key Events</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+                </tbody>
+            </table>
+            """
     elif service == "Google Ads":
         campaigns = results.get("campaigns", [])
         if campaigns:
