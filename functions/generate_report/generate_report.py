@@ -12,6 +12,29 @@ def generate_report(req):
     query_info = data.get("queryInfo")
     results = data.get("results")
     service = data.get("service")
+    locale = data.get("locale", "en")  # new field from frontend
+
+    # Define copy based on locale
+    if locale == "fr":
+        reportTitle = "Rapport"
+        userInfoLabel = "Informations sur l'utilisateur"
+        nameLabel = "Nom"
+        emailLabel = "Courriel"
+        queryInfoLabel = "Informations sur la requête"
+        serviceLabel = "Service"
+        queryNameLabel = "Nom de la requête"
+        queryDataLabel = "Données de la requête"
+        resultsLabel = "Résultats:"
+    else:  # default English
+        reportTitle = "Report"
+        userInfoLabel = "User Information"
+        nameLabel = "Name"
+        emailLabel = "Email"
+        queryInfoLabel = "Query Information"
+        serviceLabel = "Service"
+        queryNameLabel = "Query Name"
+        queryDataLabel = "Query Data"
+        resultsLabel = "Results:"
 
     if not user_info or not query_info or not results or not service:
         return make_response(
@@ -309,20 +332,20 @@ def generate_report(req):
         </style>
     </head>
     <body>
-        <h1>Report</h1>
+        <h1>{reportTitle}</h1>
         <div class="section">
-            <h2>User Information</h2>
-            <p>Name: {user_info.get('name')}</p>
-            <p>Email: {user_info.get('email')}</p>
+            <h2>{userInfoLabel}</h2>
+            <p>{nameLabel}: {user_info.get('name')}</p>
+            <p>{emailLabel}: {user_info.get('email')}</p>
         </div>
         <div class="section">
-            <h2>Query Information</h2>
-            <p><strong>Service:</strong> {query_info.get('service')}</p>
-            <p><strong>Query Name:</strong> {query_info.get('queryName')}</p>
+            <h2>{queryInfoLabel}</h2>
+            <p><strong>{serviceLabel}:</strong> {query_info.get('service')}</p>
+            <p><strong>{queryNameLabel}:</strong> {query_info.get('queryName')}</p>
             <div>{query_data_html}</div>
         </div>
         <div class="section">
-            <h2>Results</h2>
+            <h2>{resultsLabel}</h2>
             {results_html}
         </div>
     </body>

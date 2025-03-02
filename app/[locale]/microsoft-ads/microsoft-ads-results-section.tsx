@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface Campaign {
   CampaignId: string | number;
@@ -42,6 +42,7 @@ export default function MicrosoftAdsResultsSection({
   queryInfo,
 }: MicrosoftAdsResultsSectionProps) {
   const t = useTranslations("ResultsSection");
+  const locale = useLocale(); // new
 
   const handleDownloadReport = async () => {
     try {
@@ -68,6 +69,7 @@ export default function MicrosoftAdsResultsSection({
               spend: t("spend"),
             },
           },
+          locale, // new property
         },
         { responseType: "blob" },
       );

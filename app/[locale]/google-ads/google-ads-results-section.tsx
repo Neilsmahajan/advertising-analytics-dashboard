@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface Campaign {
   id: string | number;
@@ -40,6 +40,7 @@ export default function GoogleAdsResultsSection({
   queryInfo,
 }: GoogleAdsResultsSectionProps) {
   const t = useTranslations("ResultsSection");
+  const locale = useLocale();
 
   const handleDownloadReport = async () => {
     try {
@@ -62,6 +63,7 @@ export default function GoogleAdsResultsSection({
             conversions: t("conversions"),
             engagements: t("engagements"),
           },
+          locale,
         },
         { responseType: "blob" },
       );

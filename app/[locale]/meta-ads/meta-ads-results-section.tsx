@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface MetaAdsResultsSectionProps {
   results: {
@@ -42,6 +42,7 @@ export default function MetaAdsResultsSection({
   queryInfo,
 }: MetaAdsResultsSectionProps) {
   const t = useTranslations("ResultsSection");
+  const locale = useLocale();
 
   const handleDownloadReport = async () => {
     try {
@@ -66,6 +67,7 @@ export default function MetaAdsResultsSection({
             cpm: t("cpm"),
             reach: t("reach"),
           },
+          locale,
         },
         { responseType: "blob" },
       );

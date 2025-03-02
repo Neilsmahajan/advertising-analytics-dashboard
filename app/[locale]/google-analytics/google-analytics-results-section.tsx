@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import axios from "axios";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface GoogleAnalyticsResultsSectionProps {
   results: {
@@ -36,6 +36,7 @@ export default function GoogleAnalyticsResultsSection({
   queryInfo,
 }: GoogleAnalyticsResultsSectionProps) {
   const t = useTranslations("ResultsSection");
+  const locale = useLocale();
 
   const handleDownloadReport = async () => {
     try {
@@ -54,6 +55,7 @@ export default function GoogleAnalyticsResultsSection({
             bounceRate: t("bouceRate"),
             keyEvents: t("keyEvents"),
           },
+          locale,
         },
         { responseType: "blob" },
       );
