@@ -53,6 +53,19 @@ export default function MetaAdsResultsSection({
           queryInfo,
           results,
           service: queryInfo.service,
+          // Added translated headers for Meta Ads
+          translatedHeaders: {
+            campaignId: t("campaignId"),
+            campaignName: t("campaignName"),
+            dateStart: t("dateStart"),
+            dateStop: t("dateStop"),
+            impressions: t("impressions"),
+            clicks: t("clicks"),
+            spend: t("spend"),
+            uniqueClicks: t("uniqueClicks"),
+            cpm: t("cpm"),
+            reach: t("reach"),
+          },
         },
         { responseType: "blob" },
       );

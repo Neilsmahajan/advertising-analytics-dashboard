@@ -3,7 +3,6 @@ from weasyprint import HTML
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 
@@ -106,40 +105,77 @@ def generate_report(req):
         </ul>
         """
     elif service == "Meta Ads":
-        results_html = f"""
-        <table>
-            <thead>
-                <tr>
-                    <th>Campaign ID</th>
-                    <th>Campaign Name</th>
-                    <th>Date Start</th>
-                    <th>Date Stop</th>
-                    <th>Impressions</th>
-                    <th>Clicks</th>
-                    <th>Spend</th>
-                    <th>Unique Clicks</th>
-                    <th>CPM</th>
-                    <th>Reach</th>
-                </tr>
-            </thead>
-            <tbody>
-                {''.join(
-                    f"<tr>"
-                    f"<td>{row.get('campaign_id')}</td>"
-                    f"<td>{row.get('campaign_name')}</td>"
-                    f"<td>{row.get('date_start')}</td>"
-                    f"<td>{row.get('date_stop')}</td>"
-                    f"<td>{row.get('impressions')}</td>"
-                    f"<td>{row.get('clicks')}</td>"
-                    f"<td>{row.get('spend')}</td>"
-                    f"<td>{row.get('unique_clicks')}</td>"
-                    f"<td>{row.get('cpm')}</td>"
-                    f"<td>{row.get('reach')}</td>"
-                    f"</tr>" for row in results['data']
-                )}
-            </tbody>
-        </table>
-        """
+        headers = data.get("translatedHeaders")
+        if headers:
+            results_html = f"""
+            <table>
+                <thead>
+                    <tr>
+                        <th>{headers.get("campaignId", "Campaign ID")}</th>
+                        <th>{headers.get("campaignName", "Campaign Name")}</th>
+                        <th>{headers.get("dateStart", "Date Start")}</th>
+                        <th>{headers.get("dateStop", "Date Stop")}</th>
+                        <th>{headers.get("impressions", "Impressions")}</th>
+                        <th>{headers.get("clicks", "Clicks")}</th>
+                        <th>{headers.get("spend", "Spend")}</th>
+                        <th>{headers.get("uniqueClicks", "Unique Clicks")}</th>
+                        <th>{headers.get("cpm", "CPM")}</th>
+                        <th>{headers.get("reach", "Reach")}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(
+                        f"<tr>"
+                        f"<td>{row.get('campaign_id')}</td>"
+                        f"<td>{row.get('campaign_name')}</td>"
+                        f"<td>{row.get('date_start')}</td>"
+                        f"<td>{row.get('date_stop')}</td>"
+                        f"<td>{row.get('impressions')}</td>"
+                        f"<td>{row.get('clicks')}</td>"
+                        f"<td>{row.get('spend')}</td>"
+                        f"<td>{row.get('unique_clicks')}</td>"
+                        f"<td>{row.get('cpm')}</td>"
+                        f"<td>{row.get('reach')}</td>"
+                        f"</tr>" for row in results['data']
+                    )}
+                </tbody>
+            </table>
+            """
+        else:
+            results_html = f"""
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campaign ID</th>
+                        <th>Campaign Name</th>
+                        <th>Date Start</th>
+                        <th>Date Stop</th>
+                        <th>Impressions</th>
+                        <th>Clicks</th>
+                        <th>Spend</th>
+                        <th>Unique Clicks</th>
+                        <th>CPM</th>
+                        <th>Reach</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(
+                        f"<tr>"
+                        f"<td>{row.get('campaign_id')}</td>"
+                        f"<td>{row.get('campaign_name')}</td>"
+                        f"<td>{row.get('date_start')}</td>"
+                        f"<td>{row.get('date_stop')}</td>"
+                        f"<td>{row.get('impressions')}</td>"
+                        f"<td>{row.get('clicks')}</td>"
+                        f"<td>{row.get('spend')}</td>"
+                        f"<td>{row.get('unique_clicks')}</td>"
+                        f"<td>{row.get('cpm')}</td>"
+                        f"<td>{row.get('reach')}</td>"
+                        f"</tr>" for row in results['data']
+                    )}
+                </tbody>
+            </table>
+            """
     elif service == "Microsoft Ads":
         # Retrieve translated headers for totals and campaigns
         headers = data.get("translatedHeaders", {})
