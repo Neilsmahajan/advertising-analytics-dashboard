@@ -23,7 +23,7 @@ def analyze_google_ads(req):
         "https://advertisinganalyticsdashboard.com/fr/google-ads"
         # "http://localhost:3000/fr/google-ads"
         if lang == "fr"
-        else "https://advertisinganalyticsdashboard.com/fr/google-ads"
+        else "https://advertisinganalyticsdashboard.com/en/google-ads"
         # "http://localhost:3000/en/google-ads"
     )
     result = fetch_google_ads_data(customer_id, current_url, redirection_uri)
