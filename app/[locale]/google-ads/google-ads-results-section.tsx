@@ -91,7 +91,7 @@ export default function GoogleAdsResultsSection({
       </div>
       <div>
         <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
-        <div className="bg-white/10 rounded-lg p-6">
+        <div>
           {results.campaigns && results.campaigns.length > 0 ? (
             <table className="min-w-full divide-y divide-blue-200">
               <thead className="bg-[#47adbf]">
