@@ -273,10 +273,10 @@
     "instructions": "Instructions",
     "followTheseSteps": "Suivez ces étapes pour utiliser cette application avec vos données Google Analytics:",
     "goToGoogleAnalyticsDashboard": "Allez sur votre tableau de bord Google Analytics.",
-    "navigateToAdmin": "Naviguez vers Admin &gt; Compte &gt; Gestion de l'accès au compte",
+    "navigateToAdmin": "Naviguez vers Admin > Compte > Gestion de l'accès au compte",
     "addTheFollowing": "Ajoutez l'email suivant: google-analytics@advertisinganalytics-dashboard.iam.gserviceaccount.com",
     "grantViewerRoll": "Accordez le rôle de visualiseur.",
-    "getYourGoogle": "Obtenez votre identifiant de propriété Google Analytics (par exemple, 469573948) depuis Admin &gt; Propriété &gt; Détails de la propriété.",
+    "getYourGoogle": "Obtenez votre identifiant de propriété Google Analytics (par exemple, 469573948) depuis Admin > Propriété > Détails de la propriété.",
     "enterTheProperty": "Entrez l'identifiant de la propriété ci-dessous, ainsi que la plage de dates souhaitée, et cliquez sur Obtenir les analyses.",
     "viewTutorial": "Voir le Tutoriel"
   },

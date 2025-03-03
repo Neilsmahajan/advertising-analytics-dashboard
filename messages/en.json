@@ -273,10 +273,10 @@
     "instructions": "Instructions",
     "followTheseSteps": "Follow These Steps To Use This Application With Your Google Analytics Data:",
     "goToGoogleAnalyticsDashboard": "Go to your Google Analytics Dashboard.",
-    "navigateToAdmin": "Navigate to Admin &gt; Account &gt; Account access management",
+    "navigateToAdmin": "Navigate to Admin > Account > Account access management",
     "addTheFollowing": "Add the following email: google-analytics@advertisinganalytics-dashboard.iam.gserviceaccount.com",
     "grantViewerRoll": "Grant Viewer role access.",
-    "getYourGoogle": "Get your Google Analytics Property ID (e.g., 469573948) from Admin &gt; Property &gt; Property details.",
+    "getYourGoogle": "Get your Google Analytics Property ID (e.g., 469573948) from Admin > Property > Property details.",
     "enterTheProperty": "Enter the Property ID below, along with the desired date range, and click Get Analytics.",
     "viewTutorial": "View Tutorial"
   },
