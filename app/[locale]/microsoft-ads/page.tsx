@@ -27,17 +27,16 @@ export default function MicrosoftAdsPage() {
         {/* Instructions Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
-          <p className="text-lg mb-6">
-            Follow These Steps To Use This Application With Your Microsoft Ads
-            Data:
-          </p>
+          <p className="text-lg mb-6">{t("followTheseSteps")}</p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>In development...</li>
+            <li>{t("clickConnect")}</li>
+            <li>{t("logInToMicrosoft")}</li>
+            <li>{t("clickTheCampaigns")}</li>
           </ol>
 
           {/* Tutorial Section */}
           <div className="mt-8">
-            <CollapsibleSection title="VIEW TUTORIAL">
+            <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.youtube.com/embed/xh9EpVkA2QY"

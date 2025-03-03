@@ -308,7 +308,12 @@
   },
   "MicrosoftAdsPage": {
     "title": "MICROSOFT ADS",
-    "instructions": "Instructions"
+    "instructions": "Instructions",
+    "followTheseSteps": "Follow These Steps To Use This Application With Your Microsoft Ads Data:",
+    "clickConnect": "Click Connect with Microsoft Ads and select your Microsoft account associated with your Microsoft Ads account.",
+    "logInToMicrosoft": "Log in to Microsoft Ads Dashboard and select your Microsoft Ads Account.",
+    "clickTheCampaigns": "Click the Campaigns tab on the left and get your Account ID (e.g., 138753866) and your Customer ID (e.g., 253842102) listed in the URL after 'aid=' and 'cid=' respectively.",
+    "viewTutorial": "View Tutorial"
   },
   "MicrosoftAdsQueryForm": {
     "accountId": "Account ID",
