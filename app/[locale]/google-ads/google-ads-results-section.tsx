@@ -52,7 +52,6 @@ export default function GoogleAdsResultsSection({
           queryInfo,
           results,
           service: queryInfo.service,
-          // Added translated headers for Google Ads
           translatedHeaders: {
             campaignId: t("campaignId"),
             campaignName: t("campaignName"),

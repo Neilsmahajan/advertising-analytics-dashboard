@@ -19,6 +19,8 @@ def analyze_google_ads(req):
     customer_id = data.get("customerId")
     current_url = data.get("currentUrl")
     lang = data.get("lang", "en")
+    start_date = data.get("startDate")  # new: retrieve start date
+    end_date = data.get("endDate")  # new: retrieve end date
     redirection_uri = (
         "https://advertisinganalyticsdashboard.com/fr/google-ads"
         # "http://localhost:3000/fr/google-ads"
@@ -26,15 +28,19 @@ def analyze_google_ads(req):
         else "https://advertisinganalyticsdashboard.com/en/google-ads"
         # "http://localhost:3000/en/google-ads"
     )
-    result = fetch_google_ads_data(customer_id, current_url, redirection_uri)
+    result = fetch_google_ads_data(
+        customer_id, current_url, redirection_uri, start_date, end_date
+    )
     if "error" in result:
         return jsonify(result), 400
 
     return jsonify(result), 200
 
 
-def fetch_google_ads_data(customer_id, response_uri, redirection_uri):
-    """Fetch Google Ads data."""
+def fetch_google_ads_data(
+    customer_id, response_uri, redirection_uri, start_date, end_date
+):
+    """Fetch Google Ads data with a date range."""
     try:
         if not customer_id or not response_uri:
             return {"error": "Both Account ID and Customer ID are required."}
@@ -76,15 +82,15 @@ def fetch_google_ads_data(customer_id, response_uri, redirection_uri):
     }
 
     googleads_client = GoogleAdsClient.load_from_dict(credentials)
-    campaigns = get_campaigns(googleads_client, customer_id)
+    campaigns = get_campaigns(googleads_client, customer_id, start_date, end_date)
 
     # Return campaigns with metrics for each campaign.
     return {"campaigns": campaigns}
 
 
-def get_campaigns(client, customer_id):
+def get_campaigns(client, customer_id, start_date, end_date):
     # Update query to include required metrics.
-    query = """
+    query = f"""
         SELECT
           campaign.id,
           campaign.name,
@@ -95,6 +101,8 @@ def get_campaigns(client, customer_id):
           metrics.conversions,
           metrics.engagements
         FROM campaign
+        WHERE segments.date >= '{start_date}'
+          AND segments.date <= '{end_date}'
         ORDER BY campaign.id
     """
     stream = client.get_service("GoogleAdsService").search_stream(

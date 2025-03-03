@@ -334,6 +334,8 @@
   "GoogleAdsQueryForm": {
     "customerId": "Customer ID",
     "connectWithGoogleAds": "Connectez-vous avec Google Ads",
+    "startDate": "Date de Début",
+    "endDate": "Date de Fin",
     "loading": "Chargement..."
   }
 }

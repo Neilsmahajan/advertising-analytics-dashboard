@@ -16,9 +16,11 @@ import { Button } from "@/components/ui/button";
  */
 export default function GoogleAdsQueryForm() {
   const t = useTranslations("GoogleAdsQueryForm");
-  const { locale } = useParams(); // <-- get the current locale
+  const { locale } = useParams();
   const queryFields = {
     customerId: t("customerId"),
+    startDate: t("startDate"),
+    endDate: t("endDate"),
   };
   const [results, setResults] = useState<{
     campaigns: {
@@ -54,6 +56,8 @@ export default function GoogleAdsQueryForm() {
           // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_ads_function",
           {
             customerId: queryData.customerId,
+            startDate: queryData.startDate,
+            endDate: queryData.endDate,
             currentUrl: window.location.href,
             lang: locale, // <-- add language parameter
           },
