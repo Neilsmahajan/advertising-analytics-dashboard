@@ -95,80 +95,82 @@ export default function MetaAdsResultsSection({
       </div>
       <div>
         <h3 className="text-xl font-bold mb-4"></h3>
-        <div className="bg-white/10 rounded-lg p-6">
+        <div>
           {results.data ? (
-            <table className="min-w-full bg-white/10 text-white/60">
-              <thead>
-                <tr>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("campaignId") || "Campaign ID"}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("campaignName") || "Campaign Name"}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("dateStart")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("dateStop")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("impressions")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("clicks")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("spend")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("uniqueClicks")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("cpm")}
-                  </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
-                    {t("reach")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.data.map((row, index) => (
-                  <tr key={index}>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.campaign_id}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.campaign_name}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.date_start}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.date_stop}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.impressions}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.clicks}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.spend}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.unique_clicks}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.cpm}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
-                      {row.reach}
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-blue-200">
+                <thead className="bg-[#47adbf]">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("campaignId") || "Campaign ID"}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("campaignName") || "Campaign Name"}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("dateStart")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("dateStop")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("impressions")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("clicks")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("spend")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("uniqueClicks")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("cpm")}
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                      {t("reach")}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="bg-blue-50 divide-y divide-blue-200">
+                  {results.data.map((row, index) => (
+                    <tr key={index}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.campaign_id}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.campaign_name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.date_start}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.date_stop}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.impressions}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.clicks}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.spend}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.unique_clicks}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.cpm}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
+                        {row.reach}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <p className="text-white/60">{t("resultsWillAppear")}</p>
           )}
