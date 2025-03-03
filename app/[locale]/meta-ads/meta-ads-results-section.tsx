@@ -188,7 +188,7 @@ export default function MetaAdsResultsSection({
           <p>
             <strong>{t("queryData")}</strong>
           </p>
-          <pre className="text-white/60">
+          <pre className="text-white/60 whitespace-pre-wrap break-all">
             {JSON.stringify(queryInfo.queryData, null, 2)}
           </pre>
         </div>
