@@ -318,7 +318,13 @@
   },
   "GoogleAdsPage": {
     "title": "GOOGLE ADS",
-    "instructions": "Instructions"
+    "instructions": "Instructions",
+    "followTheseSteps": "Suivez ces étapes pour utiliser cette application avec vos données Google Ads:",
+    "clickConnect": "Cliquez sur Se connecter avec Google Ads et sélectionnez votre compte Google associé à votre compte Google Ads.",
+    "logInToGoogle": "Connectez-vous au tableau de bord Google Ads et sélectionnez votre compte Google Ads.",
+    "getYourCustomerId": "Obtenez votre identifiant client en haut à droite (par exemple, 683-961-6266) pour le compte à partir duquel vous souhaitez récupérer des données.",
+    "enterYourCustomerId": "Saisissez votre identifiant client ci-dessous, ainsi que la plage de dates souhaitée, puis cliquez sur Obtenir les données.",
+    "viewTutorial": "Voir le Tutoriel"
   },
   "GoogleAdsQueryForm": {
     "customerId": "Customer ID",
