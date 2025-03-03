@@ -49,6 +49,7 @@ export default function MicrosoftAdsQueryForm() {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const [isLoading, setIsLoading] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
 
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
@@ -80,6 +81,7 @@ export default function MicrosoftAdsQueryForm() {
 
   const handleAuthenticate = async () => {
     try {
+      setAuthLoading(true);
       const response = await axios.post(
         "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/authenticate_microsoft_ads_function",
         // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/authenticate_microsoft_ads_function",
@@ -94,18 +96,23 @@ export default function MicrosoftAdsQueryForm() {
       window.open(response.data.url, "_blank");
     } catch (error) {
       console.error("Error during Microsoft Ads authentication:", error);
+    } finally {
+      setAuthLoading(false);
     }
   };
 
   return (
     <div>
       {!code ? (
-        <Button
-          onClick={handleAuthenticate}
-          className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
-        >
-          {t("connectWithMicrosoftAds")}
-        </Button>
+        <>
+          <Button
+            onClick={handleAuthenticate}
+            className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white"
+          >
+            {t("connectWithMicrosoftAds")}
+          </Button>
+          {authLoading && <p>{t("loading") || "Loading..."}</p>}
+        </>
       ) : (
         <>
           <QueryForm
