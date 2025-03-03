@@ -310,9 +310,9 @@
     "title": "MICROSOFT ADS",
     "instructions": "Instructions",
     "followTheseSteps": "Suivez ces étapes pour utiliser cette application avec vos données Microsoft Ads:",
-    "clickConnect": "Cliquez sur Se connecter avec Microsoft Ads et sélectionnez votre compte Microsoft associé à votre compte Microsoft Ads.",
+    "clickConnect": "Cliquez sur Se connecter avec Microsoft Ads et sélectionnez votre compte Microsoft associé à votre compte Microsoft Ads. Si la fenêtre contextuelle est bloquée, cliquez sur l'icône de fenêtre contextuelle à côté de la barre d'adresse.",
     "logInToMicrosoft": "Connectez-vous au tableau de bord Microsoft Ads et sélectionnez votre compte Microsoft Ads.",
-    "clickTheCampaigns": "Cliquez sur l'onglet Campagnes sur la gauche et obtenez votre ID de compte (par exemple, 138753866) et votre ID client (par exemple, 253842102) répertoriés dans l'URL après « aid= » et « cid= » respectivement.",
+    "clickTheCampaigns": "Cliquez sur l'onglet Campagnes sur la gauche et obtenez votre ID de compte (par exemple, 138753866) et votre ID client (par exemple, 253842102) répertoriés dans l'URL après 'aid=' et 'cid=' respectivement.",
     "viewTutorial": "Voir le Tutoriel"
   },
   "MicrosoftAdsQueryForm": {
@@ -325,7 +325,7 @@
     "title": "GOOGLE ADS",
     "instructions": "Instructions",
     "followTheseSteps": "Suivez ces étapes pour utiliser cette application avec vos données Google Ads:",
-    "clickConnect": "Cliquez sur Se connecter avec Google Ads et sélectionnez votre compte Google associé à votre compte Google Ads.",
+    "clickConnect": "Cliquez sur Se connecter avec Google Ads et sélectionnez votre compte Google associé à votre compte Google Ads. Si la fenêtre contextuelle est bloquée, cliquez sur l'icône de fenêtre contextuelle à côté de la barre d'adresse.",
     "logInToGoogle": "Connectez-vous au tableau de bord Google Ads et sélectionnez votre compte Google Ads.",
     "getYourCustomerId": "Obtenez votre identifiant client en haut à droite (par exemple, 683-961-6266) pour le compte à partir duquel vous souhaitez récupérer des données.",
     "enterYourCustomerId": "Saisissez votre identifiant client ci-dessous, ainsi que la plage de dates souhaitée, puis cliquez sur Obtenir les données.",
