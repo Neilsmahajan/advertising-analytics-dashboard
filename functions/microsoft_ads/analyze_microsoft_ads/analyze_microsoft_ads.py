@@ -98,8 +98,11 @@ def fetch_microsoft_ads_data(account_id, customer_id, response_uri, redirection_
     authorization_data.account_id = account_id
     authorization_data.customer_id = customer_id
 
+    # Pass start and end dates along to get_report_request
+    start_date = request.get_json().get("startDate")
+    end_date = request.get_json().get("endDate")
     report_request = get_report_request(
-        authorization_data.account_id, reporting_service=reporting_service
+        authorization_data.account_id, reporting_service, start_date, end_date
     )
 
     reporting_download_parameters = ReportingDownloadParameters(
@@ -173,33 +176,33 @@ def set_elements_to_none(suds_object):
     return suds_object
 
 
-def get_report_request(account_id, reporting_service):
+def get_report_request(account_id, reporting_service, start_date, end_date):
     """
-    Use a sample report request or build your own.
+    Build the Campaign Performance Report Request using a custom date range.
     """
-
     aggregation = "Daily"
     exclude_column_headers = False
     exclude_report_footer = False
     exclude_report_header = False
-    time = reporting_service.factory.create("ReportTime")
-    # You can either use a custom date range or predefined time.
-    time.PredefinedTime = "Yesterday"
-    time.ReportTimeZone = "PacificTimeUSCanadaTijuana"
-    time.CustomDateRangeStart = None
-    time.CustomDateRangeEnd = None
-    return_only_complete_data = False
 
-    # BudgetSummaryReportRequest does not contain a definition for Aggregation.
-    # budget_summary_report_request = get_budget_summary_report_request(
-    #     account_id=account_id,
-    #     exclude_column_headers=exclude_column_headers,
-    #     exclude_report_footer=exclude_report_footer,
-    #     exclude_report_header=exclude_report_header,
-    #     report_file_format=REPORT_FILE_FORMAT,
-    #     return_only_complete_data=return_only_complete_data,
-    #     time=time,
-    # )
+    time = reporting_service.factory.create("ReportTime")
+    # Parse the date strings assuming "YYYY-MM-DD" format.
+    start_year, start_month, start_day = map(int, start_date.split("-"))
+    end_year, end_month, end_day = map(int, end_date.split("-"))
+    custom_start = reporting_service.factory.create("Date")
+    custom_start.Year = start_year
+    custom_start.Month = start_month
+    custom_start.Day = start_day
+    custom_end = reporting_service.factory.create("Date")
+    custom_end.Year = end_year
+    custom_end.Month = end_month
+    custom_end.Day = end_day
+
+    time.PredefinedTime = None  # Disable predefined time
+    time.CustomDateRangeStart = custom_start
+    time.CustomDateRangeEnd = custom_end
+
+    return_only_complete_data = False
 
     campaign_performance_report_request = get_campaign_performance_report_request(
         account_id=account_id,
@@ -212,31 +215,6 @@ def get_report_request(account_id, reporting_service):
         time=time,
         reporting_service=reporting_service,
     )
-
-    # keyword_performance_report_request = get_keyword_performance_report_request(
-    #     account_id=account_id,
-    #     aggregation=aggregation,
-    #     exclude_column_headers=exclude_column_headers,
-    #     exclude_report_footer=exclude_report_footer,
-    #     exclude_report_header=exclude_report_header,
-    #     report_file_format=REPORT_FILE_FORMAT,
-    #     return_only_complete_data=return_only_complete_data,
-    #     time=time,
-    # )
-
-    # user_location_performance_report_request = (
-    #     get_user_location_performance_report_request(
-    #         account_id=account_id,
-    #         aggregation=aggregation,
-    #         exclude_column_headers=exclude_column_headers,
-    #         exclude_report_footer=exclude_report_footer,
-    #         exclude_report_header=exclude_report_header,
-    #         report_file_format=REPORT_FILE_FORMAT,
-    #         return_only_complete_data=return_only_complete_data,
-    #         time=time,
-    #     )
-    # )
-
     return campaign_performance_report_request
 
 

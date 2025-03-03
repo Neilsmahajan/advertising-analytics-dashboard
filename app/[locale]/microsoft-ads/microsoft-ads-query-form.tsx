@@ -35,6 +35,8 @@ export default function MicrosoftAdsQueryForm() {
   const queryFields = {
     accountId: t("accountId"),
     customerId: t("customerId"),
+    startDate: t("startDate"),
+    endDate: t("endDate"),
   };
 
   const [results, setResults] = useState<MicrosoftAdsResults>({
@@ -63,6 +65,8 @@ export default function MicrosoftAdsQueryForm() {
           {
             accountId: queryData.accountId,
             customerId: queryData.customerId,
+            startDate: queryData.startDate,
+            endDate: queryData.endDate,
             currentUrl: window.location.href,
             lang: locale,
           },
