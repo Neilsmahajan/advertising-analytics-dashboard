@@ -53,33 +53,59 @@ def generate_report(req):
         headers = data.get("translatedHeaders")
         if headers:
             results_html = f"""
-            <table>
+            <table style="width:100%; border-collapse:collapse;">
                 <thead>
                     <tr>
-                        <th>{headers.get("date", "Date")}</th>
-                        <th>{headers.get("sessions", "Sessions")}</th>
-                        <th>{headers.get("bounceRate", "Bounce Rate")}</th>
-                        <th>{headers.get("keyEvents", "Key Events")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("date", "Date")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("sessions", "Sessions")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("totalUsers", "Total Users")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("bounceRate", "Bounce Rate")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("avgSessionDuration", "Avg. Session Duration")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("purchaseRevenue", "Purchase Revenue")}</th>
+                        <th style="padding:8px; background-color:#47adbf; color:white; border:1px solid #ddd;">{headers.get("transactions", "Transactions")}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+                    {''.join(
+                        f"<tr>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('date')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('sessions')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('totalUsers')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('bounceRate')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('avgSessionDuration')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('purchaseRevenue')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('transactions')}</td>"
+                        f"</tr>" for row in results.get("rows", [])
+                    )}
                 </tbody>
             </table>
             """
         else:
             results_html = f"""
-            <table>
+            <table style="width:100%; border-collapse:collapse;">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Sessions</th>
-                        <th>Bounce Rate</th>
-                        <th>Key Events</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Date</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Sessions</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Total Users</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Bounce Rate</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Avg. Session Duration</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Purchase Revenue</th>
+                        <th style="padding:8px; border:1px solid #ddd;">Transactions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {''.join(f"<tr><td>{row['date']}</td><td>{row['sessions']}</td><td>{row['bounceRate']}</td><td>{row['keyEvents']}</td></tr>" for row in results['rows'])}
+                    {''.join(
+                        f"<tr>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('date')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('sessions')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('totalUsers')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('bounceRate')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('avgSessionDuration')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('purchaseRevenue')}</td>"
+                        f"<td style='padding:8px; border:1px solid #ddd;'>{row.get('transactions')}</td>"
+                        f"</tr>" for row in results.get("rows", [])
+                    )}
                 </tbody>
             </table>
             """

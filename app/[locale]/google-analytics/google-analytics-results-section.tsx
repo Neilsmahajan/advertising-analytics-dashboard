@@ -51,12 +51,14 @@ export default function GoogleAnalyticsResultsSection({
           queryInfo,
           results,
           service: queryInfo.service,
-          // Add translated headers for French localization
           translatedHeaders: {
             date: t("date"),
             sessions: t("sessions"),
-            bounceRate: t("bouceRate"),
-            keyEvents: t("keyEvents"),
+            totalUsers: t("totalUsers"),
+            bounceRate: t("bounceRate"),
+            avgSessionDuration: t("avgSessionDuration"),
+            purchaseRevenue: t("purchaseRevenue"),
+            transactions: t("transactions"),
           },
           locale,
         },
