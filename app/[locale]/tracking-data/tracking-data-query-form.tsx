@@ -31,7 +31,7 @@ export default function TrackingDataQueryForm() {
   }) => {
     if (!queryData.websiteURL) {
       alert(
-        "Please fill in all required fields: Property ID, Start Date, End Date.",
+        "Please fill in all required fields: Website URL.",
       );
     }
     try {
