@@ -36,11 +36,15 @@ export default function GoogleAnalyticsQueryForm() {
         "Please fill in all required fields: Property ID, Start Date, End Date.",
       );
     }
+    if (queryData.startDate > queryData.endDate) {
+      alert("Start date must be before end date.");
+      return;
+    }
     try {
       setIsLoading(true);
       const response = await axios.post(
-        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
-        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
+        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
+        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
         {
           propertyId: queryData.propertyID,
           startDate: queryData.startDate,

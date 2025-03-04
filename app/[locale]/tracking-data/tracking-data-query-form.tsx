@@ -30,9 +30,7 @@ export default function TrackingDataQueryForm() {
     [key: string]: string | number | Date;
   }) => {
     if (!queryData.websiteURL) {
-      alert(
-        "Please fill in all required fields: Website URL.",
-      );
+      alert("Please fill in all required fields: Website URL.");
     }
     try {
       setIsLoading(true);

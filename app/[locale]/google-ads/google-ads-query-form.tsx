@@ -54,6 +54,10 @@ export default function GoogleAdsQueryForm() {
       );
       return;
     }
+    if (queryData.startDate > queryData.endDate) {
+      alert("Start date must be before end date.");
+      return;
+    }
     try {
       setIsLoading(true);
       const response = await axios.post(
