@@ -198,7 +198,10 @@ def get_report_request(account_id, reporting_service, start_date, end_date):
     custom_end.Month = end_month
     custom_end.Day = end_day
 
-    time.PredefinedTime = None  # Disable predefined time
+    # time.PredefinedTime = "Yesterday"
+    # time.CustomDateRangeStart = None
+    # time.CustomDateRangeEnd = None
+    time.PredefinedTime = None
     time.CustomDateRangeStart = custom_start
     time.CustomDateRangeEnd = custom_end
 
@@ -278,47 +281,39 @@ def background_completion(reporting_download_parameters, reporting_service_manag
 
 
 def download_report(reporting_download_parameters, reporting_service_manager):
-    """You can get a Report object by submitting a new download request via ReportingServiceManager.
-    Although in this case you will not work directly with the file, under the covers a request is
-    submitted to the Reporting service and the report file is downloaded to a local directory.
-    """
+    """Download and aggregate campaign data by campaign ID."""
     report_container = reporting_service_manager.download_report(
         reporting_download_parameters
     )
-
     if report_container is None:
         print("There is no report data for the submitted report request parameters.")
         sys.exit(0)
 
-    # Initialize overall totals and campaign details list
-    total_impressions = 0
-    total_clicks = 0
-    total_spend = 0
-    campaigns = []
-
+    campaigns_agg = {}
     for record in report_container.report_records:
-        impression = record.int_value("Impressions")
-        click = record.int_value("Clicks")
-        spend = record.int_value("Spend")
         camp_id = record.value("CampaignId")
         camp_name = record.value("CampaignName")
+        impressions = record.int_value("Impressions")
+        clicks = record.int_value("Clicks")
+        spend = record.int_value("Spend")
 
-        total_impressions += impression
-        total_clicks += click
-        total_spend += spend
-        campaigns.append(
-            {
+        if camp_id in campaigns_agg:
+            campaigns_agg[camp_id]["Impressions"] += impressions
+            campaigns_agg[camp_id]["Clicks"] += clicks
+            campaigns_agg[camp_id]["Spend"] += spend
+        else:
+            campaigns_agg[camp_id] = {
                 "CampaignId": camp_id,
                 "CampaignName": camp_name,
-                "Impressions": impression,
-                "Clicks": click,
+                "Impressions": impressions,
+                "Clicks": clicks,
                 "Spend": spend,
             }
-        )
 
-    print("Total Impressions: {0}".format(total_impressions))
-    print("Total Clicks: {0}".format(total_clicks))
-    print("Total Spend: {0}".format(total_spend))
+    # Compute overall totals from aggregated campaigns:
+    total_impressions = sum(item["Impressions"] for item in campaigns_agg.values())
+    total_clicks = sum(item["Clicks"] for item in campaigns_agg.values())
+    total_spend = sum(item["Spend"] for item in campaigns_agg.values())
 
     report_container.close()
 
@@ -326,5 +321,5 @@ def download_report(reporting_download_parameters, reporting_service_manager):
         "total_impressions": total_impressions,
         "total_clicks": total_clicks,
         "total_spend": total_spend,
-        "campaigns": campaigns,
+        "campaigns": list(campaigns_agg.values()),
     }
