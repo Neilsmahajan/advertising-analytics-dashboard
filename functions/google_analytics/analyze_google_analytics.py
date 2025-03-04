@@ -9,6 +9,7 @@ from google.analytics.data_v1beta.types import (
 from google.oauth2 import service_account
 import os
 from dotenv import load_dotenv
+from datetime import datetime  # new import
 
 # Load environment variables from .env file
 load_dotenv()
@@ -55,7 +56,9 @@ def analyze_google_analytics(req):
         result = {
             "rows": [
                 {
-                    "date": row.dimension_values[0].value,
+                    "date": datetime.strptime(
+                        row.dimension_values[0].value, "%Y%m%d"
+                    ).strftime("%b %d, %Y"),
                     "sessions": row.metric_values[0].value,
                     "totalUsers": row.metric_values[1].value,
                     "bounceRate": row.metric_values[2].value,
