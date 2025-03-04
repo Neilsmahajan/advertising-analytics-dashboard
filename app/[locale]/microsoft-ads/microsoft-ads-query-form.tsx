@@ -67,30 +67,28 @@ export default function MicrosoftAdsQueryForm() {
       );
       return;
     }
-    if (queryData.accountId && queryData.customerId) {
-      try {
-        setIsLoading(true);
-        const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
-          {
-            accountId: queryData.accountId,
-            customerId: queryData.customerId,
-            startDate: queryData.startDate,
-            endDate: queryData.endDate,
-            currentUrl: window.location.href,
-            lang: locale,
-          },
-        );
-        console.log("Analysis result:", response.data);
-        setShowResults(true);
-        setResults(response.data);
-        setQueryData(queryData);
-      } catch (error) {
-        console.error("Error analyzing Microsoft Ads data:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_microsoft_ads_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_microsoft_ads_function",
+        {
+          accountId: queryData.accountId,
+          customerId: queryData.customerId,
+          startDate: queryData.startDate,
+          endDate: queryData.endDate,
+          currentUrl: window.location.href,
+          lang: locale,
+        },
+      );
+      console.log("Analysis result:", response.data);
+      setShowResults(true);
+      setResults(response.data);
+      setQueryData(queryData);
+    } catch (error) {
+      console.error("Error analyzing Microsoft Ads data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

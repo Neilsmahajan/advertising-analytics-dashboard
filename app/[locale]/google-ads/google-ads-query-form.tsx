@@ -48,32 +48,36 @@ export default function GoogleAdsQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (queryData.customerId) {
-      try {
-        setIsLoading(true);
-        const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_ads_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_ads_function",
-          {
-            customerId: queryData.customerId,
-            startDate: queryData.startDate,
-            endDate: queryData.endDate,
-            currentUrl: window.location.href,
-            lang: locale, // <-- add language parameter
-          },
-        );
-        console.log("Analysis result:", response.data);
-        setResults({
-          ...response.data,
-          campaigns: response.data.campaigns || [],
-        });
-        setQueryData(queryData);
-        setShowResults(true);
-      } catch (error) {
-        console.error("Error analyzing Google Ads data:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    if (!queryData.customerId || !queryData.startDate || !queryData.endDate) {
+      alert(
+        "Please fill in all required fields: Customer ID, Start Date, End Date.",
+      );
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_ads_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_ads_function",
+        {
+          customerId: queryData.customerId,
+          startDate: queryData.startDate,
+          endDate: queryData.endDate,
+          currentUrl: window.location.href,
+          lang: locale, // <-- add language parameter
+        },
+      );
+      console.log("Analysis result:", response.data);
+      setResults({
+        ...response.data,
+        campaigns: response.data.campaigns || [],
+      });
+      setQueryData(queryData);
+      setShowResults(true);
+    } catch (error) {
+      console.error("Error analyzing Google Ads data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
