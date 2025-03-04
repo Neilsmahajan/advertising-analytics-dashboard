@@ -29,25 +29,28 @@ export default function TrackingDataQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (queryData.websiteURL) {
-      try {
-        setIsLoading(true);
-        const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_tracking_data_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_tracking_data_function",
-          {
-            url: queryData.websiteURL,
-          },
-        );
-        console.log("Analysis result:", response.data);
-        setShowResults(true);
-        setResults(response.data);
-        setQueryData(queryData);
-      } catch (error) {
-        console.error("Error analyzing website:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    if (!queryData.websiteURL) {
+      alert(
+        "Please fill in all required fields: Property ID, Start Date, End Date.",
+      );
+    }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_tracking_data_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_tracking_data_function",
+        {
+          url: queryData.websiteURL,
+        },
+      );
+      console.log("Analysis result:", response.data);
+      setShowResults(true);
+      setResults(response.data);
+      setQueryData(queryData);
+    } catch (error) {
+      console.error("Error analyzing website:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

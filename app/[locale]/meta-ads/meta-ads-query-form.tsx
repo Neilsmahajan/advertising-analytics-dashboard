@@ -32,32 +32,35 @@ export default function MetaAdsQueryForm() {
     [key: string]: string | number | Date;
   }) => {
     if (
-      queryData.adAccountId &&
-      queryData.accessToken &&
-      queryData.startDate &&
-      queryData.endDate
+      !queryData.adAccountId ||
+      !queryData.accessToken ||
+      !queryData.startDate ||
+      !queryData.endDate
     ) {
-      try {
-        setIsLoading(true);
-        const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_meta_ads_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_meta_ads_function",
-          {
-            adAccountId: queryData.adAccountId,
-            accessToken: queryData.accessToken,
-            startDate: queryData.startDate,
-            endDate: queryData.endDate,
-          },
-        );
-        console.log("Analysis result:", response.data);
-        setShowResults(true);
-        setResults(response.data);
-        setQueryData(queryData);
-      } catch (error) {
-        console.error("Error analyzing Meta Ads data:", error);
-      } finally {
-        setIsLoading(false);
-      }
+      alert(
+        "Please fill in all required fields: Ad Account ID, Access Token, Start Date, End Date.",
+      );
+    }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_meta_ads_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_meta_ads_function",
+        {
+          adAccountId: queryData.adAccountId,
+          accessToken: queryData.accessToken,
+          startDate: queryData.startDate,
+          endDate: queryData.endDate,
+        },
+      );
+      console.log("Analysis result:", response.data);
+      setShowResults(true);
+      setResults(response.data);
+      setQueryData(queryData);
+    } catch (error) {
+      console.error("Error analyzing Meta Ads data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
