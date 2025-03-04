@@ -31,27 +31,30 @@ export default function GoogleAnalyticsQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (queryData.propertyID && queryData.startDate && queryData.endDate) {
-      try {
-        setIsLoading(true);
-        const response = await axios.post(
-          "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
-          // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
-          {
-            propertyId: queryData.propertyID,
-            startDate: queryData.startDate,
-            endDate: queryData.endDate,
-          },
-        );
-        console.log("Analysis result:", response.data);
-        setShowResults(true);
-        setResults(response.data);
-        setQueryData(queryData);
-      } catch (error) {
-        console.error("Error analyzing Google Analytics data:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    if (!queryData.propertyID || !queryData.startDate || !queryData.endDate) {
+      alert(
+        "Please fill in all required fields: Property ID, Start Date, End Date.",
+      );
+    }
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
+        {
+          propertyId: queryData.propertyID,
+          startDate: queryData.startDate,
+          endDate: queryData.endDate,
+        },
+      );
+      console.log("Analysis result:", response.data);
+      setShowResults(true);
+      setResults(response.data);
+      setQueryData(queryData);
+    } catch (error) {
+      console.error("Error analyzing Google Analytics data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
