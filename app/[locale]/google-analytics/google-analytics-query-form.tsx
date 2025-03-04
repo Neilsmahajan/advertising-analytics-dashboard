@@ -43,8 +43,8 @@ export default function GoogleAnalyticsQueryForm() {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        // "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
-        "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
+        "https://us-central1-advertisinganalytics-dashboard.cloudfunctions.net/analyze_google_analytics_function",
+        // "http://127.0.0.1:5001/advertisinganalytics-dashboard/us-central1/analyze_google_analytics_function",
         {
           propertyId: queryData.propertyID,
           startDate: queryData.startDate,
