@@ -56,8 +56,15 @@ export default function MicrosoftAdsQueryForm() {
   const handleAnalyze = async (queryData: {
     [key: string]: string | number | Date;
   }) => {
-    if (!queryData.accountId || !queryData.customerId || !queryData.startDate || !queryData.endDate) {
-      alert("Please fill in all required fields: Account ID, Customer ID, Start Date, End Date.");
+    if (
+      !queryData.accountId ||
+      !queryData.customerId ||
+      !queryData.startDate ||
+      !queryData.endDate
+    ) {
+      alert(
+        "Please fill in all required fields: Account ID, Customer ID, Start Date, End Date.",
+      );
       return;
     }
     if (queryData.accountId && queryData.customerId) {
