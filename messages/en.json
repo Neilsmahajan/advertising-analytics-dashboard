@@ -208,9 +208,9 @@
   "ResultsSection": {
     "downloadReport": "Download Report",
     "results": "Results:",
-    "date": "Date",
-    "sessions": "Sessions",
-    "bounceRate": "Bounce Rate",
+    "date": "Date:",
+    "sessions": "Sessions:",
+    "bounceRate": "Bounce Rate:",
     "keyEvents": "Key Events",
     "dateStart": "Date Start",
     "dateStop": "Date Stop",

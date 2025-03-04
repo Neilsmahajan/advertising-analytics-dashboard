@@ -85,57 +85,57 @@ export default function GoogleAnalyticsResultsSection({
         </Button>
       </div>
       <div>
-        <h3 className="text-xl font-bold mb-4"></h3>
-        <div className="bg-white/10 rounded-lg p-6">
+        <h3 className="text-xl font-bold mb-4">{t("results")}</h3>
+        <div>
           {results.rows ? (
-            <table className="min-w-full bg-white/10 text-white/60">
-              <thead>
+            <table className="min-w-full divide-y divide-blue-200">
+              <thead className="bg-[#47adbf]">
                 <tr>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("date")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("sessions")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("totalUsers")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("bounceRate")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("avgSessionDuration")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("purchaseRevenue")}
                   </th>
-                  <th className="py-2 px-4 border-b border-gray-200">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                     {t("transactions")}
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="bg-blue-50 divide-y divide-blue-200">
                 {results.rows.map((row, index) => (
                   <tr key={index}>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.date}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.sessions}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.totalUsers}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.bounceRate}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.avgSessionDuration}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.purchaseRevenue}
                     </td>
-                    <td className="py-2 px-4 border-b border-gray-200">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-900">
                       {row.transactions}
                     </td>
                   </tr>

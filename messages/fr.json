@@ -208,9 +208,9 @@
   "ResultsSection": {
     "downloadReport": "Télécharger le Rapport",
     "results": "Résultats:",
-    "date": "Date",
-    "sessions": "Sessions",
-    "bounceRate": "Taux de Rebond",
+    "date": "Date:",
+    "sessions": "Sessions:",
+    "bounceRate": "Taux de Rebond:",
     "keyEvents": "Événements Clés",
     "dateStart": "Date de Début",
     "dateStop": "Date de Fin",
