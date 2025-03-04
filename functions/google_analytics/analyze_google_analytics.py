@@ -42,8 +42,11 @@ def analyze_google_analytics(req):
             dimensions=[Dimension(name="date")],
             metrics=[
                 Metric(name="sessions"),
+                Metric(name="totalUsers"),
                 Metric(name="bounceRate"),
-                Metric(name="keyEvents"),
+                Metric(name="averageSessionDuration"),
+                Metric(name="purchaseRevenue"),
+                Metric(name="transactions"),
             ],
         )
 
@@ -54,8 +57,11 @@ def analyze_google_analytics(req):
                 {
                     "date": row.dimension_values[0].value,
                     "sessions": row.metric_values[0].value,
-                    "bounceRate": row.metric_values[1].value,
-                    "keyEvents": row.metric_values[2].value,
+                    "totalUsers": row.metric_values[1].value,
+                    "bounceRate": row.metric_values[2].value,
+                    "avgSessionDuration": row.metric_values[3].value,
+                    "purchaseRevenue": row.metric_values[4].value,
+                    "transactions": row.metric_values[5].value,
                 }
                 for row in response.rows
             ]

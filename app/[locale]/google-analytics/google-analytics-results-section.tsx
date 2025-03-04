@@ -10,8 +10,11 @@ interface GoogleAnalyticsResultsSectionProps {
     rows?: {
       date: string;
       sessions: number;
+      totalUsers: number;
       bounceRate: number;
-      keyEvents: string;
+      avgSessionDuration: number;
+      purchaseRevenue: number;
+      transactions: number;
     }[];
   };
   userInfo: {
@@ -95,10 +98,19 @@ export default function GoogleAnalyticsResultsSection({
                     {t("sessions")}
                   </th>
                   <th className="py-2 px-4 border-b border-gray-200">
-                    {t("bouceRate")}
+                    {t("totalUsers")}
                   </th>
                   <th className="py-2 px-4 border-b border-gray-200">
-                    {t("keyEvents")}
+                    {t("bounceRate")}
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    {t("avgSessionDuration")}
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    {t("purchaseRevenue")}
+                  </th>
+                  <th className="py-2 px-4 border-b border-gray-200">
+                    {t("transactions")}
                   </th>
                 </tr>
               </thead>
@@ -112,10 +124,19 @@ export default function GoogleAnalyticsResultsSection({
                       {row.sessions}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-200">
+                      {row.totalUsers}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
                       {row.bounceRate}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-200">
-                      {row.keyEvents}
+                      {row.avgSessionDuration}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.purchaseRevenue}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-200">
+                      {row.transactions}
                     </td>
                   </tr>
                 ))}
