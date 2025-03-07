@@ -122,6 +122,7 @@ export default function Home() {
                     alt={logo.replace("-logo.png", "")}
                     width={50}
                     height={50}
+                    style={{ width: "auto", height: "auto" }}
                     className="max-w-full"
                   />
                 </Link>

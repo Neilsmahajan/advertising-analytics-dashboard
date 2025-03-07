@@ -68,6 +68,7 @@ export default function Navbar() {
                 alt="Advertising Analytics Dashboard Logo"
                 width={40}
                 height={40}
+                style={{ width: "auto", height: "auto" }}
               />
             </Link>
             <div className="hidden md:flex items-center gap-6">
