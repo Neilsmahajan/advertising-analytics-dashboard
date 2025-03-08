@@ -75,6 +75,7 @@ export default function QueryForm({
   const [user] = useAuthState(auth);
   const [isQuerySelected, setIsQuerySelected] = useState(false);
   const [showPropertyId, setShowPropertyId] = useState(false);
+  const [showCustomerId, setShowCustomerId] = useState(false);
 
   useEffect(() => {
     async function loadQueries() {
@@ -200,10 +201,19 @@ export default function QueryForm({
             <label className="block text-sm font-medium mb-2">
               {queryFields[field]}
             </label>
-            {field === "propertyID" ? (
+            {field === "propertyID" ||
+            (service === "Google Ads" && field === "customerId") ? (
               <div className="flex gap-2 items-center">
                 <Input
-                  type={showPropertyId ? "text" : "password"}
+                  type={
+                    field === "propertyID"
+                      ? showPropertyId
+                        ? "text"
+                        : "password"
+                      : showCustomerId
+                        ? "text"
+                        : "password"
+                  }
                   placeholder={t("enter") + " " + queryFields[field]}
                   value={
                     queryData[field] instanceof Date
@@ -215,11 +225,21 @@ export default function QueryForm({
                   disabled={!isQuerySelected}
                 />
                 <Button
-                  onClick={() => setShowPropertyId((prev) => !prev)}
+                  onClick={() =>
+                    field === "propertyID"
+                      ? setShowPropertyId((prev) => !prev)
+                      : setShowCustomerId((prev) => !prev)
+                  }
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white min-w-[auto] px-2"
                   disabled={!isQuerySelected}
                 >
-                  {showPropertyId ? "Hide" : "Show"}
+                  {field === "propertyID"
+                    ? showPropertyId
+                      ? "Hide"
+                      : "Show"
+                    : showCustomerId
+                      ? "Hide"
+                      : "Show"}
                 </Button>
               </div>
             ) : (
