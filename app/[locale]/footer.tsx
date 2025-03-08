@@ -78,8 +78,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#00BFFF] text-white py-12">
       <div className="container mx-auto px-4">
-        {/* Primary Links (Company & Socials) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-5 gap-4">
+          {/* Column 1: Company links */}
           <div>
             <h3 className="font-bold mb-2">{t("company") || "Company"}</h3>
             {footerLinks.company.map((link) => (
@@ -89,19 +89,20 @@ export default function Footer() {
                 onClick={
                   link === t("account") && !user ? handleSignIn : undefined
                 }
-                className="block py-2 hover:underline"
+                className="block py-1 text-sm hover:underline"
               >
                 {link}
               </Link>
             ))}
           </div>
+          {/* Column 2: Socials links */}
           <div>
             <h3 className="font-bold mb-2">{t("socials") || "Socials"}</h3>
             {footerLinks.socials.map((link) => (
               <Link
                 key={link}
                 href={getLinkUrl(link)}
-                className="block py-2 hover:underline"
+                className="block py-1 text-sm hover:underline"
                 {...(link === t("facebook") ||
                 link === t("instagram") ||
                 link === t("linkedin")
@@ -112,16 +113,41 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </div>
-        {/* Services Links Section */}
-        <div className="mt-8">
-          <h3 className="font-bold mb-4">{t("services") || "Services"}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {footerLinks.services.map((link) => (
+          {/* Column 3: First 5 Services links */}
+          <div>
+            <h3 className="font-bold mb-2">{t("services") || "Services"}</h3>
+            {footerLinks.services.slice(0, 5).map((link) => (
               <Link
                 key={link}
                 href={getLinkUrl(link)}
-                className="block py-2 hover:underline"
+                className="block py-1 text-sm hover:underline"
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
+          {/* Column 4: Next 5 Services links */}
+          <div>
+            {/* Empty heading to align with first column */}
+            <h3 className="font-bold mb-2">&nbsp;</h3>
+            {footerLinks.services.slice(5, 10).map((link) => (
+              <Link
+                key={link}
+                href={getLinkUrl(link)}
+                className="block py-1 text-sm hover:underline"
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
+          {/* Column 5: Remaining Services links (4 items) */}
+          <div>
+            <h3 className="font-bold mb-2">&nbsp;</h3>
+            {footerLinks.services.slice(10).map((link) => (
+              <Link
+                key={link}
+                href={getLinkUrl(link)}
+                className="block py-1 text-sm hover:underline"
               >
                 {link}
               </Link>
