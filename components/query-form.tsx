@@ -79,6 +79,9 @@ export default function QueryForm({
   // New states for Meta Ads fields
   const [showAdAccountId, setShowAdAccountId] = useState(false);
   const [showAccessToken, setShowAccessToken] = useState(false);
+  // New states for Microsoft Ads fields
+  const [showAccountIdMS, setShowAccountIdMS] = useState(false);
+  const [showCustomerIdMS, setShowCustomerIdMS] = useState(false);
 
   useEffect(() => {
     async function loadQueries() {
@@ -207,7 +210,9 @@ export default function QueryForm({
             {(service === "Google Analytics" && field === "propertyID") ||
             (service === "Google Ads" && field === "customerId") ||
             (service === "Meta Ads" &&
-              (field === "adAccountId" || field === "accessToken")) ? (
+              (field === "adAccountId" || field === "accessToken")) ||
+            (service === "Microsoft Ads" &&
+              (field === "accountId" || field === "customerId")) ? (
               <div className="flex gap-2 items-center">
                 <Input
                   type={
@@ -227,7 +232,17 @@ export default function QueryForm({
                             ? showAccessToken
                               ? "text"
                               : "password"
-                            : "text"
+                            : service === "Microsoft Ads" &&
+                                field === "accountId"
+                              ? showAccountIdMS
+                                ? "text"
+                                : "password"
+                              : service === "Microsoft Ads" &&
+                                  field === "customerId"
+                                ? showCustomerIdMS
+                                  ? "text"
+                                  : "password"
+                                : "text"
                   }
                   placeholder={t("enter") + " " + queryFields[field]}
                   value={
@@ -249,7 +264,13 @@ export default function QueryForm({
                           ? setShowAdAccountId((prev) => !prev)
                           : service === "Meta Ads" && field === "accessToken"
                             ? setShowAccessToken((prev) => !prev)
-                            : null
+                            : service === "Microsoft Ads" &&
+                                field === "accountId"
+                              ? setShowAccountIdMS((prev) => !prev)
+                              : service === "Microsoft Ads" &&
+                                  field === "customerId"
+                                ? setShowCustomerIdMS((prev) => !prev)
+                                : null
                   }
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white min-w-[auto] px-2"
                   disabled={!isQuerySelected}
@@ -270,7 +291,16 @@ export default function QueryForm({
                           ? showAccessToken
                             ? "Hide"
                             : "Show"
-                          : "Show"}
+                          : service === "Microsoft Ads" && field === "accountId"
+                            ? showAccountIdMS
+                              ? "Hide"
+                              : "Show"
+                            : service === "Microsoft Ads" &&
+                                field === "customerId"
+                              ? showCustomerIdMS
+                                ? "Hide"
+                                : "Show"
+                              : "Show"}
                 </Button>
               </div>
             ) : (
