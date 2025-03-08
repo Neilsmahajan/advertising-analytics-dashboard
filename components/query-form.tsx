@@ -74,6 +74,7 @@ export default function QueryForm({
   const [queries, setQueries] = useState<Query[]>([]);
   const [user] = useAuthState(auth);
   const [isQuerySelected, setIsQuerySelected] = useState(false);
+  const [showPropertyId, setShowPropertyId] = useState(false);
 
   useEffect(() => {
     async function loadQueries() {
@@ -199,18 +200,42 @@ export default function QueryForm({
             <label className="block text-sm font-medium mb-2">
               {queryFields[field]}
             </label>
-            <Input
-              type={field.includes("Date") ? "date" : "text"}
-              placeholder={t("enter") + " " + queryFields[field]}
-              value={
-                queryData[field] instanceof Date
-                  ? queryData[field].toISOString().split("T")[0]
-                  : queryData[field] || ""
-              }
-              onChange={(e) => handleInputChange(field, e.target.value)}
-              className="bg-white/20 border-none text-white placeholder:text-white/60"
-              disabled={!isQuerySelected}
-            />
+            {field === "propertyID" ? (
+              <div className="flex gap-2 items-center">
+                <Input
+                  type={showPropertyId ? "text" : "password"}
+                  placeholder={t("enter") + " " + queryFields[field]}
+                  value={
+                    queryData[field] instanceof Date
+                      ? queryData[field].toISOString().split("T")[0]
+                      : queryData[field] || ""
+                  }
+                  onChange={(e) => handleInputChange(field, e.target.value)}
+                  className="bg-white/20 border-none text-white placeholder:text-white/60"
+                  disabled={!isQuerySelected}
+                />
+                <Button
+                  onClick={() => setShowPropertyId((prev) => !prev)}
+                  className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white min-w-[auto] px-2"
+                  disabled={!isQuerySelected}
+                >
+                  {showPropertyId ? "Hide" : "Show"}
+                </Button>
+              </div>
+            ) : (
+              <Input
+                type={field.includes("Date") ? "date" : "text"}
+                placeholder={t("enter") + " " + queryFields[field]}
+                value={
+                  queryData[field] instanceof Date
+                    ? queryData[field].toISOString().split("T")[0]
+                    : queryData[field] || ""
+                }
+                onChange={(e) => handleInputChange(field, e.target.value)}
+                className="bg-white/20 border-none text-white placeholder:text-white/60"
+                disabled={!isQuerySelected}
+              />
+            )}
           </div>
         ))}
 
