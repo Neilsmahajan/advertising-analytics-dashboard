@@ -204,14 +204,14 @@ export default function QueryForm({
             <label className="block text-sm font-medium mb-2">
               {queryFields[field]}
             </label>
-            {field === "propertyID" ||
+            {(service === "Google Analytics" && field === "propertyID") ||
             (service === "Google Ads" && field === "customerId") ||
             (service === "Meta Ads" &&
               (field === "adAccountId" || field === "accessToken")) ? (
               <div className="flex gap-2 items-center">
                 <Input
                   type={
-                    field === "propertyID"
+                    service === "Google Analytics" && field === "propertyID"
                       ? showPropertyId
                         ? "text"
                         : "password"
@@ -241,7 +241,7 @@ export default function QueryForm({
                 />
                 <Button
                   onClick={() =>
-                    field === "propertyID"
+                    service === "Google Analytics" && field === "propertyID"
                       ? setShowPropertyId((prev) => !prev)
                       : service === "Google Ads" && field === "customerId"
                         ? setShowCustomerId((prev) => !prev)
@@ -254,7 +254,7 @@ export default function QueryForm({
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white min-w-[auto] px-2"
                   disabled={!isQuerySelected}
                 >
-                  {field === "propertyID"
+                  {service === "Google Analytics" && field === "propertyID"
                     ? showPropertyId
                       ? "Hide"
                       : "Show"
