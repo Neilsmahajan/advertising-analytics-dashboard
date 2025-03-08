@@ -76,6 +76,9 @@
     }
   },
   "Footer": {
+    "company": "Company",
+    "socials": "Socials",
+    "services": "Services",
     "home": "Home",
     "about": "About",
     "contactUs": "Contact Us",

@@ -6,10 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebaseConfig";
 import React from "react";
 import { useTranslations } from "next-intl";
-/**
- *
- * @constructor
- */
+
 export default function Footer() {
   const t = useTranslations("Footer");
   const [user] = useAuthState(auth);
@@ -48,117 +45,88 @@ export default function Footer() {
     ],
   };
 
+  // Helper to determine link URL
+  const getLinkUrl = (link: string) => {
+    if (link === t("home")) return "/";
+    if (link === t("about")) return "/about";
+    if (link === t("contactUs")) return "/contact-us";
+    if (link === t("privacyPolicy")) return "/privacy-policy";
+    if (link === t("account")) return user ? "/account" : "#";
+    if (link === t("facebook"))
+      return "https://www.facebook.com/advertisinganalyticsdashboard/";
+    if (link === t("instagram"))
+      return "https://www.instagram.com/advertisinganalyticsdashboard/";
+    if (link === t("linkedin"))
+      return "https://www.linkedin.com/company/advertisinganalyticsdashboard/";
+    if (link === t("servicesList.trackingData")) return "/tracking-data";
+    if (link === t("servicesList.googleAnalytics")) return "/google-analytics";
+    if (link === t("servicesList.googleAds")) return "/google-ads";
+    if (link === t("servicesList.metaAds")) return "/meta-ads";
+    if (link === t("servicesList.microsoftAds")) return "/microsoft-ads";
+    if (link === t("servicesList.xAds")) return "/x-ads";
+    if (link === t("servicesList.tiktokAds")) return "/tiktok-ads";
+    if (link === t("servicesList.linkedinAds")) return "/linkedin-ads";
+    if (link === t("servicesList.pinterestAds")) return "/pinterest-ads";
+    if (link === t("servicesList.snapchatAds")) return "/snapchat-ads";
+    if (link === t("servicesList.amazonAds")) return "/amazon-ads";
+    if (link === t("servicesList.spotifyAds")) return "/spotify-ads";
+    if (link === t("servicesList.mailchimp")) return "/mailchimp";
+    if (link === t("servicesList.cyberimpact")) return "/cyberimpact";
+    return "#";
+  };
+
   return (
     <footer className="bg-[#00BFFF] text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 sm:grid-cols-6 gap-8">
-          {[...Array(6)].map((_, rowIndex) => (
-            <div key={rowIndex} className="col-span-2 sm:col-span-1">
-              {[
-                ...footerLinks.company,
-                ...footerLinks.socials,
-                ...footerLinks.services,
-              ]
-                .slice(rowIndex * 4, (rowIndex + 1) * 4)
-                .map((link) => (
-                  <Link
-                    key={link}
-                    href={
-                      link === t("home")
-                        ? "/"
-                        : link === t("about")
-                          ? "/about"
-                          : link === t("contactUs")
-                            ? "/contact-us"
-                            : link === t("privacyPolicy")
-                              ? "/privacy-policy"
-                              : link === t("account") && !user
-                                ? "#"
-                                : link === t("account") && user
-                                  ? "/account"
-                                  : link === t("facebook")
-                                    ? "https://www.facebook.com/advertisinganalyticsdashboard/"
-                                    : link === t("instagram")
-                                      ? "https://www.instagram.com/advertisinganalyticsdashboard/"
-                                      : link === t("linkedin")
-                                        ? "https://www.linkedin.com/company/advertisinganalyticsdashboard/"
-                                        : link ===
-                                            t("servicesList.trackingData")
-                                          ? "/tracking-data"
-                                          : link ===
-                                              t("servicesList.googleAnalytics")
-                                            ? "/google-analytics"
-                                            : link ===
-                                                t("servicesList.googleAds")
-                                              ? "/google-ads"
-                                              : link ===
-                                                  t("servicesList.metaAds")
-                                                ? "/meta-ads"
-                                                : link ===
-                                                    t(
-                                                      "servicesList.microsoftAds",
-                                                    )
-                                                  ? "/microsoft-ads"
-                                                  : link ===
-                                                      t("servicesList.xAds")
-                                                    ? "/x-ads"
-                                                    : link ===
-                                                        t(
-                                                          "servicesList.tiktokAds",
-                                                        )
-                                                      ? "/tiktok-ads"
-                                                      : link ===
-                                                          t(
-                                                            "servicesList.linkedinAds",
-                                                          )
-                                                        ? "/linkedin-ads"
-                                                        : link ===
-                                                            t(
-                                                              "servicesList.pinterestAds",
-                                                            )
-                                                          ? "/pinterest-ads"
-                                                          : link ===
-                                                              t(
-                                                                "servicesList.snapchatAds",
-                                                              )
-                                                            ? "/snapchat-ads"
-                                                            : link ===
-                                                                t(
-                                                                  "servicesList.amazonAds",
-                                                                )
-                                                              ? "/amazon-ads"
-                                                              : link ===
-                                                                  t(
-                                                                    "servicesList.spotifyAds",
-                                                                  )
-                                                                ? "/spotify-ads"
-                                                                : link ===
-                                                                    t(
-                                                                      "servicesList.mailchimp",
-                                                                    )
-                                                                  ? "/mailchimp"
-                                                                  : link ===
-                                                                      t(
-                                                                        "servicesList.cyberimpact",
-                                                                      )
-                                                                    ? "/cyberimpact"
-                                                                    : "#"
-                    }
-                    onClick={
-                      link === t("account") && !user ? handleSignIn : undefined
-                    }
-                    className="block py-2 hover:underline"
-                    {...(link === t("facebook") ||
-                    link === t("instagram") ||
-                    link === t("linkedin")
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                  >
-                    {link}
-                  </Link>
-                ))}
-            </div>
-          ))}
+        {/* Primary Links (Company & Socials) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 className="font-bold mb-2">{t("company") || "Company"}</h3>
+            {footerLinks.company.map((link) => (
+              <Link
+                key={link}
+                href={getLinkUrl(link)}
+                onClick={
+                  link === t("account") && !user ? handleSignIn : undefined
+                }
+                className="block py-2 hover:underline"
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <h3 className="font-bold mb-2">{t("socials") || "Socials"}</h3>
+            {footerLinks.socials.map((link) => (
+              <Link
+                key={link}
+                href={getLinkUrl(link)}
+                className="block py-2 hover:underline"
+                {...(link === t("facebook") ||
+                link === t("instagram") ||
+                link === t("linkedin")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
+        </div>
+        {/* Services Links Section */}
+        <div className="mt-8">
+          <h3 className="font-bold mb-4">{t("services") || "Services"}</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {footerLinks.services.map((link) => (
+              <Link
+                key={link}
+                href={getLinkUrl(link)}
+                className="block py-2 hover:underline"
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

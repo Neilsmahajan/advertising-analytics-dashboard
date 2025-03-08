@@ -76,6 +76,9 @@
     }
   },
   "Footer": {
+    "company": "Société",
+    "socials": "Réseaux Sociaux",
+    "services": "Services",
     "home": "Accueil",
     "about": "À propos",
     "contactUs": "Contactez-nous",
