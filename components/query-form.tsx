@@ -76,6 +76,9 @@ export default function QueryForm({
   const [isQuerySelected, setIsQuerySelected] = useState(false);
   const [showPropertyId, setShowPropertyId] = useState(false);
   const [showCustomerId, setShowCustomerId] = useState(false);
+  // New states for Meta Ads fields
+  const [showAdAccountId, setShowAdAccountId] = useState(false);
+  const [showAccessToken, setShowAccessToken] = useState(false);
 
   useEffect(() => {
     async function loadQueries() {
@@ -202,7 +205,9 @@ export default function QueryForm({
               {queryFields[field]}
             </label>
             {field === "propertyID" ||
-            (service === "Google Ads" && field === "customerId") ? (
+            (service === "Google Ads" && field === "customerId") ||
+            (service === "Meta Ads" &&
+              (field === "adAccountId" || field === "accessToken")) ? (
               <div className="flex gap-2 items-center">
                 <Input
                   type={
@@ -210,9 +215,19 @@ export default function QueryForm({
                       ? showPropertyId
                         ? "text"
                         : "password"
-                      : showCustomerId
-                        ? "text"
-                        : "password"
+                      : service === "Google Ads" && field === "customerId"
+                        ? showCustomerId
+                          ? "text"
+                          : "password"
+                        : service === "Meta Ads" && field === "adAccountId"
+                          ? showAdAccountId
+                            ? "text"
+                            : "password"
+                          : service === "Meta Ads" && field === "accessToken"
+                            ? showAccessToken
+                              ? "text"
+                              : "password"
+                            : "text"
                   }
                   placeholder={t("enter") + " " + queryFields[field]}
                   value={
@@ -228,7 +243,13 @@ export default function QueryForm({
                   onClick={() =>
                     field === "propertyID"
                       ? setShowPropertyId((prev) => !prev)
-                      : setShowCustomerId((prev) => !prev)
+                      : service === "Google Ads" && field === "customerId"
+                        ? setShowCustomerId((prev) => !prev)
+                        : service === "Meta Ads" && field === "adAccountId"
+                          ? setShowAdAccountId((prev) => !prev)
+                          : service === "Meta Ads" && field === "accessToken"
+                            ? setShowAccessToken((prev) => !prev)
+                            : null
                   }
                   className="bg-[#47adbf] hover:bg-[#47adbf]/90 text-white min-w-[auto] px-2"
                   disabled={!isQuerySelected}
@@ -237,9 +258,19 @@ export default function QueryForm({
                     ? showPropertyId
                       ? "Hide"
                       : "Show"
-                    : showCustomerId
-                      ? "Hide"
-                      : "Show"}
+                    : service === "Google Ads" && field === "customerId"
+                      ? showCustomerId
+                        ? "Hide"
+                        : "Show"
+                      : service === "Meta Ads" && field === "adAccountId"
+                        ? showAdAccountId
+                          ? "Hide"
+                          : "Show"
+                        : service === "Meta Ads" && field === "accessToken"
+                          ? showAccessToken
+                            ? "Hide"
+                            : "Show"
+                          : "Show"}
                 </Button>
               </div>
             ) : (
