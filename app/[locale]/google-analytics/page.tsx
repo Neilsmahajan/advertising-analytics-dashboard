@@ -47,7 +47,7 @@ export default function GoogleAnalyticsPage() {
             <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
-                  src="https://youtu.be/Gwl51a4Zh3k"
+                  src="https://www.youtube.com/embed/Gwl51a4Zh3k"
                   title="Google Analytics Tutorial"
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

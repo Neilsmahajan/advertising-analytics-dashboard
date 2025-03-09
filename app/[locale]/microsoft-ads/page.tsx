@@ -39,7 +39,7 @@ export default function MicrosoftAdsPage() {
             <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
-                  src="https://youtu.be/x9Ft4vY9BRk"
+                  src="https://www.youtube.com/embed/x9Ft4vY9BRk"
                   title="Microsoft Ads Tutorial"
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

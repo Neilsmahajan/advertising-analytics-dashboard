@@ -40,7 +40,7 @@ export default function GoogleAdsPage() {
             <CollapsibleSection title={t("viewTutorial")}>
               <div className="aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
                 <iframe
-                  src="https://youtu.be/ZUb961lCfYc"
+                  src="https://www.youtube.com/embed/ZUb961lCfYc"
                   title="Google Ads Tutorial"
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
