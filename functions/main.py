@@ -114,10 +114,10 @@ def authenticate_meta_ads_function(req: https_fn.Request) -> https_fn.Response:
         response.headers["Access-Control-Allow-Headers"] = "Content-Type"
         return response
 
-    # Handle actual request
-    response = authenticate_meta_ads(req)
+    # Handle actual request by unpacking response and status code
+    response, status_code = authenticate_meta_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
-    return response
+    return make_response(response, status_code)
 
 
 @https_fn.on_request()
