@@ -4,6 +4,17 @@ import requests
 meta_ads_bp = Blueprint("meta_ads", __name__)
 
 
+def analyze_meta_ads(req):
+    data = req.get_json()
+    ad_account_id = data.get("adAccountId")
+    access_token = data.get("accessToken")
+    start_date = data.get("startDate")
+    end_date = data.get("endDate")
+
+    result = fetch_meta_ads_data(ad_account_id, access_token, start_date, end_date)
+    return jsonify(result)
+
+
 def fetch_meta_ads_data(ad_account_id, access_token, start_date, end_date):
     """Fetch Meta Ads data from the Meta Marketing API grouped by campaign."""
     try:
@@ -26,14 +37,3 @@ def fetch_meta_ads_data(ad_account_id, access_token, start_date, end_date):
         return response.json()
     except Exception as e:
         return {"error": str(e)}
-
-
-def analyze_meta_ads(req):
-    data = req.get_json()
-    ad_account_id = data.get("adAccountId")
-    access_token = data.get("accessToken")
-    start_date = data.get("startDate")
-    end_date = data.get("endDate")
-
-    result = fetch_meta_ads_data(ad_account_id, access_token, start_date, end_date)
-    return jsonify(result)

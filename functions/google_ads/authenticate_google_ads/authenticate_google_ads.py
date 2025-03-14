@@ -47,7 +47,3 @@ def authenticate_google_ads(req):
     print("Authorization url: \n" + authorization_url)
     response = {"url": authorization_url}
     return jsonify(response), 200
-
-
-if __name__ == "__main__":
-    authenticate_google_ads()

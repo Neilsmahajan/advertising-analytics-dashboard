@@ -21,6 +21,9 @@ from generate_report.generate_report import generate_report
 from meta_ads.analyze_meta_ads.analyze_meta_ads import (
     analyze_meta_ads,
 )
+from meta_ads.authenticate_meta_ads.authenticate_meta_ads import (
+    authenticate_meta_ads,
+)
 from send_email.send_email import send_email
 from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import (
     analyze_microsoft_ads,
@@ -97,6 +100,22 @@ def analyze_meta_ads_function(req: https_fn.Request) -> https_fn.Response:
 
     # Handle actual request
     response = analyze_meta_ads(req)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
+@https_fn.on_request()
+def authenticate_meta_ads_function(req: https_fn.Request) -> https_fn.Response:
+    # Handle preflight requests
+    if request.method == "OPTIONS":
+        response = make_response()
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        return response
+
+    # Handle actual request
+    response = authenticate_meta_ads(req)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
