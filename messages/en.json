@@ -296,14 +296,13 @@
   "MetaAdsPage": {
     "title": "META ADS",
     "instructions": "Instructions",
-    "followTheseSteps": "Follow These Steps To Use This Application With Your Meta Ads Data:",
-    "goToMetaAdsDashboard": "Go to your Meta Ads Dashboard.",
-    "logInAndNavigate": "Log in and navigate to Business Settings on the bottom left.",
-    "noteAdAccountId": "Note your Ad Account ID on the top left drop down.",
-    "underAccountsApps": "Under Accounts > Apps > Add and create an App if you have not created one already.",
-    "navigateToUsers": "Navigate to Users > System Users > Add and create an admin system user with access to your app and any other assets if you have not created one.",
-    "retrieveAccessToken": "Retrieve your access token for the system user by clicking Generate Token with the maximum permissions.",
-    "enterAdAccountId": "Enter your Ad Account ID and Access Token below, along with the desired date range, and click Get Analytics.",
+    "followTheseSteps": "Follow these steps to get your Ad Account ID and Access Token:",
+    "goToAdsManager": "Go to Ads Manager",
+    "noteAdAccountId": "Note your Ad account ID from the top left drop down (e.g., 1140105854207687 for Neil Mahajan Business > Neil Mahajan Ad)",
+    "goToBusinessSettings": "Go to Business Settings",
+    "createApp": "Create an App under Accounts > Apps > Add > Create a new app ID. Under Use Cases, select Other, then choose Business and click Create app",
+    "setupMarketingApi": "Under 'Add products to your app', scroll down and select Marketing API > Set Up",
+    "getAccessToken": "Under 'Get Access Token', select ads_read and read_insights, then click Get Token",
     "viewTutorial": "View Tutorial"
   },
   "MetaAdsQueryForm": {

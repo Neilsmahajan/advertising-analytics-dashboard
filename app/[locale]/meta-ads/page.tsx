@@ -29,13 +29,12 @@ export default function MetaAdsPage() {
           <h2 className="text-2xl font-bold mb-4">{t("instructions")}</h2>
           <p className="text-lg mb-6">{t("followTheseSteps")}</p>
           <ol className="space-y-4 list-decimal pl-6">
-            <li>{t("goToMetaAdsDashboard")}</li>
-            <li>{t("logInAndNavigate")}</li>
+            <li>{t("goToAdsManager")}</li>
             <li>{t("noteAdAccountId")}</li>
-            <li>{t("underAccountsApps")}</li>
-            <li>{t("navigateToUsers")}</li>
-            <li>{t("retrieveAccessToken")}</li>
-            <li>{t("enterAdAccountId")}</li>
+            <li>{t("goToBusinessSettings")}</li>
+            <li>{t("createApp")}</li>
+            <li>{t("setupMarketingApi")}</li>
+            <li>{t("getAccessToken")}</li>
           </ol>
 
           {/* Tutorial Section */}
