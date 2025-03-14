@@ -346,5 +346,10 @@
     "startDate": "Start Date",
     "endDate": "End Date",
     "loading": "Loading..."
+  },
+  "UserDataDeletion": {
+    "title": "User Data Deletion",
+    "instructions": "If you wish to delete your data from our system, simply visit your Account page and click on the 'Delete' button next to your saved queries. We only store your query inputs and do not store any analysis results.",
+    "goToMyAccount": "Go to My Account"
   }
 }

@@ -346,5 +346,10 @@
     "startDate": "Date de Début",
     "endDate": "Date de Fin",
     "loading": "Chargement..."
+  },
+  "UserDataDeletion": {
+    "title": "Suppression des Données Utilisateur",
+    "instructions": "Si vous souhaitez supprimer vos données de notre système, rendez-vous simplement sur la page Compte et cliquez sur le bouton 'Supprimer' à côté de vos requêtes enregistrées. Nous stockons uniquement vos saisies de requête et nous ne conservons aucun résultat d'analyse.",
+    "goToMyAccount": "Allez à Mon Compte"
   }
 }
