@@ -18,7 +18,9 @@ CORS(app)  # Enable CORS for the Flask app
 from tracking_data.analyze_tracking_data import analyze_tracking_data
 from google_analytics.analyze_google_analytics import analyze_google_analytics
 from generate_report.generate_report import generate_report
-from meta_ads.analyze_meta_ads import analyze_meta_ads
+from meta_ads.analyze_meta_ads.analyze_meta_ads import (
+    analyze_meta_ads,
+)
 from send_email.send_email import send_email
 from microsoft_ads.analyze_microsoft_ads.analyze_microsoft_ads import (
     analyze_microsoft_ads,
